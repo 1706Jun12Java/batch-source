@@ -1,0 +1,18 @@
+package com.revature.hello;
+
+//this is a POJO "plain old Java object" or "bean" 
+public class Batch {
+	
+	private String greeting;
+
+	public String getGreeting() {
+		return greeting;
+	}
+
+	public void setGreeting(String greeting) {
+		this.greeting = greeting;
+	}
+	
+	
+
+}

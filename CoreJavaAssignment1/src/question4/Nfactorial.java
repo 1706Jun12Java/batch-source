@@ -1,4 +1,5 @@
 package question4;
+import java.math.BigInteger;
 import java.util.Scanner;
 public class Nfactorial {
 	
@@ -19,9 +20,13 @@ public class Nfactorial {
 				System.out.println("2");
 				sc.close();
 				return;
-			}
+			} else if(num >= 13){
+				BigInteger disGonnaBeBig = BigInteger.valueOf(num);
+				System.out.println(factorial(disGonnaBeBig));
+			}else{
 			System.out.println(factorial(num));
 			sc.close();
+			}
 	}
 	public static int factorial(int a){
 		if(a != 1){
@@ -29,5 +34,16 @@ public class Nfactorial {
 		} else{
 			return 1;
 		}
+	}
+	
+	public static BigInteger factorial(BigInteger n) {
+	    BigInteger result = BigInteger.ONE;
+
+	    while (!n.equals(BigInteger.ZERO)) {
+	        result = result.multiply(n);
+	        n = n.subtract(BigInteger.ONE);
+	    }
+
+	    return result;
 	}
 }

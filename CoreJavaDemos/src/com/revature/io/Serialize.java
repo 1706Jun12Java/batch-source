@@ -17,10 +17,7 @@ public class Serialize {
 		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))){
 			oos.writeObject(obj);
 			System.out.println("wrote to file: "+obj.toString());
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

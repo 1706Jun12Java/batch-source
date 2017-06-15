@@ -1,6 +1,6 @@
 package com.revature.fruit;
 
-public class Fruit implements Comparable<Fruit> {
+public class Fruit implements Comparable<Fruit>, Edible{
 	
 	int x = 10;
 	static int y = 20;

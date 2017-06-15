@@ -8,6 +8,10 @@ public abstract class Shape implements Calculable{
 		this.getMessage();
 	}
 
+	public Shape() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String name;
 	
 	public void getMetaMessage(){

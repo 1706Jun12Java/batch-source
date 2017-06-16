@@ -13,7 +13,7 @@ public class Main {
 		System.out.println("=========================\nWelcome to MyCalculator\n=========================\n");
 		System.out.print("Enter operator: +, -, *, / :  ");
 		try (Scanner scan = new Scanner(System.in)) {
-			
+
 			String op = scan.nextLine();
 
 			while (!(op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/"))) {
@@ -64,9 +64,7 @@ public class Main {
 				System.out.println((int) result);
 			} else {
 				System.out.println(result);
-			}
-
-		}
-
+			} 
+		} 
 	}
 }

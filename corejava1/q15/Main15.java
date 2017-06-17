@@ -11,7 +11,7 @@ package corejava1.q15;
  * 	Hard code two operands in a test class having a main 
  * 	method that calls the implementing class.
  */
-public class Main {
+public class Main15 {
 	public static void main(String [] args) {
 		double operand1 = 15.0;
 		double operand2 = 3.0;

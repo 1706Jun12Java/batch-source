@@ -16,7 +16,7 @@ package corejava1.q13;
  *   
  *
  */
-public class Main {
+public class Main13 {
 	public static int bit = 1;
 	
 	

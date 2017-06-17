@@ -7,7 +7,7 @@ package corejava1.q12;
  * 	Print out all the even numbers from the array. Use the 
  * 	enhanced FOR loop for printing out the numbers.
  */
-public class Main {
+public class Main12 {
 	public static void main(String [] args) {
 		
 		// Create array of 100 numbers

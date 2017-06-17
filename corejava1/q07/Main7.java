@@ -6,12 +6,14 @@ import java.util.Collections;
 
 /**
  * 
- * @author Leibniz Berihuete QUESTION 7: Sort two employees based on their name,
- *         department, and age using the Comparator interface.
+ * @author Leibniz Berihuete 
+ * QUESTION 7: 
+ *   Sort two employees based on their name,
+ *   department, and age using the Comparator interface.
  * 
  *
  */
-public class Main {
+public class Main7 {
 	public static void main(String[] args) {
 		// Create two employees
 		Employee person1 = new Employee("Leibniz", "Berihuete", "Software Engineer", 26);

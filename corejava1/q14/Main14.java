@@ -9,7 +9,9 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Leibniz Berihuete QUESTION 14: Write a program that demonstrates the
+ * @author Leibniz Berihuete 
+ * QUESTION 14: 
+ *         Write a program that demonstrates the
  *         switch case. Implement the following functionalities in the cases:
  * 
  *         Case 1: Find the square root of a number using the Math class method.
@@ -17,7 +19,7 @@ import java.util.Scanner;
  *         store it in a string array. “I am learning Core Java”
  *
  */
-public class Main {
+public class Main14 {
 
 	public static void main(String[] args) {
 		System.out.println("---------------MENU---------------");

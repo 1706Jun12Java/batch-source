@@ -2,6 +2,7 @@ package corejava1.q10;
 /**
  * 
  * @author Leibniz Berihuete
+ * QUESTION 10:
  *	Find the minimum of two numbers using ternary operators.
  */
 public class TernaryAndMinimum {

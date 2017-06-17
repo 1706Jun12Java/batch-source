@@ -42,9 +42,9 @@ public class ReflectionExample {
 		/*	Constructor[] construct  = clazz2.getConstructors();
 			for (Constructor c : construct){
 				System.out.println(c.toString());
-			}*/
+			}
 			Math math = (Math) clazz2.newInstance();
-			/*Field pi = clazz2.getDeclaredField("PI");
+			Field pi = clazz2.getDeclaredField("PI");
 			pi.setAccessible(true);
 			pi.set(, value);*/
 			

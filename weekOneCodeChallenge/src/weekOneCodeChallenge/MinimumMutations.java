@@ -50,21 +50,19 @@ public class MinimumMutations {
 		
 		int min_step=1;
 		String root = startGene;
-		Queue q = new LinkedList();
-		
-		while(haveNotVisitedAll(visited)){
-			//System.out.println("h");
-			ArrayList<String> Nodes = findNextNodes(root, bank, visited);
-			//System.out.println(Nodes);
-			for (int i=0; i< Nodes.size(); i++){
-				//System.out.println(Nodes.indexOf(endGene));
-				if(Nodes.indexOf(endGene)!=-1){ //fond 
-					min_step ++;
-					return min_step;
-				}
+		Queue<String> q = new LinkedList<String>();
+	 
+		ArrayList<String> Nodes = findNextNodes(root, bank, visited);
+		//System.out.println(Nodes);
+		for (int i=0; i< Nodes.size(); i++){
+			//System.out.println(Nodes.indexOf(endGene));
+			if(Nodes.indexOf(endGene)!=-1){ //fond 
+				min_step ++;
+				return min_step;
 			}
-			q.addAll(Nodes);
-			//System.out.println(q);
+		}
+		q.addAll(Nodes);
+		//System.out.println(q);
 			while (! q.isEmpty()){
 				root = (String) q.poll();
 				
@@ -73,13 +71,13 @@ public class MinimumMutations {
 				for (int i=0; i< Nodes.size(); i++){
  
 					if(nextNodes.indexOf(endGene)!=-1){ //fond 
-						min_step ++;
-						return min_step;
-					}
+					min_step ++;
+					return min_step;
 				}
-				q.addAll(nextNodes);
-			} 
+			}
+			q.addAll(nextNodes);
 		} 
+		
 		
 		return min_step;
 		

@@ -1,0 +1,3 @@
+﻿Name: Mickey Mouse
+Age: 35 years
+State: Arizona State

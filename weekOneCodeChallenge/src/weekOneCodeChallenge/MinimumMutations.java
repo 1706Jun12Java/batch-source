@@ -21,8 +21,7 @@ public class MinimumMutations {
 		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			startGene = br.readLine();
 			endGene = br.readLine();
-			String[] bank_temp = br.readLine().split(",");
-			bank = bank_temp;
+			bank = br.readLine().split(","); 
 
 		} catch (IOException e) {
 
@@ -48,48 +47,37 @@ public class MinimumMutations {
 			visited[i] = false;
 		}
 
-		int min_step = 1;
+		int min_step = 0;
 		String root = startGene;
 		Queue<String> q = new LinkedList<String>();
 
 		ArrayList<String> Nodes = findNextNodes(root, bank, visited);
+		min_step ++;
 		// System.out.println(Nodes);
 		for (int i = 0; i < Nodes.size(); i++) {
 			// System.out.println(Nodes.indexOf(endGene));
-			if (Nodes.indexOf(endGene) != -1) { // fond
-				min_step++;
+			if (Nodes.indexOf(endGene) != -1) { // found 
 				return min_step;
 			}
 		}
 		q.addAll(Nodes);
+		
 		// System.out.println(q);
 		while (!q.isEmpty()) {
 			root = (String) q.poll();
 
 			ArrayList<String> nextNodes = findNextNodes(root, bank, visited);
-
+			min_step++;
 			for (int i = 0; i < Nodes.size(); i++) {
 
-				if (nextNodes.indexOf(endGene) != -1) { // fond
-					min_step++;
+				if (nextNodes.indexOf(endGene) != -1) { // found
+					
 					return min_step;
 				}
 			}
 			q.addAll(nextNodes);
-		}
-
-		return -1;
-
-	}
-
-	static boolean haveNotVisitedAll(boolean[] visited) {
-
-		for (int i = 0; i < visited.length; i++) {
-			if (visited[i] == false) {
-				return true;
-			}
-		}
-		return false;
+		} 
+		return -1; 
 	}
 
 	static ArrayList<String> findNextNodes(String root, String[] bank, boolean[] visited) {
@@ -110,10 +98,7 @@ public class MinimumMutations {
 					res.add(bank[i]);
 				}
 			}
-		}
-
-		return res;
-
-	}
-
+		} 
+		return res; 
+	} 
 }

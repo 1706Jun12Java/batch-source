@@ -37,8 +37,8 @@ select * from INVOICE where total between 15 and 50;
 select * from employee where  HIREDATE between to_Date('2003-06-01','yyyy-mm-dd') and to_Date('2004-03-01','yyyy-mm-dd');
 
 --2.7 Delete 
-ALTER TABLE INVOICE DROP CONSTRAINT FK_INVOICECUSTOMERID;
-delete from customer where firstname = 'Robert' and lastname = 'Walker';
+DELETE FROM INVOICE WHERE IN( SELECT CUSTOMERID FROM CUSTOMER WHERE FIRSTNAME = ‘Robert’ AND LASTNAME = 'Walker');
+DELETE FROM CUSTOMER WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walker';
 
 /**
 3. SQL Functions

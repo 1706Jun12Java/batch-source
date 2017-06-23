@@ -75,7 +75,7 @@ public class MinimumMutations {
 					return min_step;
 				}
 			}
-			q.addAll(nextNodes);
+			q.addAll(nextNodes); 
 		} 
 		return -1; 
 	}

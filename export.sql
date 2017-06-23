@@ -16007,6 +16007,83 @@ END;
 
 /
 --------------------------------------------------------
+--  DDL for Procedure GIVEIDDELETEINVOICE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "CHINOOK"."GIVEIDDELETEINVOICE" (INVOICE_ID IN NUMBER)
+IS
+BEGIN
+    DELETE INVOICE WHERE INVOICE.INVOICEID = INVOICE_ID;
+    DELETE INVOICE WHERE INVOICELINE.INVOICEID = INVOICE_ID;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure SP_DELETE_INVOICE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "CHINOOK"."SP_DELETE_INVOICE" (INVOICE_ID IN NUMBER)
+IS
+BEGIN
+    SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+    ALTER TABLE INVOICE
+    DROP CONSTRAINT FK_InvoiceCustomerId;
+
+    DELETE INVOICE WHERE INVOICE.INVOICEID = INVOICE_ID;
+    DELETE INVOICELINE WHERE INVOICELINE.INVOICEID = INVOICE_ID;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure SP_DELETE_INVOICEID
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "CHINOOK"."SP_DELETE_INVOICEID" (
+  INV_ID IN NUMBER)
+IS
+BEGIN
+  SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+  DELETE FROM INVOICE
+  WHERE INV_ID = INVOICEID;
+  DELETE FROM INVOICELINE
+  WHERE INV_ID = INVOICEID;
+
+  COMMIT;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure SP_INSERT_NEW_CUSTOMER
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "CHINOOK"."SP_INSERT_NEW_CUSTOMER" (NEWCUSTOMERID IN NUMBER,
+NEWFIRSTNAME IN VARCHAR2,
+NEWLASTNAME IN VARCHAR2,
+NEWCOMPANY IN VARCHAR2,
+NEWADDRESS IN VARCHAR,
+NEWCITY IN VARCHAR2,
+NEWSTATE IN VARCHAR2,
+NEWCOUNTRY IN VARCHAR2,
+NEWPOSTALCODE IN VARCHAR2,
+NEWPHONE IN VARCHAR2,
+NEWFAX IN VARCHAR2,
+NEWEMAIL IN VARCHAR2,
+NEWSUPPORTREPID IN NUMBER)
+IS
+BEGIN
+    SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+    INSERT INTO CUSTOMER VALUES (NEWCUSTOMERID, NEWFIRSTNAME, NEWLASTNAME,
+                               NEWCOMPANY, NEWADDRESS, NEWCITY, NEWSTATE,
+                                NEWCOUNTRY, NEWPOSTALCODE, NEWPHONE, NEWFAX,
+                                NEWEMAIL, NEWSUPPORTREPID);
+END;
+
+/
+--------------------------------------------------------
 --  DDL for Function AVG_INVOICELINE
 --------------------------------------------------------
 

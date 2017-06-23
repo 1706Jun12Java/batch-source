@@ -138,7 +138,7 @@ RETURN SYS_REFCURSOR
 IS MY_CURSOR SYS_REFCURSOR;
 BEGIN
     OPEN MY_CURSOR FOR
-        SELECT * FROM EMPLOYEE WHERE EMPLOYEE.BIRTHDATE > TO_DATE('1986','yyyy');
+        SELECT * FROM EMPLOYEE WHERE EMPLOYEE.BIRTHDATE > TO_DATE('1968','yyyy');
     RETURN MY_CURSOR;
 END;
 /
@@ -148,12 +148,12 @@ S SYS_REFCURSOR;
 E EMPLOYEE%ROWTYPE;
 BEGIN
 S := BORNAFTER1986;
-  DBMS_OUTPUT.PUT_LINE('EMPLOYEES BORN AFTER 1986 ARE');
+  DBMS_OUTPUT.PUT_LINE('EMPLOYEES BORN AFTER 1986');
   LOOP
     FETCH S INTO E;
     EXIT WHEN S%NOTFOUND;
     DBMS_OUTPUT.PUT_LINE(E.FIRSTNAME || ' ' ||
-                        E.LASTNAME || ' IS BORN AFTER 1986');
+                        E.LASTNAME || ' IS BORN AFTER 1968');
   END LOOP;
   CLOSE S;
 END;
@@ -293,7 +293,7 @@ GETCUSTOMERNAMECOMPANY(S);
 END;
 /
 --5.0 TRANSACTIONS
---Task – Create a transaction that given a invoiceId will delete
+--Task ï¿½ Create a transaction that given a invoiceId will delete
 --that invoice (There may be constraints that
 --rely on this, find out how to resolve them).
 CREATE OR REPLACE PROCEDURE GIVEIDDELETEINVOICE (INVID IN NUMBER)
@@ -356,7 +356,6 @@ SELECT * FROM CUSTOMER;
 
 CREATE OR REPLACE TRIGGER TR_INSERT_EMPLOYEE
 AFTER INSERT ON EMPLOYEE
-FOR EACH ROW
 BEGIN
     DBMS_OUTPUT.PUT_LINE('FIRE AFTER INSERTING INTO EMPLOYEE');
 END;
@@ -387,7 +386,7 @@ SELECT FIRSTNAME, LASTNAME,INVOICEID FROM CUSTOMER
 INNER JOIN INVOICE ON INVOICE.CUSTOMERID = CUSTOMER.CUSTOMERID;
 
 --7.2 
---Task – Create an outer join that joins the customer and invoice table, 
+--Task ï¿½ Create an outer join that joins the customer and invoice table, 
 --specifying the CustomerId,firstname, lastname, invoiceId, and total.
 SELECT CUS.CUSTOMERID, CUS.FIRSTNAME, CUS.LASTNAME, INV.INVOICEID, 
 INV.TOTAL FROM CUSTOMER CUS FULL OUTER JOIN 

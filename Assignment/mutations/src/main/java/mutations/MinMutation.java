@@ -15,6 +15,8 @@ public class MinMutation {
 
 		if (start.equals(end))
 			return 0;
+		
+		
 
 
 		ArrayList<String> list = new ArrayList<String>();

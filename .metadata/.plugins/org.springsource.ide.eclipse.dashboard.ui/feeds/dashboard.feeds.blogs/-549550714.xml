@@ -5,7 +5,775 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-06-16T14:26:23Z</updated>
+  <updated>2017-06-23T12:38:00Z</updated>
+  <entry>
+    <title>Spring for Apache Hadoop 2.5.0.RC1 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/06/23/spring-for-apache-hadoop-2-5-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Thomas Risberg</name>
+    </author>
+    <id>tag:spring.io,2017-06-23:2960</id>
+    <updated>2017-06-23T12:38:00Z</updated>
+    <content type="html">&lt;h2&gt;&lt;a href="#new-release-candidate-for-spring-for-apache-hadoop-2-5" class="anchor" name="new-release-candidate-for-spring-for-apache-hadoop-2-5"&gt;&lt;/a&gt;New release candidate for Spring for Apache Hadoop 2.5&lt;/h2&gt;
+&lt;p&gt;We are pleased to announce the Spring for Apache Hadoop 2.5 release candidate release.&lt;/p&gt;
+&lt;p&gt;We continue to provide version specific artifacts with their respective transitive dependencies in the Spring IO milestone repository:&lt;/p&gt;
+&lt;p&gt;The 2.5 version is primarily a bug fix and version upgrade release.&lt;/p&gt;
+&lt;p&gt;See the release &lt;a href="http://docs.spring.io/spring-hadoop/docs/2.5.0.RC1/changelog.txt"&gt;changelog&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;We continue to provide version specific artifacts with their respective transitive dependencies in the Spring IO milestone repository:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;2.5.0.RC1 (default - Apache Hadoop stable 2.7.3)&lt;/li&gt;
+  &lt;li&gt;2.5.0.RC1-cdh5 (Cloudera CDH 5.10)&lt;/li&gt;
+  &lt;li&gt;2.5.0.RC1-hdp26 (Hortonworks HDP 2.6)&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#spring-for-apache-hadoop-future" class="anchor" name="spring-for-apache-hadoop-future"&gt;&lt;/a&gt;Spring for Apache Hadoop Future&lt;/h2&gt;
+&lt;p&gt;The Hadoop ecosystem is shifting and we think it is time to adapt the Spring for Apache Hadoop (SHDP) project to these shifting trends. We will maintain the SHDP 2.x version with bug fixes and version upgrades but we don’t plan on adding features. All new development will go into version 3.0 of SHDP.&lt;/p&gt;
+&lt;p&gt;Spring for Apache Hadoop 3.0 will be a rewrite based on the existing code but we will only port over some parts of the code base. We will rely on Spring Boot configuration in Java code and will no longer support the XML namespace. We will focus on HDFS readers and writers, Apache Spark integration and Spring Batch support. The Hive, Pig, HBase and MapReduce code will have much lower priority and will initially not be included. If there is strong demand we&amp;rsquo;ll consider adding this code back in future releases.&lt;/p&gt;
+&lt;p&gt;We will initially focus on the following areas:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Java 8 minimum requirement&lt;/li&gt;
+  &lt;li&gt;Hadoop 3.0 support&lt;/li&gt;
+  &lt;li&gt;Spring Boot 2.0 support&lt;/li&gt;
+  &lt;li&gt;HDFS readers and writers&lt;/li&gt;
+  &lt;li&gt;Spark 2.0 integration&lt;/li&gt;
+  &lt;li&gt;Spring Batch 4.0 item readers and writers plus builders&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We hope that the code based on the plain Apache Hadoop dependencies will work across different distros so we are not planning on releasing Cloudera and Hortonworks specific versions. If this assumption proves problematic we&amp;rsquo;ll revisit this decision.&lt;/p&gt;
+&lt;p&gt;Please provide feedback so we can prioritize the work on new features scheduled for 3.0. You can use JIRA issues or GitHub issues (see project page for links).&lt;/p&gt;
+&lt;p&gt;The project page is at - &lt;a href="http://projects.spring.io/spring-hadoop/"&gt;http://projects.spring.io/spring-hadoop/&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>A preview on Spring Data Kay</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/06/20/a-preview-on-spring-data-kay" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Mark Paluch</name>
+    </author>
+    <id>tag:spring.io,2017-06-20:2958</id>
+    <updated>2017-06-20T13:16:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;As we&amp;#8217;ve just shipped the fourth milestone release of Spring Data release train Kay, let&amp;#8217;s take a look at the changes and features that come with the 13 modules on the train since our first milestone. This blog post covers a set of changes but is no means comprehensive of the 550+ changes between M2 and M4. To get a full list of changes, take a look into our &lt;a href="https://jira.spring.io/issues/?filter=15640"&gt;Jira&lt;/a&gt; for
+&lt;a href="https://jira.spring.io/issues/?filter=15455"&gt;Kay M1&lt;/a&gt;,
+&lt;a href="https://jira.spring.io/issues/?filter=15456"&gt;M2&lt;/a&gt;,
+&lt;a href="https://jira.spring.io/issues/?filter=15537"&gt;M3&lt;/a&gt;, and
+&lt;a href="https://jira.spring.io/issues/?filter=15637"&gt;M4&lt;/a&gt; changes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here&amp;#8217;s a curated list of our key changes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Adjustments in the reactive support&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Composable repositories&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved naming scheme for CRUD methods&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fluent MongoOperations API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin extension for MongoDB&amp;#8217;s Template API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MongoDB Collation Support&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis client configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cassandra Lightweight transaction support and Query/Update objects&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java 9 compatibility&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upgrade to Elasticsearch 5.4&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We&amp;#8217;d love to hear your feedback and you&amp;#8217;ll find how to get in touch with us at the end of this post.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="changes-in-our-reactive-support"&gt;&lt;a class="anchor" href="#changes-in-our-reactive-support"&gt;&lt;/a&gt;Changes in our reactive support&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;After we laid some &lt;a href="https://spring.io/blog/2016/11/28/going-reactive-with-spring-data"&gt;significant groundwork&lt;/a&gt; with our initial draft for reactive data access with Redis, Cassandra and MongoDB late last year, Couchbase has joined the reactive party. The Couchbase driver is fully reactive built on RxJava 1, so the reactive Template API uses RxJava 1. Couchbase repositories work smoothly with RxJava 1 &amp;amp; 2 and Reactive Stream types.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Meanwhile, we added support for RxJava 2 types with our predefined &lt;code&gt;RxJava2CrudRepository&lt;/code&gt; and &lt;code&gt;RxJava2SortingRepository&lt;/code&gt; interfaces so you can use RxJava 2 types with all reactive repositories (Apache Cassandra, Couchbase, and MongoDB).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Repository
+interface RxJava2PersonRepostitory extends
+                    RxJava2SortingRepository&amp;lt;Person, String&amp;gt; {
+
+  Flowable&amp;lt;Person&amp;gt; findByFirstnameAndLastname(String firstname, String lastname);
+
+  Maybe&amp;lt;Person&amp;gt; findByLastname(String lastname);
+
+  Single&amp;lt;Person&amp;gt; findProjectedByLastname(Maybe&amp;lt;String&amp;gt; lastname);
+
+  Observable&amp;lt;ProjectedPerson&amp;gt; findProjectedByLastname(Single&amp;lt;String&amp;gt; lastname);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Data goes GA in the next few months. That&amp;#8217;s after RxJava 1&amp;#8217;s feature freeze which won&amp;#8217;t be maintained after March 2018 anymore. Therefore, we decided to deprecate our RxJava 1 repositories and to remove them with the upcoming release candidate. Rest assured, RxJava 1 support remains functional so you can copy these interfaces into your project code if you require RxJava 1 repositories.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you&amp;#8217;re a user of reactive MongoDB repositories, you might be interested to hear that we renamed &lt;code&gt;@InfiniteStream&lt;/code&gt; to &lt;code&gt;@Tailable&lt;/code&gt; to reflect the underlying cursor although infinite stream sounds quite fancy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="composable-repositories"&gt;&lt;a class="anchor" href="#composable-repositories"&gt;&lt;/a&gt;Composable repositories&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Data Repositories are a tool to implement DDD-style repositories.
+The implementation of them has been designed to consist of 3 major parts: a store-specific base implementation, a query execution engine to back query methods and an optional custom implementation to link customized functionality into a repository instance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Over time, we found that our initial design was limited when it comes to repository implementation aspects.
+A repository can provide Query-by-Example operations via &lt;code&gt;QueryByExampleExecutor&lt;/code&gt; or Querydsl support though &lt;code&gt;QuerydslPredicateExecutor&lt;/code&gt;. Both are orthogonal features to a store-specific base repository implementation and required some trickery to work.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The situation is similar to the custom implementation part: only a single custom implementation object was supported which required to bring all functionality you want to link into the repository object.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Composable repositories eliminate the mentioned design limitations by turning the composition-oriented approach into a first class citizen.
+A repository no is longer limited to a base implementation and a custom implementation but composed of fragments.
+A fragment represents an interface along with an implementation object.
+Multiple fragments form a composition used to implement a repository.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Consider the following repository declaration:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;class Person extends Contact {
+  // …
+}
+
+interface PersonRepository implements CrudRepository&amp;lt;Person, String&amp;gt;,
+                                      ContactFragment,
+                                      PersonBatchExecutor {
+}
+
+interface ContactFragment {
+  Iterable&amp;lt;Contact&amp;gt; search(ContactQuery query);
+}
+
+interface PersonBatchExecutor {
+  void bulkEdit(PersonQuery query, PersonUpdate update);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Up above, we have a simple domain object &lt;code&gt;Person&lt;/code&gt; which is also a &lt;code&gt;Contact&lt;/code&gt;.
+The repository is composed of CRUD operations: a &lt;code&gt;Contact&lt;/code&gt; search via &lt;code&gt;ContactFragment&lt;/code&gt; and some bulk operations through &lt;code&gt;PersonBatchExecutor&lt;/code&gt;.
+Each interface repository is a fragment interface backed by an implementation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Calls to the repository methods are routed according to their method implementations. The CRUD operations get routed to their store-specific implementations while a call to &lt;code&gt;search(ContactQuery query)&lt;/code&gt; is routed to the user-provided implementation of &lt;code&gt;ContactFragment&lt;/code&gt; (shown below).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;While bootstrapping, the configuration component scans for implementations of the &lt;em&gt;declared&lt;/em&gt; fragment interfaces:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;interface ContactFragment {
+  Iterable&amp;lt;Contact&amp;gt; search(ContactQuery query);
+}
+
+class ContactFragmentImpl implements ContactFragment {
+
+  @Override
+  Iterable&amp;lt;Contact&amp;gt; search(ContactQuery query) {
+    // …
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Fragment implementations are fully-featured Spring beans.
+They are looked up by name using the fragment interface name and adding the implementation postfix, i.e. by default the implementation for &lt;code&gt;ContactFragment&lt;/code&gt; is looked up as &lt;code&gt;ContactFragmentImpl&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="ordering-of-overrides"&gt;&lt;a class="anchor" href="#ordering-of-overrides"&gt;&lt;/a&gt;Ordering of Overrides&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Java allows composition of interfaces that declare the same method multiple times.
+From an API perspective, multiple methods with the same name and signature are merged into a single method without further differentiation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;On the implementation side, there can be multiple implementations available
+that declare the same method signature.
+Composable repositories use the &lt;strong&gt;interface declaration order&lt;/strong&gt; to disambiguate amongst multiple implementations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Look at the following example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;public interface ContactFragment {
+  Iterable&amp;lt;Contact&amp;gt; search(ContactQuery query);
+}
+
+public interface PersonFragment {
+  Iterable&amp;lt;Contact&amp;gt; search(ContactQuery query);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;// Calls search(…) on ContactFragment
+public interface PersonRepository implements CrudRepository&amp;lt;Person, String&amp;gt;,
+  ContactFragment, PersonFragment {
+  …
+}
+
+// Calls search(…) on PersonFragment
+public interface PersonRepository implements CrudRepository&amp;lt;Person, String&amp;gt;,
+  PersonFragment, ContactFragment {
+  …
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The first declaration of &lt;code&gt;PersonRepository&lt;/code&gt; will first invoke the &lt;code&gt;search(…)&lt;/code&gt; method on  &lt;code&gt;ContactFragmentImpl&lt;/code&gt; as &lt;code&gt;ContactFragment&lt;/code&gt; is declared first.
+Thus, the second declaration will pick &lt;code&gt;PersonFragmentImpl&lt;/code&gt; for the invocation of the &lt;code&gt;search(…)&lt;/code&gt; method.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Store-specific aspects (like Querydsl) and the base implementation are fallbacks if no fragment contributes an implementation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Composite repositories are an option to link custom implementation fragments. They provide a powerful way to define a single query and hook it in without losing the rest of Spring Data&amp;#8217;s pre-built options.
+If you previously used the custom implementation functionality, rest assured, those will continue as expected.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="improved-naming-for-crud-repository-methods"&gt;&lt;a class="anchor" href="#improved-naming-for-crud-repository-methods"&gt;&lt;/a&gt;Improved naming for CRUD repository methods&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the first generation of Spring Data the naming scheme  for methods in &lt;code&gt;CrudRepository&lt;/code&gt; caused a couple problems. Especially the methods taking parameters that are generic type variables. Under some circumstances (such as domain or identifier type implementing &lt;code&gt;Iterable&lt;/code&gt;) they could effectively resolve to the same methods and cause ambiguities caused by &lt;code&gt;save(…)&lt;/code&gt; and &lt;code&gt;delete(…)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With the Kay release, we decided to rename methods guided by:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Be able to find methods by name and (raw) parameter types.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Methods named &lt;code&gt;…All(…)&lt;/code&gt; affect a collection of items and/or return a collection.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Methods taking an identifier are named &lt;code&gt;…ById(…)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let&amp;#8217;s drop the &lt;code&gt;ID extends Serializable&lt;/code&gt; requirement.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We no longer require &lt;code&gt;Serializable&lt;/code&gt; identifiers after the method rename. It&amp;#8217;s a constraint that was introduced by JPA&amp;#8217;s identifier handling while Spring Data was purely used with JPA. Our NoSql stores do not enforce this serializable identifiers so removing this requirement reduces complexity at many places.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The new &lt;code&gt;CrudRepository&lt;/code&gt; features a consistent naming scheme without causing resolution ambiguities:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;interface CrudRepository&amp;lt;T, ID&amp;gt; extends Repository&amp;lt;T, ID&amp;gt; {
+
+    S save(S entity);
+
+    Iterable&amp;lt;S&amp;gt; saveAll(Iterable&amp;lt;S&amp;gt; entities)
+
+    Optional&amp;lt;T&amp;gt; findById(ID id);
+
+    boolean existsById(ID id);
+
+    Iterable&amp;lt;T&amp;gt; findAllById(Iterable&amp;lt;ID&amp;gt; ids);
+
+    void deleteById(ID id);
+
+    void delete(T entity);
+
+    void deleteAll(Iterable&amp;lt;? extends T&amp;gt; entities);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;However, what if you previously had a property named &lt;code&gt;id&lt;/code&gt; which isn&amp;#8217;t the entity identifier? Doesn&amp;#8217;t a query method for this property clash with &lt;code&gt;findById(…)&lt;/code&gt; and the other …ById(…)` methods?. It does.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you run in such a scenario, you can insert a custom distinction in your method name, like &lt;code&gt;findPersonById(…)&lt;/code&gt; if you work with &lt;code&gt;Person&lt;/code&gt; entities. Spring Data&amp;#8217;s method parsing uses prefix keywords like &lt;code&gt;find&lt;/code&gt;, &lt;code&gt;exists&lt;/code&gt;, &lt;code&gt;count&lt;/code&gt;, and &lt;code&gt;delete&lt;/code&gt; and a terminating &lt;code&gt;By&lt;/code&gt; keyword. Everything you put in between &lt;code&gt;find&lt;/code&gt; and &lt;code&gt;By&lt;/code&gt; makes your method name more expressive and does not affect query derivation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="fluent-mongooperations-api"&gt;&lt;a class="anchor" href="#fluent-mongooperations-api"&gt;&lt;/a&gt;Fluent MongoOperations API&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;MongoOperations&lt;/code&gt; interface is one of the central components when it comes to more low level interaction with MongoDB.
+It offers a wide range of methods covering needs from collection / index creation and CRUD operations to more advanced functionality like map-reduce and aggregations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Looking at &lt;code&gt;MongoOperations&lt;/code&gt; one can find multiple overloads for each and every method. Most of them just cover optional / nullable parts of the API. While this can be quite handy, it also gets verbose almost the point of being unreadable.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;// ...excerpt from MongoOperations
+
+&amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; find(Query query, Class&amp;lt;T&amp;gt; entityClass);
+&amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; find(Query query, Class&amp;lt;T&amp;gt; entityClass, String collectionName);
+
+&amp;lt;T&amp;gt; T findOne(Query query, Class&amp;lt;T&amp;gt; entityClass);
+&amp;lt;T&amp;gt; T findOne(Query query, Class&amp;lt;T&amp;gt; entityClass, String collectionName);
+
+&amp;lt;T&amp;gt; CloseableIterator&amp;lt;T&amp;gt; stream(Query query, Class&amp;lt;T&amp;gt; entityType);
+&amp;lt;T&amp;gt; CloseableIterator&amp;lt;T&amp;gt; stream(Query query, Class&amp;lt;T&amp;gt; entityType, String collectionName);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With &lt;code&gt;FluentMongoOperations&lt;/code&gt; we&amp;#8217;ve introduced an interface specifically tailored for common methods of &lt;code&gt;MongoOperations&lt;/code&gt; providing a more readable, fluent API.
+The entry points &lt;code&gt;insert(…)&lt;/code&gt;, &lt;code&gt;find(…)&lt;/code&gt;, &lt;code&gt;update(…)&lt;/code&gt;, etc. follow a natural naming schema based on the operation to execute.
+Moving on from the entry point the API is designed to only offer context dependent methods guiding towards a terminating method that invokes the actual &lt;code&gt;MongoOperations&lt;/code&gt; counterpart.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s look at a concrete example.
+Imagine you&amp;#8217;ve got a collection of Star Wars characters that includes &lt;code&gt;Jedi&lt;/code&gt;s.
+In classic &lt;code&gt;MongoOperations&lt;/code&gt; style the lookup of all entities in that collection would look something like:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Query query = new BasicQuery(new Document());
+List&amp;lt;SWCharacter&amp;gt; all = ops.find(query, SWCharacter.class, "star-wars");&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Using &lt;code&gt;FluentMongoOperations&lt;/code&gt; this above can be expressed as&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;List&amp;lt;SWCharacter&amp;gt; all = ops.find(SWCharacter.class)
+  .inCollection("star-wars")
+  .all();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If &lt;code&gt;SWCharacter&lt;/code&gt; defines the collection via &lt;code&gt;@Document&lt;/code&gt; or you are using the class name as the collection name, the &lt;code&gt;….inCollection("star-wars")&lt;/code&gt; step can be skipped as shown below.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;List&amp;lt;SWCharacter&amp;gt; all = ops.find(SWCharacter.class).all();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Sometimes a collection in MongoDB holds entites of different types. Like a &lt;code&gt;Jedi&lt;/code&gt; within a collection of &lt;code&gt;SWCharacter&lt;/code&gt;s. Refining the request via &lt;code&gt;….as(Jedi.class)&lt;/code&gt; will cause the query result to be mapped against &lt;code&gt;Jedi&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Optional&amp;lt;Jedi&amp;gt; luke = ops.find(SWCharacter.class)
+  .as(Jedi.class)
+  .matching(query(where("firstname").is("luke")))
+  .one();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Switching between retrieving a single entity, multiple ones as &lt;code&gt;List&lt;/code&gt; or &lt;code&gt;Stream&lt;/code&gt; like is done via the terminating methods &lt;code&gt;first()&lt;/code&gt;, &lt;code&gt;one()&lt;/code&gt;, &lt;code&gt;all()&lt;/code&gt; or &lt;code&gt;stream()&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;When writing a geo-spatial query via &lt;code&gt;near(NearQuery)&lt;/code&gt; the number of terminating methods is altered to just the ones valid for executing a &lt;code&gt;geoNear&lt;/code&gt; command in MongoDB fetching entities as &lt;code&gt;GeoResult&lt;/code&gt; within &lt;code&gt;GeoResults&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;GeoResults&amp;lt;Jedi&amp;gt; results = mongoOps.query(SWCharacter.class)
+  .as(Jedi.class)
+  .near(alderaan) // NearQuery.near(-73.9667, 40.78).maxDis…
+  .all();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The same approach of working applies to the other API parts of &lt;code&gt;FluentMongoOperations&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;ops.update(Jedi.class)
+  .matching(query(where("lastname").is("solo")))
+  .apply(update("firstname", "han"))
+  .upsert();
+
+ops.remove(SWCharacter.class)
+  .matching(query(where("name").is("yoda")))
+  .all();
+
+ops.aggregateAndReturn(Jedi.class)
+  .by(newAggregation(Person.class, project("firstna...
+  .all();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="mongodb-collation-support"&gt;&lt;a class="anchor" href="#mongodb-collation-support"&gt;&lt;/a&gt;MongoDB Collation Support&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;MongoDB 3.4 introduced native support for &lt;a href="https://docs.mongodb.com/manual/reference/collation/"&gt;Collations&lt;/a&gt; that allow to specify language-specific rules for &lt;code&gt;String&lt;/code&gt; comparison.
+Collations can now be used throughout most of MongoDB commands eg. when creating a collection or an index, but also for &lt;code&gt;query&lt;/code&gt;, &lt;code&gt;findAndModify&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt; and other operations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It is definitely worth mentioning that as of MongoDB 3.4 it is now possible to set up multiple indices involving the same fields using different collations. This is important for the query plan in MongoDB itself as only queries defining the same collation can actually make use of the index.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;CollectionOptions collectionOptions = CollectionOptions.empty()
+  .collation(Collation.of("en_US")
+     .strength(primary().includeCase()));
+
+template.createCollection("persons", collectionOptions);
+
+IndexDefinition index = new Index()
+  .named("en-name-idx")
+  .on("name", Direction.ASC)
+  .collation(Collation.of("en").caseFirst(off()));
+
+template.indexOps("persons").ensureIndex(index);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If no collation is provided, MongoDB will use a simple binary comparison that can also be set explicitly via &lt;code&gt;Collation.simple()&lt;/code&gt;.
+To use &lt;code&gt;Collation&lt;/code&gt; support throughout Spring Data MongoDB we&amp;#8217;ve introduced various extension points for &lt;code&gt;Query&lt;/code&gt;, &lt;code&gt;NearQuery&lt;/code&gt;, &lt;code&gt;AggregationOptions&lt;/code&gt;, and others.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Query query = query(where("firstName").is("Amél"))
+  .collation(collation);
+
+NearQuery nearQuery = near(-73.9667, 40.78)
+  .query(where(…))
+  .collation(Collation.of("fr")));
+
+AggregationOptions options = new AggregationOptions.Builder()
+  .collation(Collation.of("en_US"))
+  .build();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;At the time of writing, defining &lt;code&gt;Collation&lt;/code&gt; via &lt;code&gt;@Indexed&lt;/code&gt; is not supported. Moving forward we&amp;#8217;ll add this feature utilizing Java 8 repeatable annotations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="redis-client-configuration"&gt;&lt;a class="anchor" href="#redis-client-configuration"&gt;&lt;/a&gt;Redis client configuration&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A configuration of Spring Data Redis connection factories can be cumbersome if you consider all of the various Redis operation modes (Standalone, Sentinel, Cluster).
+Using client-specific aspects (SSL support, pooling etc.) requires additional configuration objects or conditional configuration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We organized Redis client configuration to environment- and client-specific parts. The environment-specific configuration contains endpoints, database, and authentication (password-based) details:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RedisStandaloneConfiguration&lt;/code&gt; - used for Redis Standalone. You can use it also to connect with a specific Redis Master or Slave node if using replication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RedisSentinelConfiguration&lt;/code&gt; - used when your Redis nodes are managed by Redis Sentinel.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RedisClusterConfiguration&lt;/code&gt; - used for Redis Cluster.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Lettuce and Jedis, the two supported clients, are configured each with their client-specific configurations: &lt;code&gt;LettuceClientConfiguration&lt;/code&gt; and &lt;code&gt;JedisClientConfiguration&lt;/code&gt;. We introduced this split because each client evolves independent from the other, and there is only little common ground.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;RedisStandaloneConfiguration envConfig =
+  new RedisStandaloneConfiguration("localhost", 6379);
+envConfig.setDatabase(2);
+envConfig.setPassword(RedisPassword.of("foobared"));
+
+LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
+        .clientResources(…)
+        .clientOptions(…)
+        .commandTimeout(Duration.ofMillis(500))
+        .shutdownTimeout(Duration.ofMillis(200))
+        .useSsl().disablePeerVerification()
+        .build();
+
+connectionFactory = new LettuceConnectionFactory(envConfig, clientConfig);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;RedisStandaloneConfiguration envConfig =
+  new RedisStandaloneConfiguration("localhost", 6379);
+envConfig.setDatabase(2);
+envConfig.setPassword(RedisPassword.of("foobared"));
+
+JedisClientConfiguration clientConfig = JedisClientConfiguration.builder()
+        .clientName(environment.getProperty("spring.application.name"))
+        .connectTimeout(Duration.ofMillis(200))
+        .readTimeout(Duration.ofMillis(500))
+        .useSsl().sslParameters(…).and()
+        .usePooling().poolConfig(…)
+        .build();
+
+connectionFactory = new JedisConnectionFactory(envConfig, clientConfig);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Previously, some properties were set on the connection factory, some with client-specific objects. The client configuration is immutable. You can still use connection factories without a client configuration, but we deprecated configuration setters.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="spring-data-for-apache-cassandra"&gt;&lt;a class="anchor" href="#spring-data-for-apache-cassandra"&gt;&lt;/a&gt;Spring Data for Apache Cassandra&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With this release we streamlined the module&amp;#8217;s library layout.
+Spring Data for Apache Cassandra used to ship with two libraries, Spring CQL and Spring Data Cassandra.
+With Spring Data Kay, we merged &lt;code&gt;spring-cql&lt;/code&gt; into &lt;code&gt;spring-data-cassandra&lt;/code&gt; as the majority of usage is inside &lt;code&gt;spring-data-cassandra&lt;/code&gt; anyway.
+With this change, we a couple of package renames have been applied already.
+We&amp;#8217;re going to finish those for the upcoming RC1 release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="cassandra-query-update-objects"&gt;&lt;a class="anchor" href="#cassandra-query-update-objects"&gt;&lt;/a&gt;Cassandra Query &amp;amp; Update objects&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;Query&lt;/code&gt; and &lt;code&gt;Update&lt;/code&gt; objects allow fine-grained control over query predicates and selective updates.
+Previously, we supported either persisting the whole row by updating all properties or CQL-based updates without mapping.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;Query&lt;/code&gt; and &lt;code&gt;Update&lt;/code&gt; now use details from the entity model to support property-to-Cassandra column mapping.
+Our query mapper converts values (mapped UDTs, datatype-specific conversions) prior query execution, so you&amp;#8217;re not required to convert query values to their Cassandra-specific representation yourself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;class Person {
+
+  @PrimaryKeyColumn(name="last_name", ordinal = 0, type = PARTITIONED)
+  String lastname;
+
+  @PrimaryKeyColumn(name="firs_tname", ordinal = 1, type = CLUSTERED)
+  String firstname;
+
+  List&amp;lt;String&amp;gt; episodes;
+
+  String mood;
+}
+
+Query query = Query.query(Criteria.where("lastname").is("White"))
+  .and(Criteria.where("firstname").in("Walter", "Skyler"))
+  .sort(Sort.by("firstname").ascending())
+  .withAllowFiltering()
+  .limit(10);
+
+List&amp;lt;Person&amp;gt; people = cassandraOperations.select(query, Person.class);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;Query&lt;/code&gt; contains filter criteria, sorting and a set of query options to control query execution.
+You can use it with the Template API with various &lt;code&gt;select&lt;/code&gt; and &lt;code&gt;update&lt;/code&gt; methods to query data for selection or to constrain the update selection.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Speaking of which, &lt;code&gt;Update&lt;/code&gt; allows you to specify a set of update assignments.
+&lt;code&gt;Update&lt;/code&gt; supports all update operators as of Apache Cassandra 3.10 (set, add to list, remove from collection, and more).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Update update = Update.update("mood", "Bad")
+  .addTo("episodes").appendAll("S1E1", "S1E2");
+
+Query query = Query.query(Criteria.where("lastname").is("White"))
+  .and(Criteria.where("firstname").is("Skyler"))
+  .queryOptions(WriteOptions.builder().ttl(100).build());
+
+cassandraOperations.update(query, update, Person.class);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Find more details about &lt;code&gt;Query&lt;/code&gt; and &lt;code&gt;Update&lt;/code&gt; in the &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/current-SNAPSHOT/reference/html/#cassandra-template.query"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="lightweight-transactions"&gt;&lt;a class="anchor" href="#lightweight-transactions"&gt;&lt;/a&gt;Lightweight transactions&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Lightweight transactions (compare-and-set transactions) are supported with &lt;code&gt;insert&lt;/code&gt; and &lt;code&gt;update&lt;/code&gt; operations for entities through their query options.
+The operation result reports whether the transaction was applied by returning either the entity or &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;InsertOptions lwtOptions = InsertOptions.builder().withIfNotExists().build();
+
+User user = new User("heisenberg", "Walter", "White");
+User inserted = template.insert(user, lwtOptions);
+User second = template.insert(user, lwtOptions); // returns null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Our support for basic lightweight transactions ships with this release and we would love to hear your feedback.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="java-9-compatibility"&gt;&lt;a class="anchor" href="#java-9-compatibility"&gt;&lt;/a&gt;Java 9 compatibility&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="the-problem"&gt;&lt;a class="anchor" href="#the-problem"&gt;&lt;/a&gt;The problem&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The upcoming Java 9 release will behave differently from past releases.
+It will break many existing applications that don&amp;#8217;t adapt to the changes.
+This is caused by the Java Platform Module System (JPMS) and the associated encapsulation of Java internals.
+There are three potential reasons applications might break:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Illegal use of Internal API. One gets an exception along these lines:&lt;/p&gt;
+&lt;div class="literalblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;module &amp;lt;xyz&amp;gt; does not "open &amp;lt;package.abc&amp;gt;" to unnamed module @&amp;lt;random string&amp;gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Changed behavior of interal API (or removed internal API).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Unnamed modules by default only get access to the module &lt;code&gt;java.base&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is sufficient for many cases, but unfortunately not for all.
+So one might have to specify additional module as dependencies using &lt;code&gt;--add-modules &amp;lt;module name&amp;gt;&lt;/code&gt;.
+&lt;a href="http://cr.openjdk.java.net/~mr/jigsaw/ea/module-summary.html"&gt;There is a list of all modules and their content&lt;/a&gt; defined by Java itself which will help finding the proper module name to use.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="spring-data-compatibility"&gt;&lt;a class="anchor" href="#spring-data-compatibility"&gt;&lt;/a&gt;Spring Data compatibility&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We are happy to announce that Spring Data is a good citizen on Java 9!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The team made changes to ensure that our code runs with Java 9 without any &lt;code&gt;--permit-illegal-access&lt;/code&gt; command line parameter, which would be required to fix issues mentioned in the first bullet point. We also don&amp;#8217;t use any APIs for which the second bullet point applies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Unfortunately there are a couple caveats to this compatibility:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;It does not include some stores.
+We track what we know about their respective compatibility in &lt;a href="https://jira.spring.io/browse/DATACMNS-1033"&gt;DATACMNS-1033&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You might still run into the issue of the third bullet.
+One known example is an exception like this:&lt;/p&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This can be fixed by adding &lt;code&gt;--add-modules java.xml.bind&lt;/code&gt; to the call to &lt;code&gt;java&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Currently, we can&amp;#8217;t use generated property accessors (introduced in the Ingalls release train) as a generated property accessor can no longer be injected into the originating class loader. This causes a slight performance regression.
+We are still looking for a Java 9 compatible version that has the same performance characteristic as the Java 8 compatible version (see &lt;a href="https://jira.spring.io/browse/DATACMNS-1080"&gt;DATACMNS-1080&lt;/a&gt; for details).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Compiling and executing the tests still requires &lt;code&gt;--permit-illegal-access&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Everybody involved wants to make a migration to Java 9 as smooth as possible and you can really help with that.
+Get the early access release of JDK 9 and build and run your application with it.
+If you are having problems, please file an issue with the project you experience problems with.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="unnamed-modules"&gt;&lt;a class="anchor" href="#unnamed-modules"&gt;&lt;/a&gt;Unnamed modules&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you already looked into project Jigsaw, you might have noted that Spring Data comes without a proper module descriptor, i.e. as a so called unnamed module.
+This has the one major drawback that we can&amp;#8217;t specify module dependencies in the module definition, but have to provide them at execution time using the &lt;code&gt;--add-modules&lt;/code&gt; command line option.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The problem is that all the libraries we depend on would need to provide a module descriptor as well.
+And while we have very few required dependencies, we have many optional dependencies.
+Only when all these libraries provide proper modules can we start providing proper modules ourself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="upgrade-to-elasticsearch-5-4"&gt;&lt;a class="anchor" href="#upgrade-to-elasticsearch-5-4"&gt;&lt;/a&gt;Upgrade to Elasticsearch 5.4&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We upgraded Spring Data Elasticsearch (thanks to Moshin and Artur!) to 5.4 using the transport client.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This upgrade required some changes in our public API. The &lt;code&gt;scan&lt;/code&gt; methods were replaced with &lt;code&gt;scroll&lt;/code&gt; methods returning paged results in the Template API and aligned our annotations (&lt;code&gt;@CompletionField&lt;/code&gt;, &lt;code&gt;@Field&lt;/code&gt;, &lt;code&gt;@GeoPointField&lt;/code&gt;, &lt;code&gt;@InnerField&lt;/code&gt;) to Elasticsearch&amp;#8217;s API.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="summary"&gt;&lt;a class="anchor" href="#summary"&gt;&lt;/a&gt;Summary&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It&amp;#8217;s been a long road since milestone one of Spring Data Kay and we hope you got a good impression of what the release train will ship.
+We&amp;#8217;re going to add some minor features for the upcoming release candidate with a rather short stint to GA in early August.
+Reach out via &lt;a href="https://jira.spring.io/browse/DATACMNS"&gt;Jira&lt;/a&gt;, &lt;a href="https://stackoverflow.com/questions/tagged/spring-data"&gt;Stack Overflow&lt;/a&gt;, &lt;a href="https://twitter.com/SpringData"&gt;Twitter&lt;/a&gt;, or &lt;a href="https://gitter.im/spring-projects/spring-data"&gt;Gitter&lt;/a&gt; if you have questions, feedback or want to discuss features with us.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - June 20th, 2017</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/06/20/this-week-in-spring-june-20th-2017" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-06-20:2959</id>
+    <updated>2017-06-20T11:44:51Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans and welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Krakow, Poland for the &lt;a href="http://devoxx.pl/"&gt;epic Devoxx PL&lt;/a&gt; event and then it&amp;rsquo;s &lt;a href="https://voxxeddays.com/luxembourg/"&gt;off to Luxembourg for the VoxxedDays Luxembourg event&lt;/a&gt;! If you&amp;rsquo;re around, don&amp;rsquo;t &lt;a href="http://twitter.com/starbuxman"&gt;hesitate to say &lt;em&gt;hi&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Framework lead Juergen Hoeller &lt;a href="https://spring.io/blog/2017/06/14/spring-framework-5-0-rc2-available-now"&gt;just announced Spring Framework 5.0 RC2&lt;/a&gt;. The new release is a major revision of RC1, refactoring the reactive support and path pattern parsing. It introduces JSR 305 &lt;code&gt;@Nullable&lt;/code&gt; annotations into the codebase.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/14/spring-data-release-train-kay-m4-released"&gt;Spring Data Release Train Kay M4 Released&lt;/a&gt; - Spring Data ninja Mark Paluch just announced Spring Data Train Kay M4, packed with new features and updates. Get the bits now!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/15/spring-io-platform-athens-sr6"&gt;Spring IO Platform Athens-SR6&lt;/a&gt; - Spring IO Platform lead Andy Wilkinson has just announced Spring IO Platform Athens-SR6, available from repo.spring.io and Maven Central. The new maintenance release includes Spring Boot 1.4.7, Spring Framework 4.3.9, Sspring Integration 4.3.10, Spring REST Docs 1.1.3, Spring Seurity OAuth 2.0.14, Spring Web Flow 2.4.5, and Spring Cloud Connectors 1.2.4, among many other things.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/15/spring-io-platform-brussels-sr3"&gt;Spring IO Platform Brussels-SR3&lt;/a&gt; - Not one to rest on his laurels, Andy &lt;em&gt;also&lt;/em&gt; released Spring IO Platform Brussels-SR3, which includes updates a large number of supporting libraries. Get the bits now!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/16/spring-boot-2-0-0-m2-available-now"&gt;Spring Boot 2.0.0.M2 Available Now&lt;/a&gt; - Spring Boot ninja Stéphane Nicoll just announced Spring Boot 2.0M2, following on Spring Framework RC2.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/16/spring-session-2-0-0-m2-released"&gt;Spring Session 2.0.0 M2 Released&lt;/a&gt; - Spring Session lead Rob Winch just announced Spring Session 2.0.0.M2. The new release ensures compatability with Spring Framework 5.0.0.RC2 and Spring Data Kay-M4, both baselines for the new release.&lt;/li&gt;
+  &lt;li&gt;Spring Security lead &lt;a href="https://spring.io/blog/2017/06/16/spring-security-5-0-0-m2-released"&gt;Rob Winch just announced Spring Security 5.0&lt;/a&gt;. The new release includes improved reactive support Java configuration, and improved &lt;code&gt;WebClient&lt;/code&gt; test support.&lt;/li&gt;
+  &lt;li&gt;Greg Turnquist, now lead of Spring Session MongoDB, &lt;a href="https://spring.io/blog/2017/06/16/spring-session-mongodb-2-0-0-m1-released"&gt;has just announced 2.0.0.M1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;What if an application could automatically repel attackers by rotating its access credentials every day, thereby making every stolen password useless in a short amount of time? That’s the idea behind CredHub, a &lt;a href="https://venturebeat.com/2017/06/16/pivotal-cloud-foundry-aims-to-thwart-hackers-with-ever-changing-passwords/"&gt;new feature introduced for Pivotal Cloud Foundry today&lt;/a&gt;. Read the rest of this VentureBeat article for more.&lt;/li&gt;
+  &lt;li&gt;Dormain Drewitz chimes in with a look at some Secrets of successful Cloud Foundry users from the &lt;a href="https://medium.com/p/secrets-of-successful-cloud-foundry-adopters-232193111b18"&gt;recent Cloud Foundry Summit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Jagdish Mirani looks at how &lt;a href="https://www.linkedin.com/pulse/streaming-data-clears-path-legacy-systems-jagdish-mirani?published=t"&gt;HCSC uses Gemfire to help integrate legacy applications&lt;/a&gt;) in this post.&lt;/li&gt;
+  &lt;li&gt;Mark Heckler looks at filtering HTTP requests by header &lt;a href="https://t.co/7tJfuKdPkR?ssr=true"&gt;type in this concise post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Get preview chapters of Duncan Winn&amp;rsquo;s new book on &lt;a href="https://info.dynatrace.com/apm_wp_cloud_foundry_a_definitive_guide_en_registration.html"&gt;Cloud Foundry from DynaTrace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://techcrunch-com.cdn.ampproject.org/c/s/techcrunch.com/2017/06/18/cloud-foundry-makes-its-mark-on-the-enterprise/amp/"&gt;TechCrunch looks at Cloud Foundry&amp;rsquo;s dominance in the enterprise&lt;/a&gt; - One of the things I loved was the insight that more than half of the Fortune 500 are using Cloud Foundry - wow!&lt;/li&gt;
+  &lt;li&gt;Tim Schimandle continues his series in this &lt;a href="http://www.baeldung.com/spring-cloud-angular"&gt;look at integrating an Angular 4 front end with his Spring Cloud backend&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Tim Schimandle &lt;em&gt;also&lt;/em&gt; wrote a nice &lt;a href="http://www.baeldung.com/tracing-services-with-zipkin"&gt;introduction to distributed tracing with Spring Cloud Sleuth and Zipkin in this post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tim Schimandle looks &lt;a href="http://www.baeldung.com/spring-cloud-securing-services"&gt;securing Spring Cloud Services&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tim Schimandle looks at &lt;a href="http://www.baeldung.com/spring-cloud-bootstrapping"&gt;how Spring Cloud applications bootstrap&lt;/a&gt; in this nice post&lt;/li&gt;
+  &lt;li&gt;Mark Heckler does a great job introducing the fantastic &lt;a href="https://content.pivotal.io/blog/using-spring-boot-actuator-integrations-with-pivotal-cloud-foundry-111"&gt;Spring Boot Actuator integrations in Pivotal Cloud Foundry 1.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Integration 5.0 Milestone 5 Available</title>
     <link rel="alternate" href="https://spring.io/blog/2017/06/16/spring-integration-5-0-milestone-5-available" />
@@ -413,9 +1181,9 @@ mockRest
       <name>Mark Paluch</name>
     </author>
     <id>tag:spring.io,2017-06-14:2950</id>
-    <updated>2017-06-14T15:49:57Z</updated>
+    <updated>2017-06-14T15:49:00Z</updated>
     <content type="html">&lt;p&gt;On behalf of the Spring Data team, I&amp;rsquo;d like to announce the availability of the fourth Spring Data Kay milestone. This release ships 98 tickets fixed along with some notable changes like composable repositories, the fluent MongoDB collection operation API, Kotlin extension for MongoDB, and much more. &lt;/p&gt;
-&lt;p&gt;This milestone is going to be picked up by Spring Boot 2.0 M2 and we&amp;rsquo;re heading towards a release candidate within the next month. We&amp;rsquo;ll publish a follow-up blog post with an in-depth discussion of the new features added to the milestone in the upcoming days.&lt;/p&gt;
+&lt;p&gt;This milestone is going to be picked up by Spring Boot 2.0 M2 and we&amp;rsquo;re heading towards a release candidate within the next month. We&amp;rsquo;ll publish a &lt;a href="https://spring.io/blog/2017/06/20/a-preview-on-spring-data-kay"&gt;follow-up blog post&lt;/a&gt; with an in-depth discussion of the new features added to the milestone in the upcoming days.&lt;/p&gt;
 &lt;p&gt;Find the complete list of issues fixed &lt;a href="https://jira.spring.io/issues/?filter=15637"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Spring Data Commons 2.0 M4 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-commons/2.0.0.M4"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.M4/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.M4/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.M4/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
@@ -432,7 +1200,9 @@ mockRest
   &lt;li&gt;Spring Data Redis 2.0 M4 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-redis/2.0.0.M4"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.M4/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.M4/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.M4/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Data Elasticsearch 3.0 M4 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-elasticsearch/3.0.0.M4"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.M4/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.M4/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.M4/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Data Couchbase 3.0 M4 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-couchbase/3.0.0.M4"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.M4/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.M4/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.M4/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the link to &lt;a href="https://spring.io/blog/2017/06/20/a-preview-on-spring-data-kay"&gt;the preview on Spring Data Kay&lt;/a&gt;.&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Spring Framework 5.0 RC2 available now</title>
@@ -670,126 +1440,5 @@ Spring Boot users can update to &lt;a href="https://spring.io/blog/2017/06/08/sp
 &lt;p&gt;We expect Spring Boot &lt;code&gt;1.4.7&lt;/code&gt; to be the last maintenance release in the &lt;code&gt;1.4&lt;/code&gt; line. If you haven&amp;rsquo;t upgraded to &lt;code&gt;1.5.x&lt;/code&gt; yet, we advise you to do so as soon as possible.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Framework 4.3.9 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/06/07/spring-framework-4-3-9-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Stéphane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2017-06-07:2940</id>
-    <updated>2017-06-07T20:19:22Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Spring Framework &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10000&amp;version=15928"&gt;4.3.9&lt;/a&gt; &lt;a href="http://projects.spring.io/spring-framework"&gt;is available now&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;This maintenance release is the base for the upcoming Spring Boot 1.4.7 and 1.5.4 maintenance releases and includes 30 fixes and selected improvements.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Pipelines 1.0.0.M5 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/06/07/spring-cloud-pipelines-1-0-0-m5-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Marcin Grzejszczak</name>
-    </author>
-    <id>tag:spring.io,2017-06-07:2939</id>
-    <updated>2017-06-07T15:49:57Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the Spring Cloud team it is my pleasure to announce a new milestone release of Spring Cloud Pipelines - &lt;code&gt;1.0.0.M5&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="what-s-new"&gt;&lt;a class="anchor" href="#what-s-new"&gt;&lt;/a&gt;What&amp;#8217;s new?&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;With &lt;a href="https://github.com/spring-cloud/spring-cloud-pipelines/milestone/4?closed=1"&gt;&lt;code&gt;1.0.0.M5&lt;/code&gt;&lt;/a&gt; we&amp;#8217;ve added a new step in the &lt;code&gt;Build&lt;/code&gt; stage called &lt;code&gt;API Compatibility check&lt;/code&gt;. Now, your pipeline
-can break when, as a HTTP / messaging producer, you&amp;#8217;re doing a backward incompatible change. We&amp;#8217;re checking what were the latest contracts you&amp;#8217;ve defined for your most recent production
- deployment and from those contracts we&amp;#8217;re generating tests to your current application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="imageblock"&gt;
-&lt;div class="content"&gt;
-&lt;img src="http://cloud.spring.io/spring-cloud-pipelines/img/intro/build.png" alt="API Compatibility check"&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You can read more about this feature in &lt;a href="http://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html#_build"&gt;Spring Cloud Pipelines Docs&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Also, the one and only Ryan Baxter, has added support for GPG keys in Jenkins.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="feedback-needed"&gt;&lt;a class="anchor" href="#feedback-needed"&gt;&lt;/a&gt;Feedback needed&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you&amp;#8217;re already using Spring Cloud Pipelines please comment under &lt;a href="https://github.com/spring-cloud/spring-cloud-pipelines/issues/55"&gt;this issue&lt;/a&gt; with steps you
-needed to take to customize the project to suit your company&amp;#8217;s needs. Without your feedback I won&amp;#8217;t be able to automate the customization process!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webinar"&gt;&lt;a class="anchor" href="#webinar"&gt;&lt;/a&gt;Webinar&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you&amp;#8217;re interested in more information about the project please check out the  &lt;a href="https://content.pivotal.io/webinars/continuous-deployment-to-the-cloud"&gt;Spring Cloud Pipelines webinar&lt;/a&gt; that was recorded recently.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="links"&gt;&lt;a class="anchor" href="#links"&gt;&lt;/a&gt;Links&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Please check out any of these links for more information or to contact us:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://cloud.spring.io/spring-cloud-pipelines/"&gt;Project page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html"&gt;Project documentation&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html#concourse"&gt;Concourse opinionated pipeline setup&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://concourse.ci"&gt;Concourse Website&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html#jenkins"&gt;Jenkins opinionated pipeline setup&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://gitter.im/spring-cloud/spring-cloud-pipelines"&gt;Spring Cloud Pipelines Gitter&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - June 6th, 2017</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/06/06/this-week-in-spring-june-6th-2017" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2017-06-06:2938</id>
-    <updated>2017-06-06T12:01:08Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Malaysia and then Singapore where I&amp;rsquo;ll spend time with customers in the financial services world and speak at the &lt;a href="https://www.meetup.com/singasug/"&gt;Singapore Spring User Group&lt;/a&gt; on June 8th. If you&amp;rsquo;re around, come out or &lt;a href="http://twitter.com/starbuxman"&gt;say hi&lt;/a&gt;!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring IO Platform lead and Spring Boot ninja Andy Wilkinson just announced the &lt;a href="http://spring.io/blog/2017/06/05/dependency-management-plugin-1-0-3-release"&gt;Gradle Dependency management plugin 1.0.3&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring web guru has just &lt;a href="http://spring.io/blog/2017/05/31/spring-web-flow-2-4-5-released"&gt;announced Spring Web Flow 2.4.5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;the Baeldung blog has a nice look &lt;a href="http://www.baeldung.com/spring-boot-kotlin"&gt;at Spring Boot and Kotlin&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Ranga Karanam put together a nice look at building &lt;a href="https://dzone.com/articles/creating-a-web-application-with-spring-boot"&gt;web applications with Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I liked this blog offering tips and tricks for using the compile-time annotation &lt;a href="https://dzone.com/articles/5-tips-for-using-lombok-in-production"&gt;processor Lombok in production application&lt;/a&gt;. Lombok is not a Spring project, obviously, but it&amp;rsquo;s easy to use with Spring and it&amp;rsquo;s available on the Spring Initializr [as a dependency].&lt;/li&gt;
-  &lt;li&gt;I reallly enjoyed some of the replies in the Quora post &lt;a href="https://www.quora.com/NoSQL-When-would-you-choose-CouchBase-vs-MongoDB-vs-Redis"&gt;&lt;em&gt;When would you choose Couchbase vs MongoDB vs Redis&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Cloud Foundry is dropping Consul from its internal implementation. This design doc / post-mortem looks at why, in this particular case, &lt;a href="https://docs.google.com/document/d/1qdLNIWQQzluXw5rnc39raAYOnnSdDUjhUOrovUE0NJI/edit#heading=h.f54rg2dpu35y"&gt;it makes sense for Cloud Founddry to move Consul out of the stack&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The Baeldung blog also updated their &lt;a href="http://www.baeldung.com/java-9-reactive-streams"&gt;Java 9 Reactive Streams content, which is as-always a worthy read&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I liked this talk by Martin Fowler &lt;a href="https://www.youtube.com/watch?v=STKCRSUsyP0"&gt;on the different uses of messaging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Pivotal&amp;rsquo;s very own Matt Stine put together a nice read, &lt;a href="https://builttoadapt.io/whats-your-decomposition-strategy-e19b8e72ac8f"&gt;&lt;em&gt;What&amp;rsquo;s your Decomposition Strategy?&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;interesting analysis from Bob Evans at Forbes: &lt;a href="https://www.forbes.com/sites/bobevans1/2017/06/01/sorry-amazon-but-microsoft-is-the-worlds-1-cloud-vendor-heres-why-cloud-wars/#1a83af887928"&gt;&lt;em&gt;Sorry Amazon, but Microsoft is the World&amp;rsquo;s #1 Cloud Vendor&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I loved &lt;a href="https://builttoadapt.io/how-to-train-your-microservices-ef2d912109d9"&gt;this Dreamworks case-study&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Coda Hale (who, among &lt;em&gt;many&lt;/em&gt; things, created the DropWizard Metrics library) put together a great &lt;a href="https://codahale.com/usl4j-and-you/"&gt;read introducing Little&amp;rsquo;s Law&lt;/a&gt; - an approach to modeling system performance - and his new library, &lt;a href="https://github.com/codahale/usl4j"&gt;usl4j&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Pivotal&amp;rsquo;s own Joshua McKenty put together a nice piece on how &lt;a href="https://builttoadapt.io/diversify-your-cloud-portfolio-or-bank-on-failure-dabaead526a1"&gt;to diversify a cloud portfolio&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
   </entry>
 </feed>

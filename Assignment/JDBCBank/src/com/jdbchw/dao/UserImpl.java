@@ -220,7 +220,7 @@ public class UserImpl implements UserDao {
 
             while(rs.next()){
 
-                if (rs.getDouble("balance") > withdraw) {
+                if ( withdraw > 0 && rs.getDouble("balance") > withdraw) {
 
                     double difference = rs.getDouble("balance") - withdraw;
                     String sql = "UPDATE account a1 set a1.balance = ? " +
@@ -236,7 +236,8 @@ public class UserImpl implements UserDao {
                     System.out.println(displayAccount.getAccountID(accountId).toString());
                     return;
                 } else {
-                    System.out.println("Not enough money in Account!");
+                    System.out.println("Something went wrong withdrawing!");
+                    return;
                 }
             }
 
@@ -260,7 +261,7 @@ public class UserImpl implements UserDao {
             ResultSet rs = pStatementWithdraw.executeQuery();
 
 
-            while(rs.next()){
+            if (deposit > 0 && rs.next()){
                 double newBalance = rs.getDouble("balance") + deposit;
                 String sql = "UPDATE account a1 set a1.balance = ? " +
                         "WHERE a1.bank_user_id = ? AND a1.accountid = ?";
@@ -273,11 +274,12 @@ public class UserImpl implements UserDao {
 
                 AccountDao displayAccount = new AccountImpl();
                 System.out.println(displayAccount.getAccountID(accountId).toString());
+            } else {
+                System.out.println("Something went wrong depositing money!");
             }
-        } catch (IOException e) {
+
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong depositing money!");
         }
     }
 

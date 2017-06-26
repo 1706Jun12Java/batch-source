@@ -15,5 +15,6 @@ public interface UserDao {
     List<Account> getAllBalances(User user);
     void withdraw(User user, int accountId, double withdraw);
     void deposit(User user, int accountId, int deposit);
-
+    boolean deleteAllUser(User user);
+    boolean updateUser(User user, String username, String password, String email);
 }

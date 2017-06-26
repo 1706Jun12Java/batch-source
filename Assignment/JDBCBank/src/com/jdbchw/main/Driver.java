@@ -2,7 +2,10 @@ package com.jdbchw.main;
 
 import com.jdbchw.dao.*;
 import com.jdbchw.domain.Account;
+import com.jdbchw.domain.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Driver {
@@ -70,6 +73,9 @@ public class Driver {
             System.out.println("Enter 4 to create account");
             System.out.println("Enter 5 to delete account");
             System.out.println("Enter 6 to logout");
+            System.out.println("Enter 7 to update");
+            System.out.println("Enter 8 to view all users");
+            System.out.println("Enter 9 to delete all users");
             System.out.println("---------------------------------");
             int action = scan.nextInt();
             switch (action){
@@ -91,8 +97,63 @@ public class Driver {
                 case 6:
                     user.logout();
                     break;
+                case 7:
+                    updateUser(user, scan);
+                    break;
+                case 8:
+                    viewAllUser(user);
+                    break;
+                case 9:
+                    deleteAllUser(user);
+                    break;
             }
         }
+    }
+
+    public static void updateUser(UserSessionImpl user, Scanner scan){
+        if (user.getUser().getSuperUser() > 0) {
+            UserDao userImpl = new UserImpl();
+
+            System.out.println("enter user id that you want to update");
+            int bankUserId = scan.nextInt();
+            scan.nextLine();
+            System.out.println("Enter new username, password, email (Username Password Email)");
+            String userInput = scan.nextLine();
+
+            User updatingUser = userImpl.getUserById(bankUserId);
+
+            String[] userInputSplit = userInput.split(" ");
+
+            if (userImpl.updateUser(updatingUser, userInputSplit[0], userInputSplit[1], userInputSplit[2]))
+                System.out.println("User updated!");
+
+        } else {
+            System.out.println("Not a super user, cant update user");
+        }
+    }
+
+
+    public static void viewAllUser(UserSessionImpl user){
+        UserDao userImpl = new UserImpl();
+
+        if(user.getUser().getSuperUser() > 0){
+            List<User> userList = userImpl.getUsers();
+
+            for (User i: userList) {
+                System.out.println(i.toString());
+            }
+        } else {
+            System.out.println("Not a super User, cant view all");
+        }
+    }
+
+
+    public static void deleteAllUser(UserSessionImpl user){
+        UserDao userImpl = new UserImpl();
+        if (userImpl.deleteAllUser(user.getUser()))
+            user.logout();
+
+        System.out.println("Not a super User, can delete all");
     }
 
     public static void userBalances(UserSessionImpl user){

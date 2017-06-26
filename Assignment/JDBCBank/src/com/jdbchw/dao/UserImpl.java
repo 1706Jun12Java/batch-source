@@ -64,6 +64,48 @@ public class UserImpl implements UserDao {
         return user;
     }
 
+    @Override
+    public boolean deleteAllUser(User user){
+        if (user.getSuperUser() > 0){
+            try(Connection con = ConnectionUtil.getConnection("connection.properties")) {
+                String sql = "DELETE FROM account";
+                PreparedStatement pStatement = con.prepareStatement(sql);
+                pStatement.executeUpdate();
+
+                sql = "DELETE FROM bank_user";
+
+                pStatement = con.prepareStatement(sql);
+                pStatement.executeUpdate();
+
+                System.out.println("All users deleted");
+                return true;
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateUser(User user, String username, String password, String email){
+        try(Connection con = ConnectionUtil.getConnection("connection.properties")) {
+            String sql = "update bank_user set username = ?, password = ?, email = ? where userid = ?";
+
+
+            PreparedStatement pStatement = con.prepareStatement(sql);
+            pStatement.setString(1, username);
+            pStatement.setString(2, password);
+            pStatement.setString(3, email);
+            pStatement.setInt(4, user.getUserID());
+            pStatement.executeUpdate();
+
+            return true;
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
     @Override
     public void createUser(String username, String password, String email) {

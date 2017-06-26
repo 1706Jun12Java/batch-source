@@ -1,0 +1,79 @@
+1. Project is organizied following DAO design pattern: DB, Data Access Layer, JAVA
+2. Overall the project is not complete, most missing is JAVA domain pojos part.
+3. DB connection is implemented with prepared and callable statements.
+4. I did not yet create a table for different types of users
+5. Database has 2 tables, 2 sequences to autoincrement IDs in the two tables, 2 'before-insert' TRIGGERS, 
+   and 2 stored procedures that insert new records in the two tables.
+6. connection.properties file does not have USERNAME and PASSWORD.
+ 
+
+CREATE TABLE CUSTOMER (
+  custId NUMBER PRIMARY KEY,
+  custFirstName VARCHAR2(50),
+  custLastName VARCHAR2(50),
+  username VARCHAR2(50),
+  password VARCHAR2(50),
+);
+
+CREATE TABLE ACCOUNT (
+  accId NUMBER primary key,
+  balance NUMBER,
+  custId NUMBER,
+  foregn key (custId) references CUSTOMER (custId)
+);
+
+CREATE SEQUENCE SQ_CUSTOMER_PK
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SQ_ACCOUNT_PK
+START WITH 1
+INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER TR_INSERT_CUSTOMER
+BEFORE INSERT ON CUSTOMER
+FOR EACH ROW
+BEGIN
+  SELECT SQ_CUSTOMER_PK.NEXTVAL INTO :NEW.custId FROM DUAL;
+END;
+
+CREATE OR REPLACE TRIGGER TR_INSERT_ACCOUNT
+BEFORE INSERT ON ACCOUNT
+FOR EACH ROW
+BEGIN
+  SELECT SQ_ACCOUNT_PK.NEXTVAL INTO :NEW.BEAR_ID FROM DUAL;
+END;
+
+-- stored procedure to insert new customer
+CREATE OR REPLACE PROCEDURE sp_insert_customer(
+	   p_customerid IN CUSTOMER.custId%TYPE,
+	   p_firstname IN CUSTOMER.custFirstName%TYPE,
+	   p_lastname IN CUSTOMER.custLastName%TYPE,
+	   p_username IN CUSTOMER.username%TYPE,
+	   p_password IN CUSTOMER.password%TYPE)
+IS
+BEGIN
+SAVEPOINT S;
+  INSERT INTO CUSTOMER (custId,custFirstName,custLastName,username,password)
+  VALUES (p_customerid, p_firstname, p_lastname,p_email,p_username,p_password);
+  COMMIT;
+  EXCEPTION
+    WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Failed to add customer.');
+    ROLLBACK TO S;
+END;
+
+-- stored procedure to insert new account
+CREATE OR REPLACE PROCEDURE sp_insert_customer(
+	   p_accid IN CUSTOMER.custId%TYPE,
+	   p_balance IN CUSTOMER.balance%TYPE,
+	   p_custid IN CUSTOMER.custId%TYPE)
+IS
+BEGIN
+SAVEPOINT S;
+  INSERT INTO ACCOUNT (accId,balance,custId)
+  VALUES (p_accid,p_balance,p_custid);
+  COMMIT;
+  EXCEPTION
+    WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Failed to add customer.');
+    ROLLBACK TO S;
+END;

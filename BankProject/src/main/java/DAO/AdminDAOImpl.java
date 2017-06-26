@@ -73,17 +73,19 @@ public class AdminDAOImpl implements AdminDAO {
 						break;
 					case 3:
 						int update = 0;
+						printSuperList(con);
 						System.out.println("What user do you want to change?");
-						String userToChange = scan.next();
-						sql = new String("SELECT * WHERE USER_NAME = ?");
+						int userToChange = scan.nextInt();
+						sql = new String("SELECT * FROM BANK_USERS WHERE USER_ID = ?");
 						ptsmt = con.prepareStatement(sql);
-						ptsmt.setString(1, userToChange);
+						ptsmt.setInt(1, userToChange);
 						rs = ptsmt.executeQuery();
 						if (rs.next()) {
 							System.out.println("What do you want to update?");
 							System.out.println("1| Username\n2| Password\n3| Accounts");
 							update = scan.nextInt();
 							switch (update) {
+							// change username
 							case 1:
 								System.out.println("What do you want to change the username to?");
 								String newUsername = scan.next();
@@ -94,34 +96,49 @@ public class AdminDAOImpl implements AdminDAO {
 								if (rs.next()) {
 									throw new UserNameTakenException();
 								} else {
-									sql = new String("UPDATE BANK_USERS SET USER_NAME = ? WHERE USER_NAME = ?");
+									sql = new String("UPDATE BANK_USERS SET USER_NAME = ? WHERE USER_ID = ?");
 									ptsmt = con.prepareStatement(sql);
 									ptsmt.setString(1, newUsername);
-									ptsmt.setString(2, userToChange);
+									ptsmt.setInt(2, userToChange);
 									ptsmt.execute();
 									System.out.println("Change successful");
 								}
 								break;
+							// change password
 							case 2:
 								System.out.println("What do you want to change the password to?");
 								String newPassword = scan.next();
-								sql = new String("UPDATE BANK_USERS SET USER_PASSWORD = ? WHERE USER_NAME = ?");
+								sql = new String("UPDATE BANK_USERS SET USER_PASSWORD = ? WHERE USER_ID = ?");
 								ptsmt = con.prepareStatement(sql);
 								ptsmt.setString(1, newPassword);
-								ptsmt.setString(2, userToChange);
+								ptsmt.setInt(2, userToChange);
 								ptsmt.execute();
 								System.out.println("Change successful");
 								break;
+							// change account
 							case 3:
 								CallableStatement cs;
-								printSuperList(con);
+
+								sql = new String("SELECT * FROM ACCOUNTS WHERE USER_ID = ? ORDER BY ACCOUNT_ID");
+								ptsmt = con.prepareStatement(sql);
+								ptsmt.setInt(1, userToChange);
+								rs = ptsmt.executeQuery();
+								while (rs.next()) {
+									System.out.println(
+											"Account #" + rs.getInt("ACCOUNT_ID") + " holds $" + rs.getInt("AMOUNT"));
+
+								}
+
+								System.out.println("Which account do you want to change?");
 								int accountToEdit = scan.nextInt();
 								if (checkForAccount(con, accountToEdit)) {
 									System.out.println("What do you want to change the value to?");
 									int newVal = scan.nextInt();
 									sql = new String("UPDATE ACCOUNTS SET AMOUNT = ? WHERE ACCOUNT_ID = ?");
+									ptsmt = con.prepareStatement(sql);
 									ptsmt.setInt(1, newVal);
 									ptsmt.setInt(2, accountToEdit);
+									ptsmt.execute();
 									System.out.println("Change completed successfully");
 								} else
 									throw new AccountDoesNotExistException();
@@ -142,6 +159,8 @@ public class AdminDAOImpl implements AdminDAO {
 						break;
 					case 5:
 						System.out.println("Logging off...");
+						ptsmt.close();
+						con.close();
 						return;
 					}
 				}
@@ -153,6 +172,9 @@ public class AdminDAOImpl implements AdminDAO {
 			run(username, password);
 		} catch (UserNameTakenException e) {
 			System.out.println("Sorry, that username is taken");
+			run(username, password);
+		} catch (AccountDoesNotExistException e) {
+			System.out.println("That account does not exist.");
 			run(username, password);
 		} catch (Exception e) {
 			System.out.println("You should not see this message");
@@ -200,12 +222,16 @@ public class AdminDAOImpl implements AdminDAO {
 	 * @throws AccountDoesNotExistException
 	 */
 	public boolean checkForAccount(Connection con, int accountNum) throws SQLException, AccountDoesNotExistException {
-		String sql = new String("SELECT * FROM ACCOUNTS WHERE ACCOUNT_ID = ?");
-		PreparedStatement ptsmt = con.prepareStatement(sql);
-		ptsmt.setInt(1, accountNum);
-		ResultSet rs = ptsmt.executeQuery();
-		if (rs.next())
-			return true;
-		throw new AccountDoesNotExistException();
+		try {
+			String sql = new String("SELECT * FROM ACCOUNTS WHERE ACCOUNT_ID = ?");
+			PreparedStatement ptsmt = con.prepareStatement(sql);
+			ptsmt.setInt(1, accountNum);
+			ResultSet rs = ptsmt.executeQuery();
+			if (rs.next())
+				return true;
+			throw new AccountDoesNotExistException();
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

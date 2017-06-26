@@ -38,3 +38,6 @@ hs_err_pid*
 */target/
 /RemoteSystemsTempFiles/
 /External Files/
+
+# for Java Assignments
+/Assignment/JDBCBank/connection.properties

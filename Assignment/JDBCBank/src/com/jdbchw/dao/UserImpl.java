@@ -234,10 +234,13 @@ public class UserImpl implements UserDao {
 
                     AccountDao displayAccount = new AccountImpl();
                     System.out.println(displayAccount.getAccountID(accountId).toString());
+                    return;
                 } else {
                     System.out.println("Not enough money in Account!");
                 }
             }
+
+            System.out.println("No account!");
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }

@@ -24,6 +24,7 @@ public class Driver {
 					String username = scan.next();
 					System.out.println("Insert Password");
 					String password = scan.next();
+					System.out.println("Connecting to the internet...");
 					acc.run(username, password);
 					break;
 				// Creating a new user
@@ -33,6 +34,7 @@ public class Driver {
 					System.out.println("Insert Password");
 					String newPass = scan.next();
 					BankUsersDAO bkUser = new BankUsersDAOImpl();
+					System.out.println("Connecting to the internet...");
 					bkUser.addUser(newUser, newPass);
 					break;
 				case 3:
@@ -41,6 +43,7 @@ public class Driver {
 					System.out.println("Insert Password");
 					String adminPass = scan.next();
 					AdminDAO ad = new AdminDAOImpl();
+					System.out.println("Connecting to the internet...");
 					ad.run(adminUser, adminPass);
 					break;
 				case 4:

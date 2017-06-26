@@ -170,12 +170,15 @@ public class AdminDAOImpl implements AdminDAO {
 		} catch (NoAccountsException e) {
 			System.out.println("Sorry, that does not exist");
 			run(username, password);
+			return;
 		} catch (UserNameTakenException e) {
 			System.out.println("Sorry, that username is taken");
 			run(username, password);
+			return;
 		} catch (AccountDoesNotExistException e) {
 			System.out.println("That account does not exist.");
 			run(username, password);
+			return;
 		} catch (Exception e) {
 			System.out.println("You should not see this message");
 			System.out.println(e.getMessage());

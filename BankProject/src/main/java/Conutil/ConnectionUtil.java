@@ -22,7 +22,6 @@ public class ConnectionUtil {
 	 * @return The connection to the database
 	 */
 	public static Connection getConnection() {
-		System.out.println("Connecting to the internet...");
 		String url = "", username = "", password = "";
 		try {
 			// Retrieve the url, username, and password from a properties file

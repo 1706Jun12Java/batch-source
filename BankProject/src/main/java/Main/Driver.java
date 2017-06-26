@@ -61,6 +61,8 @@ public class Driver {
 			return;
 		} catch (BadLoginException e) {
 			System.out.println("Login Failed");
+			main(args);
+			return;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());

@@ -169,7 +169,11 @@ public class AccountsDAOImpl implements AccountsDAO {
 		} catch (OverdraftException e) {
 			System.out.println("You cannot withdraw that much money");
 			run(username, password);
+		} catch (BadLoginException e) {
+			throw new BadLoginException();
+
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("You shouldn't recieve this message");
 			return;
 		}

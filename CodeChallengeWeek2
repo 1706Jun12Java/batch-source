@@ -1,0 +1,15 @@
+I will implement CHECK constraint on the MAX_BEARS  column to limit the range of values that can be placed in the column. Currently default value of 4 (which is MAX) is defined for this column.
+ 
+To add the constraint to existing table the following statement should work:
+ALTER TABLE Cave
+ADD CONSTRAINT CHEK_MAX_BEARS CHECK (MAX_BEARS<=4);
+ 
+Currently there is no before or after INSERT TRIGGER defined for this particular column, but we can create before INSERT trigger to ensure the inserted value is within the allowed range before the insert statement commits:
+ 
+CREATE OR REPLACE TRIGGER tr_binsert_cave
+BEFORE INSERT, UPDATE
+BEGIN
+  -- checks the MAX_BEARS against the CHECK CONSTRAINT and prints out Error message if constraint is violated.
+If constraint not violated, execute the INSERT, UPDATE statement
+
+END;

@@ -1,0 +1,20 @@
+/***
+In theory, if we add a column to keep track of the current amount of bears
+then we can just prevent that number from going above the maximum amount of bears
+**/
+
+-- Add the column
+ALTER TABLE CAVES
+ADD NUM_BEARS INTEGER DEFAULT 0;
+
+-- Add the constraint
+ALTER TABLE CAVES
+ADD CONSTRAINT CK_HAS_SPACE CHECK (NUM_BEARS <= MAX_BEARS);
+
+-- Add a trigger to increase the number of bears
+CREATE OR REPLACE TRIGGER TR_INCREASE_BEAR_NUM
+BEFORE INSERT ON CAVES
+FOR EACH ROW
+BEGIN
+  NUM_BEARS := NUM_BEARS +1;
+END;

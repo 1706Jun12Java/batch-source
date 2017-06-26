@@ -25,6 +25,7 @@ public class AdminDAOImpl implements AdminDAO {
 		Connection con;
 		Scanner scan = new Scanner(System.in);
 		try {
+			// check database for username and password
 			con = ConnectionUtil.getConnection();
 			String sql = new String("SELECT * FROM ADMINS WHERE USER_NAME = ? AND USER_PASSWORD = ?");
 			PreparedStatement ptsmt = con.prepareStatement(sql);
@@ -39,9 +40,11 @@ public class AdminDAOImpl implements AdminDAO {
 					System.out.println("1| See All Users\n2| Add User\n3| Update User\n4| Clear All\n5| Log Off");
 					job = scan.nextInt();
 					switch (job) {
+					// print list of all users and accounts
 					case 1:
 						printSuperList(con);
 						break;
+					// Add a new user
 					case 2:
 						try {
 							System.out.println("New Username:");
@@ -50,10 +53,11 @@ public class AdminDAOImpl implements AdminDAO {
 							ptsmt = con.prepareStatement(sql);
 							ptsmt.setString(1, newUser);
 							rs = ptsmt.executeQuery();
-
+							// check to see if name is taken
 							if (rs.next())
 								throw new UserNameTakenException();
 							else {
+								// add new name
 								System.out.println("New Password:");
 								String newPass = scan.next();
 								sql = new String("INSERT INTO BANK_USERS (USER_NAME,USER_PASSWORD) VALUES (?,?)");
@@ -71,9 +75,11 @@ public class AdminDAOImpl implements AdminDAO {
 							break;
 						}
 						break;
+					// Alter a user
 					case 3:
 						int update = 0;
 						printSuperList(con);
+						// select user
 						System.out.println("What user do you want to change?");
 						int userToChange = scan.nextInt();
 						sql = new String("SELECT * FROM BANK_USERS WHERE USER_ID = ?");
@@ -117,8 +123,6 @@ public class AdminDAOImpl implements AdminDAO {
 								break;
 							// change account
 							case 3:
-								CallableStatement cs;
-
 								sql = new String("SELECT * FROM ACCOUNTS WHERE USER_ID = ? ORDER BY ACCOUNT_ID");
 								ptsmt = con.prepareStatement(sql);
 								ptsmt.setInt(1, userToChange);
@@ -128,7 +132,6 @@ public class AdminDAOImpl implements AdminDAO {
 											"Account #" + rs.getInt("ACCOUNT_ID") + " holds $" + rs.getInt("AMOUNT"));
 
 								}
-
 								System.out.println("Which account do you want to change?");
 								int accountToEdit = scan.nextInt();
 								if (checkForAccount(con, accountToEdit)) {
@@ -149,10 +152,10 @@ public class AdminDAOImpl implements AdminDAO {
 						break;
 					case 4:
 						System.out.println("Clearing all...");
-						sql = new String("DELETE * FROM BANK_USERS");
+						sql = new String("DELETE FROM BANK_USERS");
 						ptsmt = con.prepareStatement(sql);
 						ptsmt.execute();
-						sql = new String("DELETE * FROM ACCOUNTS");
+						sql = new String("DELETE FROM ACCOUNTS");
 						ptsmt = con.prepareStatement(sql);
 						ptsmt.execute();
 						System.out.println("Successfully cleared all");
@@ -167,6 +170,8 @@ public class AdminDAOImpl implements AdminDAO {
 			} else {
 				throw new BadLoginException();
 			}
+		} catch (BadLoginException e) {
+			throw new BadLoginException();
 		} catch (NoAccountsException e) {
 			System.out.println("Sorry, that does not exist");
 			run(username, password);

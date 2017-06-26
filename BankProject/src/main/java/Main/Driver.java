@@ -11,7 +11,7 @@ public class Driver {
 		Scanner scan = new Scanner(System.in);
 		int job = 0;
 		try {
-			while (job != 3) {
+			while (job != 4) {
 				System.out.println("Hello. What do you want to do?");
 				System.out.println("Select One:");
 				System.out.println("1| Login\n2| Sign Up\n3| Login as Admin\n4| Quit");

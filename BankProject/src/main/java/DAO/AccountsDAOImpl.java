@@ -52,6 +52,7 @@ public class AccountsDAOImpl implements AccountsDAO {
 						printAccountList(con, ID);
 						System.out.println("Which account will you be withdrawing from?");
 						int acc_with = scan.nextInt();
+						// check if account exists
 						if (checkForAccount(con, ID, acc_with)) {
 							System.out.println("How much will you be withdrawing?");
 							int amt_with = scan.nextInt();
@@ -61,6 +62,7 @@ public class AccountsDAOImpl implements AccountsDAO {
 							ptsmt.setInt(2, acc_with);
 							rs = ptsmt.executeQuery();
 							rs.next();
+							// check if account can be deleted
 							if ((rs.getInt("AMOUNT") - amt_with) >= 0) {
 								sql = "{CALL WITHDRAW_FROM_ACCOUNTS(?,?)}";
 								cs = con.prepareCall(sql);
@@ -106,6 +108,7 @@ public class AccountsDAOImpl implements AccountsDAO {
 						ptsmt.setInt(1, ID);
 						rs = ptsmt.executeQuery();
 						hasAccounts = false;
+						// print accounts
 						while (rs.next()) {
 							int amount = rs.getInt("AMOUNT");
 							String canDelete = "";
@@ -118,11 +121,11 @@ public class AccountsDAOImpl implements AccountsDAO {
 									"Account ID: " + rs.getInt("ACCOUNT_ID") + " contains $" + amount + canDelete);
 							hasAccounts = true;
 						}
+						// there were no accounts
 						if (!hasAccounts)
 							throw new NoAccountsException();
-
 						int accountToDelete = scan.nextInt();
-
+						// see if account esists and can we delete it
 						if (checkForAccount(con, ID, accountToDelete)) {
 							sql = new String(
 									"SELECT * FROM ACCOUNTS WHERE USER_ID = ? AND ACCOUNT_ID = ? ORDER BY ACCOUNT_ID");
@@ -156,6 +159,7 @@ public class AccountsDAOImpl implements AccountsDAO {
 			} else {
 				throw new BadLoginException();
 			}
+			// lots of exceptions
 		} catch (SQLException e) {
 			System.out.println("Connection Error, Logging Off....");
 			e.printStackTrace();

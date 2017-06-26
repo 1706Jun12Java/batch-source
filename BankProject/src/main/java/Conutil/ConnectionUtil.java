@@ -10,7 +10,7 @@ import java.util.Properties;
 import org.junit.Test;
 
 public class ConnectionUtil {
-	@Test(expected = Exception.class)
+	@Test
 	public void testConnect() {
 		getConnection();
 

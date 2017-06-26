@@ -11,7 +11,14 @@ import java.util.Properties;
 
 public class ConnectionUtil {
 	
-	
+	//this is egregious. Don't do it like this!!!! 
+ -	public static Connection getConnection() throws SQLException {
+ -		String url = "jdbc:oracle:thin:@jun12javademo.cwt1ckcfzdar.us-west-2.rds.amazonaws.com:1521:ORCL";
+ -		String username = "Admin";
+ -		String password = "p4ssw0rd";
+ -		return DriverManager.getConnection(url,username,password);
+ -	}
+	//this is better
 	public static Connection getConnectionFromFile(String filename) throws IOException, SQLException{
 		Properties prop = new Properties();
 		InputStream in = new FileInputStream(filename);

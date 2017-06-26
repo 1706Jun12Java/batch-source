@@ -131,7 +131,7 @@ END;
 
 
 
--- the code above are all from HigginsE branch without any changes.
+-- the code above are all from HigginsE branch with cave_name unique removed
 -- ADD CONSTRAINT TO LIMIT CAVE SIZE LESS THAN 5
 ALTER TABLE CAVE ADD CONSTRAINT CK_CAVE_SIZE CHECK (MAX_BEARS < 5);
 

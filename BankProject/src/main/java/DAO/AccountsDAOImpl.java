@@ -124,12 +124,23 @@ public class AccountsDAOImpl implements AccountsDAO {
 						int accountToDelete = scan.nextInt();
 
 						if (checkForAccount(con, ID, accountToDelete)) {
-							sql = new String("DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ? AND USER_ID = ? ");
+							sql = new String(
+									"SELECT * FROM ACCOUNTS WHERE USER_ID = ? AND ACCOUNT_ID = ? ORDER BY ACCOUNT_ID");
 							ptsmt = con.prepareStatement(sql);
-							ptsmt.setInt(1, accountToDelete);
-							ptsmt.setInt(2, ID);
-							ptsmt.execute();
-							System.out.println("Account Deleted");
+							ptsmt.setInt(1, ID);
+							ptsmt.setInt(2, accountToDelete);
+							rs = ptsmt.executeQuery();
+							rs.next();
+							if (rs.getInt("AMOUNT") == 0) {
+								sql = new String("DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ? AND USER_ID = ? ");
+								ptsmt = con.prepareStatement(sql);
+								ptsmt.setInt(1, accountToDelete);
+								ptsmt.setInt(2, ID);
+								ptsmt.execute();
+								System.out.println("Account Deleted");
+							} else {
+								System.out.println("You cannot delete that account.");
+							}
 						} else {
 							throw new AccountDoesNotExistException();
 						}
@@ -146,7 +157,7 @@ public class AccountsDAOImpl implements AccountsDAO {
 				throw new BadLoginException();
 			}
 		} catch (SQLException e) {
-			System.out.println("Connection Error, Logging Off");
+			System.out.println("Connection Error, Logging Off....");
 			e.printStackTrace();
 			return;
 		} catch (NoAccountsException e) {

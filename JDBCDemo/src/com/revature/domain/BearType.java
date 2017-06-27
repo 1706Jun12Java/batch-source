@@ -1,7 +1,14 @@
 package com.revature.domain;
 
-public class BearType {
+import java.io.Serializable;
+
+public class BearType implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3629953995755072766L;
+
 	public BearType(int id, String name) {
 		super();
 		this.id = id;

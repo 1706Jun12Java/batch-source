@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bears>
+	<bear>
+		<id>7</id>
+		<name>Berenstein</name>
+		<cave>
+			<id>1</id>
+			<name>Cool Cave 1</name>
+			<maxBears>2</maxBears>
+		</cave>
+		<bearType>
+			<id>3</id>
+			<name>Grizzly</name>
+		</bearType>
+		<weight>800</weight>
+		<birthdate>1992-9-5</birthdate>
+	</bear>
+	<bear>
+		<id>9</id>
+		<name>Yogi</name>
+		<cave>
+			<id>1</id>
+			<name>Cool Cave 1</name>
+			<maxBears>2</maxBears>
+		</cave>
+		<bearType>
+			<id>1</id>
+			<name>Panda</name>
+		</bearType>
+		<weight>400</weight>
+		<birthdate>1992-9-7</birthdate>
+	</bear>
+</bears>

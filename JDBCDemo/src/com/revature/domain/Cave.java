@@ -1,7 +1,14 @@
 package com.revature.domain;
 
-public class Cave {
+import java.io.Serializable;
+
+public class Cave implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4689884976960697329L;
+
 	public Cave(int id, String name, int maxBears) {
 		super();
 		this.id = id;

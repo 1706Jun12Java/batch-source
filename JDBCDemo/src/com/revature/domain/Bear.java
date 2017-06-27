@@ -1,9 +1,16 @@
 package com.revature.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Bear {
+public class Bear implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5763956220246014019L;
+
+
 	public Bear(int id, String name, Cave cave, BearType bearType, int weight, Date birthdate) {
 		super();
 		this.id = id;

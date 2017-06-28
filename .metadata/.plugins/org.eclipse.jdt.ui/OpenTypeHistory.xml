@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=JDBCDemo/src&lt;com.revature.dao{CaveDao.java[CaveDao" modifiers="513" timestamp="1498240986696"/>
-<typeInfo handle="=JDBCDemo/src&lt;com.revature.dao{BearTypeDao.java[BearTypeDao" modifiers="513" timestamp="1498240986680"/>
-<typeInfo handle="=JDBCDemo/src&lt;com.revature.dao{BeehiveDao.java[BeehiveDao" modifiers="513" timestamp="1498240986665"/>
-<typeInfo handle="=JDBCDemo/src&lt;com.revature.dao{BearDao.java[BearDao" modifiers="513" timestamp="1498240986640"/>
+<typeInfo handle="=JDBCDemo/src&lt;com.revature.dao{BearDao.java[BearDao" modifiers="513" timestamp="1498249873211"/>
 </typeInfoHistroy>

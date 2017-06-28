@@ -5,7 +5,32 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-06-23T12:38:00Z</updated>
+  <updated>2017-06-27T03:00:55Z</updated>
+  <entry>
+    <title>This Week in Spring - June 27th, 2017</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/06/27/this-week-in-spring-june-27th-2017" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-06-27:2961</id>
+    <updated>2017-06-27T03:00:55Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans and welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Chicago, New York City and Denver talking to Pivotal customers. We&amp;rsquo;ve got a lot of good stuff to look at this week so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Data ninja Thomas Risberg just announced Spring for Apache Hadoop 2.5.0.RC1. The new release is primarily a bugfix. &lt;a href="https://spring.io/blog/2017/06/23/spring-for-apache-hadoop-2-5-0-rc1-released"&gt;The post looks forward to Spring for Apache Hadoop 3.0&lt;/a&gt;, which will be based on Spring Boot, a Java 8 baseline, Spark 2.0 integration, and Spring Batch 4.0 readers and writers.&lt;/li&gt;
+  &lt;li&gt;Spring Data ninja Mark Paluch looks &lt;a href="https://spring.io/blog/2017/06/20/a-preview-on-spring-data-kay"&gt;at a lot of the new features in Spring Data Kay&lt;/a&gt; including support for fluent MongoOperations, Kotlin,smarter MongoDB collation, Java 9 compatability, and so much more.&lt;/li&gt;
+  &lt;li&gt;I liked Arnold Galovics&amp;rsquo;s post &lt;a href="http://blog.arnoldgalovics.com/2017/06/26/configuring-a-datasource-proxy-in-spring-boot/"&gt;on how to configure a &lt;code&gt;DataSource&lt;/code&gt; proxy&lt;/a&gt; in Spring Boot.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://sites.google.com/a/athaydes.com/renato-athaydes/posts/kotlinshiddencosts-benchmarks"&gt;Kotlin&amp;rsquo;s hidden costs - Benchmarks - Renato Athaydes&lt;/a&gt; -&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://t.co/wWlIQQX4PH?ssr=true"&gt;Bytecode generation on the JVM and Kotlin&lt;/a&gt; - This is a deep-dive into the basics of how the Kotlin-language interacts with the JVM and the compiler. Worth a read if you&amp;rsquo;re diving into Kotlin (as I have been for the last few years) even if the post doesn&amp;rsquo;t have a lot to do with Spring perse.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/blk-io/erc20-rest-service"&gt;A Spring Boot application that talks to Ethereum or Quorum network&lt;/a&gt; - This was an interesting Spring Boot application that talks to an Ethereum or Quorum network.&lt;/li&gt;
+  &lt;li&gt;In &lt;a href="https://redmonk.com/fryan/2017/06/22/language-framework-popularity-a-look-at-java-june-2017/"&gt;Redmonk&amp;rsquo;s latest look at Java language and framework popularity&lt;/a&gt;, Spring and Spring Boot seem to be doing quite well!&lt;/li&gt;
+  &lt;li&gt;Mark Heckler looks at serving XML in REST APIs &lt;a href="http://www.thehecklers.org/2017/06/21/t4sd-tips-4-spring-devs-how-to-get-spring-boot-rest-endpoints-to-speak-xml/"&gt;in this useful post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I liked &lt;a href="https://t.co/5iIp2tLCcC?ssr=true"&gt;this post on using the Quartz scheduling API&lt;/a&gt;. It starts from the basic usage and eventually gets all the way through to the Spring Boot experience. Nice!&lt;/li&gt;
+  &lt;li&gt;I liked this presentation on the &lt;a href="https://t.co/DgzjCrWM8h?ssr=true"&gt;basics of Chaos Engineering by Tammy Butow&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;What if an application could automatically repel attackers by rotating its access credentials every day, thereby making every stolen password useless in a short amount of time? That’s the idea behind CredHub, a &lt;a href="https://venturebeat.com/2017/06/16/pivotal-cloud-foundry-aims-to-thwart-hackers-with-ever-changing-passwords/"&gt;new feature introduced for Pivotal Cloud Foundry today&lt;/a&gt;. Read the rest of this VentureBeat article for more.&lt;/li&gt;
+  &lt;li&gt;Dormain Drewitz chimes in with a look at some Secrets of successful Cloud Foundry users from the &lt;a href="https://medium.com/p/secrets-of-successful-cloud-foundry-adopters-232193111b18"&gt;recent Cloud Foundry Summit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring for Apache Hadoop 2.5.0.RC1 released</title>
     <link rel="alternate" href="https://spring.io/blog/2017/06/23/spring-for-apache-hadoop-2-5-0-rc1-released" />
@@ -750,10 +775,10 @@ Reach out via &lt;a href="https://jira.spring.io/browse/DATACMNS"&gt;Jira&lt;/a&
       <name>Josh Long</name>
     </author>
     <id>tag:spring.io,2017-06-20:2959</id>
-    <updated>2017-06-20T11:44:51Z</updated>
+    <updated>2017-06-20T11:44:00Z</updated>
     <content type="html">&lt;p&gt;Hi Spring fans and welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Krakow, Poland for the &lt;a href="http://devoxx.pl/"&gt;epic Devoxx PL&lt;/a&gt; event and then it&amp;rsquo;s &lt;a href="https://voxxeddays.com/luxembourg/"&gt;off to Luxembourg for the VoxxedDays Luxembourg event&lt;/a&gt;! If you&amp;rsquo;re around, don&amp;rsquo;t &lt;a href="http://twitter.com/starbuxman"&gt;hesitate to say &lt;em&gt;hi&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Spring Framework lead Juergen Hoeller &lt;a href="https://spring.io/blog/2017/06/14/spring-framework-5-0-rc2-available-now"&gt;just announced Spring Framework 5.0 RC2&lt;/a&gt;. The new release is a major revision of RC1, refactoring the reactive support and path pattern parsing. It introduces JSR 305 &lt;code&gt;@Nullable&lt;/code&gt; annotations into the codebase.&lt;/li&gt;
+  &lt;li&gt;Spring Framework lead Juergen Hoeller &lt;a href="https://spring.io/blog/2017/06/14/spring-framework-5-0-rc2-available-now"&gt;just announced Spring Framework 5.0 RC2&lt;/a&gt;. The new release is a major revision of RC1, refactoring the reactive support and path pattern parsing. It introduces JSR 305 based &lt;code&gt;@Nullable&lt;/code&gt; / &lt;code&gt;@NonNullApi&lt;/code&gt; Spring annotations into the codebase.&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/14/spring-data-release-train-kay-m4-released"&gt;Spring Data Release Train Kay M4 Released&lt;/a&gt; - Spring Data ninja Mark Paluch just announced Spring Data Train Kay M4, packed with new features and updates. Get the bits now!&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/15/spring-io-platform-athens-sr6"&gt;Spring IO Platform Athens-SR6&lt;/a&gt; - Spring IO Platform lead Andy Wilkinson has just announced Spring IO Platform Athens-SR6, available from repo.spring.io and Maven Central. The new maintenance release includes Spring Boot 1.4.7, Spring Framework 4.3.9, Sspring Integration 4.3.10, Spring REST Docs 1.1.3, Spring Seurity OAuth 2.0.14, Spring Web Flow 2.4.5, and Spring Cloud Connectors 1.2.4, among many other things.&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2017/06/15/spring-io-platform-brussels-sr3"&gt;Spring IO Platform Brussels-SR3&lt;/a&gt; - Not one to rest on his laurels, Andy &lt;em&gt;also&lt;/em&gt; released Spring IO Platform Brussels-SR3, which includes updates a large number of supporting libraries. Get the bits now!&lt;/li&gt;
@@ -1425,20 +1450,5 @@ Spring Boot users can update to &lt;a href="https://spring.io/blog/2017/06/08/sp
   &lt;li&gt;Spring Data Elasticsearch 2.0.11 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-elasticsearch/2.0.11.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.11.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.11.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.11.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Data Couchbase 2.1.11 - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-couchbase/2.1.11.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.11.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.11.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.11.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 1.4.7 Available Now</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/06/08/spring-boot-1-4-7-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Stéphane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2017-06-08:2942</id>
-    <updated>2017-06-08T11:16:00Z</updated>
-    <content type="html">&lt;p&gt;It is my pleasure to announce that Spring Boot &lt;code&gt;1.4.7&lt;/code&gt; is now available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;Spring Boot 1.4.7 includes &lt;a href="https://github.com/spring-projects/spring-boot/milestone/87?closed=1"&gt;over 30 changes, mostly a selection of dependency upgrades and documentation improvements&lt;/a&gt;. Thanks to all that have contributed!&lt;/p&gt;
-&lt;p&gt;We expect Spring Boot &lt;code&gt;1.4.7&lt;/code&gt; to be the last maintenance release in the &lt;code&gt;1.4&lt;/code&gt; line. If you haven&amp;rsquo;t upgraded to &lt;code&gt;1.5.x&lt;/code&gt; yet, we advise you to do so as soon as possible.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

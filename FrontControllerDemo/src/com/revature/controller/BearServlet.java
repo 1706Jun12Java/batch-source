@@ -3,6 +3,7 @@ package com.revature.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,12 @@ public class BearServlet extends HttpServlet {
 		for (Bear b : bdl.getBears()){
 			pw.println("<p>"+b.toString()+"</p>");
 		}
-		
+		pw.println("<p>What am I?</p>");
+		ServletConfig config = getServletConfig();
+		pw.println("<p>"+config.getInitParameter("whatAmI")+"</p>");
+		pw.println("<p>Where are we?</p>");
+		pw.println("<p>"+config.getServletContext().getInitParameter("whereAreWe")+"</p>");
+
 	}
 
 	/**

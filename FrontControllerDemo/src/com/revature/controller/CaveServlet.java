@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +27,12 @@ public class CaveServlet extends HttpServlet {
 		for (Cave c : cdl.getCaves()){
 			pw.println("<p>"+c.toString()+"</p>");
 		}
-		
+		pw.println("<p>What am I?</p>");
+		ServletConfig config = getServletConfig();
+		pw.println("<p>"+config.getInitParameter("whatAmI")+"</p>");
+		pw.println("<p>Where are we?</p>");
+		pw.println("<p>"+config.getServletContext().getInitParameter("whereAreWe")+"</p>");
+
 	}
 
 }

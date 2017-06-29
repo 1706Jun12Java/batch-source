@@ -3,7 +3,6 @@ INDEX VERSION 1.129+C:\GitRepos\1706-jun12-java\batch-source\.metadata\.plugins\
 696985520.index
 1863681858.index
 3795380262.index
-2564381898.index
 1887506431.index
 3591977437.index
 3326406426.index

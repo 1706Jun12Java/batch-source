@@ -22,5 +22,14 @@ public class AnswerServlet extends HttpServlet {
 		pw.println("<a href=\"Calculator.html\">MOAR NUMBERS PLEASE</a>");
 		
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter pw = resp.getWriter();
+		String answer = (String) req.getAttribute("answer");
+		pw.println("<p>the answer is "+answer+"</p>");
+		pw.println("<a href=\"Calculator.html\">MOAR NUMBERS PLEASE</a>");
+		
+	}
 
 }

@@ -49,9 +49,10 @@ public class CalculatorServlet extends HttpServlet {
 		}
 		req.setAttribute("answer", answer);
 		
-		/*RequestDispatcher rd = req.getRequestDispatcher("answer");
-		rd.forward(req, resp);*/
-		resp.sendRedirect("answer");
+		RequestDispatcher rd = req.getRequestDispatcher("answer");
+		rd.forward(req, resp);
+		/* 
+		resp.sendRedirect("answer"); */
 		
 		
 	}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Bank</display-name>
+  <servlet>
+    <servlet-name>BankLogin</servlet-name>
+    <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BankLogin</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>BankRegister</servlet-name>
+    <servlet-class>com.revature.servlet.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BankRegister</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>logout</servlet-name>
+  <servlet-class>com.revature.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>logout</servlet-name>
+  <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+  <servlet-name>WD</servlet-name>
+  <servlet-class>com.revature.servlet.WDServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>WD</servlet-name>
+  <url-pattern>/wd</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+    <servlet>
+  <servlet-name>CRDE</servlet-name>
+  <servlet-class>com.revature.servlet.CDServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>CRDE</servlet-name>
+  <url-pattern>/crde</url-pattern>
+  </servlet-mapping>
+</web-app>

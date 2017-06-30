@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Page</title>
+</head>
+<body>
+
+<form action="wd" method="post">
+		BankAccountId#:<input type="text" name="bankidnum"><br> 
+		Amount:<input type="text" name="amount"><br> Withdraw/Deposit
+		<input list="operation" name="operation">
+		<datalist id="operation">
+			<option value="withdraw">
+			<option value="deposit">
+		</datalist><br>
+		<input type="submit" value="Confirm" />
+	</form><br>
+<div>Create a new account or delete empty accounts: </div>
+	<form action="crde" method="post">
+		<input list="crde" name="crde">
+		<datalist id="crde">
+			<option value="DeleteEmptyAccounts">
+			<option value="CreateNewAccount">
+		</datalist><br>
+		<input type="submit" value="Do It" />
+	</form>
+
+	<h2><a href="logout">Logout</a></h2>
+</body>
+</html>

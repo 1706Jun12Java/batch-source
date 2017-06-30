@@ -29,7 +29,7 @@ public class CustomerDaoImpl extends HttpServlet implements CustomerDao {
 			//String c_username = req.getParameter("C_USERNAME");
 			//String c_password = req.getParameter("C_PASSWORD");
 			
-			
+			//change to prepared statement
 			String sql = "INSERT INTO CUSTOMER "
 					+ "(C_ID,C_FIRSTNAME,C_LASTNAME,C_USERNAME,C_PASSWORD) "
 					+ "VALUES (c_id,c_firstname,c_lastname,c_username,c_password)";

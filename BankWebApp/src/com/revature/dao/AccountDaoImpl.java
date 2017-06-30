@@ -22,6 +22,7 @@ public class AccountDaoImpl extends HttpServlet implements AccountDao{
 	@Override
 	public void insertAccount() {
 		try(Connection con = ConnectionUtil.getConnectionFromFile("connection.properties")){
+			// to change to prepared statement
 			String sql = "INSERT INTO ACCOUNT"
 				+ "(ACCID,BALANCE,CUSTID)"
 				+ "VALUES (5,37800,4)";

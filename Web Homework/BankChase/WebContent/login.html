@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<style>
+
+body {
+    background-image: url("http://www.powerpointhintergrund.com/uploads/2017/06/07-plain-backgrounds-dark-blue-checks-web-background-hd-245-jpg--34.jpeg");
+    background-size: 1620px 780px;
+    background-repeat: no-repeat;
+    
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+button {
+    background-color: #2f58fc;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    opacity: 0.8;
+}
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #2f58fc;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 0px 0 0px 0;
+}
+img.avatar {
+}
+.container {
+    padding: 28px;
+    width: 500px;
+    margin: auto;
+}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+ <form action="login" method = "post">
+  <div class="imgcontainer">
+    <img src="http://www.getkard.com/blog/wp-content/uploads/2016/07/Chase-Logo-EPS-vector-image.png" 
+    alt="Avatar" class="avatar" width= "500px">
+  </div>
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+  </div>
+
+</form> 
+</body>
+</html>

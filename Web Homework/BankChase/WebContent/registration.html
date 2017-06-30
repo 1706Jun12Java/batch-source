@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<style>
+label{
+color: #9d9d9d;
+font-size: 20px;
+}
+body{
+background-image: url("http://codigovisual.com.ar/wp-content/registration-page-background-504.png");
+background-size: 1920px 1080px;
+background-repeat: no-repeat;
+}
+h1{
+position: relative;
+left: 5.5cm;
+top: 1cm;
+color: white;
+    
+}
+form{
+position: relative;
+top: 80px;
+margin-left: 5cm;
+margin-right: 10cm;
+}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+/* Set a style for all buttons */
+button {
+    background-color: #6db4cb;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,.signupbtn {
+    float: left;
+    width: 15%;
+}
+/* Add padding to container elements */
+.container {
+    padding: 40px;
+}
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>Signup Form</h1>
+
+<form action="register" method = "post">
+  <div class="container">
+  <label><b>First Name</b></label><br>
+    <input type="text" placeholder="Enter First Name" name="f_name" required><br>
+    
+  <label><b>Last Name</b></label><br>
+    <input type="text" placeholder="Enter Last Name" name="l_name" required><br>
+    
+    <label><b>Phone Number</b></label><br>
+    <input type= "text" placeholder="Enter Phone Number" name="phoneNum" required><br>
+    
+    <label><b>Email</b></label><br>
+    <input type="text" placeholder="Enter Email" name="email" required><br>
+
+    <label><b>Username</b></label><br>
+    <input type="text" placeholder="Enter Username" name="username" required><br>
+
+    <label><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" name="password" required><br>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

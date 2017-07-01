@@ -20,26 +20,22 @@ public class LoginServlet extends HttpServlet {
 		@Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	        response.setContentType("text/html;charset=UTF-8");
+			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			PrintWriter pw = response.getWriter();
+
+			// You should actually validate your passwords. But you get the point.
+			if (username.equals("hello")) { // password
+				pw.println("<p>hello, " + request.getParameter("username") + "</p>");
+			} else {
+				pw.println("<p>NO</p>");
+			}
+			pw.println("<a href=\"login.html\">go home</a>");
+
+	        /*TestClass.checkUser(un,pw)*/
 	        
-	        PrintWriter out = response.getWriter();
-	        
-	        String un = request.getParameter("username");
-	        String pw = request.getParameter("password");
-	        
-	       
-	       if(TestClass.checkUser(un,pw))
-	        {	
-	        	RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-	            rs.forward(request, response);
-	        	
-	        }
-	        else
-	        {
-	           out.println("Username or Password incorrect");
-	           RequestDispatcher rs = request.getRequestDispatcher("index.html");
-	           rs.include(request, response);
-	        }
+	      
 	    }  
 	
 

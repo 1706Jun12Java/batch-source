@@ -13,6 +13,6 @@ public interface AccountDAO {
 	
 	public boolean createAccount(String username);
 	
-	public boolean deleteAccount(int ID);
+	public boolean deleteAccount(int ID, String username);
 
 }

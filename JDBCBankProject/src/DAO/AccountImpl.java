@@ -86,22 +86,24 @@ public class AccountImpl implements AccountDAO {
 	}
 
 	@Override
-	public boolean deleteAccount(int ID) {
+	public boolean deleteAccount(int ID, String username) {
 		Connection con;
 		try {
 			con = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM ACCOUNTS WHERE ACCOUNT_ID = ? ";
+			String sql = "SELECT * FROM ACCOUNTS WHERE ACCOUNT_ID = ? AND USER_NAME = ?";
 			PreparedStatement ptsmt = con.prepareStatement(sql);
 			ptsmt.setInt(1, ID);
+			ptsmt.setString(2, username);
 			ResultSet rs = ptsmt.executeQuery();
 			rs.next();
 			if (rs.getInt("AMOUNT") == 0) {
 				con = ConnectionUtil.getConnection();
-				sql = "DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ?  ";
+				sql = "DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ? AND USER_NAME = ? ";
 				ptsmt = con.prepareStatement(sql);
 				System.out.println(ID);
 				
 				ptsmt.setInt(1, ID);
+				ptsmt.setString(2, username);
 				ptsmt.execute();
 				return true;
 			} else {

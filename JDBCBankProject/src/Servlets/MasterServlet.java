@@ -17,8 +17,12 @@ public class MasterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession sess = req.getSession();
-		sess.setAttribute("username", req.getParameter("username"));
-		sess.setAttribute("password", req.getParameter("password"));
+		// These cannot be null
+		if (req.getParameter("username") != null) {
+			sess.setAttribute("username", req.getParameter("username"));
+			sess.setAttribute("password", req.getParameter("password"));
+		}
+		// these can
 		sess.setAttribute("amount", req.getParameter("amount_of_money"));
 		sess.setAttribute("account", req.getParameter("account"));
 		sess.setAttribute("login", null);

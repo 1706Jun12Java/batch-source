@@ -21,7 +21,7 @@ public class AccountImpl implements AccountDAO {
 		ArrayList<Account> accounts = new ArrayList<>();
 		try {
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM ACCOUNTS WHERE USER_NAME = ?";
+			String sql = "SELECT * FROM ACCOUNTS WHERE USER_NAME = ? ORDER BY ACCOUNT_ID";
 			PreparedStatement pdsmt = con.prepareStatement(sql);
 			pdsmt.setString(1, username);
 			ResultSet rs = pdsmt.executeQuery();
@@ -99,6 +99,8 @@ public class AccountImpl implements AccountDAO {
 				con = ConnectionUtil.getConnection();
 				sql = "DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ?  ";
 				ptsmt = con.prepareStatement(sql);
+				System.out.println(ID);
+				
 				ptsmt.setInt(1, ID);
 				ptsmt.execute();
 				return true;

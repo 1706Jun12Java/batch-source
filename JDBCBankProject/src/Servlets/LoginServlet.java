@@ -29,16 +29,6 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession sess = req.getSession();
-		BankUserDAO bk = new BankUserImpl();
-		for (BankUser b : bk.getBankUsers()) {
-			if (sess.getAttribute("username").equals(b.getUsername())
-					&& sess.getAttribute("password").equals(b.getPassword())) {
-				sess.setAttribute("login", "successful");
-				resp.sendRedirect("LoggedIn.html");
-			}
-		}
-
 	}
 
 }

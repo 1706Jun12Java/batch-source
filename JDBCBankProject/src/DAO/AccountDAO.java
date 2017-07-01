@@ -6,8 +6,6 @@ import Domain.Account;
 
 public interface AccountDAO {
 	public List<Account> getAccounts(String username);
-
-	public boolean addAccount(String username);
 	
 	public boolean withdraw(int ID,double amount);
 	

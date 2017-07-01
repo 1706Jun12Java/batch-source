@@ -1,13 +1,11 @@
 package com.bankapp.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class LoginServlet extends HttpServlet {
@@ -21,19 +19,24 @@ public class LoginServlet extends HttpServlet {
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 			
+			HttpSession session = request.getSession(); 
+			
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			PrintWriter pw = response.getWriter();
+			//PrintWriter pw = response.getWriter();
 
-			// You should actually validate your passwords. But you get the point.
-			if (username.equals("hello")) { // password
-				pw.println("<p>hello, " + request.getParameter("username") + "</p>");
+			if (TestClass.checkUser(username, password)) { // .equals(password)
+				//pw.println("<p>hello, " + request.getParameter("username") + "</p>");
+				session.setAttribute("username", username);
+				response.sendRedirect("mainMenu.html");
 			} else {
-				pw.println("<p>NO</p>");
+				response.sendRedirect("index.html");
 			}
-			pw.println("<a href=\"login.html\">go home</a>");
-
-	        /*TestClass.checkUser(un,pw)*/
+			
+	        /*TestClass.checkUser(username,password)*/
+			/*
+			 * .equals(password)
+			 */
 	        
 	      
 	    }  

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bank.dao.UserImpl;
+import com.bank.user.User;
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet{
@@ -27,7 +28,13 @@ public class RegisterServlet extends HttpServlet{
 			pw.println(wasIncorrect);
 		}
 		
-		req.getRequestDispatcher("register.html").include(req, resp);
+		User user = (User) session.getAttribute("user");
+
+		if (user == null){
+			req.getRequestDispatcher("register.html").include(req, resp);
+		} else {
+			resp.sendRedirect("profile");
+		}
 	}
 
 	@Override

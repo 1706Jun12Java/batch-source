@@ -1,7 +1,5 @@
 package com.bank.util;
 
-import oracle.jdbc.driver.OracleDriver;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

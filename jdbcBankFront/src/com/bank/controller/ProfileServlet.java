@@ -23,16 +23,22 @@ public class ProfileServlet extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		HttpSession session = req.getSession(false);
 		
+		req.getRequestDispatcher("index.html").include(req, resp);
 
 		if(session != null) {
 			try {
 				User user = (User) session.getAttribute("user");
 
-				pw.println("Hello, " + user.getUsername() + ". Welcome to your Profile.");
-				pw.println("<div> <a href=\"account\"> view accounts </a> </div>");
+				pw.println("<div class=\"jumbotron container\">");
+		
+				pw.println("<p> Hello, " + user.getUsername() + ". Welcome to your Profile. </p>");
 				
-				pw.println("<div> <a href=\"logout\"> logout</a> </div>");
-				
+				pw.println("<div class=\"btn-group\">");
+
+				pw.println("<button type=\"button\"class=\"btn btn-default\"> <a href=\"account\"> view accounts </a> </button>");
+				pw.println("<button type=\"button\"class=\"btn btn-danger\"> <a href=\"logout\"> logout</a> </button>");
+				pw.println("</div>");
+
 				if (user.getSuperUser() > 0){
 					   pw.print("<div> <p>Super user Action</p> </div>"
 					   		+ "<form action=\"super\" action=\"get\">"
@@ -41,6 +47,8 @@ public class ProfileServlet extends HttpServlet {
 								+ "<option value=\"delete\"> Delete All Users </option> "
 			            		+ "<input type=\"submit\" value=\"Go\"></form> </div>");
 				}
+				
+				pw.println("</div>");
 			} catch (Exception e) {
 				resp.sendRedirect("login");
 			}

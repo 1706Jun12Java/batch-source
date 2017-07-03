@@ -6,7 +6,10 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+import org.bouncycastle.jcajce.provider.symmetric.AES.OFB;
+
 import com.bank.dao.UserSessionImpl;
+import com.bank.user.User;
 
 @SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet{
@@ -28,15 +31,21 @@ public class LoginServlet extends HttpServlet{
 			pw.println(succesfulRegister);
 		}
 		
-		req.getRequestDispatcher("login.html").include(req, resp);
+		User user = (User) session.getAttribute("user");
 
+		if (user == null){
+			req.getRequestDispatcher("login.html").include(req, resp);
+		} else {
+			resp.sendRedirect("profile");
+		}
+		
 	}
 	
 	@Override 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException{
 		
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 		
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
@@ -44,9 +53,11 @@ public class LoginServlet extends HttpServlet{
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
+		
 		UserSessionImpl loginUser = new UserSessionImpl();
 		
 		loginUser.login(username,password);
+		
 		
 		if (loginUser.isOnline()){
 			pw.println("Welcome, "+ loginUser.getUser().getUsername());
@@ -54,7 +65,6 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("user", loginUser.getUser());
 			
 			session.setAttribute("incorrect",null);
-			
 			loginUser = null;
 			
 			resp.sendRedirect("profile");
@@ -63,6 +73,5 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("incorrect", "incorrect password");
 			resp.sendRedirect("login");
 		}
-		
 	}
 }

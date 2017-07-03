@@ -63,7 +63,7 @@ public class SuperServlet extends HttpServlet{
 	        UserDao userImpl = new UserImpl();
 			
 			System.out.println("Updating user");
-			HttpSession session = req.getSession(false);
+//			HttpSession session = req.getSession(false);
 
 
 	        if (userImpl.updateUser(userid, username,password,email) ){

@@ -3,10 +3,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Page</title>
+<style>
+	body {background-color:lightgreen;} 
+			
+</style>
 </head>
 <body>
 
 <form action="wd" method="post">
+<fieldset>
+		<legend>Withdraw or deposit to an account:</legend>
 		BankAccountId#:<input type="text" name="bankidnum"><br> 
 		Amount:<input type="text" name="amount"><br> Withdraw/Deposit
 		<input list="operation" name="operation">
@@ -14,17 +20,22 @@
 			<option value="withdraw">
 			<option value="deposit">
 		</datalist><br>
+		</fieldset>
 		<input type="submit" value="Confirm" />
-	</form><br>
-<div>Create a new account or delete empty accounts: </div>
+	</form>
+	
 	<form action="crde" method="post">
+	<fieldset>
+		<legend>Create a new account or your delete empty accounts:</legend>
 		<input list="crde" name="crde">
 		<datalist id="crde">
 			<option value="DeleteEmptyAccounts">
 			<option value="CreateNewAccount">
 		</datalist><br>
+		</fieldset>
 		<input type="submit" value="Do It" />
 	</form>
+
 
 	<h2><a href="logout">Logout</a></h2>
 </body>

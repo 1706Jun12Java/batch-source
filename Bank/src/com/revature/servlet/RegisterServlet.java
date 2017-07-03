@@ -55,7 +55,8 @@ public class RegisterServlet extends HttpServlet{
 			session.setAttribute("fname", user.getFname());
 			session.setAttribute("lname", user.getLname());
 			session.setAttribute("level", user.getIsSuperUser());
-			pw.println("<p>Welcome, "+username+"</p>");
+			pw.println("<p>Welcome, "+fname+"</p>");
+			req.getRequestDispatcher("normalUser.html").include(req, res);
 			List<BankAccount> banks =null;
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			banks=bd.getBankAccountsByUser(user);
@@ -68,7 +69,7 @@ public class RegisterServlet extends HttpServlet{
 				pw.println("<p>You have no bank accounts</p> ");
 			}
 
-			req.getRequestDispatcher("normalUser.html").include(req, res);
+			
 		}
 		else{
 			session.setAttribute("incorrect", "Account could not be made");

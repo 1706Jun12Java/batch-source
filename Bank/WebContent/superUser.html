@@ -3,10 +3,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Super User Page</title>
+<style>
+	body {background-color:lightgreen;} 
+			
+</style>
 </head>
 <body>
 
 <form action="wd" method="post">
+<fieldset>
+		<legend>Withdraw or deposit to an account:</legend>
 		BankAccountId#:<input type="text" name="bankidnum"><br> 
 		Amount:<input type="text" name="amount"><br> Withdraw/Deposit
 		<input list="operation" name="operation">
@@ -14,16 +20,44 @@
 			<option value="withdraw">
 			<option value="deposit">
 		</datalist><br>
+		</fieldset>
 		<input type="submit" value="Confirm" />
 	</form>
-	<div>Create a new account or delete empty accounts: </div>
 	<form action="crde" method="post">
+	<fieldset>
+		<legend>Create a new account or your delete empty accounts:</legend>
 		<input list="crde" name="crde">
 		<datalist id="crde">
 			<option value="DeleteEmptyAccounts">
 			<option value="CreateNewAccount">
 		</datalist><br>
+		</fieldset>
 		<input type="submit" value="Do It" />
+	</form>
+
+<form action="createUser" method="post">
+	<fieldset>
+		<legend>Enter the information for a new user:</legend>
+		username:<br>
+		<input type="text" name="cusername"><br>
+		password:<br>
+		<input type="password" name="cpassword"><br>
+		
+		first name:<br>
+		<input type="text" name="cfname"><br>
+		last name:<br>
+		<input type="text" name="clname">
+	</fieldset>
+		<input type="submit" value="createUser">
+	</form>
+
+<form action="deleteUser" method="post">
+	<fieldset>
+		<legend>Deleting a user:</legend>
+		Id of user to delete:<br>
+		<input type="text" name="did"><br>
+	</fieldset>
+		<input type="submit" value="deleteUser">
 	</form>
 
 	<h2><a href="logout">Logout</a></h2>

@@ -48,7 +48,7 @@ public class WDServlet extends HttpServlet{
 					has=true;
 			}
 			if(has==false){
-				pw.println("<p>You have accounts to do that with</p> ");
+				pw.println("<p>You have no accounts to do that with</p> ");
 			}
 			else{
 				if(op.equals("withdraw")){
@@ -62,6 +62,8 @@ public class WDServlet extends HttpServlet{
 			}
 			
 		}
+
+		req.getRequestDispatcher("superUser.html").include(req, res);
 		if(b!=null){
 			pw.println("<h3>Your accounts:</h3> ");
 			for(BankAccount ba: b){
@@ -76,7 +78,7 @@ public class WDServlet extends HttpServlet{
 			for(User u:userDao.getUsers()){
 				pw.println("<p>"+u.toString()+"</p> ");
 			}
-		req.getRequestDispatcher("superUser.html").include(req, res);
+		
 		}
 		
 	}

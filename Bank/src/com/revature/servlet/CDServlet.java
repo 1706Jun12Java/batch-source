@@ -35,6 +35,7 @@ public class CDServlet extends HttpServlet{
 		User user=userDao.userLogin((String)session.getAttribute("username"), 
 				(String)session.getAttribute("password"));
 		pw.println("<p>Welcome, "+user.getFname()+"</p>");
+		
 		String op=req.getParameter("crde");
 		List<BankAccount> b=bankDao.getBankAccountsByUser(user);
 		if(op.equals("DeleteEmptyAccounts")){
@@ -48,9 +49,9 @@ public class CDServlet extends HttpServlet{
 		}
 		if(b.size()==0){
 			pw.println("<p>You have accounts to do that with</p> ");
-			pw.println("<p>It may take a while to show the updates</p> ");
 		}
-		else{
+		req.getRequestDispatcher("superUser.html").include(req, res);
+		if(b.size()!=0){
 			pw.println("<h3>Your accounts:</h3> ");
 			for(BankAccount ba: b){
 				pw.println("<p>"+ba.toString()+"</p> ");
@@ -64,7 +65,7 @@ public class CDServlet extends HttpServlet{
 			for(User u:userDao.getUsers()){
 				pw.println("<p>"+u.toString()+"</p> ");
 			}
-		req.getRequestDispatcher("superUser.html").include(req, res);
+		
 		}
 		
 	}

@@ -52,4 +52,25 @@
    <servlet-name>CRDE</servlet-name>
   <url-pattern>/crde</url-pattern>
   </servlet-mapping>
+  
+     <servlet>
+  <servlet-name>CreateUser</servlet-name>
+  <servlet-class>com.revature.servlet.CreateUserServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>CreateUser</servlet-name>
+  <url-pattern>/createUser</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+  <servlet-name>DelUser</servlet-name>
+  <servlet-class>com.revature.servlet.DeleteUserServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>DelUser</servlet-name>
+  <url-pattern>/deleteUser</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

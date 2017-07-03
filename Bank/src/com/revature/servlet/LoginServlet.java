@@ -75,6 +75,7 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("level", user.getIsSuperUser());
 			//res.sendRedirect("superUser.html");
 			pw.println("<p>Welcome, "+user.getFname()+"</p>");
+			req.getRequestDispatcher("superUser.html").include(req, res);
 			List<BankAccount> banks =null;
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			banks=bd.getBankAccountsByUser(user);
@@ -85,14 +86,15 @@ public class LoginServlet extends HttpServlet{
 					pw.println("<p>"+ba.toString()+"</p> ");
 				}
 			}
+			if(banks.size()==0){
+				pw.println("<p>You have no bank accounts</p> ");
+			}
 			pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
 			for(User u:userDao.getUsers()){
 				pw.println("<p>"+u.toString()+"</p> ");
 			}
-			if(banks.size()==0){
-				pw.println("<p>You have no bank accounts</p> ");
-			}
-			req.getRequestDispatcher("superUser.html").include(req, res);
+			
+			
 		}
 		else{
 			session.setAttribute("incorrect", "inccorect information");

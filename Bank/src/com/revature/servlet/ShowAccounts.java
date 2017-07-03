@@ -20,7 +20,7 @@ public class ShowAccounts extends HttpServlet{
 	public ShowAccounts() {
 		// TODO Auto-generated constructor stub
 	}
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException{
 		
 	}

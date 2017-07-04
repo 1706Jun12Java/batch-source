@@ -6,8 +6,6 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import org.bouncycastle.jcajce.provider.symmetric.AES.OFB;
-
 import com.bank.dao.UserSessionImpl;
 import com.bank.user.User;
 
@@ -25,6 +23,8 @@ public class LoginServlet extends HttpServlet{
 		String wasIncorrect = (String) session.getAttribute("incorrect");
 		String succesfulRegister = (String) session.getAttribute("succesfulRegister");
 
+		req.getRequestDispatcher("header.html").include(req, resp);
+
 		if (wasIncorrect != null){
 			pw.println(wasIncorrect);
 		} else if (succesfulRegister != null){
@@ -35,6 +35,9 @@ public class LoginServlet extends HttpServlet{
 
 		if (user == null){
 			req.getRequestDispatcher("login.html").include(req, resp);
+			
+			req.getRequestDispatcher("footer.html").include(req, resp);
+
 		} else {
 			resp.sendRedirect("profile");
 		}

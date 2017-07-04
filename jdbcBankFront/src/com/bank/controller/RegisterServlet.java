@@ -24,6 +24,8 @@ public class RegisterServlet extends HttpServlet{
 		
 		String wasIncorrect = (String) session.getAttribute("incorrect");
 		
+		req.getRequestDispatcher("header.html").include(req, resp);
+
 		if (wasIncorrect != null){
 			pw.println(wasIncorrect);
 		}
@@ -32,6 +34,9 @@ public class RegisterServlet extends HttpServlet{
 
 		if (user == null){
 			req.getRequestDispatcher("register.html").include(req, resp);
+			
+			req.getRequestDispatcher("footer.html").include(req, resp);
+
 		} else {
 			resp.sendRedirect("profile");
 		}
@@ -51,7 +56,6 @@ public class RegisterServlet extends HttpServlet{
 		boolean create = new UserImpl().createUser(username, password, email);;
 		
 		if (create){
-			
 			session.setAttribute("succesfulRegister", "successful");
 			resp.sendRedirect("login");
 		} else {				

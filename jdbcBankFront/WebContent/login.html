@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
 
-<form action="login" method="post">
-	<fieldset>
-		<legend>Enter your information:</legend>
-		user name :<br> <input type="text" name="username"><br>
-		password :<br> <input type="password" name="password">
-	</fieldset>
-	<input type="submit" value="login">
-	
-</form>
-	<div> <a href="index.html"> Back to index</a> </div>
-</body>
-</html>
+<div class="container">
+	<div>
+		 <form action="login" method="post"> 
+ 
+	      <div class="row">      
+	           <div class="col-md-offset-4 col-md-4 col-lg-4">
+	              <label for="username"> Username</label>
+	               <input name="username" placeholder="Username" class="form-control" type="text">    
+	           </div>            
+	      </div>
+	      
+	      <div class="row">
+	           <div class="col-md-offset-4 col-md-4 col-lg-4">
+	              <label for="password">Password</label>
+	               <input name="password" placeholder="Password" class="form-control" type="password">             
+	           </div>            
+	      </div>
+	      	      
+	      <div class="row">
+	      	<div class="col-md-offset-4 col-md-4 col-lg-4">
+	      		<button style="margin: 20px 0px;"class="btn btn-primary btn-block btn-md">Login</button>
+	        </div>
+	      </div>
+	          
+	    </form>
+	</div>
+</div>

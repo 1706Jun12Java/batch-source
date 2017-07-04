@@ -23,7 +23,7 @@ public class ProfileServlet extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		HttpSession session = req.getSession(false);
 		
-		req.getRequestDispatcher("index.html").include(req, resp);
+		req.getRequestDispatcher("header.html").include(req, resp);
 
 		if(session != null) {
 			try {
@@ -49,6 +49,7 @@ public class ProfileServlet extends HttpServlet {
 				}
 				
 				pw.println("</div>");
+				req.getRequestDispatcher("footer.html").include(req, resp);
 			} catch (Exception e) {
 				resp.sendRedirect("login");
 			}

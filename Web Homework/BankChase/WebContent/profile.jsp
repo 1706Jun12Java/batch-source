@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -14,6 +16,7 @@
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
+	background-color: #1F57B0;
 }
 .row.content {
 	height: 644px;
@@ -69,7 +72,7 @@ footer {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
-					<a href="#">Create new account</a>
+					<a href="createaccount.html">Create new account</a>
 				</p>
 				<p>
 					<a href="#">Delete existing account</a>
@@ -79,7 +82,10 @@ footer {
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Welcome to your Chase Profile</h1>
+			<% 
+				String user = (String) session.getAttribute("username");
+			%>
+				<h1>Welcome to your Chase Profile <%=user %></h1>
 
 				<hr>
 				<h3>Mission Statement</h3>
@@ -87,7 +93,7 @@ footer {
 				and make sure we stay as rich as possible</p>
 				<h4>Transactions</h4>
 				<p> If you agree with our mission statement then please look over your options on the navigation bar 
-				located at the top of the page</p>
+				located at the top of the page and choose to deposit your money with us</p>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">

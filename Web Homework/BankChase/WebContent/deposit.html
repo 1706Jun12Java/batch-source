@@ -17,6 +17,7 @@ margin: 10px;
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
+	background-color: #1F57B0;
 }
 .row.content {
 	height: 644px;
@@ -56,7 +57,7 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="MainPage.html">Home</a></li>
-					<li><a href="profile.html">Profile</a></li>
+					<li><a href="profile.jsp">Profile</a></li>
 					<li><a href="withdrawal.html">Withdraw</a></li>
 					<li><a href="checkbalance.html">Check Balance</a></li>
 				</ul>
@@ -72,7 +73,7 @@ footer {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
-					<a href="#">Create new account</a>
+					<a href="createaccount.html">Create new account</a>
 				</p>
 				<p>
 					<a href="#">Delete existing account</a>
@@ -90,10 +91,7 @@ footer {
 				<legend>Deposit</legend>
 				<form action= "DepositServlet" method="post">
 				
-				Enter ID:<br>
-				<input type = "text" name = "idid"><br>
-				
-				Enter Account Number:<br>
+				Enter Account Id:<br>
 				<input type= "text" name= "accountnum"><br>
 				
 				Enter Amount:<br>

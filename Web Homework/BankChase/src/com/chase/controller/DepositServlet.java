@@ -8,8 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chase.dao.BankAccountDaoImpl;
+import com.chase.dao.UserDaoImpl;
+import com.chase.exceptions.IncorrectAccountException;
 
 
 public class DepositServlet extends HttpServlet {
@@ -27,21 +30,22 @@ public class DepositServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
+		HttpSession session  = request.getSession();
 		
-		String userId = request.getParameter("idid");
-		String accountNum = request.getParameter("accountnum");
-		String amountt = request.getParameter("amount");
-		int u_id = Integer.parseInt(userId);
-		int acc_num = Integer.parseInt(accountNum);
-		int amount = Integer.parseInt(amountt);
+		String username = (String) session.getAttribute("username");
+		int accountNum = Integer.parseInt(request.getParameter("accountnum"));
+		int amount = Integer.parseInt(request.getParameter("amount"));
 		
 		try{
-			BankAccountDaoImpl.deposit(u_id, acc_num, amount);
-			RequestDispatcher rd = request.getRequestDispatcher("withdrawconfirm.html");
+			int u_Id = UserDaoImpl.getUserByUsername(username);
+			BankAccountDaoImpl.deposit(u_Id, accountNum, amount);
+			RequestDispatcher rd = request.getRequestDispatcher("depositconfirm.jsp");
 			rd.forward(request, response);
 		}
-		catch (Exception e){
-			e.printStackTrace();
+		catch (IncorrectAccountException e){
+			RequestDispatcher rd = request.getRequestDispatcher("404.html");
+			rd.include(request, response);
+			pw.println(e.getMessage());;
 		}
 		pw.close();
 	}

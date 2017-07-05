@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Current Balance</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -14,6 +16,7 @@
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
+	background-color: #1F57B0;
 }
 .row.content {
 	height: 644px;
@@ -53,7 +56,7 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="MainPage.html">Home</a></li>
-					<li><a href="profile.html">Profile</a></li>
+					<li><a href="profile.jsp">Profile</a></li>
 					<li><a href="withdrawal.html">Withdrawal</a></li>
 					<li><a href="deposit.html">Deposit</a></li>
 				</ul>
@@ -69,7 +72,7 @@ footer {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
-					<a href="#">Create new account</a>
+					<a href="createaccount.html">Create new account</a>
 				</p>
 				<p>
 					<a href="#">Delete existing account</a>
@@ -82,7 +85,11 @@ footer {
 				<h1>Check Balance</h1>
 
 				<hr>
-				
+				<%
+				Object balance = session.getAttribute("CURRENT_BALANCE");
+				%>
+				<h3>Your current balance is <%=balance%></h3><br>
+				<a href = "checkbalance.html">go back</a>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">

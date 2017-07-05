@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Confirmation</title>
-</head>
+<title>Create Bank Account</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,6 +14,7 @@
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
+	background-color: #1F57B0;
 }
 .row.content {
 	height: 644px;
@@ -54,9 +54,9 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="MainPage.html">Home</a></li>
-					<li><a href="profile.html">Profile</a></li>
+					<li><a href="profile.jsp">Profile</a></li>
+					<li><a href="withdrawal.html">Withdrawal</a></li>
 					<li><a href="deposit.html">Deposit</a></li>
-					<li><a href="checkbalance.html">Check Balance</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="LogoutServlet"><span class="glyphicon glyphicon-log-in"></span>
@@ -70,7 +70,7 @@ footer {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
-					<a href="#">Create new account</a>
+					<a href="createaccount.html">Create new account</a>
 				</p>
 				<p>
 					<a href="#">Delete existing account</a>
@@ -80,12 +80,15 @@ footer {
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1></h1>
+				<h1>Create an account</h1>
 
 				<hr>
-				
-				<h3>Transaction completed</h3><br>
-				<a href = "withdrawal.html">go back</a>
+				<h3>Enter an amount you wish to put into a new account</h3>
+				<form action = "CreateAccountServlet" method = "post">
+				Give us that money:<br>
+				<input type = "text" name = "money"><br>
+				<input type = "submit" value = "submit">
+				</form>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">

@@ -12,43 +12,34 @@ import javax.servlet.http.HttpSession;
 
 import com.chase.dao.BankAccountDaoImpl;
 import com.chase.dao.UserDaoImpl;
-import com.chase.exceptions.IncorrectAccountException;
-import com.chase.exceptions.OverDraftException;
 
-
-public class WithdrawalServlet extends HttpServlet {
+public class CreateAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public WithdrawalServlet() {
+
+    public CreateAccountServlet() {
         super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-		HttpSession session  = request.getSession();
+		HttpSession session = request.getSession();
 		
+		double amount = Double.parseDouble(request.getParameter("money"));
 		String username = (String) session.getAttribute("username");
-		int accountNum = Integer.parseInt(request.getParameter("accountnum"));
-		int amount = Integer.parseInt(request.getParameter("amount"));
 		
 		try{
 			int u_Id = UserDaoImpl.getUserByUsername(username);
-			BankAccountDaoImpl.withdraw(u_Id, accountNum, amount);
-			RequestDispatcher rd = request.getRequestDispatcher("withdrawconfirm.jsp");
+			BankAccountDaoImpl.createBankAccount(u_Id,amount);
+			RequestDispatcher rd = request.getRequestDispatcher("createaccountconfirm.jsp");
 			rd.forward(request, response);
 		}
-		catch (IncorrectAccountException | OverDraftException e){
-			RequestDispatcher rd = request.getRequestDispatcher("404.html");
-			rd.include(request, response);
-			pw.println(e.getMessage());
+		catch (Exception e){
+			e.printStackTrace();
 		}
 		pw.close();
 	}

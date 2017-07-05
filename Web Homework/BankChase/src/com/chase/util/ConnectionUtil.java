@@ -11,9 +11,6 @@ public class ConnectionUtil {
 	  private static Connection con = null;
 
 	  public static Connection getConnectionFromFile() {
-	      if (con != null) {
-	          return con;
-	      } else {
 	          try {
 	              InputStream inputStream = ConnectionUtil.class.getClassLoader()
 	                      .getResourceAsStream("connection.properties");
@@ -37,4 +34,4 @@ public class ConnectionUtil {
 	          return con;
 	      }
 	  }
-}
+

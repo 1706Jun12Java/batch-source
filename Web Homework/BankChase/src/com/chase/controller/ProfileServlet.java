@@ -21,7 +21,7 @@ public class ProfileServlet extends HttpServlet{
         HttpSession session = request.getSession(false);  
         if(session!=null){  
         session.getAttribute("username"); 
-        request.getRequestDispatcher("profile.html").include(request, response); 
+        request.getRequestDispatcher("profile.jsp").include(request, response); 
         }  
         else{  
         	 

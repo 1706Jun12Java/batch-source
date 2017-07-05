@@ -22,7 +22,7 @@ public class BankAccount {
 
 	@Override
 	public String toString() {
-		return "BankAccount [id=" + baid + ", currentBalance=" + currentBalance + "]";
+		return ""+currentBalance +"";
 	}
 
 	public int getId() {

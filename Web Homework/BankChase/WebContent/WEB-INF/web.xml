@@ -50,12 +50,20 @@
     <servlet-name>CheckBalanceServlet</servlet-name>
     <url-pattern>/CheckBalanceServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>DepositServlet</servlet-name>
     <servlet-class>com.chase.controller.DepositServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DepositServlet</servlet-name>
     <url-pattern>/DepositServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>CreateAccountServlet</servlet-name>
+    <servlet-class>com.chase.controller.CreateAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAccountServlet</servlet-name>
+    <url-pattern>/CreateAccountServlet</url-pattern>
   </servlet-mapping>
 </web-app>

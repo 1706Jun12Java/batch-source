@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Withdraw</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Account Creation Confirmed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,9 +13,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-input{
-margin: 10px;
-}
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
@@ -58,8 +57,8 @@ footer {
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="MainPage.html">Home</a></li>
 					<li><a href="profile.jsp">Profile</a></li>
+					<li><a href="withdrawal.html">Withdrawal</a></li>
 					<li><a href="deposit.html">Deposit</a></li>
-					<li><a href="checkbalance.html">Check Balance</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="LogoutServlet"><span class="glyphicon glyphicon-log-in"></span>
@@ -83,23 +82,12 @@ footer {
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1></h1>
+				<h1>Account has been created</h1>
 
 				<hr>
-				
-				<fieldset>
-				<legend>Withdraw</legend>
-				<form action= "WithdrawalServlet" method="post">
-				
-				Enter Account Id:<br>
-				<input type= "text" name= "accountnum"><br>
-				
-				Enter Amount:<br>
-				<input type = "text" name = "amount"><br>
-				
-				<input type = "submit" value = "submit">
-				</form>
-				</fieldset>
+				<h3>Thank you for creating a new account with us <br>  
+				Your new account information will be emailed to you</h3><br>
+				<a href = "createaccount.html">go back</a>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">

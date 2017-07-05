@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet{
 	    if(LoginDaoImpl.validate(username, password)){  
 	    	HttpSession session=request.getSession();  
 	        session.setAttribute("username",username); 
-	        RequestDispatcher rd=request.getRequestDispatcher("profile.html");  
+	        RequestDispatcher rd=request.getRequestDispatcher("profile.jsp");  
 	        rd.forward(request,response);  
 	    }  
 	    else{  

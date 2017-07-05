@@ -3,13 +3,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Page</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">	
 <style>
-	body {background-color:lightgreen;} 
-			
+	body {background-color:lightgreen;text-align:center;font-size:24px;} 
+	span{font-size:24px;}
+	legend{font-size:32px;}
+	input{font-size:24px;}
 </style>
 </head>
 <body>
-
+<div class="container">
 <form action="wd" method="post">
 <fieldset>
 		<legend>Withdraw or deposit to an account:</legend>
@@ -21,9 +25,11 @@
 			<option value="deposit">
 		</datalist><br>
 		</fieldset>
-		<input type="submit" value="Confirm" />
+		<input type="submit" value="  Confirm  " />
 	</form>
+	</div>
 	
+	<div class="container">
 	<form action="crde" method="post">
 	<fieldset>
 		<legend>Create a new account or your delete empty accounts:</legend>
@@ -33,9 +39,9 @@
 			<option value="CreateNewAccount">
 		</datalist><br>
 		</fieldset>
-		<input type="submit" value="Do It" />
+		<input type="submit" value="  Do It  " />
 	</form>
-
+</div>
 
 	<h2><a href="logout">Logout</a></h2>
 </body>

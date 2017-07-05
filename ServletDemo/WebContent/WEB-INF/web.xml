@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ServletDemo</display-name>
+  <servlet>
+  	<servlet-name>ThisCanBeNamedAsAnythingButMatch</servlet-name>
+  	<servlet-class>com.revature.servlet.HelloWorldServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ThisCanBeNamedAsAnythingButMatch</servlet-name>
+  	<url-pattern>/nameOfAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>something</servlet-name>
+  	<servlet-class>com.revature.servlet.CalcServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>something</servlet-name>
+  	<url-pattern>/calculate</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>answer</servlet-name>
+  	<servlet-class>com.revature.servlet.AnswerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>answer</servlet-name>
+  	<url-pattern>/answerServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>

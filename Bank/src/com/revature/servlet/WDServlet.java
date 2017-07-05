@@ -34,10 +34,19 @@ public class WDServlet extends HttpServlet{
 		User user=userDao.userLogin((String)session.getAttribute("username"), 
 				(String)session.getAttribute("password"));
 		pw.println("<p>Welcome, "+user.getFname()+"</p>");
-		int bankidnum=Integer.parseInt(req.getParameter("bankidnum"));
-		int amount=Integer.parseInt(req.getParameter("amount"));
+		int bankidnum=0;
+		int amount=0;
+		try{
+			
+			bankidnum=Integer.parseInt(req.getParameter("bankidnum"));
+			amount=Integer.parseInt(req.getParameter("amount"));
+		}catch(Exception e){
+			pw.println("<p>Invalid input for id or amount </p> ");
+		}
 		String op=req.getParameter("operation");
 		List<BankAccount> b=bankDao.getBankAccountsByUser(user);
+		
+		
 		if(b.size()==0){
 			pw.println("<p>You have accounts to do that with</p> ");
 		}
@@ -59,20 +68,28 @@ public class WDServlet extends HttpServlet{
 					bankDao.depositToBank(user, bankidnum, amount);
 					pw.println("<p>You deposited it may take a while for site to update</p> ");
 				}
+				else{
+					pw.println("<p>You did not select a valid option</p> ");
+				}
 			}
 			
 		}
-
-		req.getRequestDispatcher("superUser.html").include(req, res);
+		
+		
+		if(user.getIsSuperUser().equals("T")){
+			req.getRequestDispatcher("superUser.html").include(req, res);
+			}
+		else {
+				req.getRequestDispatcher("normalUser.html").include(req, res);
+				
+			}
 		if(b!=null){
 			pw.println("<h3>Your accounts:</h3> ");
 			for(BankAccount ba: b){
 				pw.println("<p>"+ba.toString()+"</p> ");
 			}
 		}
-		if(user.getIsSuperUser().equals("F")){
-			req.getRequestDispatcher("normalUser.html").include(req, res);
-		}
+		
 		else{
 			pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
 			for(User u:userDao.getUsers()){

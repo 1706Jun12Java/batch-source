@@ -3,26 +3,32 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">	
 <style>
-	body {background-color:lightgreen;} 
-			
+	body {background-color:lightgreen;text-align:center;font-size:24px;} 
+	span{font-size:24px;}
+	legend{font-size:32px;}
+	input{font-size:24px;}
 </style>
 </head>
 <body>
+<div class="container">
 	<form action="register" method="post">
 	<fieldset>
 		<legend>Enter your information for registration:</legend>
-		username:<br>
-		<input type="text" name="username"><br>
-		password:<br>
-		<input type="password" name="password"><br>
+		Username:
+		<input type="text" name="username"><br><br>
+		Password:
+		<input type="password" name="password"><br><br>
 		
-		first name:<br>
-		<input type="text" name="fname"><br>
-		last name:<br>
+		First name:
+		<input type="text" name="fname"><br><br>
+		Last name:
 		<input type="text" name="lname">
 	</fieldset>
-		<input type="submit" value="register">
-	</form>
+	<br><br>
+		<input type="submit" value="  Register  ">
+	</form></div>
 </body>
 </html>

@@ -50,16 +50,19 @@ public class CDServlet extends HttpServlet{
 		if(b.size()==0){
 			pw.println("<p>You have accounts to do that with</p> ");
 		}
+		if(user.getIsSuperUser().equals("F")){
+			req.getRequestDispatcher("normalUser.html").include(req, res);
+		}
+		else{
 		req.getRequestDispatcher("superUser.html").include(req, res);
+		}
 		if(b.size()!=0){
 			pw.println("<h3>Your accounts:</h3> ");
 			for(BankAccount ba: b){
 				pw.println("<p>"+ba.toString()+"</p> ");
 			}
 		}
-		if(user.getIsSuperUser().equals("F")){
-			req.getRequestDispatcher("normalUser.html").include(req, res);
-		}
+		
 		else{
 			pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
 			for(User u:userDao.getUsers()){

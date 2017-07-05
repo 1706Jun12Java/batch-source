@@ -44,7 +44,13 @@ public class LoginServlet extends HttpServlet{
 		String password=req.getParameter("password");
 		UserDaoImpl userDao = new UserDaoImpl();
 		User user=userDao.userLogin(username, password);
-		if(user.getIsSuperUser().equals("F")){
+		if(user==null){
+			session.setAttribute("incorrect", "Inccorect information, try again");
+			res.sendRedirect("login");
+		}
+		
+		
+		else if(user.getIsSuperUser().equals("F")){
 			
 			session.setAttribute("username", user.getUsername());
 			session.setAttribute("password", user.getPassword());
@@ -53,6 +59,8 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("level", user.getIsSuperUser());
 			
 			pw.println("<p>Welcome, "+user.getFname()+"</p>");
+			
+			req.getRequestDispatcher("normalUser.html").include(req, res);
 			List<BankAccount> banks =null;
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			banks=bd.getBankAccountsByUser(user);
@@ -65,7 +73,7 @@ public class LoginServlet extends HttpServlet{
 			if(banks.size()==0){
 				pw.println("<p>You have no bank accounts</p> ");
 			}
-			req.getRequestDispatcher("normalUser.html").include(req, res);
+			
 		}
 		else if(user.getIsSuperUser().equals("T")){
 			session.setAttribute("username", user.getUsername());
@@ -96,9 +104,6 @@ public class LoginServlet extends HttpServlet{
 			
 			
 		}
-		else{
-			session.setAttribute("incorrect", "inccorect information");
-			res.sendRedirect("login");
-		}
+		
 	}
 }

@@ -111,19 +111,19 @@ public class AccountController implements AccountDAO
     @Override
     public boolean isTypeAvailable(int userId, int accountType)
     {
-        int rows = 0;
+        int rows;
         try (Connection connection = ConnectionUtil.getConnection())
         {
-            String sql = "SELECT COUNT(ACCOUNT_TYPE_ID) FROM ACCOUNT WHERE USER_ID = ? AND ACCOUNT_TYPE_ID = ?";
+            String sql = "SELECT COUNT(ACCOUNT_TYPE_ID) AS available FROM ACCOUNT WHERE USER_ID = ? AND ACCOUNT_TYPE_ID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
 
             ps.setInt(1, userId);
             ps.setInt(2, accountType);
 
             ResultSet rs = ps.executeQuery();
+            rs.next();
 
-            while (rs.next())
-                rows++;
+            rows = rs.getInt("available");
 
             if (rows == 0)
                 return true;

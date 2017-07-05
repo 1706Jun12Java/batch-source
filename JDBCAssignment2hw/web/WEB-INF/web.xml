@@ -31,4 +31,31 @@
         <servlet-name>profile</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>account</servlet-name>
+        <servlet-class>com.revature.servlet.Account</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>account</servlet-name>
+        <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.revature.servlet.Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.revature.servlet.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -27,16 +27,20 @@ public class Login extends HttpServlet
     {
 //        System.out.println(req.getParameter("username") );
 //        System.out.println(req.getParameter("password") );
+        System.out.println("Enter Login post");
 
         if (!User.authUser(req.getParameter("username"), req.getParameter("password")) )
         {
-            System.out.println("user isn't in db");
+            System.out.println("Error in combination of username or password");
             PrintWriter pw = res.getWriter();
-            res.sendRedirect("index.html");
+            pw.println("<p style=\"text-align: center\" class=\"bg-danger\">Error, wrong username or password</p>");
+            req.getRequestDispatcher("index.html").include(req, res);
         }
-
-        HttpSession session = req.getSession();
-        session.setAttribute("username", req.getParameter("username") );
-        res.sendRedirect("/profile");
+        else
+        {
+            HttpSession session = req.getSession();
+            session.setAttribute("username", req.getParameter("username"));
+            res.sendRedirect("/profile");
+        }
     }
 }

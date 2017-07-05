@@ -19,6 +19,9 @@ public class LoginServlet extends HttpServlet {
 			if (sess.getAttribute("username").equals(b.getUsername())
 					&& sess.getAttribute("password").equals(b.getPassword())) {
 				sess.setAttribute("login", "successful");
+				if(b.isAdmin()){
+					sess.setAttribute("admin", "admin");
+				}
 				resp.sendRedirect("userpage");
 
 			}

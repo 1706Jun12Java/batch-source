@@ -1,6 +1,9 @@
 package Util;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class ConnectionUtil {
 
@@ -11,14 +14,31 @@ public class ConnectionUtil {
 	 * @throws SQLException
 	 */
 	public static Connection getConnection() throws SQLException {
+		String url = "", username = "", password = "";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		String url = "jdbc:oracle:thin:@jdbcprojectdatabase.ciwxju2fmzjg.us-east-2.rds.amazonaws.com:1521:ORCL",
-				user = "Master", password = "password";
-		return DriverManager.getConnection(url, user, password);
+
+		try {
+			// Retrieve the url, username, and password from a properties file
+			Properties prop = new Properties();
+			InputStream in;
+			in = new FileInputStream(
+					"/Users/Soul/Documents/workspace-sts-3.8.4.RELEASE/JDBCBankProject/src/connection.properties");
+			prop.load(in);
+			url = prop.getProperty("url");
+			username = prop.getProperty("username");
+			password = prop.getProperty("password");
+			return DriverManager.getConnection(url, username, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

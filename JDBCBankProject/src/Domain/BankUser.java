@@ -1,6 +1,16 @@
 package Domain;
 
 public class BankUser {
+	public BankUser(String username, String password, int admin) {
+		super();
+		this.username = username;
+		this.password = password;
+		if (admin == 0)
+			this.admin = false;
+		else
+			this.admin = true;
+	}
+
 	public BankUser() {
 		super();
 	}
@@ -13,6 +23,7 @@ public class BankUser {
 
 	String username;
 	String password;
+	boolean admin;
 
 	public String getUsername() {
 		return username;
@@ -28,5 +39,13 @@ public class BankUser {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 }

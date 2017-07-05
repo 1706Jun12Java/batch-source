@@ -19,7 +19,7 @@ public class BankUserImpl implements BankUserDAO {
 			PreparedStatement pdsmt = con.prepareStatement(sql);
 			ResultSet rs = pdsmt.executeQuery();
 			while (rs.next()) {
-				users.add(new BankUser(rs.getString("USER_NAME"), rs.getString("USER_PASSWORD")));
+				users.add(new BankUser(rs.getString("USER_NAME"), rs.getString("USER_PASSWORD"), rs.getInt("ADMIN_")));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

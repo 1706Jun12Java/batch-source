@@ -25,20 +25,21 @@ public class LoginServlet extends HttpServlet {
 				
 				String username = request.getParameter("username");
 				String password = request.getParameter("password");
-				//PrintWriter pw = response.getWriter();
+				String userID = TestClass.checkUser(username, password);
 				
-				String userID;
 				
-				userID = TestClass.checkUser(username, password);
 				
 				if (userID != "0" || userID !="null") { // .equals(password)
 					//pw.println("<p>hello, " + request.getParameter("username") + "</p>");
+					
+		
 					
 					 final String cookieName = "userIDCookie";
 					 final String cookieValue = userID;  // you could assign it some encoded value
 					 final Boolean useSecureCookie = false;
 					 final int expiryTime = 60 * 60 * 24;  // 24h in seconds
 					 final String cookiePath = "/";
+					 
 					 
 					 Cookie cookie = new Cookie(cookieName, cookieValue);
 					 cookie.setSecure(useSecureCookie);  // determines whether the cookie should only be sent using a secure protocol, such as HTTPS or SSL
@@ -48,23 +49,11 @@ public class LoginServlet extends HttpServlet {
 					 
 					 response.sendRedirect("mainMenu.html");
 					} else {
+					
 					response.sendRedirect("index.html");
 					}
 			} catch (SQLException e) {
 				e.printStackTrace(); }
 		}
 }
-			
-
-			
-			
-	        /*TestClass.checkUser(username,password)*/
-			/*
-			 * .equals(password)
-			 */
-	        
-	      
-		
-	
-
 

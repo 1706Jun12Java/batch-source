@@ -24,7 +24,7 @@ public class Bank_AccountDaoImpl implements Bank_AccountDao{
 	
 public static void viewAccountBalance(int uid){	
 	
-	try(Connection con = App.getConnectionFromFile()){
+	try(Connection con = App.getConnectionFromFile("connection.properties")){
 		
 		String sql = "SELECT BALANCE FROM BANK_ACCOUNT WHERE ACCOUNT_USER_ID =?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
@@ -45,7 +45,7 @@ public static void viewAccountBalance(int uid){
 
 public static void deleteEmptyAccount(int uid){
 
-	try(Connection con = App.getConnectionFromFile()){
+	try(Connection con = App.getConnectionFromFile("connection.properties")){
 		
 		String sql = "SELECT BALANCE FROM BANK_ACCOUNT WHERE ACCOUNT_USER_ID =?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
@@ -74,7 +74,7 @@ public static void deleteEmptyAccount(int uid){
 
 public static void depositMoney(int uid){
 	
-try(Connection con = App.getConnectionFromFile()){
+try(Connection con = App.getConnectionFromFile("connection.properties")){
 		
 		System.out.println("How much money would you like to deposit?");
 		@SuppressWarnings("resource")
@@ -106,7 +106,7 @@ try(Connection con = App.getConnectionFromFile()){
 }
 
 public static void withdrawMoney(int uid) throws OverdraftException{
-try(Connection con = App.getConnectionFromFile()){
+try(Connection con = App.getConnectionFromFile("connection.properties")){
 		
 		System.out.println("How much money would you like to withdraw?");
 		@SuppressWarnings("resource")

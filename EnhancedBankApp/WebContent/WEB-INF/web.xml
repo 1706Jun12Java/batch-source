@@ -34,12 +34,12 @@
         <url-pattern>/DeleteAccountServlet</url-pattern>
      </servlet-mapping>
      <servlet>
-        <servlet-name>WithdrawMoneyServlet</servlet-name>
-        <servlet-class>com.bankapp.controller.WithdrawMoneyServlet</servlet-class>
+        <servlet-name>DepositMoneyServlet</servlet-name>
+        <servlet-class>com.bankapp.controller.DepositMoneyServlet</servlet-class>
     </servlet>
      <servlet-mapping>
-        <servlet-name>WithdrawMoneyServlet</servlet-name>
-        <url-pattern>/WithdrawMoneyServlet</url-pattern>
+        <servlet-name>DepositMoneyServlet</servlet-name>
+        <url-pattern>/DepositMoneyServlet</url-pattern>
      </servlet-mapping>
      <servlet>
         <servlet-name>CheckSuperStatusServlet</servlet-name>

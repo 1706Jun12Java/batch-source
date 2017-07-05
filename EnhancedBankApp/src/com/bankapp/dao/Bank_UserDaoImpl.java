@@ -22,7 +22,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 
 	public Bank_User getBank_UserByID(String un, String pw) {
 		Bank_User bu = null;
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			String sql = "SELECT * FROM BANK_USER WHERE USERNAME=? AND PASSWORD_=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, un);
@@ -37,6 +37,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 				int superUser = rs.getInt("IS_SUPERUSER");
 				bu = new Bank_User(user_id,username,password,fname,lname,superUser);
 				}
+				con.close();
 			
 		}catch (SQLException e){
 			e.printStackTrace();
@@ -51,7 +52,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 	public static void createAccount(){	
 		System.out.println("============ ACCOUNT CREATION PAGE =========");
 		
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			Scanner sc = new Scanner (System.in); 
 			System.out.println("Choose a username: ");
 			String username = sc.nextLine();
@@ -86,6 +87,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 			System.out.println("Account successfully created.");
 			
 			sc.close();
+			con.close();
 		}catch(Exception e){
 			e.printStackTrace(); 
 		}
@@ -94,7 +96,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 	
 	
 	public static void viewAllUsers(){	
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			
 			String sql = "SELECT * FROM BANK_USER";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -108,6 +110,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 				int ss = rs.getInt("IS_SUPERUSER");
 				System.out.println("USER ID: " + u + " FIRST NAME: " + fn + " LAST NAME: " + ln + " USERNAME " + un + " PASSWORD: " + pw + " SUPER STATUS: " + ss );
 				}
+				con.close();
 		}catch (SQLException e){
 			e.printStackTrace();
 		} catch (IOException e1) {
@@ -117,12 +120,12 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 	}
 	
 	public static void deleteAllUsers(){	
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			String sql = "DELETE FROM BANK_USER";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.executeQuery();
 			System.out.println("All users have been deleted from the system.");
-	
+			con.close();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}catch (IOException e1) {
@@ -133,7 +136,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 	
 	public static void updateFirstName(){	
 		
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner (System.in); 
 			System.out.println("User ID of the account you want to change: ");
@@ -150,7 +153,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
  			pstmt.executeQuery(); 
  			
  			System.out.println("Your account has been successfully updated :)");
-				
+			con.close();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}catch (IOException e1) {
@@ -161,7 +164,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
 	
 	public static void updateLastName(){
 		
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner (System.in); 
 			System.out.println("User ID of the account you want to change: ");
@@ -178,7 +181,7 @@ public class Bank_UserDaoImpl implements Bank_UserDao {
  			pstmt.executeQuery(); 
  			
  			System.out.println("Your account has been successfully updated :)");
-				
+			con.close();	
 		}catch (SQLException e){
 			e.printStackTrace();
 		}catch (IOException e1) {
@@ -202,7 +205,7 @@ END;*/
 	
 	public static void updateUsername(){
 		
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner (System.in); 
 			System.out.println("User ID of the account you want to change: ");
@@ -220,7 +223,7 @@ END;*/
  			cs.executeQuery(); 
  			
  			System.out.println("Your account has been successfully updated :)");
-				
+			con.close();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}catch (IOException e1) {
@@ -232,7 +235,7 @@ END;*/
 	
 	public static void updatePassword(){	
 		
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner (System.in); 
 			System.out.println("User ID of the account you want to change: ");
@@ -249,7 +252,7 @@ END;*/
  			pstmt.executeQuery(); 
  			
  			System.out.println("Your account has been successfully updated :)");
-				
+			con.close();	
 		}catch (SQLException e){
 			e.printStackTrace();
 		}catch (IOException e1) {
@@ -260,7 +263,7 @@ END;*/
 	
 	public static void updateSuperStatus(){	
 		
-		try(Connection con = App.getConnectionFromFile()){
+		try(Connection con = App.getConnectionFromFile("connection.properties")){
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner (System.in); 
 			System.out.println("User ID of the account you want to change: ");
@@ -277,7 +280,7 @@ END;*/
  			pstmt.executeQuery(); 
  			
  			System.out.println("Your account has been successfully updated :)");
-				
+			con.close();	
 		}catch (SQLException e){
 			e.printStackTrace();
 		}catch (IOException e1) {

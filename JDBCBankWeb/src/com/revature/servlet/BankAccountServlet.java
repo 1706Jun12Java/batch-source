@@ -32,17 +32,19 @@ public class BankAccountServlet extends HttpServlet {
 			BigDecimal balance = (BigDecimal) session.getAttribute("bankAccountBalance");
 			
 			pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
-			pw.println("<link rel=\"stylesheet\" href=\"styles.css\"></head>");
+			pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head>");
 			
-			pw.println(balance);
+			String errorMessage = (String) session.getAttribute("error");
+			if (errorMessage != null) {
+				pw.println(errorMessage);
+				session.setAttribute("error",null);
+				req.getRequestDispatcher("/myaccount").include(req, resp);
+				return;
+			}
 
-			
-			pw.println(balance.compareTo(BigDecimal.valueOf(0))==0);
-
-
-			pw.println("<h3>Hello, "+ username + "</h3>");
-			pw.println("<button type=\"button\" class=\"button\"> <a href=\"accounts\"> Home</a> </button>");
-			pw.println("<button type=\"button\" class=\"button\"> <a href=\"logout\"> Logout</a> </button><br>");
+			pw.println("<body><div class=\"greeting\">Hello, "+ username + "</div>");
+			pw.println("<a class=\"btn btn-info\" href=\"accounts\"> Home</a>");
+			pw.println("<a class=\"btn btn-info\" href=\"logout\"> Logout</a><br>");
 
 			
 			BankAccountDao baid = new BankAccountDaoImpl();
@@ -53,17 +55,19 @@ public class BankAccountServlet extends HttpServlet {
 			pw.println("Balance: $" + balance + "</p>");
 			
 			pw.println("<form method=\"post\">");
-			pw.println("Transaction<br>");
+			pw.println("<div class=\"smallheader\">Transaction</div><br>");
 			pw.println("Amount($): <input type=\"text\" name=\"amount\"> &emsp;&emsp;");
 			pw.println("<input type=\"radio\" name=\"transaction\" value=\"deposit\">Deposit");
 			pw.println("<input type=\"radio\" name=\"transaction\" value=\"withdraw\">Withdraw");
-			pw.println("<input type=\"submit\" name =\"submit\" value=\"Submit\">");
+			pw.println("<button type=\"submit\" class=\"btn btn-primary\">Submit</button>");
 			pw.println("</form>");
 			
 			session.setAttribute("userId", userId);
 			session.setAttribute("acctId", acctId);
 			
-			pw.println("<button type=\"button\" class=\"button\"> <a href=\"deleteaccount\"> Delete This Bank Account</a> </button><br>");
+			pw.println("<a class=\"btn btn-info\" href=\"deleteaccount\"> Delete This Bank Account</a>");
+			
+			pw.println("</body>");
 
 
 
@@ -78,7 +82,7 @@ public class BankAccountServlet extends HttpServlet {
 		throws ServletException, IOException{
 		
 		
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 		
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
@@ -97,15 +101,28 @@ public class BankAccountServlet extends HttpServlet {
 		session.setAttribute("userId", userId);
 		session.setAttribute("acctId", acctId);
 		session.setAttribute("acctBalance", balance);
+		session.setAttribute("depositError", null);
 				
 		if(session!=null && transaction.equals("deposit")){
+			if (amt.compareTo(BigDecimal.valueOf(0))==-1){				
+				session.setAttribute("error", "You can't deposit a negative amount");
+				resp.sendRedirect("myaccount");
+			}
+			else {
 			baid.deposit(userId,acctId, amt);
 			resp.sendRedirect("accounts");
+			}
 		}
 		
 		else if(session!=null && transaction.equals("withdraw")){
+			if (amt.compareTo(BigDecimal.valueOf(0))==-1){				
+				session.setAttribute("error", "You can't withdraw a negative amount");
+				resp.sendRedirect("myaccount");
+			}
+			else {
 			baid.withdraw(userId, acctId, amt);
 			resp.sendRedirect("accounts");
+			}
 		}
 		
 	}

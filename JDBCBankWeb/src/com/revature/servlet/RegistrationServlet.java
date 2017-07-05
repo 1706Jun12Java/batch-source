@@ -23,11 +23,19 @@ public class RegistrationServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		
 		pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
-		pw.println("<link rel=\"stylesheet\" href=\"styles.css\"></head>");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head>");
+		
+		String errorMessage = (String) session.getAttribute("exists");
+		if (errorMessage != null) {
+			pw.println(errorMessage);
+			session.setAttribute("exists",null);
+			req.getRequestDispatcher("/home").include(req,  resp);
+			return;
+		}
+			
 		
 		if(session!=null){
 			req.getRequestDispatcher("register.html").include(req, resp);
-		
 		
 	} else {
 		resp.sendRedirect("accounts");

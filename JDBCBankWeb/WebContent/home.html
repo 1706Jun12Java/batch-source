@@ -4,18 +4,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles.css">
 <title>Home Page</title>
 </head>
 <body>
 	<h1>Welcome to Gurung Bank</h1>
 	
 	<form action="home" method="post">
-	<fieldset>
 		<legend>LOGIN:</legend>
-		username:<br> <input type="text" name="username"><br>
-		password:<br> <input type="password" name="password">
-	</fieldset>
-	<input type="submit" name ="submit" value="login">
+	<div class="form-group">
+		<label for="username">Username:</label>
+		<input type="text" class="form-control" name="username" id="username">
+	</div>
+	
+	<div class="form-group">
+		<label for="password">Password:</label>
+		 <input type="password" class="form-control" name="password" id="password">
+	</div>
+	
+	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 	<p><a href="register">No Account? Register Here!</a></p>

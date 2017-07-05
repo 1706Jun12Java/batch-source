@@ -25,24 +25,24 @@ public class UserProfileServlet extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		HttpSession session = req.getSession(false);
 		
-		BankUserDao blid = new BankUserDaoImpl(); //bank user object
+//		BankUserDao blid = new BankUserDaoImpl(); //bank user object
 		
 		if(session!=null){
+			try{
 			String username = (String) session.getAttribute("username");
 			int userId = (int) session.getAttribute("userId");
-
-			pw.println("<h3>Hello, "+ username + "</h3>");
 			
-			pw.println("<button type=\"button\" class=\"button\"> <a href=\"logout\"> Logout</a> </button><br>");
+			pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
+			pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head>");
+
+			pw.print("<body><strong><div class=\"greeting\"> Hello, "+ username + "</div></strong>");
+			
+			pw.println("<a class=\"btn btn-info\" href=\"logout\"> Logout</a><br>");
 			
 			BankAccountDao baid = new BankAccountDaoImpl();
-			pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
-			pw.println("<link rel=\"stylesheet\" href=\"styles.css\"></head>");
-			pw.println("<strong>Bank Accounts</strong>");
 			
-			pw.println("");//add new account
-			pw.println("<button type=\"button\" class=\"button\"> <a href=\"addaccount\"> Add New Account?</a> </button><br>");
-
+			pw.print("<strong><div class=\"smallheader\"> Bank Accounts</div></strong>");
+			pw.println("<a class=\"btn btn-info\" href=\"addaccount\"> Add New Account?</a>");
 
 			for(BankAccount bai: baid.getBankAccountList(userId)){
 				
@@ -55,8 +55,13 @@ public class UserProfileServlet extends HttpServlet {
 //				int bankAccountBalance = (int) session.getAttribute("bai.getBankAccountBalance()");
 				session.setAttribute("bankAccountId", bai.getBankAccountId());
 				session.setAttribute("bankAccountBalance", bai.getBankAccountBalance());
-			}			
+			}
+			pw.println("</body>");
 
+		} catch (Exception e){
+			e.printStackTrace();
+			
+		}
 		}
 	}
 	@Override 

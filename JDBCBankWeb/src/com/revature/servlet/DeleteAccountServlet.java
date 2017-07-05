@@ -34,7 +34,8 @@ public class DeleteAccountServlet extends HttpServlet {
 		resp.sendRedirect("accounts");
 		}
 		else {
-			resp.sendRedirect("accounts");
+			session.setAttribute("error", "The account balance needs to be 0 before you can delete the account");			
+			resp.sendRedirect("myaccount");
 		}
 
 		

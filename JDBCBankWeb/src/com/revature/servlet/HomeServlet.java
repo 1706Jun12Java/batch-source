@@ -25,8 +25,13 @@ public class HomeServlet extends HttpServlet {
 		resp.setContentType("text/html");
 
 		pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
-		pw.println("<link rel=\"stylesheet\" href=\"styles.css\"></head>");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head>");
 		
+		String errorMessage = (String) session.getAttribute("incorrect");
+		if (errorMessage != null) {
+			pw.println(errorMessage);
+			session.setAttribute("incorrect",null);
+		}
 		req.getRequestDispatcher("home.html").include(req, resp);
 		
 	}
@@ -52,7 +57,16 @@ public class HomeServlet extends HttpServlet {
 		
 		
 		
-		if (blid.login(username, password) !=0){
+		
+		
+		if (username.equals(superusername) && password.equals(superpassword)){
+			pw.print("SUCCESS");
+			session.setAttribute("SuperUsername", superusername);
+			session.setAttribute("incorrect", null);
+			resp.sendRedirect("superprofile");
+		}
+		
+		else if (blid.login(username, password) !=0){
 			pw.print("SUCCESS");
 			int userId = blid.login(username, password);
 			session.setAttribute("userId", userId);
@@ -62,14 +76,8 @@ public class HomeServlet extends HttpServlet {
 			
 		}
 		
-		else if (username.equals(superusername) && password.equals(superpassword)){
-			pw.print("SUCCESS");
-			session.setAttribute("SuperUsername", superusername);
-			resp.sendRedirect("superprofile");
-		}
-		
 		else {
-			session.setAttribute("incorrect", "incorrect password");
+			session.setAttribute("incorrect", "Invalid username/ password");
 			resp.sendRedirect("home");
 		}
 		

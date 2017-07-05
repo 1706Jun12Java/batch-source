@@ -26,12 +26,12 @@ public class SuperProfileServlet extends HttpServlet {
 		String superusername = (String) session.getAttribute("SuperUsername");
 		
 		pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
-		pw.println("<link rel=\"stylesheet\" href=\"styles.css\"></head>");
+
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head>");
 		
-		pw.println("<h3>Welcome " + superusername + "!</h3>");
-		
-		pw.println("<button type=\"button\" class=\"btn-primary\" style=\"color:#000000\"> <a href=\"logout\"> Logout</a> </button><br>");
-		
+		pw.println("<body><h3>Welcome " + superusername + "!</h3>");
+
+		pw.println("<a class=\"btn btn-info\" href=\"logout\"> Logout</a>");
 		pw.println("<h4>List of Gurung Bank Users</h4>");
 		
 		BankUserDao blid = new BankUserDaoImpl();
@@ -40,7 +40,30 @@ public class SuperProfileServlet extends HttpServlet {
 			pw.println("<p>" + user.getUsername() + "</p>");
 		}
 		
-		pw.println("<button type=\"button\" class=\"btn-danger\"> <a href=\"deleteAllUsers\"> Delete All Bank Users?</a> </button><br>");
+		if(blid.getUsers().isEmpty()){
+			pw.println("Looks like we have no users yet.<br>");
+		} else{
+		
+		pw.println("<a class=\"btn btn-info text-danger\" href=\"deleteAllUsers\"> Delete All Bank Users?</a><br>");
+		}
+		pw.println("Create New User?<br>");
+		
+		pw.println("<form action = \"register\" method=\"post\">");
+		pw.println("<div class=\"form-group\">");
+		pw.println("<label for=\"username\">Username:</label>");
+		pw.println("<input type=\"text\" class=\"form-control\" name=\"username\" id=\"username\">");
+		pw.println("</div>");
+		
+		pw.println("<div class=\"form-group\">");
+		pw.println("<label for=\"password\">Password:</label>");
+		pw.println("<input type=\"password\" class=\"form-control\" name=\"password\" id=\"password\">");
+		pw.println("</div>");
+		 		
+		pw.println("<button type=\"submit\" class=\"btn btn-primary\">Register</button>");
+		pw.println("</form>");
+		
+		pw.println("</body>");
+		
 				
 		
 		

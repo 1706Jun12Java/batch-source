@@ -3,16 +3,19 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>USER LOGIN | LENNYBANK</title>
-		<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
-	<div class ="container">
-		<div class="display-4">User Login</div>
-		<form action="userlogin">
-			Username: <input name ="username"><br/>
-			Password: <input type="password" name="password"><br/>
-			<input type="submit" name ="Login">
-		</form>
+	<div class ="pane">
+		<div class = "smallPane">
+			<h1 class="smallTitle">User Login</div>
+			<form action="userlogin" method="post">
+				<p class ="label">Username:</p> <input class ="textfield" name ="username"><br/>
+				<p class ="label">Password:</p><input class ="textfield" type="password" name="password"><br/>
+				<input class="submitButton" type="submit" value="Login">
+			</form>
+		</div>
 	</div>
 </body>
 </html>

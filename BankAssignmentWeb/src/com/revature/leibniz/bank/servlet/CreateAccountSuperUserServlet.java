@@ -12,7 +12,7 @@ import com.revature.leibniz.bank.util.CreateAccountUtil;
 
 public class CreateAccountSuperUserServlet extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter pw = resp.getWriter();
 		resp.setContentType("text/html");
 		
@@ -25,15 +25,6 @@ public class CreateAccountSuperUserServlet extends HttpServlet{
 		CreateAccountUtil.createAccount(firstname, lastname, username, password, superUser);
 		
 		pw.println("<h3>Account Created</h3>");
-		pw.println("<h5><a href=\"index.html\">Go back</a></h3>");
-		
-		
-		
-		
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		pw.println("<h5><a href=\"index.html\">Go back</a></h3>");	
 	}
 }

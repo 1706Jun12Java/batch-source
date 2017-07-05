@@ -25,7 +25,6 @@ public class ConnectionUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		Properties prop = new Properties();
 		
 		// ADD THIS:

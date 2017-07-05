@@ -3,17 +3,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
-	<div class ="container">
-		<div class="h2">CREATE USER ACCOUNT</div>
-		<form action="createAccountAsUser">
-			First name: <input name ="firstname"><br/>
-			Last name: <input name="lastname"><br/>
-			username: <input name ="username"><br/>
-			password: <input type="password" name="password"><br/>
-			<input type="submit" name ="Create Account" >
-		</form>
+	<div class="pane">
+		<div class ="smallPane">
+			<h2 class ="smallTitle">CREATE USER ACCOUNT</h2>
+			<form action="createAccountAsUser" method="post">
+				<p class ="label">First name: </p><input class ="textfield" name ="firstname"><br/>
+				<p class ="label">Last name: </p><input class ="textfield" name="lastname"><br/>
+				<p class="label">username:</p> <input class ="textfield" name ="username"><br/>
+				<p class ="label">password:</p> <input class ="textfield" type="password" name="password"><br/>
+				<input class ="submitButton" type="submit" value="Submit" >
+			</form>
+		</div>
 	</div>
 </body>
 </html>
+

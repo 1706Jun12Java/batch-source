@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>BankAssignmentWEB</display-name>
+  
+  
   <servlet>
   	<servlet-name>userLoginServlet</servlet-name>
   	<servlet-class>com.revature.leibniz.bank.servlet.UserLoginServlet</servlet-class>
@@ -11,7 +13,17 @@
   	<url-pattern>/userlogin</url-pattern>
   </servlet-mapping>
   
-   <servlet>
+  <servlet>
+  	<servlet-name>SuperUserLoginServlet</servlet-name>
+  	<servlet-class>com.revature.leibniz.bank.servlet.SuperUserLoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>SuperUserLoginServlet</servlet-name>
+  	<url-pattern>/superUserlogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>CreateAccountUserServlet</servlet-name>
   	<servlet-class>com.revature.leibniz.bank.servlet.CreateAccountUserServlet</servlet-class>
   </servlet>
@@ -19,5 +31,45 @@
   <servlet-mapping>
   	<servlet-name>CreateAccountUserServlet</servlet-name>
   	<url-pattern>/createAccountAsUser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CreateAccountSuperUserServlet</servlet-name>
+  	<servlet-class>com.revature.leibniz.bank.servlet.CreateAccountSuperUserServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CreateAccountSuperUserServlet</servlet-name>
+  	<url-pattern>/createAccountAsSuperUser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>withdrawMoneyServlet</servlet-name>
+  	<servlet-class>com.revature.leibniz.bank.servlet.WithdrawServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>withdrawMoneyServlet</servlet-name>
+  	<url-pattern>/withdraw</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>depositMoneyServlet</servlet-name>
+  	<servlet-class>com.revature.leibniz.bank.servlet.DepositServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>depositMoneyServlet</servlet-name>
+  	<url-pattern>/deposit</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>com.revature.leibniz.bank.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

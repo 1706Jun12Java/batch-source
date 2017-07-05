@@ -19,7 +19,7 @@ import com.revature.leibniz.bank.domain.User;
 public class SuperUserLoginServlet extends HttpServlet {
 
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws ServletException, IOException {
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
@@ -31,39 +31,28 @@ public class SuperUserLoginServlet extends HttpServlet {
 		ArrayList<SuperUser> superUsers = (ArrayList<SuperUser>) new SuperUserImpDao().getSuperUsers();
 		
 		for(int i = 0; i < superUsers.size(); i++) {
-			String xuser = superUsers.get(i).getUsername();
-			String xpass = superUsers.get(i).getPassword();
+			superUser = superUsers.get(i);
+			String xuser = superUser.getUsername();
+			String xpass = superUser.getPassword();
 			
 			if(xuser.equals(username) && xpass.equals(password)) {
 				accessGranted = true;
-				superUser = superUsers.get(i);
 				break;
 			}
 		}
-		Person person = new PersonImpDao().getPersonByID(superUser.getPersonID());
+		
 		if(accessGranted) {
-			
+			Person person = new PersonImpDao().getPersonByID(superUser.getPersonID()); 
+			String firstname = person.getFirstname();
+			String lastname = person.getLastname();
 			pw.println("<h3>ACCESS GRANTED</h3>");
-			pw.println("<h4>Welcome "+ person.getFirstname() +"</h4>");
-			pw.println("<h5><a href=\"viewBalance.html\">View Balance</a></h5>");
-			pw.println("<h5><a href=\"withDrawl.html\">Withdrawl</a></h5>");
-			pw.println("<h5><a href=\"deposit.html\">deposit</a></h5>");
+			pw.println("<h4>Welcome "+ firstname +" " + lastname +"</h4>");
+			
+			
 		}
 		else {
 			pw.println("<h3>ACCESS DENIED</h3>");
 			pw.println("<h5><a href=\"index.html\">Go back</a></h3>");
-		}
-		
-		
-		
+		}	
 	}
-	
-	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-	throws ServletException, IOException {
-		
-		
-		
-	}
-
 }

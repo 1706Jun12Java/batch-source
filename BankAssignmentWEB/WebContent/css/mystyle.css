@@ -1,0 +1,57 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	width: 90%;
+}
+
+.pane {
+	width: 70%;
+	height: 70%;
+	margin: 0 auto;
+	padding: 30px;
+	background-color: lightgrey;
+}
+
+.title {
+	font-size: 55px;
+	text-align: center;
+}
+
+section {
+	height: 100%;
+	padding: 20px;
+	background-color: darkgrey;
+}
+
+.smallPane {
+	border: solid 2px;
+	padding: 5px;
+	margin: 10px;
+	background-color: lightgrey;
+}
+
+a {
+	font-size: 24px;
+	text-decoration: none;
+}
+
+.smallTitle {
+	font-size: 30px;
+	text-align: center;
+}
+
+.textfield {
+	width: 300px;
+	height: 60px;
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.label {
+	font-size: 20px;
+}
+
+.submitButton {
+	font-size:20px;
+	padding: 10px;
+}

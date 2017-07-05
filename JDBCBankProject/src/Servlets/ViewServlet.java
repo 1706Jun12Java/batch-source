@@ -14,19 +14,29 @@ public class ViewServlet extends HttpServlet {
 		HttpSession sess = req.getSession();
 		AccountDAO acc = new AccountImpl();
 		PrintWriter pw = resp.getWriter();
+		resp.setContentType("text/html");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"stylez.css\" />");
+		pw.println("<body><h1>These are all the accounts</h1><ul>");
+		pw.println("<table style=\"width: 25%;\" border = \"1\"> <tbody>");
 		if ((String) sess.getAttribute("admin") != null) {
-			pw.println("<h1>These are all the accounts</h1><ul>");
+			pw.println("<td>Username</td><td>Account #</td> <td>Amount</td>");
 			for (Account a : acc.getAccounts()) {
-				pw.println("<li>Account #" + a.getID() + " has $" + a.getAmount() + "</li>");
+				pw.println("<tr>");
+				pw.println("<td>" + a.getUsername() + "</td><td>#" + a.getID() + "</td> <td>$" + a.getAmount()
+						+ "</td>");
+				pw.println("</tr>");
 			}
-			pw.println("</ul><br><a href=\"Userpage.html\">return</a>");
+			pw.println("</tbody> </table>");
 		} else {
-			pw.println("<h1>These are your accounts</h1><ul>");
+			pw.println("<td>Account #</td> <td>Amount</td>");
 			for (Account a : acc.getAccounts((String) sess.getAttribute("username"))) {
-				pw.println("<li>Account #" + a.getID() + " has $" + a.getAmount() + "</li>");
+				pw.println("<tr>");
+				pw.println("<td>#" + a.getID() + "</td> <td>$" + a.getAmount() + "</td>");
+				pw.println("</tr>");
 			}
-			pw.println("</ul><br><a href=\"Userpage.html\">return</a>");
+			pw.println("</tbody> </table>");
 		}
+		pw.println("<br><a href=\"Userpage.html\">return</a></body>");
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

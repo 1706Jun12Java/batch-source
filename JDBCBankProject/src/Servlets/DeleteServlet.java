@@ -20,6 +20,8 @@ public class DeleteServlet extends HttpServlet {
 		HttpSession sess = req.getSession();
 		AccountDAO acc = new AccountImpl();
 		PrintWriter pw = resp.getWriter();
+		resp.setContentType("text/html");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"stylez.css\" />");
 		if ((String) sess.getAttribute("admin") != null) {
 			if (acc.deleteAccount(Integer.parseInt((String) sess.getAttribute("account")))) {
 				pw.println("<h1>Deletion successful</h1>");

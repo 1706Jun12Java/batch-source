@@ -14,6 +14,8 @@ public class CreateServlet extends HttpServlet {
 		HttpSession sess = req.getSession();
 		AccountDAO acc = new AccountImpl();
 		PrintWriter pw = resp.getWriter();
+		resp.setContentType("text/html");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"stylez.css\" />");
 		if (acc.createAccount((String) sess.getAttribute("username"))) {
 			pw.println("<h1>Account created successful</h1>");
 		} else {

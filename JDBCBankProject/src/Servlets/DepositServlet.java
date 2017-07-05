@@ -20,6 +20,8 @@ public class DepositServlet extends HttpServlet {
 		HttpSession sess = req.getSession();
 		AccountDAO acc = new AccountImpl();
 		PrintWriter pw = resp.getWriter();
+		resp.setContentType("text/html");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"stylez.css\" />");
 		if ((String) sess.getAttribute("admin") != null) {
 			if (acc.deposit(Integer.parseInt((String) sess.getAttribute("account")),
 					Double.parseDouble((String) sess.getAttribute("amount")))) {

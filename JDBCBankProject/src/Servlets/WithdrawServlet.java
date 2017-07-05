@@ -13,13 +13,15 @@ import DAO.AccountDAO;
 import DAO.AccountImpl;
 
 public class WithdrawServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession sess = req.getSession();
 		AccountDAO acc = new AccountImpl();
 		PrintWriter pw = resp.getWriter();
+		resp.setContentType("text/html");
+		pw.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"stylez.css\" />");
 		if ((String) sess.getAttribute("admin") != null) {
 			if (acc.withdraw(Integer.parseInt((String) sess.getAttribute("account")),
 					Double.parseDouble((String) sess.getAttribute("amount")))) {

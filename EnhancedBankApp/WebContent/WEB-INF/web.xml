@@ -49,4 +49,28 @@
         <servlet-name>CheckSuperStatusServlet</servlet-name>
         <url-pattern>/CheckSuperStatusServlet</url-pattern>
      </servlet-mapping>
+     <servlet>
+        <servlet-name>ViewAllUsersServlet</servlet-name>
+        <servlet-class>com.bankapp.controller.ViewAllUsersServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>ViewAllUsersServlet</servlet-name>
+        <url-pattern>/ViewAllUsersServlet</url-pattern>
+     </servlet-mapping>
+     <servlet>
+        <servlet-name>UpdateSuperStatusSerlvet</servlet-name>
+        <servlet-class>com.bankapp.controller.UpdateSuperStatusSerlvet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>UpdateSuperStatusSerlvet</servlet-name>
+        <url-pattern>/UpdateSuperStatusSerlvet</url-pattern>
+     </servlet-mapping>
+     <servlet>
+        <servlet-name>DeleteAllUsersServlet</servlet-name>
+        <servlet-class>com.bankapp.controller.DeleteAllUsersServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>DeleteAllUsersServlet</servlet-name>
+        <url-pattern>/DeleteAllUsersServlet</url-pattern>
+     </servlet-mapping>
 </web-app>

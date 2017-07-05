@@ -31,15 +31,22 @@ public class App {
 		return DriverManager.getConnection(url,username,password);
 	}
 	
+	
 	public static Connection getConnectionFromFile(String filename) throws IOException, SQLException{
 		
-		Properties prop = new Properties(); 
-		InputStream in = new FileInputStream(filename);
-		prop.load(in); // loading all key input values in that file
-		String url = prop.getProperty("url");
-		String username = prop.getProperty("username");
-		String password = prop.getProperty("password");
-		return DriverManager.getConnection(url,username,password);
+		Properties prop = new Properties();	
+		try{
+			InputStream is = new FileInputStream(filename);
+			prop.load(is);
+			String url = prop.getProperty("url");
+			String username  = prop.getProperty("username");
+			String password = prop.getProperty("password");
+			 Class.forName ("oracle.jdbc.OracleDriver");
+			return DriverManager.getConnection(url,username,password);	
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+return null;
 	}
 
 }

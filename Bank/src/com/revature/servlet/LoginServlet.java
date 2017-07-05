@@ -48,8 +48,15 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("incorrect", "Inccorect information, try again");
 			res.sendRedirect("login");
 		}
-		
-		
+		else{
+			session.setAttribute("username", user.getUsername());
+			session.setAttribute("password", user.getPassword());
+			session.setAttribute("fname", user.getFname());
+			session.setAttribute("lname", user.getLname());
+			session.setAttribute("level", user.getIsSuperUser());
+			res.sendRedirect("buffer");
+		}
+		/*
 		else if(user.getIsSuperUser().equals("F")){
 			
 			session.setAttribute("username", user.getUsername());
@@ -58,7 +65,9 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("lname", user.getLname());
 			session.setAttribute("level", user.getIsSuperUser());
 			
-			pw.println("<p>Welcome, "+user.getFname()+"</p>");
+			//pw.println("<p>Welcome, "+user.getFname()+"</p>");
+			
+			res.sendRedirect("buffer");
 			
 			req.getRequestDispatcher("normalUser.html").include(req, res);
 			List<BankAccount> banks =null;
@@ -73,6 +82,7 @@ public class LoginServlet extends HttpServlet{
 			if(banks.size()==0){
 				pw.println("<p>You have no bank accounts</p> ");
 			}
+			
 			
 		}
 		else if(user.getIsSuperUser().equals("T")){
@@ -103,7 +113,7 @@ public class LoginServlet extends HttpServlet{
 			}
 			
 			
-		}
+		}*/
 		
 	}
 }

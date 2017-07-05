@@ -53,30 +53,34 @@ public class CreateUserServlet extends HttpServlet{
 		String fname=req.getParameter("cfname");
 		String lname=req.getParameter("clname");
 		User newuser=new User(username,password,fname,lname,"F");
-		int created=userDao.createUser(user, newuser);
 		
-
 		
-		if(created>0){
-		pw.println("<p>You have created a new user; account may not show up immediately</p>");
+		if(username.equals("")||password.equals("")||fname.equals("")||lname.equals("")){
+			pw.println("<p>Bad information</p>");
 		}
 		else{
-			pw.println("<p>Failed to create a new user</p>");
+				int created=userDao.createUser(user, newuser);
+				if(created>0){
+				pw.println("<p>You have created a new user; account may not show up immediately</p>");
+				}
+				
+				else{
+					pw.println("<p>Failed to create a new user</p>");
+				}
 		}
-		req.getRequestDispatcher("superUser.html").include(req, res);
-		pw.println("<h3>Your accounts:</h3> ");
-		if(banks!=null){
-			for(BankAccount ba: banks){
-				pw.println("<p>"+ba.toString()+"</p> ");
+			req.getRequestDispatcher("superUser.html").include(req, res);
+			pw.println("<h3>Your accounts:</h3> ");
+			if(banks!=null){
+				for(BankAccount ba: banks){
+					pw.println("<p>"+ba.toString()+"</p> ");
+				}
 			}
-		}
-		if(banks.size()==0){
-			pw.println("<p>You have no bank accounts</p> ");
-		}
-		pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
-		for(User u:userDao.getUsers()){
-			pw.println("<p>"+u.toString()+"</p> ");
-		}
-		
+			if(banks.size()==0){
+				pw.println("<p>You have no bank accounts</p> ");
+			}
+			pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
+			for(User u:userDao.getUsers()){
+				pw.println("<p>"+u.toString()+"</p> ");
+			}
 	}
 }

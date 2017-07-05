@@ -47,34 +47,45 @@ public class RegisterServlet extends HttpServlet{
 		String lname=req.getParameter("lname");
 		UserDaoImpl userDao = new UserDaoImpl();
 		User ruser=new User(username,password,fname,lname,"F");
-		User user=userDao.registerUser(ruser);
-		user=userDao.userLogin(username, password);
-		if(user.getIsSuperUser().equals("F")){
-			session.setAttribute("username", user.getUsername());
-			session.setAttribute("password", user.getPassword());
-			session.setAttribute("fname", user.getFname());
-			session.setAttribute("lname", user.getLname());
-			session.setAttribute("level", user.getIsSuperUser());
-			pw.println("<p>Welcome, "+fname+"</p>");
-			req.getRequestDispatcher("normalUser.html").include(req, res);
-			List<BankAccount> banks =null;
-			BankAccountDaoImpl bd = new BankAccountDaoImpl();
-			banks=bd.getBankAccountsByUser(user);
-			if(banks!=null){
-				for(BankAccount ba: banks){
-					pw.println("<p>"+ba.toString()+"</p> ");
-				}
-			}
-			if(banks.size()==0){
-				pw.println("<p>You have no bank accounts</p> ");
-			}
-
-			
-		}
-		else{
-			session.setAttribute("incorrect", "Account could not be made");
+		
+		
+		if(username.equals("")||password.equals("")||fname.equals("")||lname.equals("")){
+			pw.println("<p>Bad information</p>");
+			session.setAttribute("incorrect", "No input");
 			res.sendRedirect("register");
 		}
+		else{
+			User user=userDao.registerUser(ruser);
+			user=userDao.userLogin(username, password);
+			if(user.getIsSuperUser().equals("F")){
+				session.setAttribute("username", user.getUsername());
+				session.setAttribute("password", user.getPassword());
+				session.setAttribute("fname", user.getFname());
+				session.setAttribute("lname", user.getLname());
+				session.setAttribute("level", user.getIsSuperUser());
+				pw.println("<p>Welcome, "+fname+"</p>");
+				req.getRequestDispatcher("normalUser.html").include(req, res);
+				List<BankAccount> banks =null;
+				BankAccountDaoImpl bd = new BankAccountDaoImpl();
+				banks=bd.getBankAccountsByUser(user);
+				if(banks!=null){
+					for(BankAccount ba: banks){
+						pw.println("<p>"+ba.toString()+"</p> ");
+					}
+				}
+				if(banks.size()==0){
+					pw.println("<p>You have no bank accounts</p> ");
+				}
+
+				
+			}
+			else{
+				session.setAttribute("incorrect", "Account could not be made");
+				res.sendRedirect("register");
+			}
+		}
+		
+		
 		
 		
 		

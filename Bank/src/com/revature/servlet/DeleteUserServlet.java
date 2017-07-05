@@ -46,7 +46,14 @@ public class DeleteUserServlet extends HttpServlet {
 		banks=bd.getBankAccountsByUser(user);
 		
 		String deleteId=req.getParameter("did");
-		User deluser=userDao.getUserById(Integer.parseInt(deleteId));
+		User deluser=null;
+		try{
+			deluser=userDao.getUserById(Integer.parseInt(deleteId));
+		
+		}
+		catch(Exception e){
+			pw.println("<p>Bad input</p>");
+		}
 		int deleted=0;
 		
 		
@@ -57,7 +64,7 @@ public class DeleteUserServlet extends HttpServlet {
 
 			deleted=userDao.deleteUser(user, deluser);
 			if(deleted>0){
-			pw.println("<p>You have deleted a new user; updates may not show up immediately</p>");
+				pw.println("<p>You have deleted a new user; updates may not show up immediately</p>");
 			}
 			else{
 				pw.println("<p>Could not delete specified user</p>");

@@ -72,5 +72,17 @@
    <servlet-name>DelUser</servlet-name>
   <url-pattern>/deleteUser</url-pattern>
   </servlet-mapping>
+
+
+     <servlet>
+  <servlet-name>BufferServlet</servlet-name>
+  <servlet-class>com.revature.servlet.ShowAccounts</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>BufferServlet</servlet-name>
+  <url-pattern>/buffer</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

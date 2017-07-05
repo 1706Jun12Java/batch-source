@@ -78,25 +78,34 @@ public class WDServlet extends HttpServlet{
 		
 		if(user.getIsSuperUser().equals("T")){
 			req.getRequestDispatcher("superUser.html").include(req, res);
+			if(b!=null){
+				pw.println("<h3>Your accounts:</h3> ");
+				for(BankAccount ba: b){
+					pw.println("<p>"+ba.toString()+"</p> ");
+				}
 			}
+			
+				pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
+				for(User u:userDao.getUsers()){
+					pw.println("<p>"+u.toString()+"</p> ");
+				}
+			
+			
+			
+		}
 		else {
 				req.getRequestDispatcher("normalUser.html").include(req, res);
+				if(b!=null){
+					pw.println("<h3>Your accounts:</h3> ");
+					for(BankAccount ba: b){
+						pw.println("<p>"+ba.toString()+"</p> ");
+					}
 				
-			}
-		if(b!=null){
-			pw.println("<h3>Your accounts:</h3> ");
-			for(BankAccount ba: b){
-				pw.println("<p>"+ba.toString()+"</p> ");
-			}
-		}
+				
+				}
 		
-		else{
-			pw.println("<h3>ALL USERS IN THE DATABASE</h3> ");
-			for(User u:userDao.getUsers()){
-				pw.println("<p>"+u.toString()+"</p> ");
-			}
 		
-		}
+			}
 		
 	}
 }

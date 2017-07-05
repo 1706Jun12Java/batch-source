@@ -13,6 +13,12 @@ public class BankUser {
 		this.username = username;
 	}
 	
+	public BankUser(int userId, String username) {
+		super();
+		this.userId = userId;
+		this.username = username;
+	}
+	
 	private int userId;
 	private String username;
 	private String password;

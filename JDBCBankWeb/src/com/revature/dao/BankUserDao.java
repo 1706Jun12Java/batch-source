@@ -8,7 +8,7 @@ public interface BankUserDao {
 	public int registerNewBankUser(String username, String password);
 	public int login(String username, String password);
 	public List<BankUser> getUsers();
-	public int isOnline();
+//	public int isOnline();
 	public void logout();
 
 }

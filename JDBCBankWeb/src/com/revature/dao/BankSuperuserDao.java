@@ -1,9 +1,15 @@
 package com.revature.dao;
 
-public class BankSuperuserDao {
+import java.util.List;
 
-	public BankSuperuserDao() {
-		// TODO Auto-generated constructor stub
-	}
+import com.revature.domain.BankUser;
+
+public interface BankSuperuserDao {
+		public int login(String username, String password);
+		public int registerNewBankUser(String username, String password);
+		public List<BankUser> getUsers();
+		public int deleteAllBankUsers();
+		public void logout();
+	
 
 }

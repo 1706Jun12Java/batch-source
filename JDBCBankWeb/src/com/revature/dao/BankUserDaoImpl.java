@@ -9,6 +9,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.domain.BankAccount;
 import com.revature.domain.BankUser;
 import com.revature.util.ConnectionUtil;
 
@@ -76,23 +77,26 @@ public class BankUserDaoImpl implements BankUserDao {
 		this.loginSuccess = 0;
 	}
 
-	@Override
-	public int isOnline() {
-		return loginSuccess;
-	}
+//	@Override
+//	public int isOnline() {
+//		return loginSuccess;
+//	}
 
 	@Override
 	public List<BankUser> getUsers() {
-		PreparedStatement pstmt = null;
-		List<BankUser> bankUsers = new ArrayList<>();
-		try(Connection con = ConnectionUtil.getConnectionFromFile("connection.properties")){
-			String sql = "SELECT * FROM BANKLOGININFO";
-			pstmt = con.prepareStatement(sql);
+		List<BankUser> bankUserList = new ArrayList<>();
+		Connection con = null;
+//		PreparedStatement pstmt = null;
+//		List<BankUser> bankUsers = new ArrayList<>();
+		try{
+			con = ConnectionUtil.getConnectionFromFile("connection.properties");
+			String sql = "SELECT * FROM BANK_LOGIN_INFO";
+			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()){
-				String username = rs.getString("username");
-				BankUser newB = new BankUser(username);
-				bankUsers.add(newB);
+				int userId = rs.getInt("USER_ID");
+				String username = rs.getString("USERNAME");
+				bankUserList.add(new BankUser(userId, username));
 				
 			}
 		} catch (SQLException e) {
@@ -102,7 +106,7 @@ public class BankUserDaoImpl implements BankUserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return bankUsers;
+		return bankUserList;
 	}
 	
 }

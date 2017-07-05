@@ -91,8 +91,8 @@ public class BankAccountDaoImpl implements BankAccountDao{
 	}
 
 	@Override
-	public void deposit(int userId, int bankAccountId, BigDecimal amount) {
-		int newUserSuccess = 0;
+	public int deposit(int userId, int bankAccountId, BigDecimal amount) {
+		int depositSuccess = 0;
 		Connection con = null;
 		try{
 			con = ConnectionUtil.getConnectionFromFile("connection.properties");
@@ -104,18 +104,19 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			pstmt.setBigDecimal(1, amount);
 			pstmt.setInt(2,  userId);
 			pstmt.setInt(3, bankAccountId);
-			newUserSuccess = pstmt.executeUpdate();
+			depositSuccess = pstmt.executeUpdate();
 			con.commit();
 			System.out.println("Success! You've just added $" + amount + " to your bank account: " + bankAccountId);
 			
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+		return depositSuccess;
 	}
 
 	@Override
-	public void withdraw(int userId, int bankAccountId, BigDecimal amount) {
-		int newUserSuccess = 0;
+	public int withdraw(int userId, int bankAccountId, BigDecimal amount) {
+		int withdrawSuccess = 0;
 		Connection con = null;
 		try{
 			con = ConnectionUtil.getConnectionFromFile("connection.properties");
@@ -127,13 +128,14 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			pstmt.setBigDecimal(1, amount);
 			pstmt.setInt(2,  userId);
 			pstmt.setInt(3, bankAccountId);
-			newUserSuccess = pstmt.executeUpdate();
+			withdrawSuccess = pstmt.executeUpdate();
 			con.commit();
 			System.out.println("Success! You've just withdrawn $" + amount + "to your bank account: " + bankAccountId);
 			
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+		return withdrawSuccess;
 		
 		
 		
@@ -141,25 +143,24 @@ public class BankAccountDaoImpl implements BankAccountDao{
 
 	@Override
 	public int deleteBankAccount(int userId, int bankAccountId) {
-		int newUserSuccess = 0;
+		int deleteSuccess = 0;
 		Connection con = null;
 		try{
 			con = ConnectionUtil.getConnectionFromFile("connection.properties");
 			con.setAutoCommit(false);
 			String sql = "DELETE FROM BANK_ACCOUNT_INFO " +
-						"WHERE USER_ID = + ?" +
 						"WHERE USER_ID = ? AND BANK_ACCOUNT_ID = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, userId);
 			pstmt.setInt(2, bankAccountId);
-			newUserSuccess = pstmt.executeUpdate();
+			deleteSuccess = pstmt.executeUpdate();
 			con.commit();
 			System.out.println("Success! You've just deleted your bank account: " + bankAccountId);
 			
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-		return newUserSuccess;
+		return deleteSuccess;
 	}
 
 }

@@ -1,9 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,23 +11,30 @@ import javax.servlet.http.HttpSession;
 
 import com.revature.dao.BankUserDao;
 import com.revature.dao.BankUserDaoImpl;
-import com.revature.util.ConnectionUtil;
 
-public class HomeServlet extends HttpServlet {
+public class RegistrationServlet extends HttpServlet {
 	
 	@Override 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException{
-		PrintWriter pw = resp.getWriter();
-		HttpSession session = req.getSession();
+		
 		resp.setContentType("text/html");
-
+		PrintWriter pw = resp.getWriter();
+		HttpSession session = req.getSession(false);
+		
 		pw.println("<head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><meta charset=\"UTF-8\"><title>Home Page</title></head>");
 		pw.println("<link rel=\"stylesheet\" href=\"styles.css\"></head>");
 		
-		req.getRequestDispatcher("home.html").include(req, resp);
+		if(session!=null){
+			req.getRequestDispatcher("register.html").include(req, resp);
+		
+		
+	} else {
+		resp.sendRedirect("accounts");
+	}
 		
 	}
+	
 	@Override 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException{
@@ -41,35 +46,19 @@ public class HomeServlet extends HttpServlet {
 		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		BankUserDao blid = new BankUserDaoImpl(); //bank user object	
+		BankUserDao blid = new BankUserDaoImpl(); //bank user object
 		
-		Properties prop = new Properties();
-		InputStream in = ConnectionUtil.class.getResourceAsStream("connection.properties");
-		prop.load(in);
-		String url = prop.getProperty("url");
-		String superusername = prop.getProperty("superusername");
-		String superpassword = prop.getProperty("superpassword");
-		
-		
-		
-		if (blid.login(username, password) !=0){
+		int registerSuccess = blid.registerNewBankUser(username, password);
+	
+		if (registerSuccess!=0){
 			pw.print("SUCCESS");
 			int userId = blid.login(username, password);
 			session.setAttribute("userId", userId);
 			session.setAttribute("username", username);
-			session.setAttribute("incorrect",null);
 			resp.sendRedirect("accounts");
 			
-		}
-		
-		else if (username.equals(superusername) && password.equals(superpassword)){
-			pw.print("SUCCESS");
-			session.setAttribute("SuperUsername", superusername);
-			resp.sendRedirect("superprofile");
-		}
-		
-		else {
-			session.setAttribute("incorrect", "incorrect password");
+		} else {
+			session.setAttribute("exists", "This username already exists. Try another one!");
 			resp.sendRedirect("home");
 		}
 		

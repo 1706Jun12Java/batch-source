@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 			pstmt.executeUpdate(); 
 			
 			session.setAttribute("username", username);
-			response.sendRedirect("mainMenu.html");
+			response.sendRedirect("login.html");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			response.sendRedirect("register.html");

@@ -18,12 +18,12 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ViewBalanceServlet</servlet-name>
+        <servlet-name>balance</servlet-name>
         <servlet-class>com.bankapp.controller.ViewBalanceServlet</servlet-class>
     </servlet>
      <servlet-mapping>
-        <servlet-name>ViewBalanceServlet</servlet-name>
-        <url-pattern>/ViewBalanceServlet</url-pattern>
+        <servlet-name>balance</servlet-name>
+        <url-pattern>/balance</url-pattern>
      </servlet-mapping>
      <servlet>
         <servlet-name>DeleteAccountServlet</servlet-name>
@@ -40,6 +40,10 @@
      <servlet-mapping>
         <servlet-name>DepositMoneyServlet</servlet-name>
         <url-pattern>/DepositMoneyServlet</url-pattern>
+     </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>DeleteAccountServlet</servlet-name>
+        <url-pattern>/DeleteAccountServlet</url-pattern>
      </servlet-mapping>
      <servlet>
         <servlet-name>CheckSuperStatusServlet</servlet-name>

@@ -25,4 +25,20 @@
   	<servlet-name>profile</servlet-name>
   	<url-pattern>/profile</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>register</servlet-name>
+  	<servlet-class>com.revature.servlet.AccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>register</servlet-name>
+  	<url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>master</servlet-name>
+    <servlet-class>com.revature.controller.MasterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>master</servlet-name>
+    <url-pattern>/master</url-pattern>
+</servlet-mapping>
 </web-app>

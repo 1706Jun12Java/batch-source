@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+
 import java.util.List;
 
 import com.revature.domain.Account;
@@ -12,7 +13,7 @@ public interface AccountDao {
 
 	public int createAccount(Account account);
 	
-	public void deleteAccount(String user, int aNumber);
+	public void deleteAccount(int aNumber);
 	
 	public void deleteAll();
 

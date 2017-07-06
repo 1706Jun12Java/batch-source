@@ -10,5 +10,9 @@ public interface UsersDao {
 
 	public Users getUsersById(int id);
 
-	public void createUsers(String fn,String ln, String password, String email);
+	public void createUsers(int id,String un,String pw,String fn, String ln, String email,int ur_id);
+
+	public void deleteUsersById(int id);
+
+	public boolean login(String username, String pass);
 }

@@ -16,7 +16,7 @@ import com.revature.util.ConnectionUtil;
 public class UsersDaoImpl implements UsersDao {
 
 	public UsersDaoImpl() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
@@ -27,9 +27,11 @@ public class UsersDaoImpl implements UsersDao {
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-				String usersName = rs.getString("USERS_NAME");
-				int usersID = rs.getInt("USERS_ID");
-				ul.add(new Users(usersID, usersName));
+				int userID = rs.getInt("U_ID");
+				String username = rs.getString("U_USERNAME");
+				String email = rs.getString("U_EMAIL");
+				String pw = rs.getString("U_PASSWORD");
+				ul.add(new Users(userID, username, pw, email));
 			}
 
 		} catch (IOException | SQLException e) {
@@ -40,37 +42,44 @@ public class UsersDaoImpl implements UsersDao {
 
 	@Override
 	public Users getUsersById(int usersid) {
-		  PreparedStatement pStatement;
-		          Users user= null;
-		  
-		          try (Connection con = ConnectionUtil.getConnectionFromFile("connection.properties")){
-		              String sql = "SELECT * FROM USER_ID WHERE USERS_ID = ?";
-		              pStatement = con.prepareStatement(sql);
-		              pStatement.setInt(1,usersid);
-		              ResultSet rs = pStatement.executeQuery();
-		  
-		              while(rs.next()){
-		                  int userID = rs.getInt("USERS_ID");
-		                  String username = rs.getString("USERS_NAME");
-		                  user = new Users(userID, username);
-		              }
-		  
-		  
-		          } catch (IOException | SQLException e) {
-		              e.printStackTrace();
-		          }
-		  
-		          return user;
-		      }
-
-	@Override
-	public void createUsers(String fn,String ln, String pw,String email) {
+		PreparedStatement pStatement;
+		Users user = null;
 
 		try (Connection con = ConnectionUtil.getConnectionFromFile("connection.properties")) {
-			String sql = "INSERT INTO USERS (U_ID,U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL,UR_ID)" + " VALUES(?,?,?,?,?,?,?)";
+			String sql = "SELECT * FROM USERS WHERE U_ID = ?";
+			pStatement = con.prepareStatement(sql);
+			pStatement.setInt(1, usersid);
+			ResultSet rs = pStatement.executeQuery();
+
+			while (rs.next()) {
+				int userID = rs.getInt("U_ID");
+				String username = rs.getString("U_USERNAME");
+				String email = rs.getString("U_EMAIL");
+				String pw = rs.getString("U_PASSWORD");
+				user = new Users(userID, username, pw, email);
+			}
+
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return user;
+	}
+
+	@Override
+	public void createUsers(int id, String un, String pw, String fn, String ln, String email, int ur_id) {
+
+		try (Connection con = ConnectionUtil.getConnectionFromFile("connection.properties")) {
+			String sql = "INSERT INTO USERS (U_ID,U_USERNAME,U_PASSWORD,U_FIRSTNAME,U_LASTNAME,U_EMAIL,UR_ID)"
+					+ " VALUES(seq_auto.nextval,?,?,?,?,?,seq_auto.nextval)";
 			PreparedStatement pStatement = con.prepareStatement(sql);
-			pStatement.setString(1, email);
-			pStatement.setString(2, pw);
+			pStatement.setInt(1, id);
+			pStatement.setString(2, email);
+			pStatement.setString(3, pw);
+			pStatement.setString(4, fn);
+			pStatement.setString(5, ln);
+			pStatement.setString(6, email);
+			pStatement.setInt(7, ur_id);
 			if (pStatement.executeUpdate() > 0)
 				System.out.println("Registration Complete");
 			else
@@ -79,5 +88,46 @@ public class UsersDaoImpl implements UsersDao {
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void deleteUsersById(int id) {
+
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
+			String sql = "SELECT * FROM USERS WHERE U_ID = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			int uid = id;
+			ps.setInt(1, uid);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				sql = "DELETE FROM USERS WHERE U_ID = ?";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, uid);
+				int i = ps.executeUpdate();
+				if (i > 0) {
+					System.out.println("The user has been deleted.");
+				}
+			}
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public boolean login(String username, String password) {
+
+		boolean status = false;
+		try {
+			Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM USERS WHERE U_USERNAME = ? AND U_PASSWORD = ?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			status = rs.next();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+		return status;
 	}
 }

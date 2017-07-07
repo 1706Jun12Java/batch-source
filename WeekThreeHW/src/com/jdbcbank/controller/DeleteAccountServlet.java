@@ -10,11 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jdbcbank.domain.Account;
-
-/**
- * Servlet implementation class DeleteAccountServlet
- */
-@WebServlet(asyncSupported = true, urlPatterns = { "/DeleteAccountServlet" })
+ 
+@WebServlet(asyncSupported = true)
 public class DeleteAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +30,7 @@ public class DeleteAccountServlet extends HttpServlet {
 		 
 		 int account_id = Integer.parseInt(req.getParameter("account_id_delete"));
 		 
-		 
+		 System.out.println("deleting..");
 		Account a = new Account(account_id);
 		 
 		try {
@@ -42,9 +39,10 @@ public class DeleteAccountServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		 System.out.println("deleted");
 		 
-		 
-		 resp.sendRedirect("profile.html");
+		 //resp.sendRedirect("profile.html");
 	}
 
 }

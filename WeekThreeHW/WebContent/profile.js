@@ -14,7 +14,7 @@ function movebar() {
 
 
 var data = {};
- 
+var username = ""; 
 
 var table_temp = `<tr>
 			        <td>t_id</td>
@@ -23,12 +23,12 @@ var table_temp = `<tr>
 			        <td>t_date</td>
 			      </tr>`;
 
-var panel_temp = ` <div class="panel panel-default">
+var panel_temp = ` <div class="panel panel-default" id="account_tree_a_id">
 	      <div class="panel-heading">
 	        <div class="panel-title">  
 	        	<div class="row">
 				  	<div class="col-md-3">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapsea_id">Account ID: a_id</a> 
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse_a_id">Account ID: a_id</a> 
 					</div>
 				  	<div class="col-md-3">Balance: $a_balance</div>
 				  	<div class="col-md-3"><a data-toggle="modal" data-target="#exampleModal" data-whatever="a_id" >Make Transaction</a></div>
@@ -36,7 +36,7 @@ var panel_temp = ` <div class="panel panel-default">
 				</div> 
 	        </div>  
 	      </div>
-	      <div id="collapsea_id" class="panel-collapse collapse">
+	      <div id="collapse_a_id" class="panel-collapse collapse">
 	        <table class="table table-hover">
 			    <thead>
 			      <tr>
@@ -67,10 +67,12 @@ $(document).ready(function(){
 	$.getJSON( transactionBalanceAPI, { 
 	    format: "json"
 	  }) .done(function( res ) {	
-		
-		  data = res;
-		  //alert("done");
 		  
+		  data = res.accounts;
+		  //alert("done");
+		  document.getElementById("welcome_user").innerHTML = "Welcome, " + res.username + " !";
+
+			document.getElementById("myProgress").style.width = "100%";
 			var innerh = ""
 			for (var k in data){
 				var transa_table ="";
@@ -79,7 +81,7 @@ $(document).ready(function(){
 					 var transa_row = table_temp.replace("t_id", data[k].listTransaction[i].transaction_id)
 					 						.replace("t_type", data[k].listTransaction[i].transaction_type)
 					 						.replace("t_amt", data[k].listTransaction[i].transaction_amt) 
-					 						.replace("t_date", date.dayOfMonth + "-" + date.month + "-" + date.year); 
+					 						.replace("t_date", date.dayOfMonth + "-" + date.month + "-" + date.year + " " + date.hour+":"+date.minute+":"+date.second); 
 					 transa_table += transa_row;
 					 //alert(transa_row);
 				 }
@@ -114,12 +116,29 @@ $(document).ready(function(){
 	  
 	 var button = $(event.relatedTarget) ; 
 	  recipient = button.data('whatever') ;   
-	  document.getElementById("account_id_delete").value = recipient; 
-	  
+	  document.getElementById("account_id_delete").value = recipient;   
 	});
+	
+	 
+	
+	
 });
   
-
+function deleteTree(){
+	event.preventDefault();
+	$("#confirm-delete").modal('hide');
+	//alert(event);
+	
+	$.ajax({
+		  type: 'POST',
+		  url: $(".delete_account").attr("action"),
+		  data: $(".delete_account").serialize(),  
+		  success: function(response) {
+			  	//alert("done");
+		  },
+		});
+	document.getElementById("account_tree_"+recipient).outerHTML  = ""; 
+}
 
 function checkOverDraf(){ 
 	 

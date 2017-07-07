@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.jdbcbank.domain.Account;
+import com.jdbcbank.domain.Account; 
 import com.jdbcbank.domain.Transaction;
 import com.jdbcbank.domain.TransactionBalance;
 import com.jdbcbank.domain.User;
@@ -51,7 +51,7 @@ public class ProfileServlet extends HttpServlet {
 				//System.out.println(account_transation);
 				
 				ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-				String json = ow.writeValueAsString(account_transation);
+				String json = ow.writeValueAsString(new JsonEveryThing(username,account_transation));
 				//System.out.println(json);
 				pw.print(json); 
 			

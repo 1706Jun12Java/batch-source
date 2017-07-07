@@ -11,6 +11,6 @@ public class TransactionBalance {
 	
 	public float balance;
 	public List<Transaction> listTransaction;
-	
 	 
 }
+

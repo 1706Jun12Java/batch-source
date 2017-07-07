@@ -16,11 +16,17 @@
       <span class="navbar-text">  
         <a type="button" href="logout" class="btn btn-danger navbar-btn"> logout</a>
       </span>  
+      <span id="welcome_user" class="navbar-text navbar-brand">Welcome</span>
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
 </nav> 
+
 
 
  
 <div class="container" style="margin-top:120px"> 
+
 
 
    <div class="panel-group" id="accordion">
@@ -45,10 +51,10 @@
                 </div>
                 
                 <div class="modal-footer">
-                	<form action="delete"  method="post">
+                	<form class="delete_account" action="delete" method="post">
                 		<input type = "hidden"  name="account_id_delete" id="account_id_delete">
 	                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	                    <input class="btn btn-danger btn-ok" type="submit" value="delele">
+	                    <input class="btn btn-danger btn-ok" type="submit" value="delete" onClick="deleteTree()">
                     </form>
                 </div>
             </div>
@@ -56,7 +62,8 @@
     </div>
 
 <div class="container">
-<a  href="createAccount" > <span class="glyphicon glyphicon-globe"></span> Open Another Account</a> 
+<span class="glyphicon glyphicon-globe"></span>
+<a  href="createAccount" >Open Another Account</a> 
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -84,7 +91,7 @@
           <div id="error_overdraf"> </div>
           <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	        <input type="submit" class="btn btn-primary" id="transact_btn" value="Confirm"> 
+	        <input type="submit" class="btn btn-primary" id="transact_btn" value="Confirm" > 
 	      </div>
         </form>
       </div>
@@ -96,8 +103,6 @@
 </body>
 
 <footer class="navbar-fixed-bottom"> 
-<div id="myProgress">
-  <div id="myBar"></div>
-</div>
+
 </footer>
 </html>

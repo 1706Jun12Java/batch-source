@@ -1,8 +1,8 @@
 package com.jdbcbank.dao;
 
 import java.io.IOException;
-import java.sql.*; 
-import java.time.LocalDate;
+import java.sql.*;  
+import java.time.LocalDateTime;
 import java.util.*;
 
 import com.jdbcbank.domain.*; 
@@ -16,13 +16,14 @@ public class TransactionDaoImpl implements TransactionDao {
 
 	@Override
 	public void addTransaction(Transaction t) throws SQLException, IOException { 
+	System.out.println(t);
 		try(Connection con = ConnectionUtil.getConnection("connection.properties")){
 			String sql = "INSERT INTO TRANSACTION(ACCOUNT_ID, TRANSACTION_TYPE, TRANSACTION_AMT, TRANSACTION_DATE) VALUES(?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,t.getAccount_id()); 
 			pstmt.setString(2,t.getTransaction_type()); 
 			pstmt.setFloat(3,t.getTransaction_amt()); 
-			pstmt.setDate(4, java.sql.Date.valueOf(t.getTransaction_date()));
+			pstmt.setTimestamp(4, Timestamp.valueOf(t.getTransaction_date()));
 			pstmt.executeUpdate();  
 		}  
 	}
@@ -40,10 +41,11 @@ public class TransactionDaoImpl implements TransactionDao {
 				int account_id = rs.getInt("ACCOUNT_ID"); 
 				String transaction_type = rs.getString("TRANSACTION_TYPE"); 
 				float transaction_amt = rs.getFloat("TRANSACTION_AMT");
-				LocalDate transaction_date = rs.getDate("TRANSACTION_DATE").toLocalDate();
+				LocalDateTime transaction_date = rs.getTimestamp("TRANSACTION_DATE").toLocalDateTime();
 				listTransac.add(new Transaction(id, account_id, transaction_type, transaction_amt, transaction_date));
 			}  
 		} 
+		System.out.println(listTransac);
 		return listTransac;  
 	} 
 }

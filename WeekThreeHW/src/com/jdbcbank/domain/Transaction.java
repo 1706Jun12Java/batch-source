@@ -1,8 +1,8 @@
 package com.jdbcbank.domain;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.time.LocalDate;
+import java.sql.SQLException; 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import com.jdbcbank.dao.*;
@@ -16,7 +16,7 @@ public class Transaction {
 	
 	
 	public Transaction(int transaction_id, int account_id, String transaction_type, float transaction_amt,
-			LocalDate transaction_date) {
+			LocalDateTime transaction_date) {
 		super();
 		this.transaction_id = transaction_id;
 		this.account_id = account_id;
@@ -25,7 +25,7 @@ public class Transaction {
 		this.transaction_date = transaction_date;
 	}
 	
-	public Transaction(int account_id, String transaction_type, float transaction_amt, LocalDate today) {
+	public Transaction(int account_id, String transaction_type, float transaction_amt, LocalDateTime today) {
 		 this(0,account_id, transaction_type,transaction_amt,today);
 	}
 	
@@ -34,7 +34,7 @@ public class Transaction {
 	private int account_id;
 	private String transaction_type;
 	private float transaction_amt;
-	private LocalDate transaction_date;
+	private LocalDateTime transaction_date;
 	
 	public Transaction() {
 		// TODO Auto-generated constructor stub
@@ -79,11 +79,11 @@ public class Transaction {
 		this.transaction_amt = transaction_amt;
 	}
 
-	public LocalDate getTransaction_date() {
+	public LocalDateTime getTransaction_date() {
 		return transaction_date;
 	}
 
-	public void setTransaction_date(LocalDate transaction_date) {
+	public void setTransaction_date(LocalDateTime transaction_date) {
 		this.transaction_date = transaction_date;
 	}
 

@@ -11,11 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jdbcbank.domain.Account;
 import com.jdbcbank.domain.OverdraftException;
-
-/**
- * Servlet implementation class TransactionServlet
- */
-@WebServlet(asyncSupported = true, urlPatterns = { "/TransactionServlet" })
+ 
+@WebServlet(asyncSupported = true)
 public class TransactionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

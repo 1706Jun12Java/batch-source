@@ -1,8 +1,8 @@
 package com.jdbcbank.domain;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.time.LocalDate;
+import java.sql.SQLException; 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.jdbcbank.dao.*;
 
 public class Account {
 
-	private LocalDate today;   
+	private LocalDateTime today;   
 	
 	public List<Transaction> getListTransaction() throws SQLException, IOException{
 		TransactionDao td = new TransactionDaoImpl(); 
@@ -54,7 +54,7 @@ public class Account {
 		this.account_id = account_id;
 		this.user_id = user_id;
 		this.balance = balance; 
-		this.today =  LocalDate.now();
+		this.today =  LocalDateTime.now();
 		this.account_active =account_active; 
 	}
 	

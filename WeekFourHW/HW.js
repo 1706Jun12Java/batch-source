@@ -2,9 +2,11 @@
  * Created by ronnnwu on 7/7/17.
  */
 
+var homework = {};
+
 // 1. Return the nth fibonacci number
 
-function fibonacci(n) {
+homework.fibonacci = function (n) {
 
     var i = 0,
         j = 1,
@@ -18,11 +20,11 @@ function fibonacci(n) {
     return j
 }
 
-console.log(fibonacci(10));
+console.log(homework.fibonacci(10));
 
 //  2. Sort array of integers
 
-function f(arr){
+homework.sort = function (arr){
     for (var i = 0; i<arr.length-1; i++){
         for (var j = i; j<arr.length; j++){
             if (arr[i] > arr[j]){
@@ -35,13 +37,12 @@ function f(arr){
     return arr;
 }
 
-var arr = [2,4,5,1,3,1];
 
-console.log(f(arr));
+console.log(homework.sort([2,4,5,1,3,1]));
 
 // 3. Return the factorial of n
 
-function factorial(n){
+homework.factorial = function (n){
 
     var i = 1;
         tot = 1;
@@ -54,12 +55,12 @@ function factorial(n){
     return tot;
 }
 
-console.log(factorial(3));
+console.log(homework.factorial(3));
 
 // 4. Rotate left
 
 
-function rotateLeft(arr, n){
+homework.rotateLeft = function (arr, n){
     n = n % arr.length;
     var arr1 = arr.slice(n);
 
@@ -67,14 +68,14 @@ function rotateLeft(arr, n){
 }
 
 
-console.log(rotateLeft([1,2,3,4,5], 1));
-console.log(rotateLeft([1,2,3,4,5], 6));
-console.log(rotateLeft([1,2,3,4,5], 3));
+console.log(homework.rotateLeft([1,2,3,4,5], 1));
+console.log(homework.rotateLeft([1,2,3,4,5], 6));
+console.log(homework.rotateLeft([1,2,3,4,5], 3));
 
 
 // 5.  Balanced Brackets
 
-function balancedBrackets(str){
+homework.balancedBrackets = function (str){
     var stack = [],
         BracksPair = {
             '(' : ')',
@@ -110,8 +111,10 @@ function balancedBrackets(str){
 }
 
 
-console.log(balancedBrackets('()()'));
-console.log(balancedBrackets('({[]})'));
+console.log(homework.balancedBrackets('()()'));
+console.log(homework.balancedBrackets('({[]})'));
 
-console.log(balancedBrackets('(()'));
-console.log(balancedBrackets('([)]'));
+console.log(homework.balancedBrackets('(()'));
+console.log(homework.balancedBrackets('([)]'));
+
+

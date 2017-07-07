@@ -41,3 +41,4 @@ hs_err_pid*
 
 #ignore java specific stuff
 /Bank/connection.properties
+connection.properties

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM Traversal</title>
+</head>
+<body>
+
+	<div id="div1">
+		<p id="p1">this is a paragraph</p>
+		<p id="p2">this is another paragraph</p>
+	</div>
+
+</body>
+<script>
+	/*document.getElementById("p1").innerHTML = "New Text";
+	var p2 = document.getElementById("p2").firstChild.nodeValue;
+	console.log(p2);*/
+	var para = document.createElement("p");
+	var node = document.createTextNode("this is new");
+	para.appendChild(node);
+	
+	var div1 = document.getElementById("div1");
+	var p1 = document.getElementById("p1");
+	div1.insertBefore(para,p1);
+	
+	var node2 = document.createTextNode("this is also new");
+	para.appendChild(node2);
+</script>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title id="title">So Exciting</title>
+</head>
+<body onload="load()">
+
+	<div id="BobRosssPersonalHeaven"
+		style="height: 600px; width: 600px; background-color: cyan">
+		<div id="cursorplus"
+			style="position: absolute; top: 100px; height: 400px; width: 400px; background-color: red">
+			<p style="background-color: yellow">Fluff that up. If you didn't
+				have baby clouds, you wouldn't have big clouds. Here's something
+				that's fun. You gotta think like a tree. Let your imagination be
+				your guide. It's so important to do something every day that will
+				make you happy. I get carried away with this brush cleaning. How to
+				paint. That's easy. What to paint. That's much harder. You can
+				create anything that makes you happy. We'll make some happy little
+				bushes here. And I will hypnotize that just a little bit. Little
+				trees and bushes grow however makes them happy. Steve wants
+				reflections, so let's give him reflections. Even trees need a
+				friend. We all need friends. Every day I learn. We'll put some happy
+				little leaves here and there. Only think about one thing at a time.
+				Don't get greedy. How do you make a round circle with a square
+				knife? That's your challenge for the day. See there how easy that
+				is. The more we do this - the more it will do good things to our
+				heart. Life is too short to be alone, too precious.</p>
+		</div>
+	</div>
+
+
+	<h3 id="xPos"></h3>
+	<h3 id="yPos"></h3>
+
+	<table id="t1" onclick="alert('hi')">
+		<tr id="tr1">
+			<td id="c1">one</td>
+		</tr>
+		<tr id="tr2">
+			<td id="c2">two</td>
+		</tr>
+	</table>
+</body>
+
+<script>
+	document.getElementById("cursorplus").addEventListener("mouseover",
+			enhanceCursor, false);
+	function enhanceCursor() {
+		document.getElementById("xPos").innerHTML = event.clientX;
+		document.getElementById("yPos").innerHTML = event.clientY;
+	}
+	window.addEventListener("resize", function() {
+		document.getElementById("title").innerHTML = "you resized the window";
+	});
+
+	var myEventHandler = function(event) {
+		alert("target: " + event.target.id + " - this: " + this.id);
+		console.log("target: " + event.target.id + " - this: " + this.id);
+	}
+	var divs = document.getElementsByTagName("div");
+	for (var i = 0; i < divs.length; i++) {
+		divs[i].addEventListener("click", myEventHandler, false);//generally omit useCapture
+	}
+	function stopEvent(event) {
+		tr2 = document.getElementById("tr2");
+		tr2.innerHTML = "hello";
+		event.stopPropagation();
+		alert("event propagation halted");
+	}
+	function load(){
+		c2 = document.getElementById("c2");
+		c2.addEventListener("click",stopEvent,false);
+	}
+</script>
+
+</html>

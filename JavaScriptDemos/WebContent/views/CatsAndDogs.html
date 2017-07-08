@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CatsAndDogs</title>
+</head>
+<body>
+
+	<p onclick="catCount()">count cats</p>
+	<p id="cats"></p>
+	<p onclick="dogCount()">count dogs</p>
+	<p id="dogs"></p>
+	
+	
+
+</body>
+<script "text/javascript" src="../scripts/closure.js"></script>
+<script "text/javascript" src="../scripts/parse.js"></script>
+<script>
+	//give a name to anonymous function returned by getCount
+	//use closure to set "default" starting point for each counter. 
+	var catCount = getCount("cat");
+	
+	var dogCount = getCount("dog");
+</script>
+</html>

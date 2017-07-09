@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>
+				 Sum: <span id="sum"></span>
+			</h3>
+			<h5 id="currentTime"></h5>
+		</div>
+		<div>
+			<h1>
+				United <span data-customAttr="USA">States</span> of America (<span>USA</span>)
+			</h1>
+			<div>
+				<a>Click Here</a><a>Click Here</a>
+				<a>Click Here</a><a>Click Here</a>
+				<a>Click Here</a>
+			</div>
+			<a>Click Here</a> <a>Click <span>Here1</span></a> <a>Click Here</a>
+			<div>
+				<select name="colors">
+					<option value="green">Green</option>
+					<option value="blue">Blue</option>
+					<option value="red" selected="selected">Red</option>
+					<option value="purple">Purple</option>
+					<option value="yellow" selected="selected">Yellow</option>
+				</select>
+			</div>
+		</div>
+		<p id="helloWorld">Hello, World!</p>
+		<div>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Department</th>
+				</tr>
+				<tr>
+					<td class="empName">John</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Amy</td>
+					<td>Finance</td>
+				</tr>
+				<tr>
+					<td class="empName">Austin</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Katie</td>
+					<td>Marketing</td>
+				</tr>
+				<tr>
+					<td class="empName" data-customAttr="court">Courtney</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Scout</td>
+					<td>Sales</td>
+				</tr>
+			</table>
+		</div>
+		<form id="firstForm">
+			<a>Click <span>Here2</span></a> <input type="text"
+				data-customAttr="7" /><br /> <input type="text" data-customAttr="24" /><br />
+			<input type="radio" name="favoriteAnimal" value="dog" />Dog<br /> <input
+				type="radio" name="favoriteColor" value="blue" />Blue<br /> 
+				<input id="num1" class="nums" type="text"/>
+				<br /> 
+				<input type="radio"
+				name="favoriteAnimal" value="cat" />Cat<br /> <input type="radio"
+				name="favoriteColor" value="red" />Red<br /> <input type="radio"
+				name="favoriteAnimal" value="horse" />Horse<br /> <input
+				type="radio" name="favoriteAnimal" value="dolphin" />Dolphin<br /> <a>Click
+				<span>Here</span>
+			</a><br /> <input type="radio" name="favoriteAnimal" value="eagle" />Eagle<br />
+			<input type="radio" name="favoriteColor" value="green" />Green<br />
+			<input type="radio" name="favoriteColor" value="orange" />Orange<br />
+			<select name="hobbies">
+				<option value="photography">Photography</option>
+				<option value="football" selected="selected">Football</option>
+				<option value="kayaking" selected="selected">Kayaking</option>
+				<option value="hiking">Hiking</option>
+				<option value="programming" selected="selected">Programming</option>
+			</select> 
+			<input id="num2" class="nums" type="text" />
+			<select name="skills">
+				<option value="java">Java</option>
+				<option value="net">.NET</option>
+				<option value="dom" selected="selected">DOM</option>
+				<option value="html">HTML</option>
+				<option value="css">CSS</option>
+				<option value="javascript" selected="selected">Javascript</option>
+			</select>
+		</form>
+	</div>
+	<a>Click Here</a>
+	<a>Click <span data-customAttr="500">Here3</span></a>
+	<a>Click Here</a>
+	<button onclick="onChangeAdd()">Try it</button>
+	<script type="text/javascript">
+		//TODO: Javascript homework
+		document.getElementById("helloWorld").addEventListener("click",function(){ clickTextChange(event)});
+		var m = document.getElementsByClassName("nums");
+		for(var me = 0; me < m.length; me++){
+			m[me].addEventListener("change",onChangeAdd);
+		}
+		m = document.getElementsByTagName("select");
+		for(var me = 0; me < m.length; me++){
+		var att = m[me].attributes;
+		if(att.getNamedItem("name").value === "skills"){
+			m[me].addEventListener("change",onSkillSelect);
+			}
+		}
+		
+		m = document.getElementsByTagName("input");
+		for(var me = 0; me < m.length; me++){
+		var att = m[me].attributes;
+		if(att.getNamedItem("name") !== null && att.getNamedItem("name").value === "favoriteColor"){
+			m[me].addEventListener("change",onColorSelect);
+			}
+		}
+		m = document.getElementsByClassName("empName");
+		for(var me = 0; me < m.length; me++){
+			m[me].addEventListener("mouseover",function(){onMouseOverShowHide(event)});			
+		}
+		function getUSA(){
+		var meep = document.getElementsByTagName("*");
+		for(var i = 0; i < meep.length; i++){
+			if(meep[i].innerHTML.indexOf("USA") !== -1 && meep[i].childNodes.length < 2 && meep[i].tagName!== "SCRIPT"){
+				console.log(meep[i].innerHTML);			
+			}
+		}
+	}
+		
+		function getPeopleInSales(){
+			var meep = document.getElementsByClassName("empName");
+			for(var i = 0; i < meep.length;i++){
+				console.log(meep[i].innerHTML);
+			}
+		}
+		 function getAnchorChildren(){
+			var meep = document.getElementsByTagName("a");
+			
+			for(var i = 0; i < meep.length; i++){
+				var child = meep[i].childNodes;
+				for(var j = 0; j < child.length; j++){
+					if(child[j].tagName === "SPAN"){
+						console.log(child[j].innerHTML);
+						break;
+					}
+				}
+			}
+		 }
+		
+		function getHobbies(){
+			var meep = document.getElementsByTagName("select");
+			for(var i = 0; i < meep.length; i++){
+			var att = meep[i].attributes;
+			for(var j = 0; j < att.length;j++){
+				if(att.getNamedItem("name").value === "skills"){
+					var x = meep[i].getElementsByTagName("option");
+					for(var k = 0; k <x.length;k++){
+						var inneratt = x[k].attributes;
+						var merp = inneratt.getNamedItem("selected");
+						if(merp !==null){
+						if(inneratt.getNamedItem("selected").value === "selected"){
+							console.log(inneratt.getNamedItem("value"));
+							console.log(x[k].innerHTML);
+						}
+						}
+					}
+				}
+			}
+			}
+		}
+		
+		function getCustomAttribute(){
+			var allElements = document.getElementsByTagName("*");
+			for(var i = 0; i < allElements.length; i++){
+				var elementAtt = allElements[i].attributes;
+				var temp = elementAtt.getNamedItem("data-customAttr");
+				if(temp !== null){
+					console.log(temp);
+					console.log(allElements[i].tagName);
+				}
+			}
+		}
+		
+		function onChangeAdd(){
+			var inputs = document.getElementsByClassName("nums");
+			var regex = new RegExp("[^0-9]");
+			var sum = document.getElementById("sum");
+			if(!regex.test(inputs[0].value) && !regex.test(inputs[1].value)){
+				sum.innerHTML = Number(inputs[0].value) + Number(inputs[1].value);
+			} else{
+				sum.innerHTML = "cannot add";
+			}
+		}
+		
+		function onSkillSelect(){
+			var meep = document.getElementsByTagName("select");
+			for(var i = 0; i < meep.length; i++){
+			var att = meep[i].attributes;
+				if(att.getNamedItem("name").value === "skills"){
+					alert("Are you sure \"" + meep[i].value + "\" is one of your skills?");
+				}
+			}
+		}
+		
+		function onColorSelect(){		
+			var element = document.getElementById("firstForm");
+			if(element.style.backgroundColor === ""){
+					var m = document.getElementsByTagName("input");
+					for(var me = 0; me < m.length; me++){
+						var att = m[me].attributes;
+						if(att.getNamedItem("name") !== null && att.getNamedItem("name").value === "favoriteColor" && m[me].checked){
+						element.style.backgroundColor = m[me].value;
+						}
+				}
+			}else{
+					var m = document.getElementsByTagName("input");
+					for(var me = 0; me < m.length; me++){
+						var att = m[me].attributes;
+						if(att.getNamedItem("name") !== null && att.getNamedItem("name").value === "favoriteColor" && m[me].checked){
+						alert("So you like " + m[me].value + " more than " + element.style.backgroundColor);
+						console.log(element.style.backgroundColor);
+						element.style.backgroundColor = m[me].value;
+						}
+		}
+			}
+		}
+		function onMouseOverShowHide(event){
+		if(event.target.style.visibility === ""){
+		var m = document.getElementsByClassName("empName");
+		for(var me = 0; me < m.length; me++){
+			if(m[me].style.visibility !== ""){
+				m[me].style.visibility = "";
+			}		
+		}
+			event.target.style.visibility = "hidden";
+		}else{
+		console.log("dope");
+			event.target.style.visibility = "";
+		}
+
+		}
+		
+		
+		function checkTime(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i;
+	}
+function clickTextChange(event){
+	setTimeout(function(){
+		event.target.style.color = getRandomColor();
+	},3000);
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+function example(node){
+if(node !== "undefined"){
+	console.log(node.innerHTML);
+	}
+}
+ function walkTheDOM(node, func){
+	var children = node.childNodes;
+	for(var i = 0; i < children.length; i++){
+		walkTheDOM(children[i],func);
+	}
+	func(node);
+ }
+ 
+
+function currentTime() {
+  var today = new Date();
+  var hr = today.getHours();
+  var min = today.getMinutes();
+  var sec = today.getSeconds();
+  min = checkTime(min);
+  sec = checkTime(sec);
+  document.getElementById('currentTime').innerHTML = hr + ":" + min + ":" + sec;
+  setTimeout(function() {currentTime()}, 500);
+}
+currentTime();
+
+	</script>
+</body>
+</html>

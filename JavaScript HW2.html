@@ -102,7 +102,7 @@
 	<a>Click Here</a>
 	<a>Click <span data-customAttr="500">Here3</span></a>
 	<a>Click Here</a>
-	<button onclick="onChangeAdd()">Try it</button>
+	<button onclick="getPeopleInSales()">Try it</button>
 	<script type="text/javascript">
 		//TODO: Javascript homework
 		document.getElementById("helloWorld").addEventListener("click",function(){ clickTextChange(event)});
@@ -141,7 +141,13 @@
 		function getPeopleInSales(){
 			var meep = document.getElementsByClassName("empName");
 			for(var i = 0; i < meep.length;i++){
+			var papa = meep[i].parentNode;
+			var allChildren = papa.childNodes;
+			for(var j = 0; j < allChildren.length;j++){
+				if(allChildren[j].innerHTML === "Sales"){
 				console.log(meep[i].innerHTML);
+				}
+			}
 			}
 		}
 		 function getAnchorChildren(){
@@ -287,7 +293,7 @@ if(node !== "undefined"){
 	func(node);
  }
  
-walkTheDOM(document.documentElement,example);
+//walkTheDOM(document.documentElement,example);
 function currentTime() {
   var today = new Date();
   var hr = today.getHours();

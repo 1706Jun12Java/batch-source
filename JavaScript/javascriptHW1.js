@@ -30,7 +30,7 @@ function arraySort(array) {
   while(!sorted) {
     // Let's assume it is  sorted for now...
     sorted = true;
-    for(let i = 1; i < array.length; i++) {
+    for(i = 1; i < array.length; i++) {
       if(array[i-1] > array[i]) {
           // swap
           temp = array[i-1];
@@ -59,7 +59,7 @@ function factorial(num) {
 // Question 4: Helper Function
 function rotateLeftOnce(array) {
   var temp = array[0];
-  for(let i = 1; i < array.length; i++) {
+  for(i = 1; i < array.length; i++) {
     array[i-1] = array[i];
   }
   array[array.length-1] = temp;
@@ -67,7 +67,7 @@ function rotateLeftOnce(array) {
 
 // Question 4:
 function rotateLeft(array, num) {
-  for(let i = 0; i < num; i++) {
+  for(i = 0; i < num; i++) {
     rotateLeftOnce(array);
   }
 }
@@ -91,7 +91,7 @@ function isBalanced(string) {
   var sStartCount = 0;
   var sEndCount = 0;
 
-  for(let i = 0; i <  string.length; i++) {
+  for(i = 0; i <  string.length; i++) {
     if(string[i] == pStart) {
       pStartCount += 1;
     }

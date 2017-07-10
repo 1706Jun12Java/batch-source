@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var helloWorld = document.getElementById('helloWorld');
 
     helloWorld.addEventListener('click', function(){
-        var interval = setInterval(function(){
+            setTimeout(function(){
 
             var r = Math.floor(Math.random() * 255);
             var g = Math.floor(Math.random() * 255);
@@ -245,7 +245,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             helloWorld.style.color = 'rgb('+ r + ',' + g  + ','+ b + ')';
 
-            clearInterval(interval);
         }, 3000);
     });
 });

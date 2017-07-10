@@ -117,4 +117,26 @@ console.log(homework.balancedBrackets('({[]})'));
 console.log(homework.balancedBrackets('(()'));
 console.log(homework.balancedBrackets('([)]'));
 
+document.getElementById('cursorplus').addEventListener("mouseover",
+    enhanceCursor, false);
 
+function enhanceCursor() {
+    alert('dd');
+    event.preventDefault();
+    document.getElementById('xPos').innerHTML = event.clientX.toString() ;
+    document.getElementById('yPos').innerHTML = event.clientX.toString() ;
+}
+
+window.addEventListener("resize", function() {
+    document.getElementById('title').innerHTML = "you are resizing"
+});
+
+var myEventHandler = function() {
+    alert("target:" + event.target.id + "this id " + this.id);
+    console.log(event);
+}
+
+var divs = document.getElementsByTagName('div');
+for (var i = 0; i < divs.length; i++) {
+    divs[i].addEventListener("click", myEventHandler() );
+}

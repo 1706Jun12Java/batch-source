@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>So many requests</title>
+</head>
+<body>
+	<div id="time">
+		<h3>the current time is:</h3>
+	</div>
+	<div>
+		<h3>Enter a Pokemon ID</h3>
+		<input type="text" id="pokeId"/>
+		<button type="button" id="pokemon">What's its name?</button>
+		<div id="pokeResult"></div>
+	</div>
+	<div>
+		<button onclick="stopColor()">stop toggling</button>
+	</div>
+
+</body>
+<script>
+	var colorVar = setInterval(function() {
+		setColor();
+	}, 500);
+	function setColor() {
+		var x = document.body;
+		x.style.backgroundColor = x.style.backgroundColor == "cyan" ? "red"
+				: "cyan";
+	}
+	function stopColor() {
+		clearInterval(colorVar);
+	}
+	function sendAjaxGet(url, func) {
+		var xhttp = new XMLHttpRequest()
+				|| new ActiveXObject("Microsoft.HTTPRequest");
+		xhttp.onreadystatechange = function() {
+			console.log(this.readyState);
+			if (this.readyState == 4 && this.status == 200) {
+				func(this);
+			}
+		};
+		xhttp.open("GET", url, true);
+		xhttp.send();
+		return xhttp.responseText;
+	}
+	function showTime(xhttp) {
+		var res = JSON.parse(xhttp.responseText);
+		time.lastChild.innerHTML = res.hour + ":" + res.minute + ":"
+				+ res.second;
+	}
+	function getPokemon(xhttp){
+		var res = JSON.parse(xhttp.responseText);
+		var html = "<h4>Chosen pokemon has name: "+res.name+"</h4>";
+		document.getElementById("pokeResult").innerHTML = html;
+	}
+	window.onload = function() {
+		var time = document.getElementById("time");
+		var html = time.innerHTML;
+		var d = new Date();
+		html += "<h3>" + d.getHours() + ":" + d.getMinutes() + ":"
+				+ d.getSeconds() + "</h3>";
+		time.innerHTML = html;
+		setInterval(
+				function() {
+					sendAjaxGet('http://localhost:8083/JavaScriptDemos/time',
+							showTime);
+				}, 2000);
+		document.getElementById("pokemon").addEventListener(
+				"click",function(){
+					sendAjaxGet('https://pokeapi.co/api/v2/pokemon/'
+							+document.getElementById("pokeId").value,
+							getPokemon);
+				});
+
+	}
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Counter</title>
+</head>
+<body>
+	<div id="time">
+		<h1>The current time is:</h1>
+		<h1></h1>
+	</div>
+
+</body>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+	var interval = setInterval(function(){
+		var time = document.getElementById("time");
+		var xhr = new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest");
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState != 4) return;
+			if (xhr.status == 200){
+				var res = JSON.parse(xhr.responseText);
+				time.lastElementChild.innerHTML = res.hour+":"+res.minute+":"+res.second;
+				console.log(xhr.responseText);
+			};
+		};
+		var url = "http://localhost:8083/JavaScriptDemos/time";
+		xhr.open("GET",url,true);
+		xhr.send();
+	},2000);
+});
+</script>
+
+
+</html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <servers>
   <server auto-publish-setting="2" auto-publish-time="1" com.springsource.tcserver.asf="false" com.springsource.tcserver.name="base-instance" configuration-id="/Servers/Pivotal tc Server Developer Edition v3.2-config" deployDir="wtpwebapps" hostname="localhost" id="Pivotal tc Server Developer Edition v3.2" id-set="true" name="Pivotal tc Server Developer Edition v3.2" runtime-id="Pivotal tc Server Developer Edition (Runtime) v3.2" saveSeparateContextFiles="true" server-type="com.pivotal.server.tc.80" server-type-id="com.pivotal.server.tc.80" start-timeout="120" stop-timeout="15" testEnvironment="false" timestamp="0"/>
-  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers2/Tomcat v9.0 Server at localhost (2)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v9.0 Server at localhost (2)" name="Tomcat v9.0 Server at localhost (2)" runtime-id="Apache Tomcat v9.0" server-type="org.eclipse.jst.server.tomcat.90" server-type-id="org.eclipse.jst.server.tomcat.90" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="5">
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers2/Tomcat v9.0 Server at localhost (2)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v9.0 Server at localhost (2)" name="Tomcat v9.0 Server at localhost (2)" runtime-id="Apache Tomcat v9.0" server-type="org.eclipse.jst.server.tomcat.90" server-type-id="org.eclipse.jst.server.tomcat.90" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="7">
     <list key="modules" value0="JavaScriptDemos::org.eclipse.jst.jee.server:JavaScriptDemos::jst.web::3.1"/>
   </server>
 </servers>

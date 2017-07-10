@@ -236,16 +236,24 @@
 		// When user hovers over an employees name:
 		// Hide the name if shown.
 		// 	Show the name if hidden.
+
+		//mouseover on "name" to show names;
+		var ths = document.getElementsByTagName('th');
+		ths[0].addEventListener('mouseover', show);
+
 		var names = document.getElementsByClassName('empName');
+		var sibs = document.getElementsByClassName('empName').siblings;
+
 		for(var i = 0; i < names.length; i++){
 			names[i].addEventListener('mouseover', hide);
-			names[i].addEventListener('mouseout', show);
 		};
 		function hide(){
 	        this.style.display = 'none';
 		};
 		function show(){
-				this.style.display = 'block';
+				for(var i=0;i<names.length;i++){
+					names[i].style.display = 'block';
+				}
 		};
 
 	// 		10. Current Time
@@ -302,10 +310,10 @@
 		}
 		func(node);
 	}
-	function testFunction(node){
-		console.log(node);
-	};
-	walkTheDOM(document.body, testFunction);
+	// function testFunction(node){
+	// 	console.log(node);
+	// };
+	// walkTheDOM(document.body, testFunction);
 
 	</script>
 </body>

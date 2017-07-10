@@ -127,7 +127,7 @@
 		}
 		m = document.getElementsByClassName("empName");
 		for(var me = 0; me < m.length; me++){
-			m[me].addEventListener("mouseover",function(){onMouseOverShowHide(event)});			
+			m[me].parentNode.addEventListener("mouseover",function(){onMouseOverShowHide(event)});			
 		}
 		function getUSA(){
 		var meep = document.getElementsByTagName("*");
@@ -236,17 +236,19 @@
 			}
 		}
 		function onMouseOverShowHide(event){
-		if(event.target.style.visibility === ""){
-		var m = document.getElementsByClassName("empName");
-		for(var me = 0; me < m.length; me++){
-			if(m[me].style.visibility !== ""){
-				m[me].style.visibility = "";
-			}		
-		}
+		var classType = event.target.className;
+		if(event.target.style.visibility === "" && classType === "empName"){
 			event.target.style.visibility = "hidden";
 		}else{
-		console.log("dope");
-			event.target.style.visibility = "";
+			var parent = event.target.parentNode;
+			var parentChildren = parent.children;
+			for(var i =0; i < parentChildren.length; i++){
+				if(parentChildren[i].stlye !== "undefined" ){
+				if(parentChildren[i].style.visibility === "hidden"){
+					parentChildren[i].style.visibility = "";
+					}
+				}
+			}
 		}
 
 		}
@@ -293,7 +295,9 @@ function currentTime() {
   var sec = today.getSeconds();
   min = checkTime(min);
   sec = checkTime(sec);
-  document.getElementById('currentTime').innerHTML = hr + ":" + min + ":" + sec;
+  var s = hr < 12 ? "AM": "PM"
+  hr = hr <= 12 ? hr:hr-12; 
+  document.getElementById('currentTime').innerHTML = hr + ":" + min + ":" + sec + " " + s;
   setTimeout(function() {currentTime()}, 500);
 }
 currentTime();

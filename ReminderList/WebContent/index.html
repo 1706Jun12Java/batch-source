@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Reminder List</h1>
+	<form method="post" action="reminderList" id="rForm">
+		<input type="text" name="reminder">
+		<input type="text" name="date">
+		<button type="submit" value="submit" onclick="clickEvent()">Submit</button>	
+	</form>
+	</br>
+	<table>
+		<thead>
+		<tr>
+			<th style="width: 75%">Reminder</th>
+			<th style="width: 25%">Date</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td></td>
+			<td></td>
+		
+		</tr>
+		</tbody>
+		
+	</table>
+
+</body>
+<script>
+	function clickEvent(){
+		event.preventDefault();
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		       var string ="";
+		       var resp = xhttp.responseText; 
+		       for (var i=0;i<resp.length;i++){
+		    	   string +=  "<tr ><th>" + resp[i].reminder + "</th> <th>" + resp[i].date + "</th></tr >"
+		       }
+		    }
+		};
+		xhttp.open("POST", "reminderList", true);
+		xhttp.send("String")); 
+	}
+
+
+</script>
+</html>

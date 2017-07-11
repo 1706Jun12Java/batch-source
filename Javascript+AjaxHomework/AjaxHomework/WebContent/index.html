@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax</title>
+</head>
+<body>
+	<p id="present"></p>
+	<button type="button" onclick="gogogo()" style="width: 200px">Go
+		Get</button>
+	<br>
+	<button type="button" onclick="gogogo2()" style="width: 200px">Go
+		Post</button>
+	<script>
+		function gogogo() {
+			var xhttp = new XMLHttpRequest()
+					|| new ActiveXObject("Microsoft.HTTPRequest");
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					document.getElementById("present").innerHTML = xhttp.responseText;
+				}
+			};
+			xhttp.open("GET", "http://localhost:8080/AjaxHomework/serv", true);
+			xhttp.send();
+		}
+
+		function gogogo2() {
+			var xhttp = new XMLHttpRequest()
+					|| new ActiveXObject("Microsoft.HTTPRequest");
+			xhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					document.getElementById("present").innerHTML = xhttp.responseText;
+				}
+			};
+			xhttp.open("POST", "http://localhost:8080/AjaxHomework/serv", true);
+			xhttp.send();
+		}
+	</script>
+</body>
+</html>

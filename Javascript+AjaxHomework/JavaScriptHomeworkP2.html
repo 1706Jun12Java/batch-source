@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>
+				Sum: <span id="sum"></span>
+			</h3>
+			<h5 id="currentTime"></h5>
+		</div>
+		<div>
+			<h1>
+				United <span data-customAttr="USA">States</span> of America (<span>USA</span>)
+			</h1>
+			<div>
+				<a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click
+					Here</a>
+			</div>
+			<a>Click Here</a> <a>Click <span>Here1</span></a> <a>Click Here</a>
+			<div>
+				<select name="colors">
+					<option value="green">Green</option>
+					<option value="blue">Blue</option>
+					<option value="red" selected="selected">Red</option>
+					<option value="purple">Purple</option>
+					<option value="yellow" selected="selected">Yellow</option>
+				</select>
+			</div>
+		</div>
+		<p id="helloWorld">Hello, World!</p>
+		<div>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Department</th>
+				</tr>
+				<tr>
+					<td class="empName">John</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Amy</td>
+					<td>Finance</td>
+				</tr>
+				<tr>
+					<td class="empName">Austin</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Katie</td>
+					<td>Marketing</td>
+				</tr>
+				<tr>
+					<td class="empName" data-customAttr="court">Courtney</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Scout</td>
+					<td>Sales</td>
+				</tr>
+			</table>
+		</div>
+		<form id="firstForm">
+			<a>Click <span>Here2</span></a> <input type="text"
+				data-customAttr="7" /><br /> <input type="text"
+				data-customAttr="24" /><br /> <input type="radio"
+				name="favoriteAnimal" value="dog" />Dog<br /> <input type="radio"
+				name="favoriteColor" value="blue" />Blue<br /> <input id="num1"
+				class="nums" type="text" /><br /> <input type="radio"
+				name="favoriteAnimal" value="cat" />Cat<br /> <input type="radio"
+				name="favoriteColor" value="red" />Red<br /> <input type="radio"
+				name="favoriteAnimal" value="horse" />Horse<br /> <input
+				type="radio" name="favoriteAnimal" value="dolphin" />Dolphin<br />
+			<a>Click <span>Here</span>
+			</a><br /> <input type="radio" name="favoriteAnimal" value="eagle" />Eagle<br />
+			<input type="radio" name="favoriteColor" value="green" />Green<br />
+			<input type="radio" name="favoriteColor" value="orange" />Orange<br />
+			<select name="hobbies">
+				<option value="photography">Photography</option>
+				<option value="football" selected="selected">Football</option>
+				<option value="kayaking" selected="selected">Kayaking</option>
+				<option value="hiking">Hiking</option>
+				<option value="programming" selected="selected">Programming</option>
+			</select> <input id="num2" class="nums" type="text" /> <select name="skills">
+				<option value="java">Java</option>
+				<option value="net">.NET</option>
+				<option value="dom" selected="selected">DOM</option>
+				<option value="html">HTML</option>
+				<option value="css">CSS</option>
+				<option value="javascript" selected="selected">Javascript</option>
+			</select>
+		</form>
+	</div>
+	<a>Click Here</a>
+	<a>Click <span data-customAttr="500">Here3</span></a>
+	<a>Click Here</a>
+	<script type="text/javascript">
+		//HOMEWORK
+
+		// 1. USA
+		function getUSA() {
+			console.log(document.getElementsByTagName("span")[2]);
+		}
+		// 2. Sales
+		function getPeopleInSales() {
+			var tabArr = document.getElementsByTagName("td");
+			for (var x = 0; x < tabArr.length; x++) {
+				if (tabArr[x].innerHTML === "Sales") {
+					console.log(tabArr[x - 1].innerHTML);
+				}
+			}
+		}
+		// 3. Click Here
+		function getAnchorChildren() {
+			var tabArr = document.getElementsByTagName("a");
+			for (var x = 0; x < tabArr.length; x++) {
+				if (tabArr[x].innerHTML.includes("<span>")) {
+					console.log(tabArr[x].children[0]);
+				}
+			}
+		}
+		// 4. Hobbies
+		function noname() {
+			var selectArr = document.getElementsByName("skills");
+			for (var i = 0; i < selectArr[0].options.length; i++) {
+				if (selectArr[0].options[i].selected) {
+					console.log(selectArr[0].options[i].value);
+					console.log(selectArr[0].options[i]);
+				}
+			}
+		}
+		// 5. Custom Attribute
+		function getCustomAttribute() {
+			var getData = document.querySelectorAll('[data-customAttr]');
+			for (var i = 0; i < getData.length; i++) {
+				console.log(getData[i]);
+				console.log(getData[i].getAttribute('data-customAttr'));
+			}
+		}
+
+		// 6. Sum Event
+		document.getElementById("num1").addEventListener("change", sumFunc);
+		document.getElementById("num2").addEventListener("change", sumFunc);
+
+		function sumFunc() {
+			var sum = parseFloat(document.getElementById("num1").value)
+					+ parseFloat(document.getElementById("num2").value);
+
+			if (sum) {
+				document.getElementById("sum").innerHTML = sum;
+			}
+		}
+
+		// 7. Skills Event
+
+		document.getElementsByName("skills")[0].addEventListener("change",
+				selecting);
+
+		function selecting() {
+			var selectArr = document.getElementsByName("skills");
+			var skill = "";
+			for (var i = 0; i < selectArr[0].options.length; i++) {
+				if (selectArr[0].options[i].selected) {
+					skill = selectArr[0].options[i].value;
+				}
+			}
+			alert("Are you sure " + skill + " is one of your skills?");
+		}
+		// 8. Favorite Color Event
+		var colorButtons = document.getElementsByName("favoriteColor");
+		var favColor = null;
+
+		for (var i = 0; i < colorButtons.length; i++) {
+			colorButtons[i].addEventListener("click", rad);
+		}
+
+		function rad() {
+			var clicked = document
+					.querySelector('input[name = "favoriteColor"]:checked').value;
+			if (favColor != null) {
+				alert("You prefer " + clicked + " over " + favColor + "?");
+			}
+			favColor = clicked;
+			document.body.style.backgroundColor = favColor;
+		}
+
+		// 9. Show/Hide Event
+
+		var classes = document.getElementsByClassName("empName");
+		for (var i = 0; i < classes.length; i++) {
+			classes[i].addEventListener("mouseover", hide);
+		}
+		function hide() {
+			if (this.style.opacity == "0") {
+				this.style.opacity = "1";
+			} else {
+				this.style.opacity = "0";
+			}
+		}
+		// 10. Current Time
+
+		window.addEventListener("load", setInterval(getNow, 1000));
+		function getNow() {
+			var time = new Date();
+			document.getElementById("currentTime").innerHTML = "Current Time: "
+					+ time.getHours() + " : " + time.getMinutes() + " : "
+					+ time.getSeconds();
+		}
+		// 11. Delay
+
+		document.getElementById("helloWorld").addEventListener("click",
+				changeColor);
+
+		function changeColor() {
+			setTimeout(
+					function() {
+						var fate = Math.floor((Math.random() * 10) + 1);
+						switch (fate) {
+						case 1:
+							document.getElementById("helloWorld").style.color = "blue";
+							break;
+						case 2:
+							document.getElementById("helloWorld").style.color = "red";
+							break;
+						case 3:
+							document.getElementById("helloWorld").style.color = "green";
+							break;
+						case 4:
+							document.getElementById("helloWorld").style.color = "yellow";
+							break;
+						case 5:
+							document.getElementById("helloWorld").style.color = "black";
+							break;
+						case 6:
+							document.getElementById("helloWorld").style.color = "purple";
+							break;
+						case 7:
+							document.getElementById("helloWorld").style.color = "orange";
+							break;
+						case 8:
+							document.getElementById("helloWorld").style.color = "pink";
+							break;
+						case 9:
+							document.getElementById("helloWorld").style.color = "brown";
+							break;
+						case 10:
+							document.getElementById("helloWorld").style.color = "gray";
+							break;
+						default:
+							document.getElementById("helloWorld").style.color = "white";
+							break;
+						}
+					}, 3000);
+		}
+		// 12. Walk the DOM
+
+		function walkTheDOM(node, func) {
+			for (var i = 0; i < node.children.length; i++) {
+				walkTheDom(node.children[i], func);
+			}
+		}
+	</script>
+</body>
+</html>

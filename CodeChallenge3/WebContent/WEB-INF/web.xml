@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>CodeChallenge3</display-name>
+  <servlet>
+		<servlet-name>codechallenge</servlet-name>
+		<servlet-class>com.revature.servlet.CodeChallengeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>codechallenge</servlet-name>
+		<url-pattern>/codechallenge</url-pattern>
+	</servlet-mapping>
+</web-app>

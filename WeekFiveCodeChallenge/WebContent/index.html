@@ -44,7 +44,8 @@
 			  success: function(resp) {
 				  var str = "";  
 				  for (var i =0; i<resp.length; i++){
-					  str += "<tr ><th>" + resp[i].item + "</th> <th>" + resp[i].amount + "</th></tr >"
+					  if (resp[i].item)
+					  	str += "<tr ><th>" + resp[i].item + "</th> <th>" + resp[i].amount + "</th></tr >"
 				  } 
 				  $("#insertHere").html(str);  
 				  $('#groceryList')[0].reset();

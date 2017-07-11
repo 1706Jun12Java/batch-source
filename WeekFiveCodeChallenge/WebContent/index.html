@@ -35,7 +35,7 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-	function clickMe (){
+	function clickMe(){
 		event.preventDefault();  
 		$.ajax({
 			  type: "POST", 
@@ -51,6 +51,12 @@
 			  } 
 			}); 
 	} 
+	
+	 
+	window.onload = function() {
+		clickMe();
+	}
+	 
 
 </script>
 </html>

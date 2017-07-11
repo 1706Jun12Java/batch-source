@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM</title>
+</head>
+<body>
+	<div>
+		<div>
+			<input id="num1" class="nums" type="text" onchange="onChangeFunction()"/>
+
+			<input id="num2" class="nums" type="text" onchange="onChangeFunction()"/>
+			<h3>
+				 Sum: <span id="sum"></span>
+			</h3>
+			<h5 id="currentTime"></h5>
+		</div>
+		<div>
+			<h1>
+				United <span data-customAttr="USA">States</span> of America (<span>USA</span>)
+			</h1>
+			<div>
+				<a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click
+					Here</a>
+			</div>
+			<a>Click Here</a> <a>Click <span>Here1</span></a> <a>Click Here</a>
+			<div>
+				<select name="colors">
+					<option value="green">Green</option>
+					<option value="blue">Blue</option>
+					<option value="red" selected="selected">Red</option>
+					<option value="purple">Purple</option>
+					<option value="yellow" selected="selected">Yellow</option>
+				</select>
+			</div>
+		</div>
+		<p id="helloWorld">Hello, World!</p>
+		<div>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Department</th>
+				</tr>
+				<tr>
+					<td class="empName">John</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Amy</td>
+					<td>Finance</td>
+				</tr>
+				<tr>
+					<td class="empName">Austin</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Katie</td>
+					<td>Marketing</td>
+				</tr>
+				<tr>
+					<td class="empName" data-customAttr="court">Courtney</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Scout</td>
+					<td>Sales</td>
+				</tr>
+			</table>
+		</div>
+		<form id="firstForm">
+			<a>Click <span>Here2</span></a> <input type="text"
+				data-customAttr="7" /><br /> <input type="text" data-customAttr="24" /><br />
+			<input type="radio" name="favoriteAnimal" value="dog" />Dog<br /> <input
+				type="radio" name="favoriteColor" value="blue" />Blue<br /> <input
+				id="num1" class="nums" type="text" /><br /> <input type="radio"
+				name="favoriteAnimal" value="cat" />Cat<br /> <input type="radio"
+				name="favoriteColor" value="red" />Red<br /> <input type="radio"
+				name="favoriteAnimal" value="horse" />Horse<br /> <input
+				type="radio" name="favoriteAnimal" value="dolphin" />Dolphin<br /> <a>Click
+				<span>Here</span>
+			</a><br /> <input type="radio" name="favoriteAnimal" value="eagle" />Eagle<br />
+			<input type="radio" name="favoriteColor" value="green" />Green<br />
+			<input type="radio" name="favoriteColor" value="orange" />Orange<br />
+			<select name="hobbies">
+				<option value="photography">Photography</option>
+				<option value="football" selected="selected">Football</option>
+				<option value="kayaking" selected="selected">Kayaking</option>
+				<option value="hiking">Hiking</option>
+				<option value="programming" selected="selected">Programming</option>
+			</select> <input id="num2" class="nums" type="text" /> <select name="skills">
+				<option value="java">Java</option>
+				<option value="net">.NET</option>
+				<option value="dom" selected="selected">DOM</option>
+				<option value="html">HTML</option>
+				<option value="css">CSS</option>
+				<option value="javascript" selected="selected">Javascript</option>
+			</select>
+		</form>
+	</div>
+	<a>Click Here</a>
+	<a>Click <span data-customAttr="500">Here3</span></a>
+	<a>Click Here</a>
+	<script type="text/javascript">
+    // Leibniz Homework
+		// QUESTION 1
+		function getUSA() {
+			var arrayOfSpan = document.getElementsByTagName("span");
+
+			for(i = 0; arrayOfSpan.length; i++) {
+					if(arrayOfSpan[i].getAttribute("data-customAttr") === "USA") {
+							console.log(arrayOfSpan[i].innerHTML);
+							break;
+					}
+			}
+		}
+		getUSA();
+
+		// QUESTION 2
+		function getPeopleInSales() {
+			var arrayOfEmp = document.getElementsByTagName("td");
+			for(i = 0; i < arrayOfEmp.length; i++) {
+				if(arrayOfEmp[i].innerHTML === "Sales") {
+						console.log(arrayOfEmp[i-1].innerHTML);
+				}
+			}
+		}
+
+		getPeopleInSales();
+
+		// Question 3
+		function getAnchorChildren() {
+			var as = document.getElementsByTagName("a");
+			var children;
+			for(i = 0; i < as.length; i++) {
+				children =  as[i].children;
+				for(x = 0; x < children.length; x++) {
+					if(children[x].tagName ==="SPAN") {
+						console.log(children[x].innerHTML);
+					}
+				}
+			}
+		}
+		getAnchorChildren();
+
+		// Question 4
+		function getHobbiesUnderSkills() {
+			var ss = document.getElementsByTagName("select");
+			var children;
+			for(i = 0; i < ss.length; i++) {
+				if(ss[i].getAttribute("name") === "skills") {
+					children = ss[i].children;
+					for(x = 0; x < children.length; x++) {
+						console.log(children[x].innerHTML);
+					}
+				}
+			}
+		}
+
+		getHobbiesUnderSkills();
+
+	// Question 5
+	function getCustomAttribute() {
+		var elms = document.getElementsByTagName("*");
+
+		for(i = 0; i < elms.length; i++) {
+			if(elms[i].getAttribute("data-customAttr")) {
+				console.log(elms[i].getAttribute("data-customAttr"));
+				console.log(elms[i].tagName);
+			}
+		}
+	}
+	getCustomAttribute();
+
+	// Question 6
+	function onChangeFunction() {
+		var x = document.getElementById("sum");
+		var a = document.getElementById("num1").value;
+		var b = document.getElementById("num2").value;
+
+
+		if(isNaN(a) || isNaN(b)) {
+				x.innerHTML = "CANNOT BE ADDED: ";
+		}
+		else {
+			var sum = parseInt(a) + parseInt(b);
+			x.innerHTML =  sum;
+		}
+	}
+	getCustomAttribute();
+
+	// Question 7
+	var selectList = document.getElementsByTagName("select");
+	var skillSet;
+	for(i = 0; i < selectList.length; i++) {
+		if(selectList[i].getAttribute("name") === "skills") {
+			skillSet = selectList[i];
+			skillSet.onchange = function() {
+				var x = skillSet.value;
+				alert("you selected " + x);
+			}
+		}
+	}
+
+// Question 8
+var colorSet;
+for(i = 0; i < selectList.length; i++) {
+	if(selectList[i].getAttribute("name") === "colors") {
+		colorSet = selectList[i];
+		colorSet.onchange = function() {
+			var x = skillSet.value;
+			console.log(x);
+			var body = document.getElementsByTagName("body")[0];
+			switch (x.toUpperCase()) {
+				case "RED":
+					body.setAttribute("background-color", "red");
+					break;
+				case "BLUE":
+					body.setAttribute("background-color", "blue");
+					break;
+				case "YELLOW":
+					body.setAttribute("background-color", "yellow");
+					break;
+				case "PURPLE":
+					body.setAttribute("background-color", "purple");
+					break;
+				case "GREEN":
+					body.setAttribute("background-color", "green");
+					break;
+				default:
+			}
+		}
+	}
+}
+
+
+	</script>
+</body>
+</html>

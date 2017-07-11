@@ -5,7 +5,7 @@
 <title>Ajax</title>
 </head>
 <body>
-	<p id="present"></p>
+	<p id="present">This is a message</p>
 	<button type="button" onclick="gogogo()" style="width: 200px">Go
 		Get</button>
 	<br>
@@ -33,7 +33,8 @@
 				}
 			};
 			xhttp.open("POST", "http://localhost:8080/AjaxHomework/serv", true);
-			xhttp.send();
+			var mess = "{\"message\":\"This is a message from\",\"method\":\"POST\"}"
+			xhttp.send(mess);
 		}
 	</script>
 </body>

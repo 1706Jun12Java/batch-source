@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Shopping list</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body> 
+	<div class="container">
+	<h3>My Shopping list</h3>
+	<form action="groceryList" method="post" id="groceryList">
+		Item:<br>
+		<input type="text" name ="item"> <br><br>
+		Amout:<br>
+		<input type="text" name = "amount"> <br><br>
+		<button type="submit" value="submit" onClick="clickMe()">submit</button>
+	</form>
+	 
+	<br>
+	<br>
+	<div>
+		<table class="table table-hover">
+			<thead>
+		      <tr>
+		        <th style="width: 75%">Item Name</th>
+		        <th style="width: 25%">Amount</th> 
+		      </tr>
+		    </thead>
+		    <tbody id = "insertHere"> 
+		    </tbody>
+		</table>	
+	</div>
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	function clickMe (){
+		event.preventDefault();  
+		$.ajax({
+			  type: "POST", 
+			  url: $("#groceryList").attr("action"),
+			  data: $("#groceryList").serialize(),  
+			  success: function(resp) {
+				  var str = "";  
+				  for (var i =0; i<resp.length; i++){
+					  str += "<tr ><th>" + resp[i].item + "</th> <th>" + resp[i].amount + "</th></tr >"
+				  } 
+				  $("#insertHere").html(str);  
+				  $('#groceryList')[0].reset();
+			  } 
+			}); 
+	} 
+
+</script>
+</html>

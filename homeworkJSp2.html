@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>
+				Sum: <span id="sum"></span>
+			</h3>
+			<h5 id="currentTime"></h5>
+		</div>
+		<div>
+			<h1>
+				United <span data-customAttr="USA">States</span> of America (<span>USA</span>)
+			</h1>
+			<div>
+				<a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click
+					Here</a>
+			</div>
+			<a>Click Here</a> <a>Click <span>Here1</span></a> <a>Click Here</a>
+			<div>
+				<select name="colors">
+					<option value="green">Green</option>
+					<option value="blue">Blue</option>
+					<option value="red" selected="selected">Red</option>
+					<option value="purple">Purple</option>
+					<option value="yellow" selected="selected">Yellow</option>
+				</select>
+			</div>
+		</div>
+		<p id="helloWorld">Hello, World!</p>
+		<div>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Department</th>
+				</tr>
+				<tr>
+					<td class="empName">John</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Amy</td>
+					<td>Finance</td>
+				</tr>
+				<tr>
+					<td class="empName">Austin</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Katie</td>
+					<td>Marketing</td>
+				</tr>
+				<tr>
+					<td class="empName" data-customAttr="court">Courtney</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td class="empName">Scout</td>
+					<td>Sales</td>
+				</tr>
+			</table>
+		</div>
+		<form id="firstForm">
+			<a>Click <span>Here2</span></a> <input type="text"
+				data-customAttr="7" /><br /> <input type="text"
+				data-customAttr="24" /><br /> <input type="radio"
+				name="favoriteAnimal" value="dog" />Dog<br /> <input type="radio"
+				name="favoriteColor" value="blue" />Blue<br /> <input id="num1"
+				class="nums" type="text" onchange="onChange()" /><br /> <input
+				type="radio" name="favoriteAnimal" value="cat" />Cat<br /> <input
+				type="radio" name="favoriteColor" value="red" />Red<br /> <input
+				type="radio" name="favoriteAnimal" value="horse" />Horse<br /> <input
+				type="radio" name="favoriteAnimal" value="dolphin" />Dolphin<br />
+			<a>Click <span>Here</span>
+			</a><br /> <input type="radio" name="favoriteAnimal" value="eagle" />Eagle<br />
+			<input type="radio" name="favoriteColor" value="green" />Green<br />
+			<input type="radio" name="favoriteColor" value="orange" />Orange<br />
+			<select name="hobbies">
+				<option value="photography">Photography</option>
+				<option value="football" selected="selected">Football</option>
+				<option value="kayaking" selected="selected">Kayaking</option>
+				<option value="hiking">Hiking</option>
+				<option value="programming" selected="selected">Programming</option>
+			</select> <input id="num2" class="nums" type="text" onchange="onChange()" />
+			<select name="skills">
+				<option value="java">Java</option>
+				<option value="net">.NET</option>
+				<option value="dom" selected="selected">DOM</option>
+				<option value="html">HTML</option>
+				<option value="css">CSS</option>
+				<option value="javascript" selected="selected">Javascript</option>
+			</select>
+		</form>
+	</div>
+	<a>Click Here</a>
+	<a>Click <span data-customAttr="500">Here3</span></a>
+	<a>Click Here</a>
+	<script type="text/javascript">
+		//TODO: Javascript homework
+		
+		//Question 1
+		function getUSA(){
+		var usa = document.getElementsByTagName("span");
+		for (var i = 0 ; i < usa.length ; i++){
+			if (usa[i].innerHTML === "USA"){
+				console.log(usa[i].innerHTML);
+				}
+			}
+		}
+
+		//Question 2
+		function getPeopleInSales(){
+			var department = document.getElementsByTagName("table")[0].getElementsByTagName("td");
+			for (var i = 0 ; i < department.length ; i++){
+				if(department[i].innerHTML === "Sales"){
+					console.log(department[i].previousElementSibling.innerHTML);
+				}
+			}
+		}
+
+		//Question 3
+		function getAnchorChildren(){
+			var anchor = document.getElementsByTagName("a");
+			for(var i = 0; i < anchor.length; i++){
+				var anchorChild = anchor[i].childNodes;
+				for(var j = 0; j < anchorChild.length; j++){
+					if(anchorChild[j].tagName === "SPAN"){
+						console.log(anchorChild[j].innerHTML);
+						break;
+					}
+				}
+			}
+		 }
+
+		 //Question 4
+		 function hobbies(){
+			 var hobs = document.getElementsByName("skills")[0].getElementsByTagName("option");
+			 for ( var i = 0 ; i < hobs.length ; i++){
+				 if (hobs[i].getAttribute("selected")){
+					 console.log(hobs[i].getAttribute("value")+","+hobs[i].innerHTML);
+					 }
+				 }
+			 }
+			
+		//Question 5 
+		function getCustomAttribute(){
+			var attributes = document.getElementsByTagName("*");
+			for (var i = 0 ; i < attributes.length ; i++){
+				if(attributes[i].getAttribute("data-customAttr")){
+					console.log(attributes[i].getAttribute("data-customAttr")+","+attributes[i].tagName);
+					}
+				}			
+			}
+
+		//Question 6
+		function onChange(){
+			var num1 = document.getElementById("num1").value;
+			var num2 = document.getElementById("num2").value;
+			var sum = document.getElementById("sum");
+			var sum2 = Number(num1) + Number(num2);
+			if (isNaN(sum2)){
+				sum.innerHTML = "Cannot add";
+				}
+			else {
+				sum.innerHTML = sum2;
+				}
+			}
+
+		//Question 7
+			var skill = document.getElementsByName("skills")[0];
+			skill.onchange = function(){
+				alert ("Are you sure "+skill.selectedOptions[0].innerHTML+" is one of your skills?");
+			}
+
+		//Question 8
+		var currentcolor = "white";
+		var color = document.getElementsByName("favoriteColor");
+		for (var i = 0 ; i < color.length ; i++){
+			color[i].addEventListener("click",changecolor);
+			}
+		function changecolor(){
+			alert("You like "+this.value+" more than "+currentcolor+" now? HOW DARE YOU!");
+			currentcolor = this.value;
+			document.body.style.backgroundColor = currentcolor;
+		}
+
+		//Question 9
+		var employee = document.getElementsByClassName("empName");
+		for (var i = 0; i < employee.length ; i++){
+			employee[i].onmouseover = function(){
+			if (this.style.opacity == 1){
+			this.style.opacity = 0;
+			}
+		else{
+			this.style.opacity = 1
+			}
+		}
+	}
+
+		//Question 10
+		var x = document.getElementById("currentTime");
+		function time(){
+		var today = new Date();
+		  var h = today.getHours();
+		  var m = today.getMinutes();
+		  var s = today.getSeconds();
+		  x.innerHTML = h%12+":"+m+":"+s+check(h);
+		  var c = setInterval(time, 500);
+		  
+		}
+		function check(t){
+			if(t<12){
+				return 'AM';
+			}else{
+				return 'PM';
+			}
+		}
+		document.getElementById("currentTime").addEventListener('load', time());
+
+		//Question 11
+		var hello = document.getElementById("helloWorld");
+		hello.onclick = function(){
+			setTimeout(function() { hello.style.color = '#' + (Math.random().toString(16) + "000000").substring(2,8); }, 3000);
+			}
+			
+		//Question 12
+		function walkTheDom(node,func){
+			func(node);
+		    node = node.firstChild;
+		    while (node) {
+		        walkTheDOM(node, func);
+		        node = node.nextSibling;
+		    }
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="DemoApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>This is Angular!</title>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="DemoApp.js"></script>
+</head>
+<body>
+	<div>
+		<form ng-controller="DivisionCtrl">
+			<label>Number:</label><input name="number"
+				ng-change="divisionNeeded()" ng-model="data.number" /> <br> <label>Number
+				entered by user:</label>{{data.number}} <br> <label>Divisor:</label><input
+				name="divisor" ng-change="divisionNeeded()" ng-model="data.divisor" />
+			<br> <label>Divisor entered by user:</label>{{data.divisor}}
+			<!-- could also use ng-bind -->
+			<br> <label>Result:</label>{{data.result}} <br> <label>Result,
+				not from controller:</label>{{data.number/data.divisor}} <br>
+		</form>
+	</div>
+
+	<div>
+		<p>fun with expressions</p>
+		<p ng-non-bindable>this would do math if it were bindable but it's
+			not. Thanks, Bishwo: {{5+5}}</p>
+		<p>this does not: {{'5'+'5'}}</p>
+		<p>we don't have access to DivisionCtrl: {{data.result}}</p>
+	</div>
+
+	<div ng-init="myColor='lightblue'">
+		<!-- DO NOT USE THIS EVER. DO NOT INITIALIZE VARIABLES IN YOUR VIEW -->
+		<input style="background-color: {{myColor" ng-model="myColor"
+			value="{{myColor}}" />
+	</div>
+
+	<div ng-controller="PersonCtrl">
+		<p>fun with ng-repeat</p>
+		<ul>
+			<li ng-repeat="x in names">{{x.name+" is from the town of
+				"+x.hometown}}</li>
+		</ul>
+		<table>
+			<tr ng-repeat="x in names">
+				<td>{{$index+1}}</td>
+				<td>{{x.name}}</td>
+				<td>{{x.hometown}}</td>
+			</tr>
+		</table>
+		<p>mouse is at coordinates: {{x+', '+y}}</p>
+		<table ng-mousemove="mouseLocation($event)">
+			<tr>
+				<td>{{$index+1}}</td>
+				<td>{{names[0].name}}</td>
+				<td>{{names[0].hometown}}</td>
+			</tr>
+			<tr>
+				<td>{{$index+1}}</td>
+				<td>{{names[1].name}}</td>
+				<td>{{names[1].hometown}}</td>
+			</tr>
+			<tr>
+				<td>{{$index+1}}</td>
+				<td>{{names[2].name}}</td>
+				<td>{{names[2].hometown}}</td>
+			</tr>
+			<!-- $index is for keeping track of iterative processes -->
+		</table>
+		<p>now some filtering:</p>
+		<table>
+			<tr ng-repeat="x in names | orderBy:'hometown'">
+				<td>{{x.name}}</td>
+				<td>{{x.hometown}}</td>
+			</tr>
+		</table>
+		<table>
+			<tr ng-repeat="x in justNames">
+				<td>{{x | myFormat}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div>
+		<p>scope and rootscope</p>
+		<label>the myColor of the rootScope:</label>
+		<h3>{{myColor}}</h3>
+		<br>
+		<div ng-controller="ColorCtrl">
+			<label>ColorCtrl's favorite color is:</label>
+			<h3>{{myColor}}</h3>
+		</div>
+	</div>
+
+	<div ng-init="switch=false">
+		<p>
+			<button ng-disabled="!switch">Click me!</button>
+		</p>
+		<p>
+			<input type="checkbox" ng-model="switch">Enable or Disable
+			button
+		</p>
+		<p>{{switch}}</p>
+	</div>
+
+	<div ng-controller="ServiceCtrl">
+		<p>fun with services</p>
+		<label>Our current location is:</label>{{myUrl}}<br>
+		<p>
+			<button ng-click="toggleTime()">show the time?</button>
+		</p>
+		<div ng-show="showTime">
+			<label>The current time is:</label>{{theTime}}
+		</div>
+
+	</div>
+
+	<!-- how to use custom directives -->
+	<!-- element name -->
+	<super-cool-custom-dir>STUFF</super-cool-custom-dir>
+	<!-- attribute -->
+	<div super-cool-custom-dir></div>
+	<!-- class -->
+	<div class="super-cool-custom-dir"></div>
+	<!-- comment -->
+	<!-- directive: super-cool-custom-dir -->
+</body>
+</html>

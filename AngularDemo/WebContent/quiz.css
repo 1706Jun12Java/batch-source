@@ -1,0 +1,123 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/******LOAD LOCAL FONTS*******/
+@font-face {
+	font-family: 'Overlock';
+	src: local('Overlock'),
+		url("../fonts/Overlock/Overlock-Regular.ttf") format("opentype"),
+		url(http://fonts.gstatic.com/s/overlock/v5/a3jGAlRXMucJGtDWDaeEmfesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+}
+@font-face {
+	font-family: 'Neucha';
+	src: local('Neucha'),
+		url("../fonts/Neucha/Neucha.ttf") format("opentype"),
+		url(http://fonts.gstatic.com/s/neucha/v7/irvP3TB0tsoy_UMHmCQlTw.woff2) format('woff2');
+}
+/*****BACKGROUND******/
+body {
+	background-image: url("../images/musicbg184.gif");
+	background-repeat: repeat;
+}
+/***HEADER SECTION***/
+nav {
+	line-height:normal;
+}
+.navbar {
+	/*float: center;*/
+	text-align: center;
+	margin-top: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 0px;
+	margin-bottom: 0px;
+}
+.navlist {
+	list-style: none;
+}
+.navlist li {
+	display: inline-block;
+	padding-right: 0.2rem;
+	padding-left: 0.2rem;
+}
+a:hover,
+a a:focus {
+	color: #FFD733;
+}
+header h1 {
+	font-family: 'Overlock', cursive;
+	font-size: 2rem;
+	padding: 0.5rem;
+	text-align: center;
+	color: #B100FF;
+}
+/****QUESTIONS SECTION****/
+section {
+	max-width: 25rem;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#question-panel .panel {
+	font-size: 1.4rem;
+	background-color: #AB8BFF;
+	border-color: black;
+	border-radius: 15px 15px 5px 5px;
+	margin-bottom: 5px;
+	min-height: 180px;
+}
+#question-area {
+	/* place holder */	
+}
+#answers {
+	display: inline-block;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+#answers .radio {
+	padding-left: 1.8rem;
+}
+#score-area,
+#help-area {
+	display: none;
+}
+#scoretitle,
+#helptitle {
+	/*display : none;*/
+	/*border: 0;*/
+	min-width: 355px;
+}
+#results,
+#helpinstructions {
+	/*display : none;*/
+	color: #FFFF00;
+	width: 100%;
+	margin-top: 8px;
+}
+#question-panel .btn {
+	font-size: 1.5rem;
+	border-radius: 5px 5px 15px 15px;
+}
+.question {
+	font-family: 'Neucha', cursive;
+	border: 1px;
+	border-color: green;
+	color: black;
+	margin: 0.6rem;
+	margin-bottom: 0.1rem;
+	border-width: 1.1px;
+	border-style: solid;
+	border-color: green;
+	border-radius: 15px;
+	padding: 10px;
+}
+div .radio {
+	color: #FFFF00;
+}
+div .radio:hover {
+	color: green;
+}

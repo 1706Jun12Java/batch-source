@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="quizApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Quiz</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<link href="quiz.css" rel="stylesheet">
+</head>
+<body ng-controller="QuizCtrl">
+	<header>
+		<nav class="navbar">
+			<ul class="navlist">
+				<li><a href="" ng-click="Restart()">Reset</a></li>
+				<li><a href="" ng-click="Scores()">Score</a></li>
+				<li><a href="" ng-click="Help()">Help</a></li>
+			</ul>
+		</nav>
+		<h1>{{quiz.quiztitle}}</h1>
+	</header>
+	<section>
+		<form>
+			<div id="question-panel" class="panel">
+				<div class="panel">
+					<div id="question-area">
+						<div id="question" class="question">
+							<h3>Welcome to quiz app?</h3>
+						</div>
+						<div id="answers" class="form-group">
+							<div class="radio">
+								<input type="radio" ng-model="userChoice" name="answers"
+									value="0" />
+								<div id="a0">a</div>
+							</div>
+							<div class="radio">
+								<input type="radio" ng-model="userChoice" name="answers"
+									value="1" />
+								<div id="a1">b</div>
+							</div>
+							<div class="radio">
+								<input type="radio" ng-model="userChoice" name="answers"
+									value="2" />
+								<div id="a2">c</div>
+							</div>
+							<div class="radio">
+								<input type="radio" ng-model="userChoice" name="answers"
+									value="3" />
+								<div id="a3">d</div>
+							</div>
+						</div>
+					</div>
+					<div id="score-area">
+						<div id="scoretitle" class="question">
+							<h3>Your score is:</h3>
+						</div>
+						<div id="results">{{usertotal}} out of {{maxtotal}}</div>
+					</div>
+					<div id="help-area">
+						<div id="helptitle" class="question">
+							<h3>Help Menu.</h3>
+						</div>
+						<div id="helpinstructions">
+							<div>choose an Answer from the list.</div>
+							<div>click Submit button below.</div>
+							<div>click 'Score' above to view score.</div>
+							<div>click 'Reset' to restart game.</div>
+						</div>
+					</div>
+				</div>
+				<input ng-click="SubmitAnswer()" type="button"
+					class="btn btn-success btn-block" value="submit answer" />
+			</div>
+		</form>
+	</section>
+
+</body>
+<script src="quizApp.js"></script>
+</html>

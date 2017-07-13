@@ -1,0 +1,11 @@
+<div ng-controller="DemoCtrl">
+	<p>fun with services</p>
+	<label>Our current location is:</label>{{myUrl}}<br>
+	<p>
+		<button ng-click="toggleTime()">show the time?</button>
+	</p>
+	<div ng-show="showTime">
+		<label>The current time is:</label>{{theTime}}
+	</div>
+
+</div>

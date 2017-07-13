@@ -1,0 +1,41 @@
+{
+"quiztitle" : "Muzq Qz",
+"questions" : [
+			{"question" : "Satchmo is nickname for which musician?",
+			"answers" : [{"answer" : "Louis Armstrong", "correct" : true},
+						{"answer" : "Count Basie", "correct" : false},
+						{"answer" : "Dizzie Gillepsie", "correct" : false},
+						{"answer" : "Duke Ellington", "correct" : false}]
+			},
+			{"question" : "Who is often performing on stage with Lucille?",
+			"answers" : [{"answer" : "B.B. King", "correct" : true},
+						{"answer" : "Buddy Guy", "correct" : false},
+						{"answer" : "Robert Johnson", "correct" : false},
+						{"answer" : "Keb Mo", "correct" : false}]
+			},
+			{"question" : "Which artist is recognized for wearing a giant mouse head?",
+			"answers" : [{"answer" : "Deadmau5", "correct" : true},
+						{"answer" : "Daft Punk", "correct" : false},
+						{"answer" : "Modest Mouse", "correct" : false},
+						{"answer" : "Eek-A-Mouse", "correct" : false}]
+			},
+			{"question" : "'Marcus Garvey' is sung by which reggae musician?",
+			"answers" : [{"answer" : "Burning Spear", "correct" : true},
+						{"answer" : "Bob Marley", "correct" : false},
+						{"answer" : "Lee Scratch Perry", "correct" : false},
+						{"answer" : "Steel Pulse", "correct" : false}]
+			},
+			{"question" : "Who is known for playing right-handed quitars strung for left hand?",
+			"answers" : [{"answer" : "Jimi Hendrix", "correct" : true},
+						{"answer" : "Jimmy Paige", "correct" : false},
+						{"answer" : "Tom Petty", "correct" : false},
+						{"answer" : "Eric Clapton", "correct" : false}]
+			},
+			{"question" : "'Freddie's Dead' is performed by which artist?",
+			"answers" : [{"answer" : "Curtis Mayfield", "correct" : true},
+						{"answer" : "Barry White", "correct" : false},
+						{"answer" : "Marvin Gaye", "correct" : false},
+						{"answer" : "Otis Redding", "correct" : false}]
+			}
+		]
+}

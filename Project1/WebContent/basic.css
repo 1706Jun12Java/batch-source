@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: black;
+}
+
+h1 {
+	color: lightgreen;
+	font-family: "arial";
+	text-align: center;
+}
+
+a {
+	font-family: "arial";
+	text-decoration: none;
+}
+
+#info {
+	text-align: left;
+}
+
+#signup {
+	text-align: left;
+}
+
+a:link {
+	color: lightblue;
+}
+
+a:visited {
+	color: #f65cfe;
+}
+
+a:hover {
+	color: #f65cfe;
+}
+
+a:active {
+	color: #f65cfe;
+}
+
+#r_requests {
+	background-color: white;
+	opacity: 100%;
+}
+
+table {
+	font-family: "arial";
+}
+
+#approve {
+	border: 2px solid lightblue;
+	background-color: white;
+}
+
+#approve:hover {
+	border: 2px solid lightblue;
+	background-color: lightblue;
+}
+
+#searchBar {
+	border: 2px solid #ffcc66;
+	background-color: white;
+}
+
+#searchBar:hover {
+	border: 2px solid #ffcc66;
+	background-color: #ffcc66;
+}
+
+#reject {
+	border: 2px solid lightcoral;
+	background-color: white;
+}
+
+#reject:hover {
+	border: 2px solid lightcoral;
+	background-color: lightcoral;
+}
+
+button {
+	border: 2px solid lightgreen;
+	background-color: white;
+	padding: .5%;
+}
+
+button:hover {
+	border: 2px solid lightgreen;
+	background-color: lightgreen;
+	padding: .5%;
+}
+
+fieldset {
+	text-align: center;
+	background-color: white;
+	font-family: "arial";
+	padding: .5%;
+	border: 10px solid lightgreen;
+	border-radius: 10px;
+	width: 50%;
+	margin: 0 auto;
+}
+
+fieldset.table {
+	text-align: left;
+	background-color: white;
+	font-family: "arial";
+	border: 10px solid lightgreen;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+
+input[type=submit] {
+	background-color: white;
+	border: 2px solid lightgreen;
+	color: black;
+}
+
+input[type=submit]:hover {
+	background-color: lightgreen;
+	border: 2px solid lightgreen;
+	color: black;
+}

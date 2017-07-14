@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee User Page</title>
+<script type="text/javascript" src="JSFunctionality.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- I only want some of the bootstrap -->
+<link rel="stylesheet" type="text/css" href="basic.css" />
+</head>
+<body>
+
+	<h1>All of your current reimbursement requests</h1>
+	<fieldset class="table">
+		<button onclick="refresh()">Refresh</button>
+		<table id="r_requests" class="table">
+		</table>
+		<a href="submit.html">Submit a new Request</a> <br> <a
+			href="update.html">Update your information</a> <br> <a
+			href="http://localhost:8080/Project1/logout">Logout</a>
+	</fieldset>
+</body>
+</html>

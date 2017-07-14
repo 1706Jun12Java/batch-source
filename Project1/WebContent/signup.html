@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Create a new account</title>
+<script type="text/javascript" src="JSFunctionality.js"></script>
+<link rel="stylesheet" type="text/css" href="basic.css" />
+</head>
+<body>
+	<h1>Create a new account</h1>
+	<fieldset>
+		<div id="signup">
+			<input type="hidden" name="action" value="signup">
+			<div id="message"></div>
+			<p>Email (This is your username)</p>
+			<input type="text" id="email" name="email" /> <br>
+			<p>Password</p>
+			<input type="password" id="pass" name="password" /> <br> <br>
+			<table>
+				<thead>
+					<tr>
+						<td>First Name</td>
+						<td>Last Name</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" id="fname" name="firstname" /></td>
+						<td><input type="text" id="lname" name="lastname" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Are you an Employee or Manager?</p>
+			<select id="role" name="role">
+				<option value="employee">Employee</option>
+				<option value="manager">Manager</option>
+			</select>
+		</div>
+		<p>
+			Already have an account? Log in <a href="index.html">here</a>
+		</p>
+		<div class="toCenter">
+			<button onclick="signup()">Create New Account</button>
+		</div>
+	</fieldset>
+
+
+</body>
+</html>

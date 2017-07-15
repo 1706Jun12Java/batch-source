@@ -80,5 +80,14 @@
     <servlet-name>reimbursementinfo</servlet-name>
     <url-pattern>/reimbursementinfo</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+ 	<servlet-name>pending</servlet-name>
+    <servlet-class>com.bank.controller.PendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pending</servlet-name>
+    <url-pattern>/pending</url-pattern>
+  </servlet-mapping>  
 
 </web-app>

@@ -1,0 +1,4 @@
+@CHARSET "ISO-8859-1";
+		.row [class*="col-"]{
+   				 margin-top: 100px;
+		}

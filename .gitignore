@@ -39,3 +39,4 @@ hs_err_pid*
 /RemoteSystemsTempFiles/
 /External Files/
 BankAssignment/Connection.properties
+*.properties

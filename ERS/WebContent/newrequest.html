@@ -1,0 +1,45 @@
+<!DOCRYPE html!>
+<html>
+<head>
+	<title>ERS</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Abel|Buenard:400,700' rel='stylesheet' />
+	<link href="ersstyle.css" rel="stylesheet">
+
+</head>
+
+<div id="wrapper">
+
+<body>
+	<h1 id="header">Enterprise Reimbursement Management<span>New request form<span></h1>
+	
+	<div id="nav">
+	<ul>
+		<li><a href="index.html" >Home</a></li>
+		<li><a href="NewRequestServlet" style="background-color:#869DC7; padding-top: 10px; padding-bottom: 10px"">New Request</a></li>
+		<li><a href="resume.html">Manager Login</a></li>
+		<li><a href="LogoutServlet" method="get">Log out</a></li>
+		</ul>
+	</div>
+	
+	<div class="content">
+	
+		<div class="div2">
+			<form action="NewRequestServlet" method="post">        
+				<p id="request">Create new request:</p> 
+				<select name="expensetype">
+					<option value="BUSINESS" selected>BUSINESS</option>
+					<option value="TRAVEL">TRAVEL</option>
+					<option value="LEISURE">LEISURE</option>
+				</select><p></p>
+				<input type="number" placeholder="Amount" id="amount" name="amount">
+                <textarea placeholder="Description" id="descr" name="descr"></textarea>
+              	<button class="button disabled" type="file">Upload file</button><br>
+                <button type="submit">Submit request</button>
+            </form> 			
+		</div>
+	</div>
+	
+	</body>
+</div>
+</html>

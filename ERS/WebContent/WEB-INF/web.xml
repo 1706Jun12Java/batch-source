@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ERS</display-name>
+  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.revature.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>WelcomeManager</servlet-name>
+    <servlet-class>com.revature.servlet.WelcomeManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WelcomeManager</servlet-name>
+    <url-pattern>/WelcomeManager</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>WelcomeEmployee</servlet-name>
+    <servlet-class>com.revature.servlet.WelcomeEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WelcomeEmployee</servlet-name>
+    <url-pattern>/WelcomeEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NewRequestServlet</servlet-name>
+    <servlet-class>com.revature.servlet.NewRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewRequestServlet</servlet-name>
+    <url-pattern>/NewRequestServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RequestCreatedServlet</servlet-name>
+    <servlet-class>com.revature.servlet.RequestCreatedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestCreatedServlet</servlet-name>
+    <url-pattern>/RequestCreatedServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ApproveServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ApproveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApproveServlet</servlet-name>
+    <url-pattern>/ApproveServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ApprovedRequests</servlet-name>
+    <servlet-class>com.revature.servlet.ApprovedRequests</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApprovedRequests</servlet-name>
+    <url-pattern>/ApprovedRequests</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeniedRequests</servlet-name>
+    <servlet-class>com.revature.servlet.DeniedRequests</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeniedRequests</servlet-name>
+    <url-pattern>/DeniedRequests</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>HomeServlet</servlet-name>
+    <servlet-class>com.revature.servlet.HomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeServlet</servlet-name>
+    <url-pattern>/HomeServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EmailServlet</servlet-name>
+    <servlet-class>com.revature.servlet.EmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailServlet</servlet-name>
+    <url-pattern>/EmailServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>

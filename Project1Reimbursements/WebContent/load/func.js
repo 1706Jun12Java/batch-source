@@ -30,6 +30,8 @@ function postEmpInfo() {
 			var txt;
 			var y;
 			console.log(obj.length);
+			
+			
 			var tr = document.createElement('tr');
 			var objinner = obj[0];
 			for (y in objinner) {

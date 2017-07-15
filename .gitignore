@@ -39,6 +39,9 @@ hs_err_pid*
 /RemoteSystemsTempFiles/
 /External Files/
 */out
+out/
+*.properties
+
 
 # private files
 /Assignment1/Question20/CompPath.java

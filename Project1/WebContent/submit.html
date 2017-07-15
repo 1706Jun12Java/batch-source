@@ -10,10 +10,12 @@
 	<h1>Submit a new reimbursement request</h1>
 	<form action="upload" method="post" enctype="multipart/form-data"
 		onsubmit="return confirm('Are you sure you want to submit this request?\nRequests can not be deleted after submission.')">
-		<fieldset>
+		<fieldset class="input">
 			<input type="hidden" name="action" value="new">
 			<p>Enter the amount requested</p>
-			$ <input type="text" name="amount" /> <br>
+			<div id="toGreen">
+				$ <input type="text" name="amount" /> <br>
+			</div>
 			<p>Write a description</p>
 			<textarea name="desc" rows="5" cols="50">[Enter Description here]</textarea>
 			<p>Select the reimbursement type</p>
@@ -24,9 +26,11 @@
 				<option value="other">Other</option>
 			</select><br>
 			<p>You can also upload a picture of the receipt</p>
-			<input type="file" name="image" size="50" /> <br> <br> <br>
-			<input type="submit" value="Submit new request" />
-
+			<input type="file" class="receipt" name="image" size="50" /> <br>
+			<br> <br>
+			<div style="text-align: center">
+				<input type="submit" value="Submit new request" />
+			</div>
 			<div style="text-align: right">
 				<a href="#" onclick="history.go(-1)">Go Back</a>
 			</div>

@@ -15,6 +15,77 @@ a {
 	text-decoration: none;
 }
 
+table {
+	font-family: "arial";
+	font-size: 80%;
+}
+
+button {
+	border: 2px solid lightgreen;
+	background-color: white;
+	padding: .5%;
+}
+
+button:hover {
+	border: 2px solid lightgreen;
+	background-color: lightgreen;
+	padding: .5%;
+}
+
+fieldset {
+	text-align: center;
+	background-color: white;
+	font-family: "arial";
+	padding: .5%;
+	border: 10px solid lightgreen;
+	border-radius: 10px;
+	width: 50%;
+	margin: 0 auto;
+}
+
+select {
+	background-color: white;
+	font-family: "arial";
+	font-size: 80%;
+	width: 200px;
+	border: 2px solid lightgreen;
+}
+
+textarea {
+	background-color: white;
+	font-family: "arial";
+	font-size: 80%;
+	border: 2px solid lightgreen;
+}
+
+fieldset.table {
+	text-align: left;
+	background-color: white;
+	font-family: "arial";
+	border: 10px solid lightgreen;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+
+input {
+	background-color: white;
+	font-family: "arial";
+	font-size: 80%;
+	border: 2px solid lightgreen;
+}
+
+input[type=submit] {
+	background-color: white;
+	border: 2px solid lightgreen;
+	color: black;
+}
+
+input[type=submit]:hover {
+	background-color: lightgreen;
+	border: 2px solid lightgreen;
+	color: black;
+}
+
 #info {
 	text-align: left;
 }
@@ -26,11 +97,6 @@ a {
 #r_requests {
 	background-color: white;
 	opacity: 100%;
-}
-
-table {
-	font-family: "arial";
-	font-size: 90%;
 }
 
 #approve {
@@ -73,46 +139,22 @@ table {
 	background-color: lightcoral;
 }
 
-button {
-	border: 2px solid lightgreen;
-	background-color: white;
-	padding: .5%;
+#searchText {
+	border: 2px solid #ffcc66;
 }
 
-button:hover {
-	border: 2px solid lightgreen;
-	background-color: lightgreen;
-	padding: .5%;
+#toGreen {
+	color: green;
 }
 
-fieldset {
-	text-align: center;
+.receipt {
 	background-color: white;
 	font-family: "arial";
-	padding: .5%;
-	border: 10px solid lightgreen;
-	border-radius: 10px;
-	width: 50%;
-	margin: 0 auto;
+	font-size: 80%;
+	border: 0px;
+	padding: 6px 12px;
 }
 
-fieldset.table {
+.input {
 	text-align: left;
-	background-color: white;
-	font-family: "arial";
-	border: 10px solid lightgreen;
-	border-radius: 10px;
-	margin: 0 auto;
-}
-
-input[type=submit] {
-	background-color: white;
-	border: 2px solid lightgreen;
-	color: black;
-}
-
-input[type=submit]:hover {
-	background-color: lightgreen;
-	border: 2px solid lightgreen;
-	color: black;
 }

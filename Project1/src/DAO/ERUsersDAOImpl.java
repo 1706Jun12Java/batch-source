@@ -40,7 +40,7 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 
 	@Test
 	public void testGetUsersByEmail(){
-		assertNotNull(getUsersByEmail("test@gmail.com"));
+		assertNotNull(getUsersByEmail("example@gmail.com"));
 	}
 	
 	@Override

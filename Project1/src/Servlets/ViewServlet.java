@@ -29,6 +29,7 @@ public class ViewServlet extends HttpServlet {
 			resp.setContentType("text/html");
 			HttpSession sess = req.getSession();
 			RequestDAO d = new RequestDAOImpl();
+			ERUser manager = null;
 			ERUsersDAO e = new ERUsersDAOImpl();
 			PrintWriter pw = resp.getWriter();
 			byte[] in = null;
@@ -40,7 +41,7 @@ public class ViewServlet extends HttpServlet {
 			if (sess.getAttribute("role").toString().equals("employee")) {
 				pw.println("<thead>");
 				pw.println(
-						"<tr><td><p>Receipt</p></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>Status</p></td><td><p>Type</p></td><tr>");
+						"<tr><td><p>Receipt</p></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p> <p>Email</p></td><td><p>Resolver</p> <p>First Name</p><td><p>Resolver</p> <p>Last Name</p></td><td><p>Date Resolved</p></td><td><p>Status</p></td><td><p>Type</p></td><tr>");
 				pw.println("</thead>");
 
 				for (RRequest r : d.getRequests((String) sess.getAttribute("username"))) {
@@ -67,7 +68,10 @@ public class ViewServlet extends HttpServlet {
 					pw.println("<td>" + r.getDesc() + "</td>");
 					pw.println("<td>" + r.getSubmitted().toString() + "</td>");
 					if (r.getResolver() != null) {
+						manager = e.getUsersByEmail(r.getResolver());
 						pw.println("<td>" + r.getResolver() + "</td>");
+						pw.println("<td>" + manager.getFirstname() + "</td>");
+						pw.println("<td>" + manager.getLastname() + "</td>");
 					} else {
 						pw.println("<td>n/a</td>");
 					}
@@ -84,7 +88,7 @@ public class ViewServlet extends HttpServlet {
 				pw.println("<form action=\"\">");
 				pw.println("<thead>");
 				pw.println(
-						"<tr><td></td><td><p>Receipt</p><td><p>Email</p></td><td><p>First Name</p></td><td><p>Last Name</p></td></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>Status</p></td><td><p>Type</p></td><tr>");
+						"<tr><td></td><td><p>Receipt</p><td><p>Employee</p> <p>Email</p></td><td><p>Employee</p> <p>First Name</p></td><td><p>Employee</p> <p>Last Name</p></td></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p> <p>Email</p></td><td><p>Resolver</p> <p>First Name</p><td><p>Resolver</p> <p>Last Name</p></td><td><p>Date Resolved</p></td><td><p>Status</p></td><td><p>Type</p></td><tr>");
 				pw.println("</thead>");
 
 				for (RRequest r : d.getRequests()) {
@@ -120,7 +124,10 @@ public class ViewServlet extends HttpServlet {
 					pw.println("<td>" + r.getDesc() + "</td>");
 					pw.println("<td>" + r.getSubmitted().toString() + "</td>");
 					if (r.getResolver() != null) {
+						manager = e.getUsersByEmail(r.getResolver());
 						pw.println("<td>" + r.getResolver() + "</td>");
+						pw.println("<td>" + manager.getFirstname() + "</td>");
+						pw.println("<td>" + manager.getLastname() + "</td>");
 					} else {
 						pw.println("<td>n/a</td>");
 					}

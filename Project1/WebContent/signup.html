@@ -8,8 +8,7 @@
 </head>
 <body>
 	<h1>Create a new account</h1>
-	<fieldset>
-		<div id="signup">
+	<fieldset class="input">
 			<input type="hidden" name="action" value="signup">
 			<div id="message"></div>
 			<p>Email (This is your username)</p>
@@ -35,11 +34,10 @@
 				<option value="employee">Employee</option>
 				<option value="manager">Manager</option>
 			</select>
-		</div>
-		<p>
-			Already have an account? Log in <a href="index.html">here</a>
-		</p>
-		<div class="toCenter">
+		<div style="text-align: center">
+			<p>
+				Already have an account? Log in <a href="index.html">here</a>
+			</p>
 			<button onclick="signup()">Create New Account</button>
 		</div>
 	</fieldset>

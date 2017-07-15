@@ -1,0 +1,173 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	height: 100%;
+	background-color:#00ACC1;
+	color: white;
+	font-size: 1em;
+}
+a {
+	text-decoration:none;
+	color: white;
+}
+
+.title {
+	text-align: center;
+}
+
+
+
+.letterCircle::first-letter {
+	display:inline-block;
+	padding: 1%;
+	font-size:1em;
+	background-color: #2ECC40;
+	border-radius: 50%;
+}
+
+
+#container {
+	margin: 0 auto;
+	margin-top: 5%;
+	max-width: 15%;
+	padding: 40px 65px;
+	padding-left: 60px;
+	border: solid 10px;
+	border-radius: 20px;
+	background-color: #546E7A;
+}
+
+#titleContainer {
+	text-align: center;
+	display: block;
+	border-radius: 10%;
+	font-size:1.8em;
+	border: solid 10px;
+	color: white;
+	padding: 5px;
+	background-color: #2ECC40;
+	position: relative;
+	top:-65px;
+	margin: 0;
+}
+
+#container .label {
+	color: white;
+	font-size: 1.3em;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+#container a {
+	display:inline-block;
+	margin: 8px;
+	margin-top: 15px;
+	
+	text-decoration: none;
+	font-size: 1.3em;
+	color: white;
+}
+
+#container a:hover {
+	color: coral;
+}
+
+.submitButton {
+	
+	font-size: 20px;
+	padding: 5px;
+	padding-right:10px;
+	margin: 0;
+	margin-left: 3px;
+	border-radius: 4px;
+	
+	
+}
+
+.textfield {
+	padding: 10px;
+	font-size: 1.1em;
+	border-radius: 4px;
+	background-color: #37474F;
+	color: white;
+	margin-bottom: 15px;	
+}
+
+.title {
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	font-size: 5em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 2em;
+}
+
+.redText {
+	color: red;
+}
+
+.xcontainer {
+	margin: 0 auto;
+	margin-top: 5%;
+	max-width: 15%;
+	padding: 40px 65px;
+	padding-left: 60px;
+	border: solid 10px;
+	border-radius: 20px;
+	background-color: #546E7A;
+}
+
+.xcontainer1 {
+	color: white;
+	margin: 0 auto;
+	margin-top: 5%;
+	max-width: 25%;
+	padding: 40px 65px;
+	padding-left: 60px;
+	border: solid 10px;
+	border-radius: 20px;
+	background-color: #546E7A;
+}
+
+.xcontainer2 {
+	color: white;
+	margin: 0 auto;
+	margin-top: 5%;
+	max-width: 40%;
+	padding: 40px 65px;
+	padding-left: 60px;
+	border: solid 10px;
+	border-radius: 20px;
+	background-color: #546E7A;
+}
+
+.xcontainer:hover {
+	cursor: pointer;
+	background-color: #FF3D00;
+}
+
+.nodisplay {
+	display: none;
+}
+
+.displayBlock {
+	display: block;
+}
+
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 24px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 22px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}

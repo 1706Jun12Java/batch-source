@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Creating Account</title>
+<link rel="stylesheet" href ="css/mystyle.css">
+
+</head>
+<body>
+	<header>
+		<h3 class="title">Create Account</h3>
+	</header>
+	
+	<div id="container">
+		<form action="createAccount" method="post">
+			<p class ="label">First name:</p><br>
+			<input class = "textfield" name = "firstname"><br>
+			<p class ="label">Last name:</p><br>
+			<input class = "textfield" name = "lastname"><br>
+			<p class ="label">Email:</p><br>
+			<input class = "textfield" name = "email"><br>
+			<p class ="label">Username:</p><br>
+			<input class = "textfield" name = "username"><br>
+			<p class ="label">Password:</p><br>
+			<input class = "textfield" type = "password" name = "password"><br>
+			<p class ="label">Confirm Password:</p><br>
+			<input class = "textfield" type = "password" name = "cpassword"><br>
+			<input type ="submit" value ="Create Account" id = "createAccountButton"><br>	
+		</form>
+	</div>
+	<script src="js/creatingAccount.js"></script>
+</body>
+</html>

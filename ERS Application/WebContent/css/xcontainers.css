@@ -1,0 +1,10 @@
+#xcontainer {
+	margin: 0 auto;
+	margin-top: 5%;
+	max-width: 15%;
+	padding: 40px 65px;
+	padding-left: 60px;
+	border: solid 10px;
+	border-radius: 20px;
+	background-color: #546E7A;
+}

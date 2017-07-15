@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="public/images/favi.png">
+
+    <title>Register Form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="public/css/signin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="container">
+
+    <form class="form-signin" action="/register" method="post">
+        <h2 class="form-signin-heading">Registration Form</h2>
+
+        <div>
+            <label for="inputName">First Name</label>
+            <input type="text" name="firstName" id="inputName" class="form-control" placeholder="Enter first name"
+                   required>
+        </div>
+
+        <div>
+            <label for="inputLastName">Last Name</label>
+            <input type="text" name="lastName" id="inputLastName" class="form-control" placeholder="Enter last name"
+                   required>
+        </div>
+
+        <div>
+            <label for="inputRole">Their role</label>
+            <select id="inputRole" name="role" class="form-control">
+                <option value="2" selected>Employee</option>
+                <option value="1">Manager</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="inputUsername">Username that will be used to log in</label>
+            <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Enter username"
+                   required>
+        </div>
+
+        <div>
+            <label for="inputEmail">Email address</label>
+            <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Enter email" required
+                   autofocus>
+        </div>
+
+        <div>
+            <label for="inputPassword">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+                   required>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+
+    <button class="btn btn-lg btn-warning btn-block form-signin"><a href="/profile">Cancel</a> </button>
+
+</div> <!-- /container -->
+</body>
+</html>

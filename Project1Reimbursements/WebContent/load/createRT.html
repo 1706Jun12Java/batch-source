@@ -1,0 +1,31 @@
+<!-- form for RT creation here -->
+<div class="padTop">
+<form action="cRT" method="post" enctype="multipart/form-data">
+	<div class="col-md-4 col-md-offset-4 borderMe">
+		<legend>Enter Info For Reimbursement Request:</legend>
+		<div class="form-group">
+			<label>Amount:</label> <input class="form-control" type="text"
+				name="amount" placeholder="Amount">
+		</div>
+		<div class="form-group">
+			<label>Receipt:</label> <input class="form-control-file" type="file"
+				name="photo" />
+		</div> 
+		<div class="form-group">
+			<label>Description:</label>
+			
+			<textarea rows="3" class="form-control" name="description" placeholder="Description"></textarea>
+			
+		</div>
+		<label for="sel1">Reimbursement Type:</label> <select
+			class="form-control" id="sel1" name="rtType">
+			<option value="1">Travel</option>
+			<option value="2">Project expenses</option>
+			<option value="3">3rd party expenses</option>
+		</select> <br>
+		<div class="centerDiv">
+			<button class="btn btn-info">Submit</button>
+		</div>
+	</div>
+</form> 
+</div>

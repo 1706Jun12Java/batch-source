@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+.error{
+	text-align:center;
+	border: 2px solid red;
+	border-radius: 5px;
+	padding: 2px;
+}
+.padTop{
+	padding-top:2%;
+}
+.msg{
+	text-align:center;
+	border: 2px solid blue;
+	border-radius: 5px;
+	padding: 2px;
+}
+.centerDiv{
+	text-align:center;
+}
+.borderMe {
+	border: 2px solid lightblue;
+	border-radius: 5px;
+	padding: 25px;
+}
+
+input[type="submit"] {
+	display: block;
+	margin: 0 auto;
+}

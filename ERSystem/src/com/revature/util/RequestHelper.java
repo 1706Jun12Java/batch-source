@@ -46,6 +46,8 @@ public class RequestHelper {
 				return "getimage";
 			case "gettickets":
 				return "gettickets";
+			case "getertypes":
+				return "getertypes";
 			default:
 				return "404.html";
 			}

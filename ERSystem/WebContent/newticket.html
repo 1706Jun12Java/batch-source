@@ -2,9 +2,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Ticket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+<link rel="stylesheet" href="css/newticket.css"/>
+
 </head>
 <body>
-
+<div class="nav" w3-include-html="nav.html"></div>
+<div class="container">
+<div class="alert alert-danger" id="error" ></div>
+<div class="alert alert-success" id="success" ></div>
+    <h1>New Ticket</h1>
+  	<hr>
+	<div class="row">      
+        <div>
+			<form id="form" class="form-horizontal" role="form" enctype="multipart/form-data" >
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Amount $:</label>
+	            <div class="col-lg-8">
+	              <input class="form-control" type="text" id="amount" placeholder="0" name="amount">
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Type:</label>
+	            <div class="col-lg-8">
+	              <select id="ertypes" name="ertypes">
+	              </select>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Description:</label>
+	            <div class="col-lg-8">
+	              <textarea class="form-control" id="description" name="description"></textarea>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Description:</label>
+	            <div class="col-lg-8">
+	              <input type="file" class="form-control" id="img" name="img"/>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	              <input type="hidden" class="form-control" id="destination" name="destination" value="gettickets"/>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label"></label>
+	            <div class="col-md-8">
+	              <button class="btn btn-primary pull-right" id="createTicket">Submit</button>
+	            </div>
+	          </div>
+	        </form>
+	  </div>
+	</div>
+</div>
+<script src="js/newticket.js"></script>
+<script>w3.includeHTML();</script>
 </body>
 </html>

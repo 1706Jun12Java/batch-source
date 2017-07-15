@@ -22,19 +22,18 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 		PreparedStatement pstmt = null;
 		List<Reimbursement> reimList= new ArrayList<>();
 		try(Connection con = ConnectionUtil.getConnectionFromFile()){
-			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_RECEIPE, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID)";
+			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID) ORDER BY A.R_SUBMITTED DESC";
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery(sql);
 			while (rs.next()){
 				int id = rs.getInt("R_ID");
 				double amount = rs.getDouble("R_AMOUNT");
 				String description = rs.getString("R_DESCRIPTION");
-				Blob img = rs.getBlob("R_RECEIPE");
 				Date submitted = rs.getDate("R_SUBMITTED");
 				Date resolved = rs.getDate("R_RESOLVED");
 				String statusName = rs.getString("RS_STATUS");
 				String typeName = rs.getString("RT_TYPE");
-				Reimbursement reim = new Reimbursement(id,amount,description,img,submitted,resolved,typeName,statusName);
+				Reimbursement reim = new Reimbursement(id,amount,description,submitted,resolved,typeName,statusName);
 				reimList.add(reim);
 			}
 			
@@ -52,7 +51,7 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 		PreparedStatement pstmt = null;
 		List<Reimbursement> reimList = new ArrayList<>();
 		try (Connection con = ConnectionUtil.getConnectionFromFile()){
-			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_RECEIPE, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID) WHERE U_ID_AUTHOR = ?";
+			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID) WHERE U_ID_AUTHOR = ? ORDER BY A.R_SUBMITTED DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,userId);
 			ResultSet rs = pstmt.executeQuery();
@@ -60,12 +59,11 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 				int id = rs.getInt("R_ID");
 				double amount = rs.getDouble("R_AMOUNT");
 				String description = rs.getString("R_DESCRIPTION");
-				Blob img = rs.getBlob("R_RECEIPE");
 				Date submitted = rs.getDate("R_SUBMITTED");
 				Date resolved = rs.getDate("R_RESOLVED");
 				String statusName = rs.getString("RS_STATUS");
 				String typeName = rs.getString("RT_TYPE");
-				Reimbursement reim = new Reimbursement(id,amount,description,img,submitted,resolved,typeName,statusName);
+				Reimbursement reim = new Reimbursement(id,amount,description,submitted,resolved,typeName,statusName);
 				reimList.add(reim);
 			}
 		} catch (SQLException e) {
@@ -144,16 +142,14 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 		PreparedStatement pstmt = null;
 		try(Connection con = ConnectionUtil.getConnectionFromFile()){
 			String sql = "INSERT INTO ERS_REIMBURSEMENT "
-					+ "(R_AMOUNT,R_DESCRIPTION,R_RECEIPE,R_SUBMITTED,U_ID_AUTHOR,RT_TYPE,RT_STATUS)"
-					+ "VALUES(?,?,?,?,?,?,?,?)";
+					+ "(R_AMOUNT,R_DESCRIPTION,R_RECEIPE,U_ID_AUTHOR,RT_TYPE)"
+					+ "VALUES(?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setDouble(1, r.getAmount());
 			pstmt.setString(2, r.getDescription());
-			pstmt.setBlob(3, r.getReceipe());
-			pstmt.setDate(4, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			pstmt.setInt(5, r.getAuthor());
-			pstmt.setInt(6, r.getType());
-			pstmt.setInt(7, 1);
+			pstmt.setBinaryStream(3,r.getReceipe(),r.getReceipe().available()); 
+			pstmt.setInt(4, r.getAuthor());
+			pstmt.setInt(5, r.getType());
 			add = pstmt.executeUpdate();
 			if(add==1){
 				System.out.println("added");
@@ -215,5 +211,32 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 			e.printStackTrace();
 		}
 		return img;
+	}
+
+	@Override
+	public Reimbursement getReimbursementById(int tid) {
+		PreparedStatement pstmt = null;
+		try (Connection con = ConnectionUtil.getConnectionFromFile()){
+			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE, D.U_FIRSTNAME||-||D.U_LASTNAME AS FULLNAME FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID) LEFT JOIN ERS_USER ON (A.U_ID_RESOLVER=D.U_ID) WHERE A.R_ID = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,tid);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				int id = rs.getInt("R_ID");
+				double amount = rs.getDouble("R_AMOUNT");
+				String description = rs.getString("R_DESCRIPTION");
+				Date submitted = rs.getDate("R_SUBMITTED");
+				Date resolved = rs.getDate("R_RESOLVED");
+				String resolver = rs.getString("FULLNAME");
+				String statusName = rs.getString("RS_STATUS");
+				String typeName = rs.getString("RT_TYPE");
+				return new Reimbursement(id,amount,description,submitted,resolved,typeName,statusName,resolver);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

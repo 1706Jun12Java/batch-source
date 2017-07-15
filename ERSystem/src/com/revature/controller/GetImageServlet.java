@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.dao.EReimbursementDao;
 import com.revature.dao.EReimbursementDaoImpl;
+import com.revature.util.ConnectionUtil;
 
 public class GetImageServlet extends HttpServlet{
 
@@ -28,14 +32,20 @@ public class GetImageServlet extends HttpServlet{
 	@Override 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException{
-		resp.setContentType("image/jpeg");
+//		resp.setContentType("document");
 		try{
-			int id = (int) req.getAttribute("id");
-			EReimbursementDao ED = new EReimbursementDaoImpl();
-			Blob img = ED.getImageById(id);
-			InputStream is = img.getBinaryStream();
+			int id = Integer.parseInt(req.getParameter("id"));
+			Connection con = ConnectionUtil.getConnectionFromFile();
+            PreparedStatement ps = con.prepareStatement("SELECT R_RECEIPE FROM ERS_REIMBURSEMENT WHERE R_ID = ?");
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            Blob  b = rs.getBlob("R_RECEIPE");
+            resp.setContentType("image/jpeg");
+            resp.setContentLength( (int) b.length());
+            InputStream is = b.getBinaryStream();
             OutputStream os = resp.getOutputStream();
-            byte buf[] = new byte[(int) img.length()];
+            byte buf[] = new byte[(int) b.length()];
             is.read(buf);
             os.write(buf);
             os.close();

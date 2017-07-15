@@ -55,4 +55,13 @@
 		<servlet-name>gettickets</servlet-name>
 		<url-pattern>/gettickets</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>getertypes</servlet-name>
+		<servlet-class>com.revature.controller.ERTypeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getertypes</servlet-name>
+		<url-pattern>/getertypes</url-pattern>
+	</servlet-mapping>
 </web-app>

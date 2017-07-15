@@ -9,6 +9,7 @@ public interface EReimbursementDao {
 
 	public List<Reimbursement> getReimbursements();
 	public List<Reimbursement> getReimbursementsByUser(int userId);
+	public Reimbursement getReimbursementById(int tid);
 	public int approveReimbursement(int id);
 	public int denyReimbursement(int id);
 	public int addReimbursement(Reimbursement r);

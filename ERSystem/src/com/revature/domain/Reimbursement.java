@@ -1,5 +1,6 @@
 package com.revature.domain;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Date;
 
@@ -7,7 +8,7 @@ public class Reimbursement {
 	private int id;
 	private double amount;
 	private String description;
-	private Blob receipe;
+	private InputStream receipe;
 	private Date submited;
 	private Date resolved;
 	private int author;
@@ -18,13 +19,12 @@ public class Reimbursement {
 	private int status;
 	private String statusName;
 	
-	public Reimbursement(int id, double amount, String description, Blob receipe, Date submited, Date resolved,
+	public Reimbursement(int id, double amount, String description, Date submited, Date resolved,
 			int author, int resolver, String resolverName, int type, String typeName, int status, String statusName) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.description = description;
-		this.receipe = receipe;
 		this.submited = submited;
 		this.resolved = resolved;
 		this.author = author;
@@ -36,30 +36,40 @@ public class Reimbursement {
 		this.statusName = statusName;
 	}
 	
-	public Reimbursement(double amount, String description, Blob receipe, Date submited,
+	public Reimbursement(double amount, String description, InputStream receipe,
 			int author, int type) {
 		super();
 		this.amount = amount;
 		this.description = description;
 		this.receipe = receipe;
-		this.submited = submited;
 		this.author = author;
 		this.type = type;
 	}
 	
-	public Reimbursement(int id, double amount, String description, Blob receipe, Date submited, Date resolved,
+	public Reimbursement(int id, double amount, String description, Date submited, Date resolved,
 			 String typeName, String statusName) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.description = description;
-		this.receipe = receipe;
 		this.submited = submited;
 		this.resolved = resolved;
 		this.typeName = typeName;
 		this.statusName = statusName;
 	}
 	
+	public Reimbursement(int id, double amount, String description, Date submited, Date resolved,
+			 String typeName, String statusName, String resolverName) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.description = description;
+		this.submited = submited;
+		this.resolved = resolved;
+		this.typeName = typeName;
+		this.statusName = statusName;
+		this.resolverName = resolverName;
+	}
 	
 	public int getId() {
 		return id;
@@ -79,10 +89,10 @@ public class Reimbursement {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Blob getReceipe() {
+	public InputStream getReceipe() {
 		return receipe;
 	}
-	public void setReceipe(Blob receipe) {
+	public void setReceipe(InputStream receipe) {
 		this.receipe = receipe;
 	}
 	public Date getSubmited() {

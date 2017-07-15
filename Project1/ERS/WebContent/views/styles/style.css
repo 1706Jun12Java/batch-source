@@ -1,0 +1,40 @@
+body {
+	background:url('http://i.stack.imgur.com/jGlzr.png');
+	padding:50px;
+}
+
+#login-style {
+	min-width: 250px;
+	width: 400px;
+	margin: auto;
+    padding: 14px 14px 14px;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+
+#bank-title {
+	min-width: 250px;
+	width: 400px;
+	font-size: 80px;
+	text-align: center;
+	width: 900px;
+	display: block;
+	margin: auto;
+	padding: 14px 14px 14px;
+	overflow: hidden;
+	font-family: Lobster;
+	color: #f8f8ff;
+}
+
+#bank-log.navbar-left {
+	width: 10px;
+	height: 10px;
+	
+}
+
+.welcomeClass {
+	width: 100px;
+	height: 100px;
+	color: #ffffff;
+	font-weight: bold;
+}

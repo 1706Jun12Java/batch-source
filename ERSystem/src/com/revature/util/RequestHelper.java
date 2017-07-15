@@ -19,7 +19,7 @@ public class RequestHelper {
 		
 		switch(num){
 		case 1:
-			return "manage.html";
+			return "ticketing.html";
 		case 2:
 			return "profile.html";
 		case 3:
@@ -32,7 +32,7 @@ public class RequestHelper {
 	
 	public static String render(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		try{
-			System.out.println(req.getParameter("destination"));
+			System.out.println(req.getParameter("destination") + "from request helper");
 			switch(req.getParameter("destination")){
 			case "getprofile":
 				return "getprofile";
@@ -46,6 +46,8 @@ public class RequestHelper {
 				return "getimage";
 			case "gettickets":
 				return "gettickets";
+			case "getticket":
+				return "getticket";
 			case "getertypes":
 				return "getertypes";
 			default:

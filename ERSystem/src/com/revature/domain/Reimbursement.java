@@ -8,7 +8,8 @@ public class Reimbursement {
 	private int id;
 	private double amount;
 	private String description;
-	private InputStream receipe;
+	private InputStream receipt;
+	private String receiptURL;
 	private Date submited;
 	private Date resolved;
 	private int author;
@@ -36,12 +37,12 @@ public class Reimbursement {
 		this.statusName = statusName;
 	}
 	
-	public Reimbursement(double amount, String description, InputStream receipe,
+	public Reimbursement(double amount, String description, InputStream receipt,
 			int author, int type) {
 		super();
 		this.amount = amount;
 		this.description = description;
-		this.receipe = receipe;
+		this.receipt = receipt;
 		this.author = author;
 		this.type = type;
 	}
@@ -89,11 +90,11 @@ public class Reimbursement {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public InputStream getReceipe() {
-		return receipe;
+	public InputStream getReceipt() {
+		return receipt;
 	}
-	public void setReceipe(InputStream receipe) {
-		this.receipe = receipe;
+	public void setReceipe(InputStream receipt) {
+		this.receipt = receipt;
 	}
 	public Date getSubmited() {
 		return submited;
@@ -148,6 +149,14 @@ public class Reimbursement {
 	}
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
+	}
+
+	public String getReceiptURL() {
+		return receiptURL;
+	}
+
+	public void setReceiptURL(String receiptURL) {
+		this.receiptURL = receiptURL;
 	}
 	
 	

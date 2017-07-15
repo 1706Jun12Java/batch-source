@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.dao.EReimbursementDao;
-import com.revature.dao.EReimbursementDaoImpl;
 import com.revature.util.ConnectionUtil;
 
 public class GetImageServlet extends HttpServlet{

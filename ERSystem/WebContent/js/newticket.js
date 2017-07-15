@@ -49,7 +49,7 @@ window.onload= function (){
 	
 };
 
-document.getElementById("createTicket").addEventListener("click", function(){
+function createTicket(){
 	var amount = document.getElementById("amount").value;
 	var type = document.getElementById("ertypes").value;
 	var description = document.getElementById("description").value;
@@ -73,5 +73,6 @@ document.getElementById("createTicket").addEventListener("click", function(){
 		xhr.open("POST", url, true);
 		xhr.send(fd);
 	}
-});
+}
 
+document.getElementById("createTicket").addEventListener("click", createTicket);

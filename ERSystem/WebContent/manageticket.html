@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/profile.css" />
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+</head>
+<body>
+<div class="nav" w3-include-html="manageNav.html"></div>
+<div class="container">
+
+	<div class="alert alert-danger" id="error" ></div>
+  	<hr>
+	<div class="row">      
+      <div class="personal-info">
+        <h3>Ticket Details</h3>
+        <div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Amount $:</label>
+	            <div class="col-lg-8">
+	              <p class="form-control" id="amount"></p>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Description:</label>
+	            <div class="col-lg-8">
+	              <textarea class="form-control" id="description"></textarea>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Status:</label>
+	            <div class="col-md-8">
+	              <p class="form-control" id="statusName"></p>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-lg-3 control-label">Submitted:</label>
+	            <div class="col-lg-8">
+	              <p class="form-control" id="submited"></p>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Resolved:</label>
+	            <div class="col-md-8">
+	              <p class="form-control" id="resolved"></p>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Resolved By:</label>
+	            <div class="col-md-8">
+	              <p class="form-control" id="resolverName"></p>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Type:</label>
+	            <div class="col-md-8">
+	              <p class="form-control" id="type"></p>
+	            </div>
+	          </div>
+	          <input type="hidden" name="id" id="ticketid" />
+	          <div class="form-group">
+	            <label class="col-md-3 control-label">Receipt:</label>
+	            <div class="col-md-8">
+	              <p class="form-control" id="receiptURL"></p>
+	            </div>
+	          </div>
+	          <div class="form-group">
+	            <label class="col-md-3 control-label"></label>
+	            <div class="col-md-8">
+	              <button type="button" class="btn btn-success" id="approve">Approve</button>
+	              <button type="button" class="btn btn-danger" id="deny">Deny</button>
+	            </div>
+	          </div>
+	    </div>
+	    </div> <!-- end personal info -->
+	   </div> <!-- end row -->
+</div> <!-- end container -->
+<script src="js/manageticket.js"></script>
+<script>w3.includeHTML();</script>
+</body>
+</html>

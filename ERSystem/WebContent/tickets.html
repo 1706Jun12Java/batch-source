@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/expense.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
+<script type="text/javascript" src="js/tickets.js"></script>
 </head>
 <body>
 <div class="nav" w3-include-html="nav.html"></div>
@@ -35,55 +36,14 @@
 						<div class="table-container">
 							<table class="table table-filter" id="myTable">
 								<tbody>
-									
+									<tr><th>Submitted</th><th>Status</th><th>Resolved</th><th>Description</th></tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
 				
-			</div>
-			
-			<div class="modal fade" id="ticketModal" role="dialog">
-		    <div class="modal-dialog">
-		    
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Update Info<span id="formError" class="formError pull-right">aa</span></h4>
-		           
-		        </div>
-		        <div class="modal-body">
-		          <form class="form-horizontal" role="form">
-	          <div class="form-group">
-	            <label class="col-lg-3 control-label">First name:</label>
-	            <div class="col-lg-8">
-	              <input class="form-control" id="nfirstname" type="text"/>
-	            </div>
-	          </div>
-	          <div class="form-group">
-	            <label class="col-lg-3 control-label">Last name:</label>
-	            <div class="col-lg-8">
-	              <input class="form-control" id="nlastname" type="text">
-	            </div>
-	          </div>
-	          <div class="form-group">
-	            <label class="col-md-3 control-label">Password:</label>
-	            <div class="col-md-8">
-	              <input class="form-control" id="npassword" type="password"/>
-	            </div>
-	          </div>
-	          <input type="hidden" id="userID"/>
-	        </form>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		      </div>
-		      
-		    </div>
-		  </div> <!-- end modal -->
+			</div>		     
 		</section>
 		
 	</div>

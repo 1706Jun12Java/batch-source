@@ -61,3 +61,13 @@
 .table-filter .media .summary {
 	font-size: 14px;
 }
+.denied{
+	color: #d9534f;
+}
+
+.pending{
+	color: #f0ad4e;
+}
+.approved{
+	color: #5cb85c;
+}

@@ -35,7 +35,7 @@ function renderTickets(resp){
 				cell0.innerHTML=result[r].submited;
 				cell1.innerHTML="<span>"+result[r].statusName+"</span>";
 				cell2.innerHTML=result[r].resolved;
-				cell3.innerHTML="<a href=ticket.html?id="+result[r].id+">"+result[r].description+"</a>";
+				cell3.innerHTML="<a href=manageticket.html?id="+result[r].id+">"+result[r].description+"</a>";
 			}
 		}
 	}catch(err){

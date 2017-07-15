@@ -10,8 +10,8 @@ public interface EReimbursementDao {
 	public List<Reimbursement> getReimbursements();
 	public List<Reimbursement> getReimbursementsByUser(int userId);
 	public Reimbursement getReimbursementById(int tid);
-	public int approveReimbursement(int id);
-	public int denyReimbursement(int id);
+	public int approveReimbursement(int id, int userID);
+	public int denyReimbursement(int id, int userID);
 	public int addReimbursement(Reimbursement r);
 	public int updateReStatus(int reId, int resolver, int status);
 	public Blob getImageById(int id);

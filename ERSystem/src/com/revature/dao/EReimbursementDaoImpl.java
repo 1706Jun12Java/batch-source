@@ -75,7 +75,7 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 	}
 
 	@Override
-	public int approveReimbursement(int id) {
+	public int approveReimbursement(int id, int userID) {
 		
 		int approved = 0;
 		Connection con = null;
@@ -84,11 +84,10 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 		try{
 			con = ConnectionUtil.getConnectionFromFile();
 
-			String sql = "UPDATE ERS_REIMBURSEMENT SET R_RESOLVED=?, RT_STATUS=? WHERE R_ID=?";
+			String sql = "UPDATE ERS_REIMBURSEMENT SET U_ID_RESOLVER=?, RT_STATUS=3 WHERE R_ID=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			pstmt.setInt(2, 3);
-			pstmt.setInt(3, id);
+			pstmt.setInt(1, userID);
+			pstmt.setInt(2, id);
 			approved = pstmt.executeUpdate();
 			if(approved==1){
 				System.out.println("approved");
@@ -106,7 +105,7 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 	}
 
 	@Override
-	public int denyReimbursement(int id) {
+	public int denyReimbursement(int id, int userID) {
 		
 		int deny = 0;
 		Connection con = null;
@@ -114,11 +113,10 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 		try{
 			con = ConnectionUtil.getConnectionFromFile();
 			
-			String sql = "UPDATE ERS_REIMBURSEMENT SET R_RESOLVED=?, RT_STATUS=? WHERE R_ID=?";
+			String sql = "UPDATE ERS_REIMBURSEMENT SET U_ID_RESOLVER=?, RT_STATUS=2 WHERE R_ID=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			pstmt.setInt(2, 2);
-			pstmt.setInt(3, id);
+			pstmt.setInt(1, userID);
+			pstmt.setInt(2, id);
 			deny = pstmt.executeUpdate();
 			if(deny==1){
 				System.out.println("DENIED");
@@ -147,7 +145,7 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 			pstmt = con.prepareStatement(sql);
 			pstmt.setDouble(1, r.getAmount());
 			pstmt.setString(2, r.getDescription());
-			pstmt.setBinaryStream(3,r.getReceipe(),r.getReceipe().available()); 
+			pstmt.setBinaryStream(3,r.getReceipt(),r.getReceipt().available()); 
 			pstmt.setInt(4, r.getAuthor());
 			pstmt.setInt(5, r.getType());
 			add = pstmt.executeUpdate();
@@ -217,7 +215,7 @@ public class EReimbursementDaoImpl implements EReimbursementDao{
 	public Reimbursement getReimbursementById(int tid) {
 		PreparedStatement pstmt = null;
 		try (Connection con = ConnectionUtil.getConnectionFromFile()){
-			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE, D.U_FIRSTNAME||-||D.U_LASTNAME AS FULLNAME FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID) LEFT JOIN ERS_USER ON (A.U_ID_RESOLVER=D.U_ID) WHERE A.R_ID = ?";
+			String sql = "SELECT R_ID, R_AMOUNT, R_DESCRIPTION, R_SUBMITTED, R_RESOLVED, RS_STATUS, C.RT_TYPE, D.U_FIRSTNAME||'-'||D.U_LASTNAME AS FULLNAME FROM ERS_REIMBURSEMENT A LEFT JOIN ERS_REIMBURSEMENT_STATUS B ON (A.RT_STATUS = B.RS_ID) LEFT JOIN ERS_REIMBURSEMENT_TYPE C ON (A.RT_TYPE = C.RT_ID) LEFT JOIN ERS_USER D ON (A.U_ID_RESOLVER=D.U_ID) WHERE A.R_ID = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,tid);
 			ResultSet rs = pstmt.executeQuery();

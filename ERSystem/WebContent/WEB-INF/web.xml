@@ -49,11 +49,20 @@
 	
 	<servlet>
 		<servlet-name>gettickets</servlet-name>
-		<servlet-class>com.revature.controller.TicketServlet</servlet-class>
+		<servlet-class>com.revature.controller.TicketsServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>gettickets</servlet-name>
 		<url-pattern>/gettickets</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>getticket</servlet-name>
+		<servlet-class>com.revature.controller.ManageTicketServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getticket</servlet-name>
+		<url-pattern>/getticket</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

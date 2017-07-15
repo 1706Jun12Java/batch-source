@@ -13,4 +13,6 @@ public interface ERUsersDAO {
 			throws UserNameTakenException, InvalidNameException;
 
 	public boolean addUser(ERUser newUser) throws UserNameTakenException, InvalidNameException;
+
+	ERUser getUsersByEmail(String email);
 }

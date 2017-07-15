@@ -5,6 +5,21 @@ function startRefresh() {
 		setInterval(refresh, 1000);
 	}
 }
+window.addEventListener("load", welcome);
+function welcome() {
+	var xhttp = new XMLHttpRequest()
+			|| new ActiveXObject("Microsoft.HTTPRequest");
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			if (document.getElementById("welcome") != null) {
+				document.getElementById("welcome").innerHTML = xhttp.responseText;
+			}
+		}
+	};
+	xhttp.open("POST", "http://localhost:8080/Project1/view", true);
+	xhttp.send();
+}
+
 function refresh() {
 	var xhttp = new XMLHttpRequest()
 			|| new ActiveXObject("Microsoft.HTTPRequest");

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.google.common.io.ByteStreams;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import DAO.*;
+import Domain.ERUser;
 import Domain.RRequest;
 
 public class ViewServlet extends HttpServlet {
@@ -28,6 +29,7 @@ public class ViewServlet extends HttpServlet {
 			resp.setContentType("text/html");
 			HttpSession sess = req.getSession();
 			RequestDAO d = new RequestDAOImpl();
+			ERUsersDAO e = new ERUsersDAOImpl();
 			PrintWriter pw = resp.getWriter();
 			byte[] in = null;
 			String b64;
@@ -38,7 +40,7 @@ public class ViewServlet extends HttpServlet {
 			if (sess.getAttribute("role").toString().equals("employee")) {
 				pw.println("<thead>");
 				pw.println(
-						"<tr><td><p>Receipt</p></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>status</p></td><td><p>type</p></td><tr>");
+						"<tr><td><p>Receipt</p></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>Status</p></td><td><p>Type</p></td><tr>");
 				pw.println("</thead>");
 
 				for (RRequest r : d.getRequests((String) sess.getAttribute("username"))) {
@@ -82,10 +84,11 @@ public class ViewServlet extends HttpServlet {
 				pw.println("<form action=\"\">");
 				pw.println("<thead>");
 				pw.println(
-						"<tr><td></td><td><p>Receipt</p><td><p>Author</p></td></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>status</p></td><td><p>type</p></td><tr>");
+						"<tr><td></td><td><p>Receipt</p><td><p>Email</p></td><td><p>First Name</p></td><td><p>Last Name</p></td></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>Status</p></td><td><p>Type</p></td><tr>");
 				pw.println("</thead>");
 
 				for (RRequest r : d.getRequests()) {
+					ERUser user = e.getUsersByEmail(r.getAuthor());
 					switch (r.getStatus()) {
 					case "pending":
 						pw.println("<tr class=\"active\">");
@@ -98,8 +101,7 @@ public class ViewServlet extends HttpServlet {
 						break;
 					}
 					if (r.getStatus().equals("pending")) {
-						pw.println(
-								"<td><input type=\"radio\"  name=\"toResolve\" value=\"" + r.getID() + "\"></td>");
+						pw.println("<td><input type=\"radio\"  name=\"toResolve\" value=\"" + r.getID() + "\"></td>");
 					} else {
 						pw.println("<td>      </td>");
 					}
@@ -111,6 +113,8 @@ public class ViewServlet extends HttpServlet {
 						pw.print("<td>No Photo</td>");
 					}
 					pw.println("<td>" + r.getAuthor() + "</td>");
+					pw.println("<td>" + user.getFirstname() + "</td>");
+					pw.println("<td>" + user.getLastname() + "</td>");
 					String amtStr = format.format(r.getAmount());
 					pw.println("<td>$" + amtStr + "</td>");
 					pw.println("<td>" + r.getDesc() + "</td>");
@@ -137,6 +141,10 @@ public class ViewServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		HttpSession sess = req.getSession();
+		resp.getWriter()
+				.write("<p>Welcome, " + sess.getAttribute("firstname") + " " + sess.getAttribute("lastname") + "</p>");
 	}
 
 }

@@ -1,5 +1,6 @@
 package DAO;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,6 +39,34 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 	}
 
 	@Test
+	public void testGetUsersByEmail(){
+		assertNotNull(getUsersByEmail("test@gmail.com"));
+	}
+	
+	@Override
+	public ERUser getUsersByEmail(String email) {
+		ERUser user = null;
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM ER_USERS WHERE U_EMAIL = ?";
+			PreparedStatement pdsmt = con.prepareStatement(sql);
+			pdsmt.setString(1, email);
+			ResultSet rs = pdsmt.executeQuery();
+			if (rs.next()) {
+				user = new ERUser(rs.getString("U_EMAIL"), rs.getString("U_PASSWORD"), rs.getString("U_FIRSTNAME"),
+						rs.getString("U_LASTNAME"), rs.getString("U_ROLE"));
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return user;
+
+	}
+
+	@Test
 	public void testAddAccount() {
 		try {
 			ERUser testUser = new ERUser("example4@gmail.com", "password", "Luigi", "Mario", "employee");
@@ -46,6 +75,7 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public boolean addUser(ERUser newUser) throws UserNameTakenException, InvalidNameException {
 		if (newUser.getEmail().isEmpty() || newUser.getPassword().isEmpty() || newUser.getFirstname().isEmpty()
@@ -77,7 +107,7 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 		}
 		return false;
 	}
-	
+
 	@Test
 	public void testUpdateAccount() {
 		try {
@@ -86,6 +116,7 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public boolean updateUser(String username, String toChange, String newVal) throws InvalidNameException {
 		if (toChange.isEmpty()) {

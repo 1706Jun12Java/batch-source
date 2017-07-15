@@ -9,8 +9,6 @@ import Domain.ERUser;
 public interface ERUsersDAO {
 	public List<ERUser> getUsers();
 
-	public ERUser getUserByEmail(String email);
-
 	public boolean updateUser(String username, String toChange, String change)
 			throws UserNameTakenException, InvalidNameException;
 

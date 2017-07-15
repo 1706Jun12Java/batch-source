@@ -25,6 +25,53 @@ public class SearchServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		RequestDAO d = new RequestDAOImpl();
+		PrintWriter pw = resp.getWriter();
+		byte[] in = null;
+		String b64;
+		DecimalFormat format = new DecimalFormat("0.00");
+		pw.println("<form action=\"\">");
+		pw.println("<thead>");
+		pw.println(
+				"<tr><td></td><td><p>Receipt</p><td><p>Author</p></td></td><td><p>Amount</p><td><p>Description</p></td></td><td><p>Submit Date</p></td><td><p>Resolver</p></td><td><p>Resolve Date</p></td><td><p>status</p></td><td><p>type</p></td><tr>");
+		pw.println("</thead>");
+		try {
+			for (RRequest r : d.getRequests()) {
+				if (r.getStatus().equals("pending")) {
+					pw.println("<tr class=\"active\"><td><input type=\"radio\"  name=\"toResolve\" value=\"" + r.getID()
+							+ "\"></td>");
+					if (r.getImage() != null) {
+						in = ByteStreams.toByteArray(r.getImage());
+						b64 = Base64.encode(in);
+						pw.println("<td><a href=\"data:image/gif;base64," + b64 + "\" alt=\"Receipt\">Show</a></td>");
+					} else {
+						pw.print("<td>No Photo</td>");
+					}
+					pw.println("<td>" + r.getAuthor() + "</td>");
+					String amtStr = format.format(r.getAmount());
+					pw.println("<td>$" + amtStr + "</td>");
+					pw.println("<td>" + r.getDesc() + "</td>");
+					pw.println("<td>" + r.getSubmitted().toString() + "</td>");
+					if (r.getResolver() != null) {
+						pw.println("<td>" + r.getResolver() + "</td>");
+					} else {
+						pw.println("<td>n/a</td>");
+					}
+					if (r.getResolved() != null) {
+						pw.println("<td>" + r.getResolved().toString() + "</td>");
+					} else {
+						pw.println("<td>n/a</td>");
+					}
+					pw.println("<td>" + r.getStatus() + "</td>");
+					pw.println("<td>" + r.getType() + "</td>");
+					pw.println("</tr>");
+					pw.println("<form>");
+				}
+			}
+		} catch (SQLRecoverableException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

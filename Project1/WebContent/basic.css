@@ -68,6 +68,16 @@ table {
 	background-color: #ffcc66;
 }
 
+#pending {
+	border: 2px solid #ff6fcf;
+	background-color: white;
+}
+
+#pending:hover {
+	border: 2px solid #ff6fcf;
+	background-color: #ff6fcf;
+}
+
 #reject {
 	border: 2px solid lightcoral;
 	background-color: white;

@@ -1,12 +1,13 @@
 package DAO;
 
+import static org.junit.Assert.assertTrue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.junit.Test;
 import CustomExceptions.InvalidNameException;
 import CustomExceptions.UserNameTakenException;
 import Domain.ERUser;
@@ -36,12 +37,15 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 		return users;
 	}
 
-	@Override
-	public ERUser getUserByEmail(String email) {
-
-		return null;
+	@Test
+	public void testAddAccount() {
+		try {
+			ERUser testUser = new ERUser("example4@gmail.com", "password", "Luigi", "Mario", "employee");
+			assertTrue(addUser(testUser));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
 	@Override
 	public boolean addUser(ERUser newUser) throws UserNameTakenException, InvalidNameException {
 		if (newUser.getEmail().isEmpty() || newUser.getPassword().isEmpty() || newUser.getFirstname().isEmpty()
@@ -73,7 +77,15 @@ public class ERUsersDAOImpl implements ERUsersDAO {
 		}
 		return false;
 	}
-
+	
+	@Test
+	public void testUpdateAccount() {
+		try {
+			assertTrue(updateUser("test@gmail.com", "password", "password"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public boolean updateUser(String username, String toChange, String newVal) throws InvalidNameException {
 		if (toChange.isEmpty()) {

@@ -107,11 +107,27 @@ function search() {
 			|| new ActiveXObject("Microsoft.HTTPRequest");
 	xhttp.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200) {
-			document.getElementById("r_requests").innerHTML = xhttp.responseText;
+			if (document.getElementById("r_requests") != null) {
+				document.getElementById("r_requests").innerHTML = xhttp.responseText;
+			}
 		}
 	};
 	xhttp.open("POST", "http://localhost:8080/Project1/search", true);
 	var mess = " {\"first\":\"" + document.getElementById("searchText").value
 			+ "\"} ";
 	xhttp.send(mess);
+}
+
+function getPending() {
+	var xhttp = new XMLHttpRequest()
+			|| new ActiveXObject("Microsoft.HTTPRequest");
+	xhttp.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			if (document.getElementById("r_requests") != null) {
+				document.getElementById("r_requests").innerHTML = xhttp.responseText;
+			}
+		}
+	};
+	xhttp.open("GET", "http://localhost:8080/Project1/search", true);
+	xhttp.send();
 }

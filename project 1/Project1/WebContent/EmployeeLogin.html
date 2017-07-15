@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Login</title>
+<style>
+
+body {
+    background-image: url("http://eskipaper.com/images/cool-wallpapers-13.jpg");
+    background-size: 1620px 780px;
+    background-repeat: no-repeat;
+    
+}
+h1 {
+color: #3DA5C8;
+text-align: center;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+button {
+    background-color: #3DA5C8;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 81.60%;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+b {
+    color: #3DA5C8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 14px 20px;
+    background-color:  #424242 ;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 0px 0 0px 0;
+}
+.container {
+    padding: 320px;
+    width: 500px;
+    margin: auto;
+    height: 0px;
+    }
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+  <h1>Employee Sign In</h1>
+   <form action="employee" method = "post">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+	<a href = "MainPage.html"><button class = "cancelbtn" type="button">Go Back</button></a>
+    <button type="submit">Login</button>
+  </div>
+
+</form> 
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ER</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<link rel="stylesheet" href="css/expense.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+</head>
+<body>
+<div class="nav" w3-include-html="nav.html"></div>
+ <div class="container">
+	<div class="row">
+
+		<section class="content">
+			<h1>Your Reimbursements</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-left">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default">+</button>
+							</div>
+						</div>
+						<div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success btn-filter" data-target="approved">Approved</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="pending">Pending</button>
+								<button type="button" class="btn btn-danger btn-filter" data-target="denied">Denied</button>
+								<button type="button" class="btn btn-default btn-filter" data-target="All">All</button>
+							</div>
+						</div>
+						<div class="table-container">
+							<table class="table table-filter" id="myTable">
+								<tbody>
+									<tr data-status="Approved">
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right Approved">(Approved)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="Pending">
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right Pending">(Pending)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="Denied">
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right Denied">(Denied)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="Approved">
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right Approved">(Approved)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="Pending">
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right Pending">(Pending)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/tickets.js"></script>
+<script>w3.includeHTML();</script>
+</body>
+</html>

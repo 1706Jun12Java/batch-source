@@ -2,8 +2,12 @@ package com.revature.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,6 +21,7 @@ import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.dao.UserDaoImpl;
 import com.revature.domain.ReimbursementTicket;
 import com.revature.domain.User;
+import com.revature.util.ConnectionUtil;
 
 public class ViewImage extends HttpServlet{
 
@@ -26,7 +31,7 @@ public class ViewImage extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 
-		PrintWriter pw = resp.getWriter();
+		//PrintWriter pw = resp.getWriter();
 		HttpSession session = req.getSession();
 
 		req.getRequestDispatcher("load/top.html").include(req, resp);
@@ -38,26 +43,33 @@ public class ViewImage extends HttpServlet{
 		ReimbursementDaoImpl rDao = new ReimbursementDaoImpl();
 		ReimbursementTicket rt = rDao.getReimbursementTicketById(Integer.parseInt(id));
 		if(rt.getR_receipt()==null){
-			pw.println("<h3 class='error'>No image for this ReimbursementTicket</h3");
+			//pw.println("<h3 class='error'>No image for this ReimbursementTicket</h3");
+			req.getRequestDispatcher("load/noIMG.html").include(req, resp);
 		}
 		else{
 			try{
 				
-				Blob photo = rDao.getBlobById(Integer.parseInt(id));
-			      InputStream in = photo.getBinaryStream();
-			      int length = (int) photo.length();
-			      int bufferSize = 1024;
-			      byte[] buffer = new byte[bufferSize];
-
-			      while ((length = in.read(buffer)) != -1) {
-			        System.out.println("writing " + length + " bytes");
-			        ServletOutputStream out = resp.getOutputStream();
-			        out.write(buffer, 0, length);
-			      }
+	            
+				Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
+				String sql = "SELECT R_RECEIPT FROM ERS_REIMBURSEMENTS WHERE R_ID = ?";
+				PreparedStatement ps = con.prepareStatement(sql);
+	            ps.setInt(1,Integer.parseInt(id));
+	            ResultSet rs = ps.executeQuery();
+	            rs.next();
+	            Blob  b = rs.getBlob("R_RECEIPT");
+	            resp.setContentType("image");
+	            resp.setContentLength( (int) b.length());
+	            InputStream is = b.getBinaryStream();
+	            ServletOutputStream os = resp.getOutputStream();
+	            byte buf[] = new byte[(int) b.length()];
+	            is.read(buf);
+	            os.write(buf);
+	            os.close();
 			}
 			catch(Exception e){
-				pw.println("<h3 class='error'>"+e.getMessage()+"</h3>");
+				//pw.println("<h3 class='error'>"+e.getMessage()+"</h3>");
 			}
+			
 			
 		}
 		

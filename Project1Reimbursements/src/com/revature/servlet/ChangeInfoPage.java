@@ -29,6 +29,7 @@ public class ChangeInfoPage  extends HttpServlet{
 		UserDaoImpl userDao=new UserDaoImpl();
 		User user=userDao.userLogin((String)session.getAttribute("username"), 
 				(String)session.getAttribute("password"));
+		
 		pw.println("<div class='container col-md-12'>");
 		pw.println("<div class='col-md-3 .col-md-offset-3 centerDiv padTop'><b class='borderMe'>"
 				+ "<span>User ID: </span><span id='empId'>"+user.getU_id()+"</span>"

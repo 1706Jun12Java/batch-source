@@ -73,7 +73,7 @@ public class ViewServlet extends HttpServlet {
 						pw.println("<td>" + manager.getFirstname() + "</td>");
 						pw.println("<td>" + manager.getLastname() + "</td>");
 					} else {
-						pw.println("<td>n/a</td>");
+						pw.println("<td>n/a</td><td>n/a</td><td>n/a</td>");
 					}
 					if (r.getResolved() != null) {
 						pw.println("<td>" + r.getResolved().toString() + "</td>");

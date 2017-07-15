@@ -1,4 +1,10 @@
 window.addEventListener("load", refresh);
+window.addEventListener("load", startRefresh);
+function startRefresh() {
+	if (document.getElementById("employeePageCheck") !== null) {
+		setInterval(refresh, 1000);
+	}
+}
 function refresh() {
 	var xhttp = new XMLHttpRequest()
 			|| new ActiveXObject("Microsoft.HTTPRequest");

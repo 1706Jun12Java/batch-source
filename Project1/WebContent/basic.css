@@ -23,22 +23,6 @@ a {
 	text-align: left;
 }
 
-a:link {
-	color: lightblue;
-}
-
-a:visited {
-	color: #f65cfe;
-}
-
-a:hover {
-	color: #f65cfe;
-}
-
-a:active {
-	color: #f65cfe;
-}
-
 #r_requests {
 	background-color: white;
 	opacity: 100%;
@@ -69,13 +53,13 @@ table {
 }
 
 #pending {
-	border: 2px solid #ff6fcf;
+	border: 2px solid #cacaca;
 	background-color: white;
 }
 
 #pending:hover {
-	border: 2px solid #ff6fcf;
-	background-color: #ff6fcf;
+	border: 2px solid #cacaca;
+	background-color: #cacaca;
 }
 
 #reject {

@@ -42,4 +42,3 @@ hs_err_pid*
 # for Java Assignments
 /Assignment/JDBCBank/connection.properties
 /jdbcBankFront/connection.properties
-/ProjectOne/

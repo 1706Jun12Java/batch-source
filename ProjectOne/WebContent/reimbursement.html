@@ -1,0 +1,71 @@
+
+		
+			<div class="row">
+	      		<p class="col-md-offset-4 col-md-4 col-lg-4">
+	      		<button class="btn btn-primary btn-block btn-md" onclick="getReimburseInfo('PENDING')">Click to view pending Reimbursements </button>
+	        	<p>
+	        </div
+	        >
+	        <div class="row">
+	      		<p class="col-md-offset-4 col-md-4 col-lg-4">
+	      		<button class="btn btn-primary btn-block btn-md" onclick="getReimburseInfo('APPROVED')">Click to view resolved Reimbursements </button>
+	        	<p>
+	        </div>
+		
+	      	<div class="row">
+	      		<p class="col-md-offset-4 col-md-4 col-lg-4">
+	      		<button class="btn btn-primary btn-block btn-md" onclick="getReimburseInfo()">Click to view all Reimbursements</button>
+	        	<p>
+	        </div>
+	        
+	        
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped" id="userTables">
+
+				</table>
+			</div>
+			
+			<div id="reimbursementForm">
+				 <form action="reimbursement" method="post" enctype="multipart/form-data"> 
+			 
+				      <div class="row">      
+				           <div class="col-md-offset-4 col-md-4 col-lg-4">
+				              <label for="amount"> Amount </label>
+				              <input required name="amount" placeholder="Amount" class="form-control" type="number">    
+				           </div>            
+				      </div>
+				      
+				     <div class="row">      
+				           <div class="col-md-offset-4 col-md-4 col-lg-4">
+						      <label for="category"> Category </label>
+						      <select name="category" class="form-control">
+								  <option value="1"> Business Expenses </option>
+								  <option value="2"> Tools and Equipment </option>
+								  <option value="3"> Transportation </option>
+								  <option value="4"> Other </option>
+							  </select>
+				           </div>            
+				      </div>
+				      
+				      <div class="row">
+				           <div class="col-md-offset-4 col-md-4 col-lg-4">
+				              <label for="description"> Description </label>
+				    		  <textarea class="form-control" name="description" placeholder="Description..."></textarea>
+				           </div>            
+				      </div>
+				      	      
+				      <div class="row">
+				           <div class="col-md-offset-4 col-md-4 col-lg-4">
+				              <label for="picture"> Receipt  </label>
+				               <input required name="picture" placeholder="file" class="form-control" type="file" accept="image/*" >             
+				           </div>            
+				      </div>
+				      
+				      <div class="row">
+				      	<div class="col-md-offset-4 col-md-4 col-lg-4">
+				      		<button style="margin: 20px 0px;"class="btn btn-primary btn-block btn-md">Submit</button>
+				        </div>
+				      </div>
+			          
+			    </form>  
+			</div>

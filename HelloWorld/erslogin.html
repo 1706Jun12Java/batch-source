@@ -1,0 +1,58 @@
+<!DOCRYPE html!>
+<html>
+<head>
+	<title>ERS</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Abel|Buenard:400,700' rel='stylesheet' />
+	<link href="ersstyle.css" rel="stylesheet">
+
+</head>
+
+<div id="wrapper">
+
+<body>
+	<h1 id="header">Awesome Corporation <span>Enterprise Reimbursement Management</span></h1>
+	
+	<div id="nav">
+	<ul>
+		<li><a href="index.html" style="background-color:#869DC7; padding-top: 10px; padding-bottom: 10px">Home</a></li>
+		<li><a href="biography.html">New Request</a></li>
+		<li><a href="resume.html">Manager Login</a></li>
+		<li><a href="blog.html">Log out</a></li>
+		</ul>
+	</div>
+	
+	<div class="content">
+	
+		<div class="div1">
+		
+			<form class="login-form" action="LoginServlet" method="POST">
+			  <input type="text" placeholder="Username" name="PersonUName"/>
+			  <input type="password" placeholder="Password" name="PersonPass"/>
+			  <button type="submit" name="SubmitButton" value="submit">&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp; </button>
+			  <p class="message">Not registered? <a href="index.html">Create an account</a></p>
+			  <select id="confirmselect">
+				  <option id = "ApproveOption" value="volvo">Volvo</option>
+				  <option id = "DenyOption" value="saab">Saab</option>
+				  <option value="opel">Opel</option>
+				  <option value="audi">Audi</option>
+				</select>
+			</form>
+		</div>
+	</div>
+	
+	</body>
+</div>
+<script>
+document.getElementById("confirmselect").addEventListener("change", myFunction);
+
+function myFunction() {
+	txt = getElementById('ApproveOption').innerHTML;
+	if (txt === "Approve"){
+    if(!confirm("Are you sure?")){
+		return false;
+	};
+	}
+}
+</script>
+</html>

@@ -1,0 +1,194 @@
+@CHARSET "ISO-8859-1";
+
+#wrapper { width: 90%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: auto;
+padding-bottom: 3%;
+background-color: #ebebeb; 
+background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#a8a8a8));  /* for webkit browsers */
+background: -moz-linear-gradient(top,  white,  #a8a8a8);  /* for firefox 3.6+ */
+
+}
+#header {background-color: ;
+		display: block;
+		font:35px goudy old style, serif;
+		font-weight: bold;
+		margin-bottom: 16 px;
+		padding-top: 1px;
+		text-indent:100px;
+		}
+#header span {
+		display: block;
+		font-size: 23px;
+		color: #248F8F;
+		text-indent:100px;
+		}
+
+#nav { width: 99%; background-color: #1947A3; box-shadow: 8px 7px 10px #99807A;}
+#nav ul {list-style-type: none; padding: 10px; margin: 10px; text-align: right;}
+#nav li { display: inline; }
+#nav a { text-decoration: none; padding-right: 9px; padding-left: 9px; font-family: Abel, cursive, san-serif; font-size: 100%; color: white; }
+#nav a:link { color: #FFFFFF; }
+#nav a:visited { color: #EAEAEA; }
+#nav a:hover { color: #EAEAEA; background-color: #869DC7; padding-top: 10px; padding-bottom: 10px;}
+
+.content { width: 90%;
+		height: 60%;
+		position: relative; 
+		left: 5%;
+		top: 5 px;
+		background: transparent;
+		border:;
+		margin-top: 100 px;
+		margin-bottom: 15 px; 
+		}
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: white;
+}
+
+.div1 { 
+		
+		margin: 0 auto;
+		margin-top: 5%;
+		width: 40%;
+		/* To see the outline of the form */
+		padding: 1em;
+		margin-bottom: 5%;
+		border: 1px solid #CCC;
+		border-radius: 1em;
+}
+.div2 { 
+		
+		margin: 0 auto;
+		margin-top: 5%;
+		width: 60%;
+		/* To see the outline of the form */
+		padding: 1em;
+		border: 1px solid #CCC;
+		border-radius: 1em;
+}
+/*width: 50%;
+		position:relative;
+		float: center;
+		top: 70px;
+		right: 20px;
+		background: transparent;
+		padding: 5px;
+		margin: 3px;
+		font-size:1.2em;
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		line-height: 25px;
+		font-weight: bold;
+		color: #336699;
+		text-transform: uppercase;
+		letter-spacing: 0pt;
+		*/
+		}
+
+h2 {background-color: #9999FF;
+		color: 2E2E8A;
+		padding-left: 100px;
+}
+
+input, textarea, label, select {
+  border:1px solid #ddd;
+  border-radius:.5em;
+  display:block;
+  margin-bottom:1.5em;
+  padding:.5em;
+  width:99%;
+  font-size:1.2em;
+  color:#333;
+  font-family:Abel;
+}
+#request{
+	font-family:Abel;
+	font-size:1.2em;
+	border: no border;
+	display:block;
+}
+
+textarea {
+  height:5em;
+}
+
+input:focus, textarea:focus {
+  outline:none;
+  border:1px solid #339900;
+}
+
+button {
+	width: 40%;
+  font-family:Abel;
+  font-size:1.2em;
+  outline:none;
+  background:#1947A3;
+  border-radius:.5em;
+  padding:0.5em;
+  border:none;
+  color:white;
+  margin-bottom:1.5em;
+  cursor: pointer;
+}
+.button.disabled {
+  opacity: 0.65; 
+  cursor: not-allowed;
+}
+/* Back-to-top button in Resume */
+#back-top {
+	position: fixed;
+	margin-left: 1100px;
+	bottom: 20px;
+}
+#back-top a {
+	width: 50px;
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #bbb;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+	font-size:0.5em;
+}
+#back-top a:hover {
+	color: #000;
+}
+
+#back-top span {
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin-bottom: 5px;
+	background: #ddd url(../images/up-arrow.png) no-repeat center center;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover span {
+	background-color: #777;
+}

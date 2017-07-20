@@ -4,30 +4,31 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+@NamedQueries({ @NamedQuery(name = "findBatByType", query = "from Bat where type = :typevar") })
+
 @Entity
 @Table(name="BAT")
-public class Bat implements Serializable {
+@AttributeOverrides({
+	@AttributeOverride(name="id",column=@Column(name="BAT_ID")),
+	@AttributeOverride(name="name",column=@Column(name="BAT_NAME"))
+})
+public class Bat extends Animal implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3183706718565552959L;
 
-	public Bat(String name, BatType type, BatColony colony) {
+	public Bat(String name, int wingspan, BatType type, BatColony colony) {
 		super();
 		this.name = name;
+		this.wingspan = wingspan;
 		this.type = type;
 		this.colony = colony;
 	}
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="batSequence")
-	@SequenceGenerator(allocationSize=1,name="batSequence",sequenceName="BAT_SEQ")
-	@Column(name="BAT_ID")
-	private int id;
 	
-	@Column(name="BAT_NAME")
-	private String name;
+	@Column(name="BAT_SPAN")
+	private int wingspan;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="BAT_TYPE")
@@ -75,7 +76,15 @@ public class Bat implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bat [id=" + id + ", name=" + name + ", type=" + type + ", colony=" + colony + "]";
+		return "Bat [id=" + id + ", name=" + name + ", wingspan=" + wingspan+", type=" + type + ", colony=" + colony + "]";
+	}
+
+	public int getWingspan() {
+		return wingspan;
+	}
+
+	public void setWingspan(int wingspan) {
+		this.wingspan = wingspan;
 	}
 
 }

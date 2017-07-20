@@ -28,7 +28,7 @@ public class BatColony implements Serializable {
 	@Column(name="BAT_COLONY_NAME")
 	private String name;
 	
-	@OneToMany(mappedBy="colony",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="colony",fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Bat> members;
 	
 	public BatColony() {

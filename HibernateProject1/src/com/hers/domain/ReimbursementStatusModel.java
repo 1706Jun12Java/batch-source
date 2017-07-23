@@ -1,12 +1,16 @@
 package com.hers.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,7 +24,6 @@ public class ReimbursementStatusModel implements Serializable{
 
 	public ReimbursementStatusModel(int id, String status) {
 		super();
-		this.id = id;
 		this.status = status;
 	}
 	
@@ -32,6 +35,9 @@ public class ReimbursementStatusModel implements Serializable{
 	
 	@Column(name="RS_STATUS")
 	private String status;
+	
+	@OneToMany(mappedBy="status", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<ReimbursementModel> reimbursements;
 	
 	public Number getId() {
 		return id;
@@ -45,9 +51,14 @@ public class ReimbursementStatusModel implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	@Override
 	public String toString() {
 		return "ReimbursementStatus [id=" + id + ", status=" + status + "]";
+	}
+	
+	public List<ReimbursementModel> getReimbursements(){
+		return reimbursements;
 	}
 
 }

@@ -1,12 +1,16 @@
 package com.hers.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,7 +25,6 @@ public class ReimbursementTypeModel implements Serializable{
 
 	public ReimbursementTypeModel(int id, String type) {
 		super();
-		this.id = id;
 		this.type = type;
 	}
 	
@@ -33,6 +36,9 @@ public class ReimbursementTypeModel implements Serializable{
 	
 	@Column(name="RT_TYPE")
 	private String type;
+	
+	@OneToMany(mappedBy="type", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<ReimbursementModel> reimbursements;
 	
 	public int getId() {
 		return id;
@@ -49,6 +55,10 @@ public class ReimbursementTypeModel implements Serializable{
 	@Override
 	public String toString() {
 		return "ReimbursementType [id=" + id + ", type=" + type + "]";
+	}
+	
+	public List<ReimbursementModel> getReimbursements(){
+		return reimbursements;
 	}
 
 }

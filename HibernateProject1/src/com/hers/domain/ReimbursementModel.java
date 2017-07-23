@@ -7,9 +7,12 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,18 +27,17 @@ public class ReimbursementModel implements Serializable{
 	private static final long serialVersionUID = 7607504890004882447L;
 
 	public ReimbursementModel(int id, BigDecimal amount, String description, InputStream receipt, Timestamp submitted,
-			Timestamp resolved, int authorId, int resolverId, int typeId, int statusId) {
+			Timestamp resolved, UserModel author, UserModel resolver, ReimbursementTypeModel type, ReimbursementStatusModel status) {
 		super();
-		this.id = id;
 		this.amount = amount;
 		this.description = description;
 		this.receipt = receipt;
 		this.submitted = submitted;
 		this.resolved = resolved;
-		this.authorId = authorId;
-		this.resolverId = resolverId;
-		this.typeId = typeId;
-		this.statusId = statusId;
+		this.author = author;
+		this.resolver = resolver;
+		this.type = type;
+		this.status = status;
 	}
 		
 	public ReimbursementModel() {
@@ -63,17 +65,21 @@ public class ReimbursementModel implements Serializable{
 	@Column(name="R_RESOLVED", nullable=true, columnDefinition = "Timestamp default null")
 	private Timestamp resolved;
 	
-	@Column(name="U_ID_AUTHOR")
-	private int authorId;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="U_AUTHOR")
+	private UserModel author;
 	
-	@Column(name="U_ID_RESOLVER", nullable=true, columnDefinition = "int default null")
-	private int resolverId;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="U_RESOLVER", nullable=true, columnDefinition = "int default null")
+	private UserModel resolver;
 	
-	@Column(name="RT_TYPE")
-	private int typeId;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="RT_TYPE")
+	private ReimbursementTypeModel type;
 	
-	@Column(name="RT_STATUS", nullable=false, columnDefinition = "int default 1")
-	private int statusId;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="RT_STATUS", nullable=false)
+	private ReimbursementStatusModel status;
 	
 	public int getId() {
 		return id;
@@ -111,35 +117,35 @@ public class ReimbursementModel implements Serializable{
 	public void setResolved(Timestamp resolved) {
 		this.resolved = resolved;
 	}
-	public int getAuthorId() {
-		return authorId;
+	public UserModel getAuthor() {
+		return author;
 	}
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
+	public void setAuthor(UserModel author) {
+		this.author = author;
 	}
-	public int getResolverId() {
-		return resolverId;
+	public UserModel getResolver() {
+		return resolver;
 	}
-	public void setResolverId(int resolverId) {
-		this.resolverId = resolverId;
+	public void setResolver(UserModel resolver) {
+		this.resolver = resolver;
 	}
-	public int getType() {
-		return typeId;
+	public ReimbursementTypeModel getType() {
+		return type;
 	}
-	public void setType(int typeId) {
-		this.typeId = typeId;
+	public void setType(ReimbursementTypeModel type) {
+		this.type = type;
 	}
-	public int getStatus() {
-		return statusId;
+	public ReimbursementStatusModel getStatus() {
+		return status;
 	}
-	public void setStatus(int statusId) {
-		this.statusId = statusId;
+	public void setStatus(ReimbursementStatusModel status) {
+		this.status = status;
 	}
 	@Override
 	public String toString() {
 		return "ErsReimbursement [id=" + id + ", amount=" + amount + ", description=" + description + ", receipt="
-				+ receipt + ", submitted=" + submitted + ", resolved=" + resolved + ", authorId=" + authorId
-				+ ", resolverId=" + resolverId + ", type=" + typeId + ", status=" + statusId + "]";
+				+ receipt + ", submitted=" + submitted + ", resolved=" + resolved + ", authorId=" + author
+				+ ", resolverId=" + resolver + ", type=" + type + ", status=" + status + "]";
 	}
 
 }

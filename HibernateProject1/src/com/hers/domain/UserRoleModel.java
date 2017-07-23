@@ -1,12 +1,16 @@
 package com.hers.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,7 +25,6 @@ public class UserRoleModel implements Serializable{
 
 	public UserRoleModel(int id, String role) {
 		super();
-		this.id = id;
 		this.role = role;
 	}
 	
@@ -33,6 +36,9 @@ public class UserRoleModel implements Serializable{
 	
 	@Column(name="UR_ROLE")
 	private String role;
+	
+	@OneToMany(mappedBy="userRole", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<UserModel> users;
 	
 	public int getId() {
 		return id;
@@ -49,6 +55,10 @@ public class UserRoleModel implements Serializable{
 	@Override
 	public String toString() {
 		return "UserRole [id=" + id + ", role=" + role + "]";
+	}
+	
+	public List<UserModel> getUsers() {
+		return users;
 	}
 
 }

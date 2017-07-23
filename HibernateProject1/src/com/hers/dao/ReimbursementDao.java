@@ -8,21 +8,19 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.hers.domain.ReimbursementModel;
+import com.hers.domain.ReimbursementStatusModel;
+import com.hers.domain.ReimbursementTypeModel;
+import com.hers.domain.UserModel;
 
 public interface ReimbursementDao {
-	public List<ReimbursementModel> getEmployeeAllReimbursementRequests(int employeeId, int rStatusId); 
+	public List<ReimbursementModel> getEmployeeAllReimbursementRequests(int employeeId, ReimbursementStatusModel rStatus); 
 	//employee/manager can get this
 	//if arg[1] is null, return all requests, otherwise, return pending or resolved list
-	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, InputStream fileContent, Timestamp rSubmitted, int uIdAuthor, int rtType); 
-	//only employees submit these requests 
 	
-	public List<ReimbursementModel> getAllEmployeesReimbursementRequests(int managerId, int rStatusId);
-	public boolean approveOrDenyReimbursementRequest(int reimbursementId, Timestamp resolved, int resolverId, int statusId);
-	
-	//to create a separate function to handle the photo, the blob part?
-	//question: best to pass objects as arguments or int id
-	
-	
+	public List<ReimbursementModel> getAllEmployeesReimbursementRequests(ReimbursementStatusModel rStatus);
+	public void approveOrDenyReimbursementRequest(int reimbursementId, Timestamp resolved, UserModel resolver, ReimbursementStatusModel status);
+	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, InputStream rReceipt, Timestamp rSubmitted,
+			UserModel author, ReimbursementTypeModel rtType); //for employees		
 	
 
 }

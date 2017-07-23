@@ -13,23 +13,25 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ers.util.ConnectionUtil;
 import com.hers.domain.ReimbursementModel;
+import com.hers.domain.ReimbursementStatusModel;
+import com.hers.domain.ReimbursementTypeModel;
 import com.hers.domain.UserModel;
 import com.hers.util.HibernateUtil;
 
 public class ReimbursementDaoLogic implements ReimbursementDao {
 
 	@Override
-	public List<ReimbursementModel> getEmployeeAllReimbursementRequests(int employeeId, int rStatusId) {
+	public List<ReimbursementModel> getEmployeeAllReimbursementRequests(int employeeId, ReimbursementStatusModel rStatus) {
 		Session s = HibernateUtil.getSession();
 		List<ReimbursementModel> reimbursements = new ArrayList<ReimbursementModel>();
 		reimbursements = s.createQuery("from ReimbursementModel where id=:employeeId and statusId=:rStatusId")
-							.setInteger("employeeId", employeeId).setInteger("rStatusId", rStatusId).list();
+							.setInteger("employeeId", employeeId).setParameter("rStatus", rStatus).list();
 		
 		return reimbursements;
 		
@@ -64,7 +66,7 @@ public class ReimbursementDaoLogic implements ReimbursementDao {
 
 	@Override
 	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, InputStream rReceipt,
-			Timestamp rSubmitted, int uIdAuthor, int rtType) {
+			Timestamp rSubmitted, UserModel author, ReimbursementTypeModel rtType) {
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 			ReimbursementModel rm = new ReimbursementModel();
@@ -72,7 +74,7 @@ public class ReimbursementDaoLogic implements ReimbursementDao {
 			rm.setDescription(rDescription);
 			rm.setReceipt(rReceipt);
 			rm.setSubmitted(rSubmitted);
-			rm.setAuthorId(uIdAuthor);
+			rm.setAuthor(author);
 			rm.setType(rtType);
 		
 		tx.commit();
@@ -109,36 +111,42 @@ public class ReimbursementDaoLogic implements ReimbursementDao {
 //	}
 
 	@Override
-	public List<ReimbursementModel> getAllEmployeesReimbursementRequests(int managerId, int rStatusId) {
-		List<ReimbursementModel> reimbursements = new ArrayList<>();
-		String sql = "SELECT * FROM ERS_REIMBURSEMENTS WHERE RT_STATUS = ?";
-
-		try(Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
-			PreparedStatement pstmt = con.prepareStatement(sql)){
-			
-			pstmt.setInt(1, rStatusId);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				int id = rs.getInt("R_ID");
-				BigDecimal amount = rs.getBigDecimal("R_AMOUNT");
-				String description = rs.getString("R_DESCRIPTION");
-				Blob receipt = rs.getBlob("R_RECEIPT");
-				Timestamp submitted = rs.getTimestamp("R_SUBMITTED");
-				Timestamp resolved = rs.getTimestamp("R_RESOLVED");
-				int authorId = rs.getInt("U_ID_AUTHOR");
-				int resolverId = rs.getInt("U_ID_RESOLVER");
-				int type = rs.getInt("RT_TYPE");
-				int status = rs.getInt("RT_STATUS");
-				
-				reimbursements.add(new ReimbursementModel(id, amount, description, receipt, submitted, resolved, authorId, resolverId, type, status));
-			}
-		} catch (SQLException e){
-			e.printStackTrace();
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-		return reimbursements;
+	public List<ReimbursementModel> getAllEmployeesReimbursementRequests(ReimbursementStatusModel rStatus) {
+		Session s = HibernateUtil.getSession();
+		List<ReimbursementModel> reimbursements = new ArrayList<ReimbursementModel>();
+		reimbursements = s.createQuery("from ReimbursementModel where status=:rStatus")
+							.setParameter("rStatusId", rStatus).list();
 		
+		return reimbursements;
+//		List<ReimbursementModel> reimbursements = new ArrayList<>();
+//		String sql = "SELECT * FROM ERS_REIMBURSEMENTS WHERE RT_STATUS = ?";
+//
+//		try(Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
+//			PreparedStatement pstmt = con.prepareStatement(sql)){
+//			
+//			pstmt.setInt(1, rStatusId);
+//			ResultSet rs = pstmt.executeQuery();
+//			while (rs.next()) {
+//				int id = rs.getInt("R_ID");
+//				BigDecimal amount = rs.getBigDecimal("R_AMOUNT");
+//				String description = rs.getString("R_DESCRIPTION");
+//				Blob receipt = rs.getBlob("R_RECEIPT");
+//				Timestamp submitted = rs.getTimestamp("R_SUBMITTED");
+//				Timestamp resolved = rs.getTimestamp("R_RESOLVED");
+//				int authorId = rs.getInt("U_ID_AUTHOR");
+//				int resolverId = rs.getInt("U_ID_RESOLVER");
+//				int type = rs.getInt("RT_TYPE");
+//				int status = rs.getInt("RT_STATUS");
+//				
+//				reimbursements.add(new ReimbursementModel(id, amount, description, receipt, submitted, resolved, authorId, resolverId, type, status));
+//			}
+//		} catch (SQLException e){
+//			e.printStackTrace();
+//		} catch (IOException e){
+//			e.printStackTrace();
+//		}
+//		return reimbursements;
+//		
 			
 		
 
@@ -147,26 +155,39 @@ public class ReimbursementDaoLogic implements ReimbursementDao {
 	}
 
 	@Override
-	public boolean approveOrDenyReimbursementRequest(int reimbursementId, Timestamp resolved, int resolverId, int statusId) {
-		int rStatusResolved = 0;
-		String sql = "UPDATE ERS_REIMBURSEMENTS " +
-				"SET R_RESOLVED = ?, U_ID_RESOLVER = ?, RT_STATUS = ?" +
-				"WHERE R_ID = ?";
-		try (Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
-				PreparedStatement pstmt = con.prepareStatement(sql)){
-			con.setAutoCommit(false);
-			pstmt.setTimestamp(1, resolved);
-			pstmt.setInt(2, resolverId);
-			pstmt.setInt(3, statusId);
-			
-			rStatusResolved = pstmt.executeUpdate();
-			con.commit();
-		} catch (SQLException e){
-			e.printStackTrace();
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-		return rStatusResolved==1;
+	public void approveOrDenyReimbursementRequest(int reimbursementId, Timestamp resolved, UserModel resolver, ReimbursementStatusModel status) {
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+			try {
+				ReimbursementModel rm = (ReimbursementModel) s.get(ReimbursementModel.class, reimbursementId);
+				rm.setResolved(resolved);
+				rm.setResolver(resolver);
+				rm.setStatus(status);
+				s.saveOrUpdate(rm);
+			} catch(HibernateException e){
+				e.printStackTrace();
+			}
+		tx.commit();
+		s.close();
+//		int rStatusResolved = 0;
+//		String sql = "UPDATE ERS_REIMBURSEMENTS " +
+//				"SET R_RESOLVED = ?, U_ID_RESOLVER = ?, RT_STATUS = ?" +
+//				"WHERE R_ID = ?";
+//		try (Connection con = ConnectionUtil.getConnectionFromFile("connection.properties");
+//				PreparedStatement pstmt = con.prepareStatement(sql)){
+//			con.setAutoCommit(false);
+//			pstmt.setTimestamp(1, resolved);
+//			pstmt.setInt(2, resolverId);
+//			pstmt.setInt(3, statusId);
+//			
+//			rStatusResolved = pstmt.executeUpdate();
+//			con.commit();
+//		} catch (SQLException e){
+//			e.printStackTrace();
+//		} catch (IOException e){
+//			e.printStackTrace();
+//		}
+//		return rStatusResolved==1;
 	}
 
 }

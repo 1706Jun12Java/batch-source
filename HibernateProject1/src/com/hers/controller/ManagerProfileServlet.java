@@ -56,7 +56,7 @@ public class ManagerProfileServlet extends HttpServlet {
 //				System.out.println(rList);
 				
 //public List<ReimbursementModel> getAllEmployeesReimbursementRequests(int managerId, int rStatusId);
-				for(ReimbursementModel employeeRList: employeeRListGetter.getAllEmployeesReimbursementRequests(managerId, pendingStatusId)){
+				for(ReimbursementModel employeeRList: employeeRListGetter.getAllEmployeesReimbursementRequests(pendingStatusId)){
 					resp.getWriter().print("REIMBURSEMENT ID: " + (int) employeeRList.getId() + " "+ "<br>");
 					resp.getWriter().print("REIMBURSEMENT AMOUNT: " + (BigDecimal) employeeRList.getAmount() + " "+ "<br>");
 					resp.getWriter().print("EMPLOYEE ID: " + (int) employeeRList.getAuthorId() + " "+ "<br>");

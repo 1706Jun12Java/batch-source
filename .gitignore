@@ -26,3 +26,7 @@ hs_err_pid*
 .metadata/
 .project
 RemoteSystemsTempFiles/
+connection.properties
+.recommenders/
+Servers/
+hibernate.cfg.xml

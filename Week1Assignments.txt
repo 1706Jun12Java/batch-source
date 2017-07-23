@@ -1,0 +1,19 @@
+For Tuesday, June 13:
+
+
+Create a file called introduction.txt 
+Push it to a branch off of master on the batch-source repository
+Name your branch [your last name][your first initial]
+(put some content here) 
+
+
+Plan 3-5 minute presentation on a nontechnical topic of your choice
+
+Tuesday:
+Akeem, Christian A, Bishwo, Sandy, Muhammad 
+Wednesday:
+Brian, John, Ibrahima, Ron, Carlos
+Thursday:
+Albert, Leibniz, Mazhar, Christian O, Kaibin
+Friday:
+Nima, Midi, RZ, Henry, DC, Alan

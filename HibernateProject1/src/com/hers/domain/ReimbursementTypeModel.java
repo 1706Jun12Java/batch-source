@@ -1,0 +1,54 @@
+package com.hers.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="HERS_REIMBURSEMENT_TYPE")
+public class ReimbursementTypeModel implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7753390146268180300L;
+
+	public ReimbursementTypeModel(int id, String type) {
+		super();
+		this.id = id;
+		this.type = type;
+	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="rTypeSequence")
+	@SequenceGenerator(allocationSize=1, name="rTypeSequence", sequenceName="RTYPE_SEQ")
+	@Column(name="RT_ID")
+	private int id;
+	
+	@Column(name="RT_TYPE")
+	private String type;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return "ReimbursementType [id=" + id + ", type=" + type + "]";
+	}
+
+}

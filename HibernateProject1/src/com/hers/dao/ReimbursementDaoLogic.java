@@ -65,7 +65,7 @@ public class ReimbursementDaoLogic implements ReimbursementDao {
 	}
 
 	@Override
-	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, InputStream rReceipt,
+	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, Blob rReceipt,
 			Timestamp rSubmitted, UserModel author, ReimbursementTypeModel rtType) {
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();

@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
@@ -18,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hers.dao.RTypeDao;
@@ -84,6 +88,8 @@ public class ReimbursementFormServlet extends HttpServlet{
 		String fileName = p.getFileName().toString(); //get file name from Path object
 		InputStream fileContent = filePart.getInputStream(); //convert Part data to input stream
 		
+		Blob blobFile = Hibernate.getLobCreator((Session) session).createBlob(fileContent, filePart.getSize());
+		
 		
 		String rType = req.getParameter("selectReimbursementType");
 		ReimbursementTypeModel type = new ReimbursementTypeModel(rType);
@@ -95,7 +101,7 @@ public class ReimbursementFormServlet extends HttpServlet{
 			}
 			else {
 				session.setAttribute("employeeId", employee);
-				reim.submitReimbursementRequest(amt, description, fileContent, timestamp, employee, type);
+				reim.submitReimbursementRequest(amt, description, blobFile, timestamp, employee, type);
 				resp.sendRedirect("employee-profile");
 			}
 		}

@@ -24,10 +24,13 @@ public class Driver {
 		Transaction tx = s.beginTransaction();
 		
 		UserRoleModel managerRole = new UserRoleModel("Manager");
+		UserRoleModel employeeRole = new UserRoleModel("Employee");
 		
-		UserModel uA = new UserModel(0, "asdf", null, null, null, managerRole);
 		
-		s.save(uA);
+//		UserModel uA = new UserModel("asdf", null, null, null, managerRole);
+		s.save(managerRole);
+		s.save(employeeRole);
+
 		tx.commit();
 		s.close();
 		} catch (Exception e){

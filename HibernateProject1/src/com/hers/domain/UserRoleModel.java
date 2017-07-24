@@ -57,7 +57,7 @@ public class UserRoleModel implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "UserRole [id=" + id + ", role=" + role + "]";
+		return "UserRoleModel [id=" + id + ", role=" + role + "]";
 	}
 
 }

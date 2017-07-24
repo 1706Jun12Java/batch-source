@@ -1,8 +1,8 @@
 package com.hers.domain;
 
-import java.io.InputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="HERS_REIMBURSEMENTS")
+@Table(name="HERS_REIMBURSEMENT")
 public class ReimbursementModel implements Serializable{
 	
 	/**
@@ -26,7 +26,7 @@ public class ReimbursementModel implements Serializable{
 	 */
 	private static final long serialVersionUID = 7607504890004882447L;
 
-	public ReimbursementModel(int id, BigDecimal amount, String description, InputStream receipt, Timestamp submitted,
+	public ReimbursementModel(int id, BigDecimal amount, String description, Blob receipt, Timestamp submitted,
 			Timestamp resolved, UserModel author, UserModel resolver, ReimbursementTypeModel type, ReimbursementStatusModel status) {
 		super();
 		this.amount = amount;
@@ -41,7 +41,6 @@ public class ReimbursementModel implements Serializable{
 	}
 		
 	public ReimbursementModel() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id
@@ -56,8 +55,8 @@ public class ReimbursementModel implements Serializable{
 	@Column(name="R_DESCRIPTION")
 	private String description;
 	
-	@Column(name="R_RECEIPT")
-	private InputStream receipt;
+	@Column(name="R_RECEIPT", nullable=true)
+	private Blob receipt;
 	
 	@Column(name="R_SUBMITTED")
 	private Timestamp submitted;
@@ -99,10 +98,10 @@ public class ReimbursementModel implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public InputStream getReceipt() {
+	public Blob getReceipt() {
 		return receipt;
 	}
-	public void setReceipt(InputStream receipt) {
+	public void setReceipt(Blob receipt) {
 		this.receipt = receipt;
 	}
 	public Timestamp getSubmitted() {
@@ -143,9 +142,8 @@ public class ReimbursementModel implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "ErsReimbursement [id=" + id + ", amount=" + amount + ", description=" + description + ", receipt="
-				+ receipt + ", submitted=" + submitted + ", resolved=" + resolved + ", authorId=" + author
-				+ ", resolverId=" + resolver + ", type=" + type + ", status=" + status + "]";
+		return "ReimbursementModel [id=" + id + ", amount=" + amount + ", description=" + description + ", submitted=" + submitted + ", resolved=" + resolved + ", author=" + author + ", resolver="
+				+ resolver + ", type=" + type + ", status=" + status + "]";
 	}
 
 }

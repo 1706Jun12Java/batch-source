@@ -54,7 +54,7 @@ public class ReimbursementTypeModel implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "ReimbursementType [id=" + id + ", type=" + type + "]";
+		return "ReimbursementTypeModel [id=" + id + ", type=" + type + ", reimbursements=" + reimbursements + "]";
 	}
 	
 	public List<ReimbursementModel> getReimbursements(){

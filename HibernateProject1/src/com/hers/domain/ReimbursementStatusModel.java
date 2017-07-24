@@ -54,7 +54,7 @@ public class ReimbursementStatusModel implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "ReimbursementStatus [id=" + id + ", status=" + status + "]";
+		return "ReimbursementStatusModel [id=" + id + ", status=" + status + ", reimbursements=" + reimbursements + "]";
 	}
 	
 	public List<ReimbursementModel> getReimbursements(){

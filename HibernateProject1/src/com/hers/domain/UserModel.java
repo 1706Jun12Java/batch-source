@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="HERS_USER")
 public class UserModel implements Serializable{
 	
 	/**
@@ -21,7 +25,7 @@ public class UserModel implements Serializable{
 	 */
 	private static final long serialVersionUID = -5917179226220571758L;
 
-	public UserModel(int userId, String username, String password, String firstName, String lastName, String email,
+	public UserModel(String username, String password, String firstName, String lastName, String email,
 			UserRoleModel userRole) {
 		super();
 		this.username = username;
@@ -32,7 +36,7 @@ public class UserModel implements Serializable{
 		this.userRole = userRole;
 	}
 	
-	public UserModel(int userId, String username, String firstName, String lastName, String email, UserRoleModel userRole) {
+	public UserModel(String username, String firstName, String lastName, String email, UserRoleModel userRole) {
 		super();
 		this.username = username;
 		this.firstName = firstName;
@@ -63,15 +67,15 @@ public class UserModel implements Serializable{
 	@Column(name="U_EMAIL", unique=true)
 	private String email;
 	
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="UR_ID")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="UR_ID")
 	private UserRoleModel userRole;
 	
-//	@OneToMany(mappedBy="author", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-//	private List<ReimbursementModel> reimbursementsAuthor;
+	@OneToMany(mappedBy="author", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<ReimbursementModel> reimbursementsAuthor;
 //	
-//	@OneToMany(mappedBy="resolver", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-//	private List<ReimbursementModel> reimbursementsResolver;
+	@OneToMany(mappedBy="resolver", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<ReimbursementModel> reimbursementsResolver;
 //	
 	
 	public int userId() {
@@ -118,8 +122,8 @@ public class UserModel implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "ErsUser [id=" + userId + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", userRole=" + userRole + "]";
+		return "UserModel [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", userRole=" + userRole + "]";
 	}
 	
 }

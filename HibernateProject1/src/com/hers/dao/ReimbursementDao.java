@@ -19,7 +19,7 @@ public interface ReimbursementDao {
 	
 	public List<ReimbursementModel> getAllEmployeesReimbursementRequests(ReimbursementStatusModel rStatus);
 	public void approveOrDenyReimbursementRequest(int reimbursementId, Timestamp resolved, UserModel resolver, ReimbursementStatusModel status);
-	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, InputStream rReceipt, Timestamp rSubmitted,
+	public void submitReimbursementRequest(BigDecimal rAmount, String rDescription, Blob rReceipt, Timestamp rSubmitted,
 			UserModel author, ReimbursementTypeModel rtType); //for employees		
 	
 

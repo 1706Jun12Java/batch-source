@@ -1,5 +1,7 @@
 package com.hers.dao;
 
+import com.hers.domain.UserRoleModel;
+
 public interface UserRoleDao {
-	public int getIdOfRole(String role);
+	public UserRoleModel getRole(String role);
 }

@@ -13,6 +13,7 @@ import com.hers.dao.UserDao;
 import com.hers.dao.UserDaoLogic;
 import com.hers.dao.UserRoleDao;
 import com.hers.dao.UserRoleDaoLogic;
+import com.hers.domain.UserRoleModel;
 
 public class LoginServlet extends HttpServlet {
 	
@@ -46,17 +47,16 @@ public class LoginServlet extends HttpServlet {
 		
 		int userId = user.login(username, password);
 		//get user's role id to check if user is a manager or an employee
-		int userRoleId = user.getUser(userId).getRoleId();
-		
+		UserRoleModel userRole = user.getUser(userId).getRole();		
 //		
 //		
-		UserRoleDao userRole = new UserRoleDaoLogic();
-		int managerRoleId = userRole.getIdOfRole("Manager");
-		int employeeRoleId = userRole.getIdOfRole("Employee");
+		UserRoleDao role = new UserRoleDaoLogic();
+		UserRoleDao managerRole = (UserRoleDao) role.getRole("Manager");
+		UserRoleDao employeeRole = (UserRoleDao) role.getRole("Employee");
 		
 		
 		if (userId!=0){
-			if (userRoleId==managerRoleId){
+			if (userRole==managerRole){
 				session.setAttribute("managerId", userId);
 				session.setAttribute("managerUserName", user.getUser(userId).getUserName());
 				session.setAttribute("managerFirstName", user.getUser(userId).getFirstName());
@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("managerEmail", user.getUser(userId).getEmail());
 				resp.sendRedirect("manager-profile");
 			}
-			else if (userRoleId==employeeRoleId){
+			else if (userRole==employeeRole){
 				session.setAttribute("employeeId", userId);
 				session.setAttribute("employeeUserName", user.getUser(userId).getUserName());
 				session.setAttribute("employeeFirstName", user.getUser(userId).getFirstName());

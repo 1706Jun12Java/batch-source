@@ -17,6 +17,7 @@ import com.hers.dao.RStatusDaoLogic;
 import com.hers.dao.ReimbursementDao;
 import com.hers.dao.ReimbursementDaoLogic;
 import com.hers.domain.ReimbursementModel;
+import com.hers.domain.ReimbursementStatusModel;
 
 public class EmployeeProfileServlet extends HttpServlet {
 	
@@ -54,21 +55,24 @@ public class EmployeeProfileServlet extends HttpServlet {
 				resp.getWriter().println(employeeEmail + "<br>");
 				
 				RStatusDao rStatus = new RStatusDaoLogic();
-				int pendingStatusId = rStatus.getIdOfStatus("Pending");
-				int approvedStatusId = rStatus.getIdOfStatus("Approved");
-				int deniedStatusId = rStatus.getIdOfStatus("Denied");
+				ReimbursementStatusModel rsm = new ReimbursementStatusModel("Pending");
+
+//				rStatus.getClass().get;
+//				ReimbursementStatusModel pendingStatus = rStatus.getIdOfStatus("Pending");
+//				ReimbursementStatusModel approvedStatus = rStatus.getIdOfStatus("Approved");
+//				ReimbursementStatusModel deniedStatus = rStatus.getIdOfStatus("Denied");
 				
 				ReimbursementDao employeeRListGetter = new ReimbursementDaoLogic();
 				
 //				List<ReimbursementModel> rList = employeeRListGetter.getEmployeeAllReimbursementRequests(employeeId, pendingStatusId).;
 //				System.out.println(rList);
 				
-				for(ReimbursementModel employeeRList: employeeRListGetter.getEmployeeAllReimbursementRequests(employeeId, pendingStatusId)){
+				for(ReimbursementModel employeeRList: employeeRListGetter.getEmployeeAllReimbursementRequests(employeeId, rsm)){
 					resp.getWriter().print("REIMBURSEMENT ID: " + (int) employeeRList.getId() + " "+ "<br>");
 					resp.getWriter().print("REIMBURSEMENT AMOUNT: " + (BigDecimal) employeeRList.getAmount() + " "+ "<br>");
-					resp.getWriter().print("EMPLOYEE ID: " + (int) employeeRList.getAuthorId() + " "+ "<br>");
+					resp.getWriter().print("EMPLOYEE ID: " + employeeRList.getAuthor() + " "+ "<br>");
 					resp.getWriter().print("REIMBURSEMENT DESCRIPTION: " + (String) employeeRList.getDescription() + " "+ "<br>");
-					resp.getWriter().print("REIMBURSEMENT TYPE: " + (int) employeeRList.getStatus() + " " + "<br><br><br>\n\n");
+					resp.getWriter().print("REIMBURSEMENT TYPE: " + employeeRList.getStatus() + " " + "<br><br><br>\n\n");
 					
 				}
 
@@ -102,10 +106,11 @@ public class EmployeeProfileServlet extends HttpServlet {
 		
 		session.setAttribute("employeeId", employeeId);
 		
-		RStatusDao rStatus = new RStatusDaoLogic();
-		int pendingStatusId = rStatus.getIdOfStatus("Pending");
-		int approvedStatusId = rStatus.getIdOfStatus("Approved");
-		int deniedStatusId = rStatus.getIdOfStatus("Denied");
+		ReimbursementStatusModel rsm = new ReimbursementStatusModel("Pending");
+//		RStatusDao rStatus = new RStatusDaoLogic("Pending");
+//		int pendingStatusId = rStatus.getIdOfStatus("Pending");
+//		int approvedStatusId = rStatus.getIdOfStatus("Approved");
+//		int deniedStatusId = rStatus.getIdOfStatus("Denied");
 		
 		
 		
@@ -116,7 +121,7 @@ public class EmployeeProfileServlet extends HttpServlet {
 		ReimbursementDao employeeRListGetter = new ReimbursementDaoLogic();
 		
 //		public List<ReimbursementModel> getEmployeeAllReimbursementRequests(int employeeId, int rStatusId); 
-		List<ReimbursementModel> rList = employeeRListGetter.getEmployeeAllReimbursementRequests(employeeId, pendingStatusId);
+		List<ReimbursementModel> rList = employeeRListGetter.getEmployeeAllReimbursementRequests(employeeId, rsm);
 		String employeeRList = mapper.writeValueAsString(rList);
 		resp.getWriter().write(employeeRList);
 		

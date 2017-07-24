@@ -24,6 +24,8 @@ import com.hers.dao.RTypeDao;
 import com.hers.dao.RTypeDaoLogic;
 import com.hers.dao.ReimbursementDao;
 import com.hers.dao.ReimbursementDaoLogic;
+import com.hers.domain.ReimbursementTypeModel;
+import com.hers.domain.UserModel;
 
 @WebServlet(urlPatterns={"/ReimbursementFormServlet"})
 @MultipartConfig
@@ -66,7 +68,7 @@ public class ReimbursementFormServlet extends HttpServlet{
 		
 		
 		if (session!=null){
-		int employeeId = (int) session.getAttribute("employeeId");
+		UserModel employee = (UserModel) session.getAttribute("employeeId");
 		
 		String amount = req.getParameter("amount");
 		BigDecimal amt = new BigDecimal(amount);
@@ -84,6 +86,7 @@ public class ReimbursementFormServlet extends HttpServlet{
 		
 		
 		String rType = req.getParameter("selectReimbursementType");
+		ReimbursementTypeModel type = new ReimbursementTypeModel(rType);
 		
 		if(session!=null){
 			if (amt.compareTo(BigDecimal.valueOf(0))==-1){
@@ -91,8 +94,8 @@ public class ReimbursementFormServlet extends HttpServlet{
 				resp.sendRedirect("reimbursementform");
 			}
 			else {
-				session.setAttribute("employeeId", employeeId);
-				reim.submitReimbursementRequest(amt, description, fileContent, timestamp, employeeId, rTypeimpl.getIdOfType(rType));
+				session.setAttribute("employeeId", employee);
+				reim.submitReimbursementRequest(amt, description, fileContent, timestamp, employee, type);
 				resp.sendRedirect("employee-profile");
 			}
 		}

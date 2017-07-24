@@ -63,16 +63,16 @@ public class UserModel implements Serializable{
 	@Column(name="U_EMAIL", unique=true)
 	private String email;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="UR_ID")
+//	@ManyToOne(fetch=FetchType.EAGER)
+//	@JoinColumn(name="UR_ID")
 	private UserRoleModel userRole;
 	
-	@OneToMany(mappedBy="author", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	private List<ReimbursementModel> reimbursementsAuthor;
-	
-	@OneToMany(mappedBy="resolver", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	private List<ReimbursementModel> reimbursementsResolver;
-	
+//	@OneToMany(mappedBy="author", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+//	private List<ReimbursementModel> reimbursementsAuthor;
+//	
+//	@OneToMany(mappedBy="resolver", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+//	private List<ReimbursementModel> reimbursementsResolver;
+//	
 	
 	public int userId() {
 		return userId;

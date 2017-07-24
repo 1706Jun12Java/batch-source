@@ -62,15 +62,15 @@ public class ReimbursementModel implements Serializable{
 	@Column(name="R_SUBMITTED")
 	private Timestamp submitted;
 	
-	@Column(name="R_RESOLVED", nullable=true, columnDefinition = "Timestamp default null")
+	@Column(name="R_RESOLVED")
 	private Timestamp resolved;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="U_AUTHOR")
 	private UserModel author;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="U_RESOLVER", nullable=true, columnDefinition = "int default null")
+	@ManyToOne
+	@JoinColumn(name="U_RESOLVER")
 	private UserModel resolver;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

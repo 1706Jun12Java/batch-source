@@ -56,16 +56,16 @@ public class ManagerProfileServlet extends HttpServlet {
 //				System.out.println(rList);
 				
 //public List<ReimbursementModel> getAllEmployeesReimbursementRequests(int managerId, int rStatusId);
-				for(ReimbursementModel employeeRList: employeeRListGetter.getAllEmployeesReimbursementRequests(pendingStatusId)){
-					resp.getWriter().print("REIMBURSEMENT ID: " + (int) employeeRList.getId() + " "+ "<br>");
-					resp.getWriter().print("REIMBURSEMENT AMOUNT: " + (BigDecimal) employeeRList.getAmount() + " "+ "<br>");
-					resp.getWriter().print("EMPLOYEE ID: " + (int) employeeRList.getAuthorId() + " "+ "<br>");
-					resp.getWriter().print("REIMBURSEMENT DESCRIPTION: " + (String) employeeRList.getDescription() + " "+ "<br>");
-					resp.getWriter().print("REIMBURSEMENT TYPE: " + (int) employeeRList.getStatus() + " " + "<br><br><br>\n\n");
-					
-				}
-				
-				req.getRequestDispatcher("views/html/managerProfile.html").include(req, resp);
+//				for(ReimbursementModel employeeRList: employeeRListGetter.getAllEmployeesReimbursementRequests(pendingStatusId)){
+//					resp.getWriter().print("REIMBURSEMENT ID: " + (int) employeeRList.getId() + " "+ "<br>");
+//					resp.getWriter().print("REIMBURSEMENT AMOUNT: " + (BigDecimal) employeeRList.getAmount() + " "+ "<br>");
+//					resp.getWriter().print("EMPLOYEE ID: " + (int) employeeRList.getAuthorId() + " "+ "<br>");
+//					resp.getWriter().print("REIMBURSEMENT DESCRIPTION: " + (String) employeeRList.getDescription() + " "+ "<br>");
+//					resp.getWriter().print("REIMBURSEMENT TYPE: " + (int) employeeRList.getStatus() + " " + "<br><br><br>\n\n");
+//					
+//				}
+//				
+//				req.getRequestDispatcher("views/html/managerProfile.html").include(req, resp);
 			} catch(Exception e){
 				e.printStackTrace();
 			}

@@ -23,7 +23,7 @@ public class ReimbursementTypeModel implements Serializable{
 	 */
 	private static final long serialVersionUID = 7753390146268180300L;
 
-	public ReimbursementTypeModel(int id, String type) {
+	public ReimbursementTypeModel(String type) {
 		super();
 		this.type = type;
 	}

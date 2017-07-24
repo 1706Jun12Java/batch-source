@@ -22,7 +22,7 @@ public class ReimbursementStatusModel implements Serializable{
 	 */
 	private static final long serialVersionUID = -221568970543053713L;
 
-	public ReimbursementStatusModel(int id, String status) {
+	public ReimbursementStatusModel(String status) {
 		super();
 		this.status = status;
 	}

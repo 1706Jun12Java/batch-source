@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.username">hib</property>
+        <property name="hibernate.connection.password">hib</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@sqldev.cth5t6dbmjzg.us-east-1.rds.amazonaws.com:1521:ORCL</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <!-- creates database if "create", keeps existing structure and values if "update" or nothing -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="com.hib.domain.Users"/>
+        <mapping class="com.hib.domain.UserRoles"/>
+        <mapping class="com.hib.domain.ReimbursementType"/>
+        <mapping class="com.hib.domain.ReimbursementStatus"/>
+        <mapping class="com.hib.domain.Reimbursement"/>
+    </session-factory>
+</hibernate-configuration>

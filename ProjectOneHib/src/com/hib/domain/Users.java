@@ -13,7 +13,6 @@ public class Users implements Serializable{
 	 */
 	private static final long serialVersionUID = -4564506697059411612L;
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="userSequence")
 	@SequenceGenerator(allocationSize = 1, name="userSequence", sequenceName="USER_SEQ")

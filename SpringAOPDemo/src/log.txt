@@ -1,0 +1,15 @@
+2017-07-26 13:19:17 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jul 26 13:19:17 EDT 2017]; root of context hierarchy
+2017-07-26 13:19:17 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-07-26 13:19:18 INFO  root:23 - com.revature.service.TigerService@5609159b
+2017-07-26 13:19:18 INFO  root:23 - com.revature.service.TigerService@5609159b
+2017-07-26 13:19:18 INFO  root:23 - com.revature.service.TigerService@5609159b
+2017-07-26 13:19:18 ERROR root:18 - com.revature.service.BearService@2118cddf
+2017-07-26 13:21:24 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jul 26 13:21:24 EDT 2017]; root of context hierarchy
+2017-07-26 13:21:24 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.TigerService@5609159b
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.TigerService@5609159b
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.TigerService@5609159b
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.BearService@2118cddf
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.BearService@2118cddf
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.BearService@2118cddf
+2017-07-26 13:21:25 INFO  root:23 - com.revature.service.BearService@2118cddf

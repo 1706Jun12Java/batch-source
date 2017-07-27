@@ -21,14 +21,18 @@ public class WalkInTheWoods {
 		ts.animalCatchesYou();
 		
 		BearService bs = (BearService) context.getBean("bearService");
+		bs.setIsWinter(true);
+		try{
+			bs.bearHibernates();
+			bs.wakeUpAnimal();
+			bs.animalChasesYou();
+			bs.animalCatchesYou();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		bs.bearHibernates();
 		
-		bs.wakeUpAnimal();
-		
-		bs.animalChasesYou();
-		
-		bs.animalCatchesYou();
 
 	}
 

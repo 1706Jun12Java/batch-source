@@ -5,6 +5,16 @@ import org.springframework.stereotype.Component;
 @Component(value = "bearService")
 public class BearService extends AnimalService {
 	
+	private Boolean isWinter = false;
+	
+	public void setIsWinter(Boolean isWinter){
+		this.isWinter = isWinter;
+	}
+	
+	public Boolean getIsWinter(){
+		return this.isWinter;
+	}
+	
 	private int bearSpeed = 9;
 	
 	public int getSpeed(){
@@ -21,8 +31,11 @@ public class BearService extends AnimalService {
 		this.bearFull = full;
 	}
 	
-	public void bearHibernates(){
+	public void bearHibernates() throws Exception{
 		System.out.println("ZZZZZZZZZZZZZZZZZZZZZ");
+		if(!this.isWinter){
+			throw new Exception("bears hibernate in the winter!");
+		}
 	}
 
 	@Override

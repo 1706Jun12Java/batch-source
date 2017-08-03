@@ -19,6 +19,25 @@ public class Book implements Serializable {
     @Column(name="BOOK_NAME")
     private String name;
 
+
+    @ManyToOne
+    @JoinColumn(name="AUTHOR_ID")
+    private Author author;
+
+
+    public Book(String name, Author author) {
+        this.name = name;
+        this.author = author;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
     public Book(String name) {
         this.name = name;
     }

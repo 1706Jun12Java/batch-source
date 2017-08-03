@@ -1,5 +1,6 @@
 package com.spring;
 
+import com.spring.service.LibService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -12,8 +13,10 @@ public class Application {
     //Calling SpringApplication.run spins up a tomcat server to run your app
     //Because we're using the actuator, we only need this class to deploy a
     //Restful webservice
+    private LibService libService;
 
     public static void main(String[] args) {
+
         SpringApplication.run(Application.class, args);
 
     }

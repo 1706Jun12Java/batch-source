@@ -21,20 +21,12 @@ public class Author implements Serializable{
     @Column(name="AUTHOR_NAME")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="BOOK_ID")
-    private Book book;
-
     public int getId() {
         return id;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Book getBook() {
-        return book;
     }
 
     public void setId(int id) {
@@ -46,15 +38,6 @@ public class Author implements Serializable{
         this.name = name;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public Author(String name, Book book) {
-
-        this.name = name;
-        this.book = book;
-    }
 
     public Author() {
     }
@@ -62,6 +45,11 @@ public class Author implements Serializable{
     public Author(String name) {
         this.name = name;
     }
+
+    public Author(int id) {
+        this.id = id;
+    }
+
 
     @Override
     public String toString() {

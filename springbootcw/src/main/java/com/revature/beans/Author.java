@@ -3,10 +3,24 @@ package com.revature.beans;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name="AUTHOR")
 public class Author implements Serializable {
 	private static final long serialVersionUID = -393310509512163122L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="authorSequence")
+	@SequenceGenerator(allocationSize=1,name="authorSequence",sequenceName="AUTHOR_SEQ")
 	@Column(name="AUTHOR_ID")
 	private int id;
 	

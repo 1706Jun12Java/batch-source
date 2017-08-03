@@ -17,8 +17,10 @@ public class Driver {
 		
 		//System.out.println(bc.getBatTypes());
 		
-		BatType bt = new BatType("megabat");
+		BatType bt = new BatType("megaMEGAMEGABATbat");
 		System.out.println(bc.saveBatType(bt));
+		
+		//System.out.println(bc.getBatTypes());
 
 	}
 

@@ -26,11 +26,11 @@ public class BatTypeController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public @ResponseBody String createBatType(@RequestBody BatType batType){
+	public @ResponseBody BatType createBatType(@RequestBody BatType batType){
 		if (bs.addBatType(batType)!= null){
-			return "BatType created!";
+			return batType;
 		}else {
-			return "BatType not created.";
+			return null;
 		}
 	}
 	

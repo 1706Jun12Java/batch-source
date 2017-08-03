@@ -13,8 +13,6 @@
         <property name="suffix"><value></value></property>
     </bean>
     <mvc:resources mapping="/static/**" location="/static/" />
-    <mvc:resources mapping="/css/**" location="/static/css/" />
-    <mvc:resources mapping="/app/**" location="/static/app/" />
     <mvc:resources mapping="/views/**" location="/static/views/" />
 
     <mvc:annotation-driven />

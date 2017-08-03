@@ -4,6 +4,7 @@ import com.spring.bean.Author;
 import com.spring.bean.Book;
 import com.spring.service.LibService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class LibController {
         this.libService = libService;
     }
 
+    @CrossOrigin
     @RequestMapping(value="/all", method= RequestMethod.GET)
     public Iterable<Book> getAuthor(){
 //        Author author = new Author("author1");

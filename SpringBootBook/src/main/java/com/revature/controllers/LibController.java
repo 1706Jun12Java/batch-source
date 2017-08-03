@@ -1,5 +1,8 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,7 @@ public class LibController {
 		Author a = new Author("fname","lname");
 		libService.addAuthor(a);
 		Book b = new Book("Hello world",1990);
-		Iterable<Author> as = libService.getAllAuthors();
+		
 		libService.addBook(b);
 		
 	}

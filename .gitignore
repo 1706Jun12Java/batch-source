@@ -30,3 +30,4 @@ connection.properties
 .recommenders/
 Servers/
 hibernate.cfg.xml
+application.properties

@@ -10,10 +10,43 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/mvc 
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-       
-       <context:component-scan base-package="com.revature"></context:component-scan>
-       <mvc:annotation-driven></mvc:annotation-driven>
-       
-       <bean name="batService" class="com.revature.service.BatService"></bean>
-       
+
+	<context:component-scan base-package="com.revature"></context:component-scan>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<tx:annotation-driven />
+
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="username" value="Admin"></property>
+		<property name="password" value="p4ssw0rd"></property>
+		<property name="url"
+			value="jdbc:oracle:thin:@jun12javademo.cwt1ckcfzdar.us-west-2.rds.amazonaws.com:1521:ORCL"></property>
+	</bean>
+	
+	<bean id="hibernateJpaVendorAdapter" 
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+	
+	<!-- because Spring Data does not natively support Hibernate... -->
+	<bean id="entityManagerFactory" name="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="myDataSource"/>
+		<property name="packagesToScan" value="com.revature.domain"/>
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+
+	<bean name="batService" class="com.revature.service.BatService"></bean>
+
+	<jpa:repositories base-package="com.revature.dao"></jpa:repositories>
+
 </beans>

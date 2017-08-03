@@ -2,6 +2,19 @@ package com.revature.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="BAT")
 public class Bat implements Serializable {
 
 	/**
@@ -17,14 +30,24 @@ public class Bat implements Serializable {
 		this.colony = colony;
 	}
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "animalSeq")
+	@SequenceGenerator(allocationSize = 1, name = "animalSeq", sequenceName = "ANIMAL_SEQ")
+	@Column(name = "ANIMAL_ID")
 	private int id;
 	
+	@Column(name="ANIMAL_NAME")
 	private String name;
 	
+	@Column(name="BAT_SPAN")
 	private int wingspan;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="BAT_TYPE")
 	private BatType type;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="BAT_COLONY")
 	private BatColony colony;
 	
 	public Bat() {

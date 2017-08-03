@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!--Scan for spring beans -->
+	<context:component-scan base-package="com.revature" />
+	
+	<bean name="myRequestFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory"></bean>
+	<bean name="myRestTemplate" class="org.springframework.web.client.RestTemplate">
+		<property name="requestFactory" ref="myRequestFactory"></property>
+	</bean>
+	<bean name="batClient" class="com.revature.client.BatClient">
+		<property name="resourceUrl" value="http://localhost:8083/RestServiceDemo"></property>
+		<property name="restTemplate" ref="myRestTemplate"></property>
+	</bean>
+</beans>
